@@ -13,7 +13,7 @@ Open http://localhost:3000.
 
 ## Status API
 
-Frontend polls `/api/status` every 60 seconds. Public-safe schema:
+`server.js` serves static files and proxies `/api/status` to `STATUS_UPSTREAM` (default `http://192.168.1.61:9109/status`). Frontend polls `/api/status` every 60 seconds. Public-safe schema:
 
 ```json
 {
