@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Abhishek Does Stuff</title>
+  <desc id="desc">Hacker/maker homepage for Abhishek Bagade</desc>
+  <defs>
+    <radialGradient id="g" cx="78%" cy="22%" r="70%">
+      <stop offset="0" stop-color="#28f0a5" stop-opacity="0.55"/>
+      <stop offset="0.38" stop-color="#0b7a54" stop-opacity="0.24"/>
+      <stop offset="1" stop-color="#050608" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="grid" x1="0" x2="1">
+      <stop stop-color="#1a2d29"/>
+      <stop offset="1" stop-color="#0b1412"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="#050608"/>
+  <rect width="1200" height="630" fill="url(#g)"/>
+  <g opacity="0.22" stroke="url(#grid)" stroke-width="1">
+    <path d="M0 90H1200M0 180H1200M0 270H1200M0 360H1200M0 450H1200M0 540H1200"/>
+    <path d="M120 0V630M240 0V630M360 0V630M480 0V630M600 0V630M720 0V630M840 0V630M960 0V630M1080 0V630"/>
+  </g>
+  <rect x="86" y="76" width="1028" height="478" rx="34" fill="#090d0c" stroke="#203c35" stroke-width="2"/>
+  <circle cx="128" cy="118" r="9" fill="#ff5f57"/>
+  <circle cx="158" cy="118" r="9" fill="#ffbd2e"/>
+  <circle cx="188" cy="118" r="9" fill="#28c840"/>
+  <text x="226" y="125" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="24" fill="#9eb6ae">abhishek@doesstuff:~</text>
+  <text x="118" y="205" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="28" fill="#28f0a5">$ ./weekend_hacks_index.sh</text>
+  <text x="118" y="300" font-family="Inter, system-ui, -apple-system, sans-serif" font-weight="800" font-size="74" fill="#f3fff9">Abhishek Does Stuff</text>
+  <text x="118" y="370" font-family="Inter, system-ui, -apple-system, sans-serif" font-weight="650" font-size="42" fill="#d5efe5">GenAI · CAD · 3D printing · electronics · homelab</text>
+  <text x="118" y="456" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="28" fill="#9eb6ae">Weekend hacks that made it past the bench.</text>
+  <text x="118" y="508" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="22" fill="#5ff0b3">served from a Lenovo M900 Tiny in Bengaluru</text>
+</svg>

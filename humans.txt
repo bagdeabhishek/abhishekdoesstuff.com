@@ -1,0 +1,10 @@
+# humans.txt
+
+Abhishek Bagade
+- Site: https://abhishekdoesstuff.com/
+- Old blog: https://www.abagade.com/
+- GitHub: https://github.com/bagdeabhishek
+- Instagram: https://www.instagram.com/abhishek_does_stuff/
+- LinkedIn: https://www.linkedin.com/in/bagdeabhishek/
+
+Built as a hacker/maker homepage, served from a Lenovo M900 Tiny in Bengaluru.

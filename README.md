@@ -37,3 +37,12 @@ Use Static/Nixpacks app from this repo. No build command required. Start command
 ```bash
 npm start
 ```
+
+Set optional env vars:
+
+- `STATUS_UPSTREAM=http://192.168.1.61:9109/status` — live M900 telemetry source.
+- `GA_MEASUREMENT_ID=G-XXXXXXXXXX` — enables Google Analytics 4 via `/analytics.js`.
+
+## SEO
+
+The homepage ships with canonical tags, Open Graph/Twitter card metadata, JSON-LD `Person` + `WebSite` schema, `robots.txt`, `sitemap.xml`, `humans.txt`, and a share-card SVG at `/og.svg`.

@@ -4,6 +4,7 @@ const path = require("path");
 
 const PORT = Number(process.env.PORT || 3000);
 const STATUS_UPSTREAM = process.env.STATUS_UPSTREAM || "http://192.168.1.61:9109/status";
+const GA_MEASUREMENT_ID = process.env.GA_MEASUREMENT_ID || process.env.GOOGLE_ANALYTICS_ID || "";
 const ROOT = __dirname;
 
 const TYPES = {
@@ -11,6 +12,10 @@ const TYPES = {
   ".css": "text/css; charset=utf-8",
   ".js": "application/javascript; charset=utf-8",
   ".json": "application/json; charset=utf-8",
+  ".xml": "application/xml; charset=utf-8",
+  ".txt": "text/plain; charset=utf-8",
+  ".svg": "image/svg+xml; charset=utf-8",
+  ".webmanifest": "application/manifest+json; charset=utf-8",
   ".ico": "image/x-icon",
 };
 
@@ -59,9 +64,27 @@ async function proxyStatus(res) {
   }
 }
 
+function serveAnalytics(res) {
+  const id = GA_MEASUREMENT_ID.trim();
+  const enabled = /^G-[A-Z0-9]+$/i.test(id);
+  const body = enabled
+    ? `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date());gtag("config",${JSON.stringify(id.toUpperCase())},{anonymize_ip:true});(function(){var s=document.createElement("script");s.async=true;s.src="https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(id.toUpperCase())}";document.head.appendChild(s);})();\n`
+    : "// Google Analytics disabled: set GA_MEASUREMENT_ID=G-XXXXXXXXXX in Coolify.\n";
+
+  send(res, 200, {
+    "content-type": "application/javascript; charset=utf-8",
+    "cache-control": "no-store",
+  }, body);
+}
+
 const server = http.createServer((req, res) => {
-  if (req.url === "/api/status" || req.url === "/api/status/") {
+  const url = new URL(req.url, `http://${req.headers.host || "localhost"}`);
+  if (url.pathname === "/api/status" || url.pathname === "/api/status/") {
     proxyStatus(res);
+    return;
+  }
+  if (url.pathname === "/analytics.js") {
+    serveAnalytics(res);
     return;
   }
   serveFile(req, res);
