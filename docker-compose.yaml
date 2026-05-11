@@ -3,7 +3,7 @@ services:
     image: node:22-alpine
     working_dir: /tmp/app
     command: >
-      sh -c "for f in index.html styles.css status.js server.js; do wget -q -O $$f https://raw.githubusercontent.com/bagdeabhishek/abhishekdoesstuff.com/main/$$f; done && node server.js"
+      sh -c "for f in index.html styles.css status.js server.js robots.txt sitemap.xml humans.txt og.svg; do wget -q -O $$f https://raw.githubusercontent.com/bagdeabhishek/abhishekdoesstuff.com/main/$$f; done && node server.js"
     environment:
       NODE_ENV: production
       PORT: "3000"

@@ -6,7 +6,7 @@ ENV PORT=3000
 ENV STATUS_UPSTREAM=http://192.168.1.61:9109/status
 
 COPY package.json ./
-COPY index.html styles.css status.js server.js ./
+COPY index.html styles.css status.js server.js robots.txt sitemap.xml humans.txt og.svg ./
 
 EXPOSE 3000
 CMD ["node", "server.js"]
