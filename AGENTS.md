@@ -15,7 +15,7 @@ npm start
 
 - `index.html` — homepage markup
 - `styles.css` — visual system; dark terminal/maker-lab style
-- `status.js` — polls `/api/status` and renders telemetry
+- `server.js` — static file server and `/api/status` proxy
 - `agent/m900-status-agent.py` — tiny Python status API
 - `agent/m900-status-agent.service` — systemd unit for the API
 
@@ -28,4 +28,4 @@ npm start
 
 ## Deploy notes
 
-Coolify app serves the static frontend. Reverse-proxy `/api/status` to the metrics agent running on host/LXC port `9109`.
+Coolify app runs the Node server. Set `STATUS_UPSTREAM=http://192.168.1.61:9109/status` if the default changes.
