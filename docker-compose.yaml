@@ -1,0 +1,14 @@
+services:
+  web:
+    image: node:22-alpine
+    working_dir: /app
+    command: node server.js
+    environment:
+      NODE_ENV: production
+      PORT: "3000"
+      STATUS_UPSTREAM: http://192.168.1.61:9109/status
+    volumes:
+      - ./:/app:ro
+    expose:
+      - "3000"
+    restart: unless-stopped
