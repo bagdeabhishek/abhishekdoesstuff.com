@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Abhishek Does Stuff</title>
-    <meta name="description" content="Abhishek Bagade builds GenAI tools, 3D-printable things, electronics hacks, and self-hosted systems from Bengaluru." />
+    <meta name="description" content="Abhishek Bagade turns GenAI, CAD, 3D printing, electronics, and homelab side quests into working things from Bengaluru." />
     <meta name="theme-color" content="#050608" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -22,6 +22,7 @@
         </span>
       </a>
       <nav aria-label="Primary">
+        <a href="#pattern">pattern</a>
         <a href="#now">now</a>
         <a href="#status">status</a>
         <a href="#archive">archive</a>
@@ -37,11 +38,13 @@
             <code>abhishek@doesstuff:~</code>
           </div>
           <div class="terminal-body">
-            <p class="prompt"><span>$</span> ./build_the_weird.sh</p>
-            <h1>ML platform engineer. Homelab gremlin. Maker of useful oddities.</h1>
+            <p class="prompt"><span>$</span> ./side_quest_to_working_thing.sh</p>
+            <h1>I turn dumb curiosities into working prototypes.</h1>
             <p class="lede">
-              I build GenAI tools, 3D-printable things, tiny automations, electronics hacks,
-              and self-hosted systems that probably started as weekend experiments.
+              I'm Abhishek Bagade. ML platform engineer at NVIDIA, IIT Bombay alum,
+              old-school homelab tinkerer, and serial "this should be possible" person.
+              My projects usually start with a Reddit rabbit hole, a broken workflow,
+              or a piece of hardware I bought because it was too cheap to ignore.
             </p>
             <div class="actions">
               <a class="button primary" href="https://coastgen.abhishekdoesstuff.com/">open CoastGen</a>
@@ -73,6 +76,30 @@
         </aside>
       </section>
 
+      <section class="section" id="pattern">
+        <div class="section-heading">
+          <span class="section-kicker">how stuff happens here</span>
+          <h2>The operating pattern</h2>
+        </div>
+        <div class="cards three">
+          <article class="project-card">
+            <span>01</span>
+            <h3>Get annoyed or curious</h3>
+            <p>A monitor needs ambilight. A jar can probably become a tiny ecosystem. A local service needs a public URL. A photo should become a printable object.</p>
+          </article>
+          <article class="project-card highlight">
+            <span>02</span>
+            <h3>Make the cheap version first</h3>
+            <p>Used parts, Arduino boards, tiny PCs, open-source tools, bash scripts, systemd units. If it works badly but honestly, it counts.</p>
+          </article>
+          <article class="project-card">
+            <span>03</span>
+            <h3>Write down what broke</h3>
+            <p>The useful bits are usually the messy bits: India-specific hardware sourcing, weird macOS build flags, NAT pain, and databases too large for pandas.</p>
+          </article>
+        </div>
+      </section>
+
       <section class="section" id="now">
         <div class="section-heading">
           <span class="section-kicker">current build queue</span>
@@ -82,18 +109,18 @@
           <article class="project-card highlight">
             <span>01</span>
             <h3>CoastGen</h3>
-            <p>Photos to 3D-printable coaster files. AI workflow wrapped around real-world making.</p>
+            <p>Photos to 3D-printable coaster files. Not just a viewer, not just a demo. The output should be something you can download and print.</p>
             <a href="https://coastgen.abhishekdoesstuff.com/">visit project →</a>
           </article>
           <article class="project-card">
             <span>02</span>
             <h3>GenAI + CAD experiments</h3>
-            <p>Text-to-CAD, print-ready downloads, and tools that cross the screen-to-object boundary.</p>
+            <p>Text-to-CAD, image-to-CAD, and the annoying middle layer where "looks good" has to become scale-accurate geometry.</p>
           </article>
           <article class="project-card">
             <span>03</span>
             <h3>Self-hosted infra</h3>
-            <p>Coolify, Proxmox, tiny PCs, local-first workflows, and useful home automations.</p>
+            <p>A Lenovo M900 Tiny, Proxmox, Coolify, Syncthing, Obsidian, and small automations that make my digital life feel like mine again.</p>
           </article>
         </div>
       </section>
@@ -102,14 +129,14 @@
         <div>
           <span class="section-kicker">old commits from real life</span>
           <h2>Stuff trail</h2>
-          <p class="muted">Longer writeups live on the older blog. This page is the front door, not the museum.</p>
+          <p class="muted">The older blog has the full "I tried this, this broke, here is the fix" posts. This page is the front door, not the museum.</p>
         </div>
         <div class="log-list">
-          <a href="https://www.abagade.com/homelab/"><code>homelab.md</code><span>consumer-grade self-hosted server notes</span></a>
-          <a href="https://www.abagade.com/ambilight"><code>ambilight.html</code><span>Arduino + WS2812 monitor ambilight</span></a>
-          <a href="https://www.abagade.com/jarrarium/"><code>jarrarium.md</code><span>plant-only aquarium in a bottle</span></a>
-          <a href="https://www.abagade.com/twitterAnalysis"><code>twitterAnalysis.md</code><span>retweet graph + community analysis</span></a>
-          <a href="https://www.abagade.com/ngrok/"><code>ngrok.md</code><span>Telegram bot for public tunnel URLs</span></a>
+          <a href="https://www.abagade.com/homelab/"><code>homelab.md</code><span>consumer-grade server build because enterprise gear in India was not cheap enough</span></a>
+          <a href="https://www.abagade.com/ambilight"><code>ambilight.html</code><span>WS2812 LEDs, Arduino, Hyperion, and macOS build pain</span></a>
+          <a href="https://www.abagade.com/jarrarium/"><code>jarrarium.md</code><span>plant-only aquarium in an IKEA carafe, with snail ethics detour</span></a>
+          <a href="https://www.abagade.com/twitterAnalysis"><code>twitterAnalysis.md</code><span>50M tweets, Postgres, Spark, Gephi, and fake-news adjacency</span></a>
+          <a href="https://www.abagade.com/ngrok/"><code>ngrok.md</code><span>free Ngrok + systemd + Telegram bot because home NAT is pain</span></a>
         </div>
       </section>
     </main>
