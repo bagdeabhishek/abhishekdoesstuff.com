@@ -1,14 +1,27 @@
 services:
   web:
     image: node:22-alpine
-    working_dir: /app
-    command: node server.js
+    working_dir: /tmp/app
+    command: >
+      sh -c "for f in index.html styles.css status.js server.js; do wget -q -O $$f https://raw.githubusercontent.com/bagdeabhishek/abhishekdoesstuff.com/main/$$f; done && node server.js"
     environment:
       NODE_ENV: production
       PORT: "3000"
       STATUS_UPSTREAM: http://192.168.1.61:9109/status
-    volumes:
-      - ./:/app:ro
     expose:
       - "3000"
     restart: unless-stopped
+    networks:
+      - coolify
+    labels:
+      - traefik.enable=true
+      - traefik.http.middlewares.gzip.compress=true
+      - traefik.http.routers.http-0-o4g480sgsw48g840kgwc0ko4.entryPoints=http
+      - traefik.http.routers.http-0-o4g480sgsw48g840kgwc0ko4.middlewares=gzip
+      - traefik.http.routers.http-0-o4g480sgsw48g840kgwc0ko4.rule=Host(`abhishekdoesstuff.com`) && PathPrefix(`/`)
+      - traefik.http.routers.http-0-o4g480sgsw48g840kgwc0ko4.service=http-0-o4g480sgsw48g840kgwc0ko4
+      - traefik.http.services.http-0-o4g480sgsw48g840kgwc0ko4.loadbalancer.server.port=3000
+
+networks:
+  coolify:
+    external: true
