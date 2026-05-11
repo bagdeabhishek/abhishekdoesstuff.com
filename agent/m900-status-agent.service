@@ -1,0 +1,23 @@
+[Unit]
+Description=Public-safe telemetry API for abhishekdoesstuff.com
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+Environment=STATUS_PORT=9109
+Environment=STATUS_HOST_LABEL=lenovo-m900-tiny
+Environment=STATUS_LOCATION=Bengaluru
+Environment=STATUS_PROC_ROOT=/host/proc
+Environment=STATUS_SYS_ROOT=/host/sys
+ExecStart=/usr/bin/python3 /opt/m900-status-agent/m900-status-agent.py
+Restart=always
+RestartSec=3
+NoNewPrivileges=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/tmp
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
