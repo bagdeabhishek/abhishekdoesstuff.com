@@ -42,7 +42,7 @@
             "@id": "https://abhishekdoesstuff.com/#profile",
             "url": "https://abhishekdoesstuff.com/",
             "name": "Abhishek Bagade's project workbench",
-            "dateModified": "2026-07-12",
+            "dateModified": "2026-07-13",
             "mainEntity": { "@id": "https://abhishekdoesstuff.com/#abhishek-bagade" }
           },
           {
@@ -80,7 +80,21 @@
             "alternateName": ["Abhishek Bagade's projects", "Abhishek's workbench"],
             "description": "Practical GenAI, CAD, electronics, 3D-printing, and homelab projects by Abhishek Bagade.",
             "publisher": { "@id": "https://abhishekdoesstuff.com/#abhishek-bagade" },
-            "inLanguage": "en-IN"
+            "inLanguage": "en-IN",
+            "hasPart": { "@id": "https://reppilot.abhishekdoesstuff.com/#app" }
+          },
+          {
+            "@type": "WebApplication",
+            "@id": "https://reppilot.abhishekdoesstuff.com/#app",
+            "name": "RepPilot",
+            "alternateName": "FitnessTracker",
+            "url": "https://reppilot.abhishekdoesstuff.com/",
+            "description": "An offline-first progressive web app for importing AI-generated workout plans, logging gym sets, timing rests, and reviewing training history.",
+            "applicationCategory": "HealthApplication",
+            "operatingSystem": "Web, Android, iOS",
+            "codeRepository": "https://github.com/bagdeabhishek/FitnessTracker",
+            "license": "https://opensource.org/license/mit",
+            "author": { "@id": "https://abhishekdoesstuff.com/#abhishek-bagade" }
           }
         ]
       }
@@ -166,6 +180,24 @@
             </dl>
             <p class="fine-print">*Six gross trades; one winner supplied almost all profit.</p>
             <a class="text-link" href="./notes/stock-picker-experiment.html">Read what failed →</a>
+          </article>
+
+          <article class="build-card reppilot-card">
+            <div class="reppilot-copy">
+              <div class="card-meta"><span class="status-pill live">live</span><span>React &middot; PWA &middot; IndexedDB</span></div>
+              <p class="project-number">BUILD 03</p>
+              <h3>RepPilot</h3>
+              <p>An offline-first gym log built for the phone in your hand between sets. Import an AI-generated workout plan, follow the day&rsquo;s schedule, track weight and reps, run rest timers, and keep the history on-device.</p>
+              <div class="card-links reppilot-links">
+                <a href="https://reppilot.abhishekdoesstuff.com/">Open RepPilot &rarr;</a>
+                <a href="https://github.com/bagdeabhishek/FitnessTracker">Source on GitHub &rarr;</a>
+              </div>
+            </div>
+            <div class="reppilot-flow" aria-label="RepPilot workflow: import a workout plan, log a session, and review local history">
+              <span><b>01</b>plan.json</span>
+              <span><b>02</b>log sets</span>
+              <span><b>03</b>local history</span>
+            </div>
           </article>
 
           <aside class="build-card status-card" id="lab" aria-labelledby="lab-title">

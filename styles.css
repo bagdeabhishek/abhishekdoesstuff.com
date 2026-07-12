@@ -599,6 +599,57 @@ nav a:hover {
   font: 10px/1.5 var(--mono);
 }
 
+.reppilot-card {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.8fr);
+  gap: clamp(36px, 7vw, 88px);
+  align-items: center;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 82% 30%, rgba(183, 213, 232, 0.12), transparent 18rem),
+    linear-gradient(110deg, rgba(117, 215, 168, 0.07), transparent 52%),
+    var(--panel);
+}
+
+.reppilot-copy,
+.reppilot-flow {
+  position: relative;
+  z-index: 1;
+}
+
+.reppilot-copy .project-number {
+  margin-top: 54px;
+}
+
+.reppilot-links a:last-child {
+  color: var(--blue);
+}
+
+.reppilot-flow {
+  display: grid;
+  gap: 12px;
+}
+
+.reppilot-flow span {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  align-items: center;
+  min-height: 72px;
+  padding: 12px 18px;
+  color: var(--blue);
+  background: rgba(4, 9, 16, 0.42);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  font: 700 11px var(--mono);
+  letter-spacing: 0.04em;
+}
+
+.reppilot-flow b {
+  color: var(--green);
+  font-size: 10px;
+}
+
 .status-card {
   grid-column: 1 / -1;
   display: grid;
@@ -1147,6 +1198,11 @@ footer span,
     grid-column: auto;
   }
 
+  .reppilot-card {
+    grid-column: auto;
+    grid-template-columns: 1fr;
+  }
+
   .story-card,
   .story-card-wide {
     grid-column: span 6;
@@ -1236,6 +1292,10 @@ footer span,
   }
 
   .stock-card .project-number {
+    margin-top: 40px;
+  }
+
+  .reppilot-copy .project-number {
     margin-top: 40px;
   }
 
