@@ -30,9 +30,8 @@ function frontMatter(source) {
 }
 
 function cleanBody(body, title) {
-  const escapedTitle = title.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   return body
-    .replace(new RegExp(`^#\\s+${escapedTitle}\\s*\\r?\\n`, "i"), "")
+    .replace(/^\s*#\s+[^\r\n]+\s*\r?\n/, "")
     .replace(/^_(?:AI-assisted|AI-generated)[^\r\n]*_\s*\r?\n?/im, "")
     .trim();
 }
@@ -76,9 +75,9 @@ function shell({ title, description, canonicalPath, body, type = "Article", date
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${escapeHtml(title)}"><meta name="twitter:description" content="${escapeHtml(description)}"><meta name="twitter:image" content="${SITE}/og.png">
 <script type="application/ld+json">${JSON.stringify(schema).replaceAll("<", "\\u003c")}</script></head>
 <body><a class="skip-link" href="#main-content">Skip to content</a><div class="page-grid" aria-hidden="true"></div>
-<header class="site-header"><a class="brand" href="/"><span class="brand-badge" aria-hidden="true">A//</span><span class="brand-copy"><strong>Abhishek Does Stuff</strong><small>project workbench · Bengaluru</small></span></a><nav aria-label="Primary navigation"><a href="/#builds">builds</a><a href="/musings/" aria-current="page">musings</a><a href="/#field-notes">field notes</a><a href="https://abagade.com/">human writing ↗</a></nav></header>
-<main id="main-content" class="article-shell musing-shell"><p class="article-back"><a href="/musings/">← All Musings</a></p><article><header class="article-header"><p class="section-kicker">AI-assisted research / clearly labeled</p><h1>${escapeHtml(title)}</h1><p class="article-deck">${escapeHtml(description)}</p></header><aside class="ai-note"><strong>Content boundary</strong><p>This is an AI-assisted research synthesis, edited and published by Abhishek. Verify important claims with primary sources.${medicalNote} Human-authored essays live separately at <a href="https://abagade.com/">abagade.com</a>.</p></aside><div class="prose">${body}</div></article></main>
-<footer><div><strong>Abhishek Bagade</strong><span>ML platforms · maker projects · Bengaluru</span></div><div class="footer-links"><a href="/">Projects</a><a href="/musings/">Musings</a><a href="https://abagade.com/">Human writing</a></div></footer><script src="/analytics.js" defer></script></body></html>`;
+<header class="site-header"><a class="brand" href="/"><span class="brand-badge" aria-hidden="true">A//</span><span class="brand-copy"><strong>Abhishek Does Stuff</strong><small>project workbench · Bengaluru</small></span></a><nav aria-label="Primary navigation"><a href="/#builds">builds</a><a href="/musings/" aria-current="page">musings</a><a href="/#field-notes">field notes</a><a href="https://abagade.com/">writing ↗</a></nav></header>
+<main id="main-content" class="article-shell musing-shell"><p class="article-back"><a href="/musings/">← All Musings</a></p><article><header class="article-header"><p class="section-kicker">Musing</p><h1>${escapeHtml(title)}</h1><p class="article-deck">${escapeHtml(description)}</p></header><aside class="ai-note"><strong>Note</strong><p>AI-assisted research note. Verify important claims with primary sources.${medicalNote}</p></aside><div class="prose">${body}</div></article></main>
+<footer><div><strong>Abhishek Bagade</strong><span>ML platforms · maker projects · Bengaluru</span></div><div class="footer-links"><a href="/">Projects</a><a href="/musings/">Musings</a><a href="https://abagade.com/">Writing</a></div></footer><script src="/analytics.js" defer></script></body></html>`;
 }
 
 async function buildMusings(root) {
@@ -110,7 +109,7 @@ async function buildMusings(root) {
 
   articles.sort((a, b) => (b.dateModified || "").localeCompare(a.dateModified || ""));
   const cards = articles.map((article) => `<li><a href="${article.route}"><strong>${escapeHtml(article.title)}</strong><span>${escapeHtml(article.description)}</span></a></li>`).join("");
-  const indexBody = `<p>Research notes made with AI assistance, edited into useful references and labeled plainly. They live here so <a href="https://abagade.com/">abagade.com</a> can remain a human-authored archive.</p><ul class="musing-list">${cards}</ul>`;
+  const indexBody = `<p>Notes on GenAI, CAD, hardware, media, and other practical questions.</p><ul class="musing-list">${cards}</ul>`;
   pages.set("/musings/", { html: shell({ title: "Musings", description: "AI-assisted research notes on GenAI, CAD, hardware, media, and other practical questions.", canonicalPath: "/musings/", body: indexBody, type: "CollectionPage" }) });
   return { pages, articles };
 }

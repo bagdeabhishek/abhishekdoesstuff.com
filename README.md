@@ -2,7 +2,7 @@
 
 Project workbench for Abhishek Bagade's GenAI, CAD, electronics, 3D-printing, and homelab builds.
 
-Human-authored long-form writing remains at [abagade.com](https://abagade.com/). Clearly labeled AI-assisted research notes live here under [/musings/](https://abhishekdoesstuff.com/musings/).
+Long-form writing is at [abagade.com](https://abagade.com/). Research notes live here under [/musings/](https://abhishekdoesstuff.com/musings/).
 
 ## Markdown Musings
 
