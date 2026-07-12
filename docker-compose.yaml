@@ -1,9 +1,8 @@
 services:
   web:
-    image: node:22-alpine
-    working_dir: /tmp/app
-    command: >
-      sh -c "for f in index.html styles.css status.js server.js robots.txt sitemap.xml humans.txt og.svg logo.jpg logo-transparent.png; do wget -q -O $$f https://raw.githubusercontent.com/bagdeabhishek/abhishekdoesstuff.com/main/$$f; done && node server.js"
+    build:
+      context: .
+      dockerfile: Dockerfile
     environment:
       NODE_ENV: production
       PORT: "3000"

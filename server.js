@@ -27,13 +27,27 @@ function send(res, status, headers, body) {
   res.end(body);
 }
 
-function serveFile(req, res) {
-  const url = new URL(req.url, `http://${req.headers.host || "localhost"}`);
-  let pathname = decodeURIComponent(url.pathname);
+function requestUrl(req) {
+  try {
+    return new URL(req.url, `http://${req.headers.host || "localhost"}`);
+  } catch {
+    return null;
+  }
+}
+
+function serveFile(url, res) {
+  let pathname;
+  try {
+    pathname = decodeURIComponent(url.pathname);
+  } catch {
+    send(res, 400, { "content-type": "text/plain; charset=utf-8" }, "Bad request");
+    return;
+  }
   if (pathname === "/") pathname = "/index.html";
 
-  const filePath = path.normalize(path.join(ROOT, pathname));
-  if (!filePath.startsWith(ROOT)) {
+  const filePath = path.resolve(ROOT, pathname.replace(/^\/+/, ""));
+  const relativePath = path.relative(ROOT, filePath);
+  if (relativePath.startsWith("..") || path.isAbsolute(relativePath)) {
     send(res, 403, { "content-type": "text/plain" }, "Forbidden");
     return;
   }
@@ -81,7 +95,11 @@ function serveAnalytics(res) {
 }
 
 const server = http.createServer((req, res) => {
-  const url = new URL(req.url, `http://${req.headers.host || "localhost"}`);
+  const url = requestUrl(req);
+  if (!url) {
+    send(res, 400, { "content-type": "text/plain; charset=utf-8" }, "Bad request");
+    return;
+  }
   if (url.pathname === "/api/status" || url.pathname === "/api/status/") {
     proxyStatus(res);
     return;
@@ -90,7 +108,7 @@ const server = http.createServer((req, res) => {
     serveAnalytics(res);
     return;
   }
-  serveFile(req, res);
+  serveFile(url, res);
 });
 
 server.listen(PORT, "0.0.0.0", () => {
