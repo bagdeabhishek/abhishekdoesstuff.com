@@ -12,4 +12,14 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url><loc>https://abhishekdoesstuff.com/musings/</loc><lastmod>2026-07-12</lastmod><priority>0.8</priority></url>
+  <url><loc>https://abhishekdoesstuff.com/musings/30-fps-vs-60-fps-cinematic-look/</loc><lastmod>2026-04-15</lastmod><priority>0.6</priority></url>
+  <url><loc>https://abhishekdoesstuff.com/musings/backrooms-creepypasta/</loc><lastmod>2026-04-04</lastmod><priority>0.6</priority></url>
+  <url><loc>https://abhishekdoesstuff.com/musings/cerebro-ambient-ai-display/</loc><lastmod>2026-05-01</lastmod><priority>0.6</priority></url>
+  <url><loc>https://abhishekdoesstuff.com/musings/delegating-tasks-to-smaller-models-without-losing-quality/</loc><lastmod>2026-04-16</lastmod><priority>0.6</priority></url>
+  <url><loc>https://abhishekdoesstuff.com/musings/image-and-text-to-scale-accurate-parametric-3d-models/</loc><lastmod>2026-04-19</lastmod><priority>0.6</priority></url>
+  <url><loc>https://abhishekdoesstuff.com/musings/llm-post-training-rl-methods/</loc><lastmod>2026-04-15</lastmod><priority>0.6</priority></url>
+  <url><loc>https://abhishekdoesstuff.com/musings/personalized-photo-selection-with-vlms/</loc><lastmod>2026-04-18</lastmod><priority>0.6</priority></url>
+  <url><loc>https://abhishekdoesstuff.com/musings/retina-tears-and-detachment/</loc><lastmod>2026-04-15</lastmod><priority>0.6</priority></url>
+  <url><loc>https://abhishekdoesstuff.com/musings/text-to-cad-method-survey/</loc><lastmod>2026-05-05</lastmod><priority>0.6</priority></url>
 </urlset>

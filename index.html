@@ -1,40 +1,58 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-IN">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Abhishek Bagade — Hacker/Maker, GenAI, CAD, Homelab</title>
-    <meta name="description" content="Abhishek Bagade's hacker/maker homepage: GenAI tools, CAD experiments, 3D printing, electronics, homelab systems, and build notes from Bengaluru." />
+    <title>Abhishek Does Stuff — GenAI, CAD &amp; Homelab Builds</title>
+    <meta name="description" content="Abhishek Bagade builds practical GenAI tools, CAD experiments, electronics, 3D-printed objects, and self-hosted systems in Bengaluru." />
     <meta name="author" content="Abhishek Bagade" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta name="theme-color" content="#121826" />
+    <meta name="theme-color" content="#0d1422" />
     <link rel="canonical" href="https://abhishekdoesstuff.com/" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="application/rss+xml" title="Abhishek Bagade's long-form writing" href="https://abagade.com/feed.xml" />
     <link rel="alternate" type="text/plain" href="https://abhishekdoesstuff.com/humans.txt" />
     <link rel="sitemap" type="application/xml" href="https://abhishekdoesstuff.com/sitemap.xml" />
+
     <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_IN" />
     <meta property="og:site_name" content="Abhishek Does Stuff" />
-    <meta property="og:title" content="Abhishek Bagade — Hacker/Maker, GenAI, CAD, Homelab" />
-    <meta property="og:description" content="Weekend hacks that made it past the bench: GenAI tools, CAD experiments, 3D printing, electronics, and self-hosted infra from Bengaluru." />
+    <meta property="og:title" content="Abhishek Does Stuff — GenAI, CAD &amp; Homelab Builds" />
+    <meta property="og:description" content="Practical tools, useful files, honest failures, and the workbench notes that survive after something finally works." />
     <meta property="og:url" content="https://abhishekdoesstuff.com/" />
-    <meta property="og:image" content="https://abhishekdoesstuff.com/logo-transparent.png" />
-    <meta property="og:image:alt" content="Abhishek Does Stuff maker-lab logo" />
+    <meta property="og:image" content="https://abhishekdoesstuff.com/og.png" />
+    <meta property="og:image:alt" content="Abhishek Does Stuff project workbench" />
     <meta property="og:image:type" content="image/png" />
-    <meta property="og:image:width" content="800" />
-    <meta property="og:image:height" content="800" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Abhishek Bagade — Hacker/Maker, GenAI, CAD, Homelab" />
-    <meta name="twitter:description" content="GenAI tools, CAD experiments, 3D printing, electronics hacks, and homelab notes from Bengaluru." />
-    <meta name="twitter:image" content="https://abhishekdoesstuff.com/logo-transparent.png" />
-    <meta name="twitter:image:alt" content="Abhishek Does Stuff maker-lab logo" />
+    <meta name="twitter:title" content="Abhishek Does Stuff — GenAI, CAD &amp; Homelab Builds" />
+    <meta name="twitter:description" content="Practical ML, CAD, electronics, 3D-printing, and homelab projects from Bengaluru." />
+    <meta name="twitter:image" content="https://abhishekdoesstuff.com/og.png" />
+    <meta name="twitter:image:alt" content="Abhishek Does Stuff project workbench" />
+
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@graph": [
           {
+            "@type": "ProfilePage",
+            "@id": "https://abhishekdoesstuff.com/#profile",
+            "url": "https://abhishekdoesstuff.com/",
+            "name": "Abhishek Bagade's project workbench",
+            "dateModified": "2026-07-12",
+            "mainEntity": { "@id": "https://abhishekdoesstuff.com/#abhishek-bagade" }
+          },
+          {
             "@type": "Person",
             "@id": "https://abhishekdoesstuff.com/#abhishek-bagade",
             "name": "Abhishek Bagade",
+            "alternateName": "Abhishek Does Stuff",
             "url": "https://abhishekdoesstuff.com/",
+            "image": "https://abhishekdoesstuff.com/favicon-192.png",
+            "description": "ML platform engineer and maker building practical GenAI, CAD, electronics, 3D-printing, and homelab projects.",
             "homeLocation": { "@type": "Place", "name": "Bengaluru, India" },
             "jobTitle": "ML Platform Engineer",
             "alumniOf": { "@type": "CollegeOrUniversity", "name": "IIT Bombay" },
@@ -48,7 +66,7 @@
               "Self-hosting"
             ],
             "sameAs": [
-              "https://www.abagade.com/",
+              "https://abagade.com/",
               "https://github.com/bagdeabhishek",
               "https://www.instagram.com/abhishek_does_stuff/",
               "https://www.linkedin.com/in/bagdeabhishek/"
@@ -59,195 +77,197 @@
             "@id": "https://abhishekdoesstuff.com/#website",
             "url": "https://abhishekdoesstuff.com/",
             "name": "Abhishek Does Stuff",
-            "description": "Abhishek Bagade's hacker/maker homepage for GenAI, CAD, 3D printing, electronics, and homelab build notes.",
+            "alternateName": ["Abhishek Bagade's projects", "Abhishek's workbench"],
+            "description": "Practical GenAI, CAD, electronics, 3D-printing, and homelab projects by Abhishek Bagade.",
             "publisher": { "@id": "https://abhishekdoesstuff.com/#abhishek-bagade" },
-            "hasPart": { "@id": "https://abhishekdoesstuff.com/notes/stock-picker-experiment.html#article" },
-            "inLanguage": "en-IN"
-          },
-          {
-            "@type": "BlogPosting",
-            "@id": "https://abhishekdoesstuff.com/notes/stock-picker-experiment.html#article",
-            "url": "https://abhishekdoesstuff.com/notes/stock-picker-experiment.html",
-            "headline": "I built a stock picker from Telegram tips. The backtest said no.",
-            "description": "An honest account of turning Telegram stock-selection heuristics into an AI-assisted NSE scanner, testing it, and publishing the negative result.",
-            "datePublished": "2026-07-12",
-            "dateModified": "2026-07-12",
-            "author": { "@id": "https://abhishekdoesstuff.com/#abhishek-bagade" },
-            "isPartOf": { "@id": "https://abhishekdoesstuff.com/#website" },
             "inLanguage": "en-IN"
           }
         ]
       }
     </script>
-    <link rel="preconnect" href="https://www.googletagmanager.com" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <div class="scanline" aria-hidden="true"></div>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <div class="page-grid" aria-hidden="true"></div>
+
     <header class="site-header">
       <a class="brand" href="#top" aria-label="Abhishek Does Stuff home">
-        <span class="brand-mark image-mark"><img src="./logo-transparent.png" alt="Abhishek Does Stuff logo" width="42" height="42" /></span>
-        <span>
-          <strong>abhishekdoesstuff.com</strong>
-          <small>served from a tiny box in Bengaluru</small>
+        <span class="brand-badge" aria-hidden="true">A//</span>
+        <span class="brand-copy">
+          <strong>Abhishek Does Stuff</strong>
+          <small>project workbench · Bengaluru</small>
         </span>
       </a>
-      <nav aria-label="Primary">
-        <a href="#research">latest</a>
-        <a href="#notes">notes</a>
-        <a href="#now">now</a>
-        <a href="#status">status</a>
-        <a href="#archive">archive</a>
-        <a href="https://www.abagade.com/">old blog</a>
+      <nav aria-label="Primary navigation">
+        <a href="#builds">builds</a>
+        <a href="/musings/">musings</a>
+        <a href="#field-notes">field notes</a>
+        <a href="#lab">lab</a>
+        <a href="#about">about</a>
+        <a href="https://abagade.com/">writing ↗</a>
       </nav>
     </header>
 
-    <main id="top">
-      <section class="hero shell-grid">
-        <div class="terminal-card hero-card">
-          <div class="terminal-bar">
-            <span></span><span></span><span></span>
-            <code>abhishek@doesstuff:~</code>
+    <main id="main-content">
+      <section class="hero" id="top" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow"><span>ML platform engineer by day</span><span>workbench after hours</span></p>
+          <h1 id="hero-title">I build practical tools that escape the weekend bench.</h1>
+          <p class="hero-lede">
+            GenAI experiments, useful CAD, electronics, 3D-printed objects, and self-hosted systems.
+            This is where I keep what shipped, what broke, and the files worth reusing.
+          </p>
+          <div class="actions">
+            <a class="button primary" href="#builds">Explore the builds</a>
+            <a class="button" href="./notes/stock-picker-experiment.html">Latest experiment</a>
           </div>
-          <div class="terminal-body">
-            <p class="prompt"><span>$</span> ./weekend_hacks_index.sh</p>
-            <img class="hero-logo" src="./logo-transparent.png" alt="Abhishek Does Stuff illustrated logo" width="762" height="771" />
-            <h1>Weekend hacks that made it past the bench.</h1>
-            <p class="lede">
-              I'm Abhishek Bagade. I work on ML platforms at NVIDIA and keep a small
-              homelab running in Bengaluru. This is the index for the side projects I
-              usually post on Instagram: GenAI experiments, 3D-printable things,
-              electronics hacks, self-hosted services, and the notes that survive after
-              something finally works.
-            </p>
-            <div class="actions">
-              <a class="button primary" href="https://coastgen.abhishekdoesstuff.com/">open CoastGen</a>
-              <a class="button" href="https://www.instagram.com/abhishek_does_stuff/">watch builds</a>
-              <a class="button" href="https://github.com/bagdeabhishek">view code</a>
-            </div>
-          </div>
+          <ul class="hero-facts" aria-label="About the workbench">
+            <li>Bengaluru, India</li>
+            <li>cheap · local · inspectable</li>
+            <li>working output over demo polish</li>
+          </ul>
         </div>
 
-        <aside class="status-card" id="status" aria-live="polite">
-          <div class="section-kicker">/home/abhishek/status</div>
-          <h2>M900 Tiny telemetry</h2>
-          <p class="muted">This site is served from the same M900 Tiny in my homelab. The live stats are here because the box is part of the project, not just hosting for it.</p>
-          <dl class="metric-list">
-            <div><dt>host</dt><dd id="metric-host">m900-tiny</dd></div>
-            <div><dt>uptime</dt><dd id="metric-uptime">checking…</dd></div>
-            <div><dt>load</dt><dd id="metric-load">—</dd></div>
-            <div><dt>temp</dt><dd id="metric-temp">—</dd></div>
-            <div>
-              <dt>ram</dt>
-              <dd><span class="bar"><span id="metric-ram-bar"></span></span><b id="metric-ram">—</b></dd>
-            </div>
-            <div>
-              <dt>disk</dt>
-              <dd><span class="bar"><span id="metric-disk-bar"></span></span><b id="metric-disk">—</b></dd>
-            </div>
-          </dl>
-          <p class="last-seen" id="metric-updated">waiting for /api/status</p>
+        <aside class="hero-mark" aria-label="Abhishek Does Stuff illustrated mark">
+          <img src="./logo-512.webp" alt="Illustrated Abhishek surrounded by maker and robotics motifs" width="506" height="512" fetchpriority="high" />
+          <p><span class="live-dot" aria-hidden="true"></span> served from a Lenovo M900 Tiny in Bengaluru</p>
         </aside>
       </section>
 
-      <section class="section research-feature" id="research" aria-labelledby="research-title">
-        <div class="research-copy">
-          <span class="section-kicker">latest experiment / negative result</span>
-          <h2 id="research-title">I built a stock picker from Telegram tips. The backtest said no.</h2>
-          <p>
-            I turned a Telegram contributor's stock-picking heuristics into an AI-assisted NSE scanner,
-            then tested whether the apparent methodology survived a historical replay. The interesting
-            part is where it failed, what the backtest exposed, and why I left the experiment running.
-          </p>
-          <a class="button primary" href="./notes/stock-picker-experiment.html" aria-label="Read the stock picker experiment and backtest">read the experiment &rarr;</a>
-        </div>
-        <dl class="research-facts" aria-label="Experiment summary">
-          <div><dt>source</dt><dd>Telegram heuristics</dd></div>
-          <div><dt>market</dt><dd>NSE equities</dd></div>
-          <div><dt>result</dt><dd>negative at EOD</dd></div>
-          <div><dt>status</dt><dd>published, still live</dd></div>
-        </dl>
-      </section>
-
-      <section class="section" id="notes">
+      <section class="section" id="builds" aria-labelledby="builds-title">
         <div class="section-heading">
-          <span class="section-kicker">what usually lands here</span>
-          <h2>Notes from the bench</h2>
+          <div>
+            <p class="section-kicker">selected builds / current bench</p>
+            <h2 id="builds-title">Things with working outputs.</h2>
+          </div>
+          <p>Projects earn a place here when there is something real to inspect: a file, a service, a result, or a useful failure.</p>
         </div>
-        <div class="cards three">
-          <article class="project-card">
-            <span>01</span>
-            <h3>Things I wanted working</h3>
-            <p>Ambilight for a monitor, a public URL for a local service, a tiny plant ecosystem, a photo-to-CAD pipeline. Usually some practical itch.</p>
+
+        <div class="build-grid">
+          <article class="build-card build-card-wide coastgen-card">
+            <div class="card-meta"><span class="status-pill live">live</span><span>GenAI · CAD · 3D printing</span></div>
+            <div class="coastgen-flow" aria-hidden="true">
+              <span>photo.jpg</span><b>→</b><span>height map</span><b>→</b><span>printable STL</span>
+            </div>
+            <div class="card-copy">
+              <p class="project-number">BUILD 01</p>
+              <h3>CoastGen</h3>
+              <p>Turns a photograph into a 3D-printable coaster file. The hard part is not the preview; it is producing geometry that survives the slicer.</p>
+              <div class="card-links">
+                <a href="https://coastgen.abhishekdoesstuff.com/">Open CoastGen →</a>
+                <span>output: STL</span>
+              </div>
+            </div>
           </article>
-          <article class="project-card highlight">
-            <span>02</span>
-            <h3>Cheap, local, reproducible</h3>
-            <p>Used parts when they make sense, Arduino/Raspberry Pi when enough, systemd when boring is better, and notes on what breaks in Indian network or hardware reality.</p>
+
+          <article class="build-card stock-card">
+            <div class="card-meta"><span class="status-pill learned">negative result</span><span>AI · NSE · backtesting</span></div>
+            <p class="project-number">BUILD 02</p>
+            <h3>Telegram stock-picker experiment</h3>
+            <p>I translated a contributor's heuristics into a scanner, replayed them historically, and published the result when the main thesis failed.</p>
+            <dl class="mini-results" aria-label="Backtest summary">
+              <div><dt>fixed top 1</dt><dd class="negative">−9.12%</dd></div>
+              <div><dt>first-hour filter</dt><dd class="positive">+3.36%*</dd></div>
+            </dl>
+            <p class="fine-print">*Six gross trades; one winner supplied almost all profit.</p>
+            <a class="text-link" href="./notes/stock-picker-experiment.html">Read what failed →</a>
           </article>
-          <article class="project-card">
-            <span>03</span>
-            <h3>No polished case studies</h3>
-            <p>The useful bits are the constraints: weird build flags, NAT pain, cheap hardware tradeoffs, large data that does not fit in pandas, and outputs you can actually use.</p>
-          </article>
+
+          <aside class="build-card status-card" id="lab" aria-labelledby="lab-title">
+            <div class="card-meta"><span class="status-pill live">live telemetry</span><span>/api/status</span></div>
+            <p class="project-number">LAB 01</p>
+            <h3 id="lab-title">M900 Tiny</h3>
+            <p class="status-intro">The host is part of the project, so its deliberately public-safe vitals stay visible.</p>
+            <dl class="metric-list">
+              <div><dt>host</dt><dd id="metric-host">m900-tiny</dd></div>
+              <div><dt>uptime</dt><dd id="metric-uptime">checking…</dd></div>
+              <div><dt>load</dt><dd id="metric-load">—</dd></div>
+              <div><dt>temp</dt><dd id="metric-temp">—</dd></div>
+              <div>
+                <dt>ram</dt>
+                <dd><span class="bar" aria-hidden="true"><span id="metric-ram-bar"></span></span><b id="metric-ram">—</b></dd>
+              </div>
+              <div>
+                <dt>disk</dt>
+                <dd><span class="bar" aria-hidden="true"><span id="metric-disk-bar"></span></span><b id="metric-disk">—</b></dd>
+              </div>
+            </dl>
+            <p class="last-seen" id="metric-updated" aria-live="polite">waiting for /api/status</p>
+          </aside>
         </div>
       </section>
 
-      <section class="section" id="now">
+      <section class="section" id="field-notes" aria-labelledby="notes-title">
         <div class="section-heading">
-          <span class="section-kicker">current threads</span>
-          <h2>Active hacks</h2>
+          <div>
+            <p class="section-kicker">field notes / earlier builds</p>
+            <h2 id="notes-title">Proof from the workbench.</h2>
+          </div>
+          <p>Older first-person build stories remain on abagade.com; this site is their project index.</p>
         </div>
-        <div class="cards three">
-          <article class="project-card highlight">
-            <span>01</span>
-            <h3>CoastGen</h3>
-            <p>Photos to 3D-printable coaster files. The interesting part is not the preview; it is getting a clean file that can go to a slicer.</p>
-            <a href="https://coastgen.abhishekdoesstuff.com/">visit project →</a>
-          </article>
-          <article class="project-card">
-            <span>02</span>
-            <h3>GenAI + CAD experiments</h3>
-            <p>Text-to-CAD, image-to-CAD, and the gap between a nice demo image and geometry with scale, constraints, and useful exports.</p>
-          </article>
-          <article class="project-card">
-            <span>03</span>
-            <h3>Self-hosted infra</h3>
-            <p>A Lenovo M900 Tiny, Proxmox, Coolify, Syncthing, Obsidian, and a preference for services I can inspect when they fail.</p>
-          </article>
+
+        <div class="story-grid">
+          <a class="story-card story-card-wide" href="https://abagade.com/ambilight/">
+            <img src="./assets/projects/ambilight.webp" alt="LED strips fitted around the back of a monitor for a DIY Ambilight" width="1200" height="800" loading="lazy" />
+            <span class="story-overlay"></span>
+            <span class="story-copy"><small>Arduino · WS2812 · Hyperion</small><strong>DIY monitor Ambilight</strong><em>Read the build story →</em></span>
+          </a>
+          <a class="story-card" href="https://abagade.com/jarrarium/">
+            <img src="./assets/projects/jarrarium.webp" alt="A planted bottle ecosystem on a workbench" width="1200" height="800" loading="lazy" />
+            <span class="story-overlay"></span>
+            <span class="story-copy"><small>plants · patience · IKEA carafe</small><strong>Jarrarium</strong><em>Read the build story →</em></span>
+          </a>
+          <a class="story-card" href="https://abagade.com/twitterAnalysis/">
+            <img src="./assets/projects/twitter-network.webp" alt="Large clustered network graph of Indian political Twitter accounts" width="1200" height="900" loading="lazy" />
+            <span class="story-overlay light"></span>
+            <span class="story-copy dark"><small>50M tweets · Spark · Gephi</small><strong>Political network analysis</strong><em>Open the analysis →</em></span>
+          </a>
+          <a class="story-card story-card-wide" href="https://abagade.com/edifier_r1280t/">
+            <img src="./assets/projects/edifier-repair.webp" alt="Desk setup with repaired Edifier speakers" width="1200" height="800" loading="lazy" />
+            <span class="story-overlay"></span>
+            <span class="story-copy"><small>diagnosis · soldering · repair</small><strong>Edifier R1280T repair</strong><em>Read the repair log →</em></span>
+          </a>
         </div>
       </section>
 
-      <section class="section split" id="archive">
+      <section class="section principles" id="about" aria-labelledby="about-title">
+        <div class="principles-intro">
+          <p class="section-kicker">how I build</p>
+          <h2 id="about-title">Practical beats theatrical.</h2>
+          <p>I work on ML platforms at NVIDIA. Away from work, I prefer systems I can inspect, parts I can replace, and outputs that remain useful after the demo ends.</p>
+        </div>
+        <ol class="principle-list">
+          <li><span>01</span><div><strong>Start with the itch.</strong><p>A missing tool, an annoying constraint, or hardware that should not be thrown away yet.</p></div></li>
+          <li><span>02</span><div><strong>Build for Indian reality.</strong><p>Used parts, home NAT, imperfect data, modest hardware, and services that need to fail legibly.</p></div></li>
+          <li><span>03</span><div><strong>Publish the failure.</strong><p>The surprising bug or negative result is often more reusable than the launch screenshot.</p></div></li>
+        </ol>
+      </section>
+
+      <section class="section writing-bridge" id="writing" aria-labelledby="writing-title">
         <div>
-          <span class="section-kicker">older writeups</span>
-          <h2>Previous experiments</h2>
-          <p class="muted">The older blog has longer posts for people who want the implementation details. This page is the gateway from Instagram and search to the actual notes.</p>
+          <p class="section-kicker">a separate shelf for writing</p>
+          <h2 id="writing-title">Long-form writing has its own home.</h2>
+          <p>Projects and clearly labeled AI-assisted research live here. Abagade stays a separate, purely human-authored long-form archive.</p>
         </div>
-        <div class="log-list">
-          <a href="./notes/stock-picker-experiment.html"><code>stock-picker.md</code><span>Telegram stock tips, an AI-assisted scanner, and a backtest that refused to cooperate</span></a>
-          <a href="https://www.abagade.com/homelab/"><code>homelab.md</code><span>consumer-grade server build because enterprise gear in India was not cheap enough</span></a>
-          <a href="https://www.abagade.com/ambilight"><code>ambilight.html</code><span>WS2812 LEDs, Arduino, Hyperion, and macOS build pain</span></a>
-          <a href="https://www.abagade.com/jarrarium/"><code>jarrarium.md</code><span>plant-only aquarium in an IKEA carafe, with snail ethics detour</span></a>
-          <a href="https://www.abagade.com/twitterAnalysis"><code>twitterAnalysis.md</code><span>50M tweets, Postgres, Spark, Gephi, and fake-news adjacency</span></a>
-          <a href="https://www.abagade.com/ngrok/"><code>ngrok.md</code><span>free Ngrok + systemd + Telegram bot because home NAT is pain</span></a>
+        <div class="writing-links">
+          <a href="https://abagade.com/"><span>Human-authored</span><strong>Essays &amp; long-form archive</strong><em>Visit abagade.com →</em></a>
+          <a href="/musings/"><span>AI-assisted and labeled</span><strong>Research Musings in Markdown</strong><em>Browse Musings →</em></a>
         </div>
       </section>
     </main>
 
     <footer>
-      <span>Abhishek Bagade · NVIDIA ML Platform · IIT Bombay · Bengaluru</span>
-      <span class="footer-links">
-        <a href="mailto:admin@abhishekdoesstuff.com">email</a>
-        <a href="https://www.linkedin.com/in/bagdeabhishek/">linkedin</a>
-        <a href="https://www.instagram.com/abhishek_does_stuff/">instagram</a>
-      </span>
+      <div><strong>Abhishek Bagade</strong><span>ML platforms · maker projects · Bengaluru</span></div>
+      <div class="footer-links">
+        <a rel="me" href="https://github.com/bagdeabhishek">GitHub</a>
+        <a rel="me" href="https://www.instagram.com/abhishek_does_stuff/">Instagram</a>
+        <a rel="me" href="https://www.linkedin.com/in/bagdeabhishek/">LinkedIn</a>
+        <a href="mailto:admin@abhishekdoesstuff.com">Email</a>
+      </div>
     </footer>
 
-    <script src="./status.js"></script>
+    <script src="./status.js" defer></script>
     <script src="./analytics.js" defer></script>
   </body>
 </html>

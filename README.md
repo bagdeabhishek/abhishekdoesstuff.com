@@ -1,6 +1,23 @@
 # abhishekdoesstuff.com
 
-Static homepage for Abhishek Bagade's maker/hacker front door.
+Project workbench for Abhishek Bagade's GenAI, CAD, electronics, 3D-printing, and homelab builds.
+
+Human-authored long-form writing remains at [abagade.com](https://abagade.com/). Clearly labeled AI-assisted research notes live here under [/musings/](https://abhishekdoesstuff.com/musings/).
+
+## Markdown Musings
+
+Each published Musing is stored as `content/musings/<slug>/index.md`. At startup, `musings.js` reads the front matter, renders GitHub-flavoured Markdown, and caches complete SEO-ready HTML pages in memory. The Markdown files are source files and are not served directly.
+
+Use this minimal front matter for a new note:
+
+```yaml
+---
+title: A useful title
+permalink: /musings/a-useful-title/
+---
+```
+
+Set `published: false` to keep a draft out of the collection. Existing moved URLs can use `redirect_to`.
 
 ## Run locally
 
@@ -28,7 +45,7 @@ Open http://localhost:3000.
 }
 ```
 
-Agent lives in `agent/`. Deploy it on host/LXC and reverse-proxy `/api/status` to `http://<agent-ip>:9109/status`.
+Agent lives in `agent/`. Deploy it on host/LXC and reverse-proxy `/api/status` to `http://<agent-ip>:9109/status`. The public server validates and rebuilds the documented schema rather than forwarding arbitrary upstream fields.
 
 ## Coolify
 
@@ -45,4 +62,6 @@ Set optional env vars:
 
 ## SEO
 
-The homepage ships with canonical tags, Open Graph/Twitter card metadata, JSON-LD `Person` + `WebSite` schema, `robots.txt`, `sitemap.xml`, `humans.txt`, and a share-card SVG at `/og.svg`.
+The homepage ships with canonical tags, Open Graph/Twitter card metadata, JSON-LD `ProfilePage` + `Person` + `WebSite` schema, `robots.txt`, `sitemap.xml`, `humans.txt`, favicons, and a 1200×630 share card at `/og.png`.
+
+Only routes explicitly listed in `server.js` are public. Add every new static asset to `PUBLIC_FILES` and the Docker image before referencing it from a page.
