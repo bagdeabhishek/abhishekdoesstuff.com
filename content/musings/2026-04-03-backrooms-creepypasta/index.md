@@ -2,8 +2,6 @@
 layout: default
 title: Backrooms Creepypasta
 permalink: /musings/2026-04-03-backrooms-creepypasta/
-redirect_to: /musings/backrooms-creepypasta/
-sitemap: false
 ---
 
 # Backrooms Creepypasta
