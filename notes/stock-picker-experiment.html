@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>I built a stock picker from Telegram tips. The backtest said no. | Abhishek Does Stuff</title>
+    <meta name="description" content="An honest account of turning Telegram stock-selection heuristics into an AI-assisted NSE scanner, testing it, and publishing the negative result." />
+    <meta name="author" content="Abhishek Bagade" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="theme-color" content="#121826" />
+    <link rel="canonical" href="https://abhishekdoesstuff.com/notes/stock-picker-experiment.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Abhishek Does Stuff" />
+    <meta property="og:title" content="I built a stock picker from Telegram tips. The backtest said no." />
+    <meta property="og:description" content="Telegram heuristics, an AI-assisted NSE scanner, and a result worth publishing precisely because it did not work." />
+    <meta property="og:url" content="https://abhishekdoesstuff.com/notes/stock-picker-experiment.html" />
+    <meta property="og:image" content="https://abhishekdoesstuff.com/logo-transparent.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="I built a stock picker from Telegram tips. The backtest said no." />
+    <meta name="twitter:description" content="An honest negative-result experiment in AI-assisted stock research." />
+    <meta name="twitter:image" content="https://abhishekdoesstuff.com/logo-transparent.png" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "I built a stock picker from Telegram tips. The backtest said no.",
+        "datePublished": "2026-07-12",
+        "dateModified": "2026-07-12",
+        "author": { "@type": "Person", "name": "Abhishek Bagade", "url": "https://abhishekdoesstuff.com/" },
+        "publisher": { "@type": "Person", "name": "Abhishek Bagade" },
+        "mainEntityOfPage": "https://abhishekdoesstuff.com/notes/stock-picker-experiment.html",
+        "image": "https://abhishekdoesstuff.com/logo-transparent.png",
+        "inLanguage": "en-IN"
+      }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="scanline" aria-hidden="true"></div>
+    <header class="site-header">
+      <a class="brand" href="../index.html" aria-label="Abhishek Does Stuff home">
+        <span class="brand-mark image-mark"><img src="../logo-transparent.png" alt="Abhishek Does Stuff logo" width="42" height="42" /></span>
+        <span><strong>abhishekdoesstuff.com</strong><small>notes from the bench</small></span>
+      </a>
+      <nav aria-label="Primary"><a href="../index.html">home</a><a href="../index.html#archive">archive</a></nav>
+    </header>
+
+    <main class="article-shell">
+      <a class="article-back" href="../index.html#archive">&larr; back to experiments</a>
+
+      <div class="article-cta">
+        <p><strong>The experiment is still live.</strong> You can inspect the model, discuss a stock, or ask it to reproduce the research.</p>
+        <a href="https://chatgpt.com/g/g-6a4fc3820e5081918dd08929856ecb96-abhishek-s-stock-picker">Open the Stock Picker GPT &rarr;</a>
+      </div>
+
+      <div class="article-note">
+        <p><strong>AI-generated content disclaimer:</strong> This article was drafted and edited with AI from my experiment notes, code, and backtest results. The conclusions are mine, but the prose and summarisation are AI-assisted. Numbers may contain errors and should be independently verified.</p>
+      </div>
+
+      <p class="article-meta">12 July 2026 &middot; Abhishek Bagade &middot; experiment log</p>
+      <h1>I built a stock picker from Telegram tips. The backtest said no.</h1>
+      <p class="article-lede">This started as a straightforward question: could I extract how a prolific Telegram contributor chose stocks, turn that intuition into explicit rules, and use those rules to find entirely new NSE candidates?</p>
+
+      <p>The goal was never to replay old tips. I wanted to distil a method: momentum, breakouts, volume, liquidity, entry discipline, and the difference between a stock climbing steadily and one arriving through a single violent jump. Then I wanted an AI assistant that could apply that method to the market and explain its reasoning conversationally.</p>
+
+      <p>I built it. I tested it. The useful result is that the main strategy did not work.</p>
+
+      <h2>From chat export to a testable method</h2>
+      <p>The raw material was a Telegram export containing years of conversation. I first isolated messages from Madhu Reddy, extracted timestamps and stock references, and classified the surrounding language: positive, negative, buy, avoid, hold, exit, recap, or general market commentary.</p>
+
+      <p>The recurring style was translated into a market-wide research heuristic:</p>
+      <ul>
+        <li>prefer liquid NSE equities with sustained medium-term momentum;</li>
+        <li>look for breakouts, constructive closes, and meaningful volume;</li>
+        <li>penalise weak closes, extreme extension, and suspicious price discontinuities;</li>
+        <li>reward gradual information continuity rather than a single jump-driven move;</li>
+        <li>wait for current-session confirmation instead of blindly buying the next open.</li>
+      </ul>
+
+      <p>Public NSE end-of-day data powered discovery. Historical intraday candles were used to reconstruct the first hour. Results were cached so a normal conversation did not need to rescan years of files. The GPT became the interface: ask about the market, inspect a stock, or challenge the methodology.</p>
+
+      <h2>The score kept getting smarter</h2>
+      <p>The first score had an obvious defect: strong candidates saturated at the same ceiling. Later versions removed the cap, ranked stocks cross-sectionally, added information continuity, demoted redundant peak features, and stopped treating numerical score gaps as confidence.</p>
+
+      <p>Each revision looked more sophisticated. That was precisely why the backtest mattered. Better resolution is not the same thing as better prediction.</p>
+
+      <h2>What happened in the one-month replay</h2>
+      <p>The final replay used 21 execution sessions, 63 ranked stock observations, whole shares, no leverage, and deterministic execution. These headline results are gross of brokerage, STT, taxes, and slippage.</p>
+
+      <div class="result-block">
+        <table class="result-table">
+          <thead><tr><th>Strategy</th><th>Return</th><th>Max drawdown</th><th>Trades</th></tr></thead>
+          <tbody>
+            <tr><td>Fixed Top 1</td><td>-9.12%</td><td>-9.12%</td><td>21</td></tr>
+            <tr><td>Fixed Top 2</td><td>-9.96%</td><td>-13.91%</td><td>42</td></tr>
+            <tr><td>Fixed Top 3</td><td>-9.61%</td><td>-11.26%</td><td>62</td></tr>
+            <tr><td>Dynamic EOD</td><td>-5.31%</td><td>-7.34%</td><td>38</td></tr>
+            <tr><td>First-hour confirmed</td><td>+3.36%</td><td>-0.72%</td><td>6</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>The EOD ranking did not produce a profitable result. Rank 1 did not reliably beat Rank 2. Rank 2 and Rank 3 were difficult to distinguish. Daily rank correlation was approximately zero. Adding more stocks mostly added more ways to lose money.</p>
+
+      <p>The long-history comparison was no rescue either. Across roughly 1,300 sessions, the best broad ranking variant still had negative absolute next-session expectancy before costs. It was marginally better than the liquid-universe median, which is academically interesting and economically inadequate.</p>
+
+      <h2>The tantalising six trades</h2>
+      <p>Waiting until 10:15 changed the shape of the month. The primary rule required a first-hour return of at least 0.5% and a price above cumulative first-hour VWAP. Only six trades survived, producing +3.36% gross with a much smaller drawdown.</p>
+
+      <p>That sounds exciting until one more number arrives: WELCORP supplied roughly 95% of final profit. Remove one winner and the apparent edge nearly disappears before costs. Six trades are a story, not validation.</p>
+
+      <p>The GPT remains online because keeping it hosted costs me effectively nothing, and it is still useful as an interactive research artefact. It can explain the model, evaluate how a stock fits the rules, and reproduce the experiment. It should not be mistaken for a reliable source of trading recommendations.</p>
+
+      <h2>The nastiest bug was in the past</h2>
+      <p>The final replay exposed a subtle corporate-action trap. Some historical broker candles had been retrospectively rescaled after a later corporate action, while the matching NSE end-of-day record remained on its contemporaneous price scale. Comparing the two created a fake 80% historical gap.</p>
+
+      <p>A naive safety rule would have used today's adjusted history to reject a trade in the past, quietly introducing look-ahead while appearing more conservative. The lesson is broader than this project: historical data is not automatically point-in-time data, and a backtest can improve for exactly the wrong reason.</p>
+
+      <h2>What I learned</h2>
+      <ol>
+        <li><strong>A score can become more precise without becoming more predictive.</strong> Decimal places are not calibration.</li>
+        <li><strong>Entry timing mattered more than another EOD feature.</strong> Blindly buying the open was consistently poor.</li>
+        <li><strong>Positive backtests need concentration checks.</strong> A strategy that depends on one winner is not robust.</li>
+        <li><strong>Data provenance is part of the strategy.</strong> Corporate actions, retrospective adjustment, missing sessions, and stale snapshots can dominate the result.</li>
+        <li><strong>Negative results are worth publishing.</strong> The failure is more useful than a polished screenshot of six lucky trades.</li>
+      </ol>
+
+      <h2>So why leave it running?</h2>
+      <p>Because an experiment does not become worthless when its original thesis fails. The conversation, extraction pipeline, explainable scoring, and replay machinery remain useful. More importantly, leaving the complete thing visible makes it harder to quietly move the goalposts later.</p>
+
+      <p>I am keeping the GPT available as an experimental research companion. Treat every output as a prompt for further investigation, never as financial advice or a promise of returns.</p>
+
+      <div class="article-cta">
+        <p><strong>Try the experiment yourself.</strong> Ask how the method works, inspect a stock, or challenge the assumptions.</p>
+        <a href="https://chatgpt.com/g/g-6a4fc3820e5081918dd08929856ecb96-abhishek-s-stock-picker">Open the GPT &rarr;</a>
+      </div>
+
+      <p class="article-footer"><strong>Financial disclaimer:</strong> This project is an experimental research tool. Nothing in the GPT or this article is investment advice, a recommendation to buy or sell securities, or evidence of future performance.</p>
+    </main>
+
+    <footer>
+      <span>Abhishek Bagade &middot; Bengaluru</span>
+      <span class="footer-links"><a href="../index.html">home</a><a href="mailto:admin@abhishekdoesstuff.com">email</a></span>
+    </footer>
+    <script src="../analytics.js" defer></script>
+  </body>
+</html>
