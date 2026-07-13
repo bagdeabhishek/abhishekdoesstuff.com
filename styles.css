@@ -1220,16 +1220,17 @@ footer span,
     overflow-x: hidden;
   }
 
-  .site-header,
   main,
   footer {
-    width: min(100% - 32px, var(--max-width));
+    width: min(calc(100% - 32px), var(--max-width));
   }
 
   .site-header {
+    width: 100%;
     min-height: 0;
+    margin-inline: 0;
     gap: 12px;
-    padding: 8px 0;
+    padding: 8px 16px;
     align-items: center;
     flex-direction: row;
     overflow: hidden;
