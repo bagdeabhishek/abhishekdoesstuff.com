@@ -1149,6 +1149,7 @@ footer span,
     position: relative;
     padding: 14px 0;
     align-items: flex-start;
+    justify-content: flex-start;
     flex-direction: column;
   }
 
@@ -1226,33 +1227,49 @@ footer span,
   }
 
   .site-header {
-    gap: 10px;
-    padding: 12px 0 10px;
+    min-height: 0;
+    gap: 8px;
+    padding: 10px 0 8px;
+    align-items: stretch;
   }
 
   .brand-badge {
-    width: 38px;
-    height: 38px;
+    width: 34px;
+    height: 34px;
+    border-radius: 9px 3px 9px 3px;
+    box-shadow: 4px 4px 0 rgba(247, 178, 27, 0.1);
+    font-size: 13px;
+  }
+
+  .brand {
+    gap: 9px;
   }
 
   .brand-copy strong {
-    font-size: 14px;
+    font-size: 13px;
   }
 
   .brand-copy small {
-    font-size: 10px;
+    font-size: 9px;
   }
 
   nav {
-    flex-wrap: wrap;
-    gap: 0 16px;
-    padding-bottom: 0;
-    overflow: visible;
+    flex-wrap: nowrap;
+    gap: 14px;
+    padding: 3px 0 0;
+    overflow-x: auto;
+    border-top: 1px solid rgba(183, 213, 232, 0.1);
     font-size: 11px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  nav::-webkit-scrollbar {
+    display: none;
   }
 
   nav a {
-    padding: 7px 0;
+    padding: 6px 0;
   }
 
   .hero {
