@@ -21,7 +21,7 @@ const CACHE = {
 const PUBLIC_FILES = new Map([
   ["/", { file: "index.html", cache: CACHE.document }],
   ["/index.html", { file: "index.html", cache: CACHE.document }],
-  ["/styles.css", { file: "styles.css", cache: CACHE.asset }],
+  ["/styles.css", { file: "styles.css", cache: CACHE.document }],
   ["/status.js", { file: "status.js", cache: CACHE.asset }],
   ["/robots.txt", { file: "robots.txt", cache: CACHE.metadata }],
   ["/sitemap.xml", { file: "sitemap.xml", cache: CACHE.metadata }],
