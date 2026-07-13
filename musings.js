@@ -70,7 +70,7 @@ function shell({ title, description, canonicalPath, body, type = "Article", date
 <html lang="en-IN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${escapeHtml(title)} — Abhishek Does Stuff</title>
 <meta name="description" content="${escapeHtml(description)}"><meta name="author" content="Abhishek Bagade"><meta name="robots" content="index, follow, max-image-preview:large">
-<link rel="canonical" href="${canonical}"><link rel="icon" href="/favicon.ico" sizes="any"><link rel="stylesheet" href="/styles.css?v=20260713-4">
+<link rel="canonical" href="${canonical}"><link rel="icon" href="/favicon.ico" sizes="any"><link rel="stylesheet" href="/styles.css?v=20260713-5">
 <meta property="og:type" content="article"><meta property="og:site_name" content="Abhishek Does Stuff"><meta property="og:title" content="${escapeHtml(title)}"><meta property="og:description" content="${escapeHtml(description)}"><meta property="og:url" content="${canonical}"><meta property="og:image" content="${SITE}/og.png">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${escapeHtml(title)}"><meta name="twitter:description" content="${escapeHtml(description)}"><meta name="twitter:image" content="${SITE}/og.png">
 <script type="application/ld+json">${JSON.stringify(schema).replaceAll("<", "\\u003c")}</script></head>
