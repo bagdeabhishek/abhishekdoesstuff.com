@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en-IN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Birds Heard in Bengaluru — Abhishek Does Stuff</title>
+    <meta name="description" content="A live, illustrated view of recurring bird species heard by a BirdNET microphone in Bengaluru, paired with historical natural-history art." />
+    <meta name="author" content="Abhishek Bagade" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="theme-color" content="#0d1422" />
+    <link rel="canonical" href="https://abhishekdoesstuff.com/birds/" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_IN" />
+    <meta property="og:site_name" content="Abhishek Does Stuff" />
+    <meta property="og:title" content="Birds Heard in Bengaluru" />
+    <meta property="og:description" content="Live BirdNET detections meet historical natural-history plates. Larger birds are less often heard by this microphone." />
+    <meta property="og:url" content="https://abhishekdoesstuff.com/birds/" />
+    <meta property="og:image" content="https://abhishekdoesstuff.com/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="stylesheet" href="/styles.css?v=20260713-6" />
+    <link rel="stylesheet" href="/birds.css?v=20260922-1" />
+  </head>
+  <body class="birds-page">
+    <a class="skip-link" href="#main-content">Skip to birds</a>
+    <div class="page-grid" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="Abhishek Does Stuff home">
+        <span class="brand-badge" aria-hidden="true">A//</span>
+        <span class="brand-copy">
+          <strong>Abhishek Does Stuff</strong>
+          <small>project workbench · Bengaluru</small>
+        </span>
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="/#builds">builds</a>
+        <a href="/musings/">musings</a>
+        <a href="/birds/" aria-current="page">birds</a>
+        <a href="/#field-notes">field notes</a>
+        <a href="https://abagade.com/">writing ↗</a>
+      </nav>
+    </header>
+
+    <main id="main-content" class="birds-main">
+      <section class="bird-hero" aria-labelledby="bird-title">
+        <div class="bird-hero-copy">
+          <p class="eyebrow"><span>live acoustic field note</span><span>Bengaluru</span></p>
+          <h1 id="bird-title">Birds heard<br />from home.</h1>
+          <p class="bird-lede">
+            A live BirdNET microphone meets old natural-history plates. Each bird has been heard at least twice;
+            the larger the plate, the less often this microphone has heard it.
+          </p>
+          <p class="bird-caveat">This is microphone rarity—not ecological rarity or conservation status.</p>
+        </div>
+
+        <aside class="listening-panel" aria-label="Live listening status">
+          <div class="listening-head">
+            <span class="stream-indicator"><i aria-hidden="true"></i><b id="stream-label">connecting</b></span>
+            <span>BirdNET / all history</span>
+          </div>
+          <dl class="bird-metrics">
+            <div><dt>species</dt><dd id="species-count">—</dd></div>
+            <div><dt>detections</dt><dd id="detection-count">—</dd></div>
+            <div><dt>last heard</dt><dd id="last-heard">—</dd></div>
+            <div><dt>one-offs hidden</dt><dd id="filtered-count">—</dd></div>
+          </dl>
+          <p id="latest-detection" class="latest-detection" aria-live="polite">Waiting for the live microphone…</p>
+        </aside>
+      </section>
+
+      <section class="aviary-section" aria-labelledby="aviary-title">
+        <div class="aviary-heading">
+          <div>
+            <p class="section-kicker">the live aviary / recurring detections</p>
+            <h2 id="aviary-title">Rare voices take more room.</h2>
+          </div>
+          <div class="rarity-key" aria-label="Rarity size legend">
+            <span>often heard</span>
+            <i class="key-small" aria-hidden="true"></i>
+            <i class="key-medium" aria-hidden="true"></i>
+            <i class="key-large" aria-hidden="true"></i>
+            <span>rarely heard</span>
+          </div>
+        </div>
+
+        <div id="bird-state" class="bird-state" role="status" aria-live="polite">
+          <span class="state-spinner" aria-hidden="true"></span>
+          Asking the microphone what it has heard…
+        </div>
+        <div id="bird-wall" class="bird-wall" aria-live="polite" aria-busy="true"></div>
+      </section>
+
+      <section class="field-method" aria-labelledby="method-title">
+        <div>
+          <p class="section-kicker">field method</p>
+          <h2 id="method-title">A listening log, illustrated backwards in time.</h2>
+        </div>
+        <div class="method-grid">
+          <article>
+            <span>01</span>
+            <h3>Listen live</h3>
+            <p>BirdNET identifies calls at the microphone. New detections arrive here over a live event stream.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Remove one-offs</h3>
+            <p>A species enters the wall only after its second detection, reducing accidental and uncertain labels.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>Scale by rarity</h3>
+            <p>Card area uses an inverse logarithmic scale across this microphone’s archive: fewer detections, more room.</p>
+          </article>
+          <article>
+            <span>04</span>
+            <h3>Pair with a plate</h3>
+            <p>Scientific names connect detections to open historical art. Artist, date, licence, and source travel with every image.</p>
+          </article>
+        </div>
+        <p class="archive-note">
+          Artwork is served locally from open collections including Wikimedia Commons, the Biodiversity Heritage Library,
+          Naturalis, and the National Gallery of Art. One modern open illustration stands in for the Ashy Prinia because its
+          1798–1805 British Library watercolor is catalogued but not digitized.
+        </p>
+      </section>
+    </main>
+
+    <dialog id="bird-dialog" class="bird-dialog" aria-labelledby="dialog-name">
+      <button class="dialog-close" type="button" aria-label="Close bird details">×</button>
+      <div class="dialog-grid">
+        <figure>
+          <img id="dialog-image" alt="" />
+        </figure>
+        <div class="dialog-copy">
+          <p class="dialog-kicker">field card</p>
+          <h2 id="dialog-name"></h2>
+          <p id="dialog-scientific" class="dialog-scientific"></p>
+          <dl class="dialog-stats">
+            <div><dt>heard</dt><dd id="dialog-count"></dd></div>
+            <div><dt>first</dt><dd id="dialog-first"></dd></div>
+            <div><dt>latest</dt><dd id="dialog-last"></dd></div>
+            <div><dt>confidence</dt><dd id="dialog-confidence"></dd></div>
+          </dl>
+          <div class="art-credit">
+            <span>artwork</span>
+            <strong id="dialog-art"></strong>
+            <p id="dialog-collection"></p>
+            <p id="dialog-note"></p>
+            <a id="dialog-source" href="" target="_blank" rel="noreferrer">View source and licence ↗</a>
+          </div>
+        </div>
+      </div>
+    </dialog>
+
+    <footer>
+      <div><strong>Abhishek Bagade</strong><span>ML platforms · maker projects · Bengaluru</span></div>
+      <div class="footer-links">
+        <a rel="me" href="https://github.com/bagdeabhishek">GitHub</a>
+        <a rel="me" href="https://www.instagram.com/abhishek_does_stuff/">Instagram</a>
+        <a rel="me" href="https://www.linkedin.com/in/bagdeabhishek/">LinkedIn</a>
+        <a href="mailto:admin@abhishekdoesstuff.com">Email</a>
+      </div>
+    </footer>
+
+    <script src="/birds.js?v=20260922-1" defer></script>
+    <script src="/analytics.js" defer></script>
+  </body>
+</html>

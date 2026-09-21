@@ -12,6 +12,12 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://abhishekdoesstuff.com/birds/</loc>
+    <lastmod>2026-09-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
   <url><loc>https://abhishekdoesstuff.com/musings/</loc><lastmod>2026-07-12</lastmod><priority>0.8</priority></url>
   <url><loc>https://abhishekdoesstuff.com/musings/30-fps-vs-60-fps-cinematic-look/</loc><lastmod>2026-04-15</lastmod><priority>0.6</priority></url>
   <url><loc>https://abhishekdoesstuff.com/musings/backrooms-creepypasta/</loc><lastmod>2026-04-04</lastmod><priority>0.6</priority></url>

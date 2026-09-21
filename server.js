@@ -2,13 +2,19 @@ const http = require("http");
 const fs = require("fs");
 const path = require("path");
 const { buildMusings } = require("./musings");
+const birdArt = require("./data/bird-art.json");
 
 const PORT = Number(process.env.PORT || 3000);
 const STATUS_UPSTREAM = process.env.STATUS_UPSTREAM || "http://192.168.1.61:9109/status";
+const BIRDNET_UPSTREAM = process.env.BIRDNET_UPSTREAM || "http://192.168.1.111:8080";
 const GA_MEASUREMENT_ID = process.env.GA_MEASUREMENT_ID || process.env.GOOGLE_ANALYTICS_ID || "";
 const ROOT = __dirname;
 const STATUS_TIMEOUT_MS = 3000;
 const STATUS_MAX_BYTES = 16 * 1024;
+const BIRDNET_TIMEOUT_MS = 5000;
+const BIRDNET_MAX_BYTES = 512 * 1024;
+const BIRDNET_SSE_MAX_EVENT_BYTES = 64 * 1024;
+const birdArtByScientificName = new Map(birdArt.map((entry) => [entry.scientific_name, entry]));
 
 const CACHE = {
   document: "public, max-age=0, must-revalidate",
@@ -23,6 +29,10 @@ const PUBLIC_FILES = new Map([
   ["/index.html", { file: "index.html", cache: CACHE.document }],
   ["/styles.css", { file: "styles.css", cache: CACHE.document }],
   ["/status.js", { file: "status.js", cache: CACHE.asset }],
+  ["/birds/", { file: path.join("birds", "index.html"), cache: CACHE.document }],
+  ["/birds/index.html", { file: path.join("birds", "index.html"), cache: CACHE.document }],
+  ["/birds.css", { file: "birds.css", cache: CACHE.document }],
+  ["/birds.js", { file: "birds.js", cache: CACHE.asset }],
   ["/robots.txt", { file: "robots.txt", cache: CACHE.metadata }],
   ["/sitemap.xml", { file: "sitemap.xml", cache: CACHE.metadata }],
   ["/humans.txt", { file: "humans.txt", cache: CACHE.metadata }],
@@ -56,6 +66,13 @@ const PUBLIC_FILES = new Map([
     { file: path.join("notes", "stock-picker-experiment.html"), cache: CACHE.document },
   ],
 ]);
+
+for (const entry of birdArt) {
+  PUBLIC_FILES.set(entry.image, {
+    file: entry.image.replace(/^\//, ""),
+    cache: "public, max-age=31536000, immutable",
+  });
+}
 
 const TYPES = {
   ".html": "text/html; charset=utf-8",
@@ -98,6 +115,13 @@ const SECURITY_HEADERS = {
 };
 
 class StatusProxyError extends Error {
+  constructor(code) {
+    super(code);
+    this.code = code;
+  }
+}
+
+class BirdsProxyError extends Error {
   constructor(code) {
     super(code);
     this.code = code;
@@ -369,6 +393,323 @@ async function proxyStatus(req, res) {
   }
 }
 
+function birdnetUrl(pathname) {
+  let base;
+  try {
+    base = new URL(BIRDNET_UPSTREAM);
+  } catch {
+    throw new BirdsProxyError("invalid_upstream_url");
+  }
+  if (base.protocol !== "http:" && base.protocol !== "https:") {
+    throw new BirdsProxyError("invalid_upstream_url");
+  }
+  base.pathname = pathname;
+  base.search = "";
+  base.hash = "";
+  return base;
+}
+
+async function readBirdnetJson(response) {
+  const contentType = response.headers.get("content-type") || "";
+  const mediaType = contentType.split(";", 1)[0].trim().toLowerCase();
+  if (mediaType !== "application/json" && !mediaType.endsWith("+json")) {
+    if (response.body) await response.body.cancel().catch(() => {});
+    throw new BirdsProxyError("invalid_content_type");
+  }
+
+  const contentLength = response.headers.get("content-length");
+  if (contentLength !== null && (!/^\d+$/.test(contentLength) || Number(contentLength) > BIRDNET_MAX_BYTES)) {
+    if (response.body) await response.body.cancel().catch(() => {});
+    throw new BirdsProxyError("response_too_large");
+  }
+  if (!response.body) throw new BirdsProxyError("empty_response");
+
+  const reader = response.body.getReader();
+  const chunks = [];
+  let total = 0;
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    total += value.byteLength;
+    if (total > BIRDNET_MAX_BYTES) {
+      await reader.cancel().catch(() => {});
+      throw new BirdsProxyError("response_too_large");
+    }
+    chunks.push(Buffer.from(value));
+  }
+
+  try {
+    const text = new TextDecoder("utf-8", { fatal: true }).decode(Buffer.concat(chunks, total));
+    return JSON.parse(text);
+  } catch {
+    throw new BirdsProxyError("invalid_json");
+  }
+}
+
+function safeBirdLabel(value, maxLength = 100) {
+  if (
+    typeof value !== "string" ||
+    value.length < 1 ||
+    value.length > maxLength ||
+    /[\u0000-\u001f\u007f]/u.test(value)
+  ) {
+    throw new BirdsProxyError("invalid_schema");
+  }
+  return value;
+}
+
+function safeBirdNumber(value, min, max, integer = false) {
+  if (
+    typeof value !== "number" ||
+    !Number.isFinite(value) ||
+    value < min ||
+    value > max ||
+    (integer && !Number.isInteger(value))
+  ) {
+    throw new BirdsProxyError("invalid_schema");
+  }
+  return value;
+}
+
+function safeBirdTimestamp(value) {
+  if (value === "" || value === null || value === undefined) return null;
+  if (typeof value !== "string" || value.length > 40 || !Number.isFinite(Date.parse(value))) {
+    throw new BirdsProxyError("invalid_schema");
+  }
+  return value;
+}
+
+function publicBirdSummary(payload) {
+  if (!Array.isArray(payload) || payload.length > 1000) {
+    throw new BirdsProxyError("invalid_schema");
+  }
+
+  const visible = new Map();
+  let oneOffsFiltered = 0;
+  let withoutArtworkFiltered = 0;
+
+  for (const row of payload) {
+    if (!row || typeof row !== "object" || Array.isArray(row)) {
+      throw new BirdsProxyError("invalid_schema");
+    }
+
+    const scientificName = safeBirdLabel(row.scientific_name, 120);
+    const commonName = safeBirdLabel(row.common_name, 120);
+    const count = safeBirdNumber(row.count, 0, Number.MAX_SAFE_INTEGER, true);
+    const firstHeard = safeBirdTimestamp(row.first_heard);
+    const lastHeard = safeBirdTimestamp(row.last_heard);
+    const avgConfidence = safeBirdNumber(row.avg_confidence, 0, 1);
+    const maxConfidence = safeBirdNumber(row.max_confidence, 0, 1);
+    const art = birdArtByScientificName.get(scientificName);
+
+    if (count < 2) {
+      oneOffsFiltered += 1;
+      continue;
+    }
+    if (!art) {
+      withoutArtworkFiltered += 1;
+      continue;
+    }
+
+    const speciesCode = typeof row.species_code === "string" && row.species_code.length <= 40
+      ? row.species_code
+      : "";
+    const item = {
+      scientific_name: scientificName,
+      common_name: commonName || art.common_name,
+      species_code: speciesCode,
+      count,
+      first_heard: firstHeard,
+      last_heard: lastHeard,
+      avg_confidence: avgConfidence,
+      max_confidence: maxConfidence,
+      image: art.image,
+      artwork: art.artwork,
+    };
+
+    const current = visible.get(scientificName);
+    if (!current || item.count > current.count) visible.set(scientificName, item);
+  }
+
+  const species = Array.from(visible.values()).sort((a, b) => a.count - b.count || a.common_name.localeCompare(b.common_name));
+  const timestamps = species.map((item) => item.last_heard).filter(Boolean).sort();
+  return {
+    generated_at: new Date().toISOString(),
+    minimum_occurrences: 2,
+    species_count: species.length,
+    total_detections: species.reduce((sum, item) => sum + item.count, 0),
+    one_offs_filtered: oneOffsFiltered,
+    without_artwork_filtered: withoutArtworkFiltered,
+    last_detection_at: timestamps.at(-1) || null,
+    species,
+  };
+}
+
+async function proxyBirdSummary(req, res) {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), BIRDNET_TIMEOUT_MS);
+
+  try {
+    const upstream = await fetch(birdnetUrl("/api/v2/analytics/species/summary"), {
+      cache: "no-store",
+      headers: { accept: "application/json" },
+      redirect: "error",
+      signal: controller.signal,
+    });
+    if (!upstream.ok) {
+      if (upstream.body) await upstream.body.cancel().catch(() => {});
+      throw new BirdsProxyError("upstream_http_error");
+    }
+
+    const payload = publicBirdSummary(await readBirdnetJson(upstream));
+    send(req, res, 200, {
+      "content-type": "application/json; charset=utf-8",
+      "cache-control": "no-store",
+    }, `${JSON.stringify(payload)}\n`);
+  } catch (error) {
+    const timedOut = controller.signal.aborted;
+    const code = timedOut ? "upstream_timeout" : error instanceof BirdsProxyError ? error.code : "upstream_unreachable";
+    console.warn(JSON.stringify({ event: "birds_proxy_error", code }));
+    send(req, res, timedOut ? 504 : 502, {
+      "content-type": "application/json; charset=utf-8",
+      "cache-control": "no-store",
+    }, `${JSON.stringify({ error: timedOut ? "birdnet_upstream_timeout" : "birdnet_upstream_unavailable" })}\n`);
+  } finally {
+    clearTimeout(timeout);
+  }
+}
+
+function publicBirdDetection(payload) {
+  if (!payload || typeof payload !== "object" || Array.isArray(payload)) return null;
+  try {
+    const scientificName = safeBirdLabel(payload.scientificName, 120);
+    const art = birdArtByScientificName.get(scientificName);
+    if (!art) return null;
+    const commonName = safeBirdLabel(payload.commonName, 120);
+    const confidence = safeBirdNumber(payload.confidence, 0, 1);
+    const date = safeBirdLabel(payload.date, 10);
+    const time = safeBirdLabel(payload.time, 8);
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(date) || !/^\d{2}:\d{2}:\d{2}$/.test(time)) return null;
+    const timestamp = payload.timestamp === undefined ? null : safeBirdTimestamp(payload.timestamp);
+    return {
+      scientific_name: scientificName,
+      common_name: commonName,
+      species_code: typeof payload.speciesCode === "string" && payload.speciesCode.length <= 40 ? payload.speciesCode : "",
+      confidence,
+      detected_at: timestamp,
+      date,
+      time,
+    };
+  } catch {
+    return null;
+  }
+}
+
+function writeSseEvent(res, event, payload) {
+  res.write(`event: ${event}\ndata: ${JSON.stringify(payload)}\n\n`);
+}
+
+function handleBirdnetSseBlock(res, block) {
+  let event = "message";
+  const data = [];
+  for (const line of block.split("\n")) {
+    if (line.startsWith("event:")) event = line.slice(6).trim();
+    if (line.startsWith("data:")) data.push(line.slice(5).trimStart());
+  }
+  if (event !== "detection" || data.length === 0) return;
+  try {
+    const detection = publicBirdDetection(JSON.parse(data.join("\n")));
+    if (detection) writeSseEvent(res, "detection", detection);
+  } catch {
+    // Ignore malformed upstream events without exposing their contents.
+  }
+}
+
+async function proxyBirdStream(req, res) {
+  if (req.method === "HEAD") {
+    send(req, res, 204, { "cache-control": "no-store" });
+    return;
+  }
+
+  const controller = new AbortController();
+  const connectionTimeout = setTimeout(() => controller.abort(), BIRDNET_TIMEOUT_MS);
+  let headersSent = false;
+  const abortUpstream = () => controller.abort();
+  res.once("close", abortUpstream);
+
+  try {
+    const upstream = await fetch(birdnetUrl("/api/v2/detections/stream"), {
+      cache: "no-store",
+      headers: { accept: "text/event-stream" },
+      redirect: "error",
+      signal: controller.signal,
+    });
+    clearTimeout(connectionTimeout);
+    if (!upstream.ok || !upstream.body) {
+      if (upstream.body) await upstream.body.cancel().catch(() => {});
+      throw new BirdsProxyError("upstream_stream_error");
+    }
+    const contentType = upstream.headers.get("content-type") || "";
+    if (!contentType.toLowerCase().startsWith("text/event-stream")) {
+      await upstream.body.cancel().catch(() => {});
+      throw new BirdsProxyError("invalid_content_type");
+    }
+
+    res.writeHead(200, {
+      ...SECURITY_HEADERS,
+      "content-type": "text/event-stream; charset=utf-8",
+      "cache-control": "no-store",
+      connection: "keep-alive",
+      "x-accel-buffering": "no",
+    });
+    headersSent = true;
+    writeSseEvent(res, "ready", { connected: true });
+
+    const heartbeat = setInterval(() => {
+      if (!res.destroyed) res.write(": keep-alive\n\n");
+    }, 20000);
+    let buffer = "";
+    const decoder = new TextDecoder("utf-8", { fatal: true });
+    try {
+      for await (const chunk of upstream.body) {
+        buffer += decoder.decode(chunk, { stream: true });
+        buffer = buffer.replace(/\r\n/g, "\n");
+        let boundary;
+        while ((boundary = buffer.indexOf("\n\n")) !== -1) {
+          const block = buffer.slice(0, boundary);
+          buffer = buffer.slice(boundary + 2);
+          handleBirdnetSseBlock(res, block);
+        }
+        if (Buffer.byteLength(buffer) > BIRDNET_SSE_MAX_EVENT_BYTES) {
+          throw new BirdsProxyError("stream_event_too_large");
+        }
+      }
+      if (!res.destroyed) res.end();
+    } finally {
+      clearInterval(heartbeat);
+    }
+  } catch (error) {
+    if (controller.signal.aborted && res.destroyed) return;
+    const timedOut = controller.signal.aborted && !headersSent;
+    const code = timedOut ? "upstream_timeout" : error instanceof BirdsProxyError ? error.code : "upstream_unreachable";
+    console.warn(JSON.stringify({ event: "birds_stream_proxy_error", code }));
+    if (headersSent) {
+      if (!res.destroyed) {
+        writeSseEvent(res, "upstream-error", { error: "birdnet_stream_unavailable" });
+        res.end();
+      }
+    } else {
+      send(req, res, timedOut ? 504 : 502, {
+        "content-type": "application/json; charset=utf-8",
+        "cache-control": "no-store",
+      }, `${JSON.stringify({ error: timedOut ? "birdnet_upstream_timeout" : "birdnet_upstream_unavailable" })}\n`);
+    }
+  } finally {
+    clearTimeout(connectionTimeout);
+    res.off("close", abortUpstream);
+  }
+}
+
 function serveAnalytics(req, res) {
   const id = GA_MEASUREMENT_ID.trim();
   const enabled = /^G-[A-Z0-9]+$/i.test(id);
@@ -406,12 +747,24 @@ const server = http.createServer((req, res) => {
     proxyStatus(req, res);
     return;
   }
+  if (pathname === "/api/birds" || pathname === "/api/birds/") {
+    proxyBirdSummary(req, res);
+    return;
+  }
+  if (pathname === "/api/birds/stream") {
+    proxyBirdStream(req, res);
+    return;
+  }
   if (pathname === "/analytics.js") {
     serveAnalytics(req, res);
     return;
   }
   if (pathname === "/musings") {
     send(req, res, 301, { location: "/musings/", "cache-control": CACHE.metadata });
+    return;
+  }
+  if (pathname === "/birds") {
+    send(req, res, 301, { location: "/birds/", "cache-control": CACHE.metadata });
     return;
   }
   if (/^\/musings\/[^/]+$/.test(pathname)) {

@@ -58,7 +58,12 @@ npm start
 Set optional env vars:
 
 - `STATUS_UPSTREAM=http://192.168.1.61:9109/status` — live M900 telemetry source.
+- `BIRDNET_UPSTREAM=http://192.168.1.111:8080` — BirdNET-Go base URL for the live `/birds/` summary and detection stream.
 - `GA_MEASUREMENT_ID=G-XXXXXXXXXX` — enables Google Analytics 4 via `/analytics.js`.
+
+The public bird routes are deliberately narrow: `/api/birds` exposes only aggregated species counts and artwork metadata, while `/api/birds/stream` rewrites BirdNET-Go events to species, confidence, and detection time. It never forwards microphone names, source IDs, clip names, internal URLs, or audio paths.
+
+Historical plates are checked into `assets/birds/`; their source and licence metadata lives in `data/bird-art.json`. `node scripts/fetch-bird-art.mjs` fetches missing works; set `BIRD_ART_REFRESH=1` only when intentionally refreshing every local copy.
 
 ## SEO
 

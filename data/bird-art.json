@@ -1,0 +1,723 @@
+[
+  {
+    "scientific_name": "Prinia socialis",
+    "common_name": "Ashy Prinia",
+    "image": "/assets/birds/prinia-socialis.png",
+    "artwork": {
+      "title": "Ashy Prinia",
+      "artist": "Mahesh Iyer",
+      "date": "2010",
+      "collection": "Wikimedia Commons",
+      "historical": false,
+      "note": "Open field illustration. The British Library's 1798–1805 watercolor is catalogued but not digitized.",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Ashy_Prinia.svg",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0"
+    }
+  },
+  {
+    "scientific_name": "Eudynamys scolopaceus",
+    "common_name": "Asian Koel",
+    "image": "/assets/birds/eudynamys-scolopaceus.jpg",
+    "artwork": {
+      "title": "Eudynamys horonata - 1700-1880 - Print - Iconographia Zoologica - Special Collections University of Amsterdam - UBA01 IZ18800313",
+      "artist": "François-Nicolas Martinet",
+      "date": "18th–19th century",
+      "collection": "Iconographia Zoologica, University of Amsterdam",
+      "historical": true,
+      "source_url": "https://commons.wikimedia.org/wiki/File:Eudynamys_horonata_-_1700-1880_-_Print_-_Iconographia_Zoologica_-_Special_Collections_University_of_Amsterdam_-_UBA01_IZ18800313.tif",
+      "license": "Public domain",
+      "license_url": "https://commons.wikimedia.org/wiki/File:Eudynamys_horonata_-_1700-1880_-_Print_-_Iconographia_Zoologica_-_Special_Collections_University_of_Amsterdam_-_UBA01_IZ18800313.tif"
+    }
+  },
+  {
+    "scientific_name": "Parus cinereus",
+    "common_name": "Asian Tit",
+    "image": "/assets/birds/parus-cinereus.jpg",
+    "artwork": {
+      "title": "Parus cinereus 1838",
+      "artist": "Nicolas Huet / Jean-Gabriel Prêtre",
+      "date": "1838",
+      "collection": "Nouveau recueil de planches coloriées d'oiseaux",
+      "historical": true,
+      "source_url": "https://commons.wikimedia.org/wiki/File:Parus_cinereus_1838.jpg",
+      "license": "Public domain",
+      "license_url": "https://commons.wikimedia.org/wiki/File:Parus_cinereus_1838.jpg"
+    }
+  },
+  {
+    "scientific_name": "Riparia riparia",
+    "common_name": "Bank Swallow",
+    "image": "/assets/birds/riparia-riparia.jpg",
+    "artwork": {
+      "title": "Coloured illustrations of British birds, and their eggs (Pl. 35) (7830893290)",
+      "artist": "H. L. Meyer",
+      "date": "1842",
+      "collection": "Coloured Illustrations of British Birds",
+      "historical": true,
+      "source_url": "https://commons.wikimedia.org/wiki/File:Coloured_illustrations_of_British_birds,_and_their_eggs_(Pl._35)_(7830893290).jpg",
+      "license": "Public domain",
+      "license_url": "https://commons.wikimedia.org/wiki/File:Coloured_illustrations_of_British_birds,_and_their_eggs_(Pl._35)_(7830893290).jpg"
+    }
+  },
+  {
+    "scientific_name": "Hirundo rustica",
+    "common_name": "Barn Swallow",
+    "image": "/assets/birds/hirundo-rustica.jpg",
+    "artwork": {
+      "title": "Coloured illustrations of British birds, and their eggs (Pl. 33) (7830890952)",
+      "artist": "H. L. Meyer",
+      "date": "1842",
+      "collection": "Coloured Illustrations of British Birds",
+      "historical": true,
+      "source_url": "https://commons.wikimedia.org/wiki/File:Coloured_illustrations_of_British_birds,_and_their_eggs_(Pl._33)_(7830890952).jpg",
+      "license": "Public domain",
+      "license_url": "https://commons.wikimedia.org/wiki/File:Coloured_illustrations_of_British_birds,_and_their_eggs_(Pl._33)_(7830890952).jpg"
+    }
+  },
+  {
+    "scientific_name": "Milvus migrans",
+    "common_name": "Black Kite",
+    "image": "/assets/birds/milvus-migrans.jpg",
+    "artwork": {
+      "title": "Milvus Migrans",
+      "artist": "John Gould",
+      "date": "1873",
+      "collection": "The Birds of Great Britain",
+      "historical": true,
+      "source_url": "https://commons.wikimedia.org/wiki/File:Milvus_Migrans.tif",
+      "license": "Public domain",
+      "license_url": "https://commons.wikimedia.org/wiki/File:Milvus_Migrans.tif"
+    }
+  },
+  {
+    "scientific_name": "Phoenicurus ochruros",
+    "common_name": "Black Redstart",
+    "image": "/assets/birds/phoenicurus-ochruros.jpg",
+    "artwork": {
+      "title": "Phoenicurus ochruros gibraltariensis John Gould. The birds of Great Britain",
+      "artist": "John Gould",
+      "date": "1873",
+      "collection": "The Birds of Great Britain",
+      "historical": true,
+      "source_url": "https://commons.wikimedia.org/wiki/File:Phoenicurus_ochruros_gibraltariensis_John_Gould._The_birds_of_Great_Britain.jpg",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0"
+    }
+  },
+  {
+    "scientific_name": "Nycticorax nycticorax",
+    "common_name": "Black-crowned Night Heron",
+    "image": "/assets/birds/nycticorax-nycticorax.jpg",
+    "artwork": {
+      "title": "Nycticorax nycticorax 1905",
+      "artist": "Unknown artist",
+      "date": "1905",
+      "collection": "Wikimedia Commons",
+      "historical": true,
+      "source_url": "https://commons.wikimedia.org/wiki/File:Nycticorax_nycticorax_1905.jpg",
+      "license": "Public domain",
+      "license_url": "https://commons.wikimedia.org/wiki/File:Nycticorax_nycticorax_1905.jpg"
+    }
+  },
+  {
+    "scientific_name": "Cuculus canorus",
+    "common_name": "Common Cuckoo",
+    "image": "/assets/birds/cuculus-canorus.jpg",
+    "artwork": {
+      "title": "Die Vögel Europas (Pl. 24) BHL47804297",
+      "artist": "Friedrich Arnold",
+      "date": "1897",
+      "collection": "Biodiversity Heritage Library",
+      "historical": true,
+      "source_url": "https://commons.wikimedia.org/wiki/File:Die_V%C3%B6gel_Europas_(Pl._24)_BHL47804297.jpg",
+      "license": "Public domain",
+      "license_url": "https://commons.wikimedia.org/wiki/File:Die_V%C3%B6gel_Europas_(Pl._24)_BHL47804297.jpg"
+    }
+  },
+  {
+    "scientific_name": "Upupa epops",
+    "common_name": "Common Hoopoe",
+    "image": "/assets/birds/upupa-epops.jpg",
+    "artwork": {
+      "title": "Dudek chocholatý (Upupa epops) – Necsey – Velký atlas ptáků – 1911",
+      "artist": "István Nécsey",
+      "date": "before 1902",
+      "collection": "Velký atlas ptáků",
+      "historical": true,
+      "source_url": "https://commons.wikimedia.org/wiki/File:Dudek_chocholat%C3%BD_(Upupa_epops)_%E2%80%93_Necsey_%E2%80%93_Velk%C3%BD_atlas_pt%C3%A1k%C5%AF_%E2%80%93_1911.jpg",
+      "license": "Public domain",
+      "license_url": "https://commons.wikimedia.org/wiki/File:Dudek_chocholat%C3%BD_(Upupa_epops)_%E2%80%93_Necsey_%E2%80%93_Velk%C3%BD_atlas_pt%C3%A1k%C5%AF_%E2%80%93_1911.jpg"
+    }
+  },
+  {
+    "scientific_name": "Actitis hypoleucos",
+    "common_name": "Common Sandpiper",
+    "image": "/assets/birds/actitis-hypoleucos.jpg",
+    "artwork": {
+      "title": "Common Sandpiper (Actitis hypoleucos)",
+      "artist": "Unknown artist",
+      "date": "1900",
+      "collection": "Birds at Home",
+      "historical": true,
+      "source_url": "https://commons.wikimedia.org/wiki/File:Common_Sandpiper_(Actitis_hypoleucos).jpg",
+      "license": "Public domain",
+      "license_url": "https://commons.wikimedia.org/wiki/File:Common_Sandpiper_(Actitis_hypoleucos).jpg"
+    }
+  },
+  {
+    "scientific_name": "Gallinago gallinago",
+    "common_name": "Common Snipe",
+    "image": "/assets/birds/gallinago-gallinago.jpg",
+    "artwork": {
+      "title": "British birds (1915) (20228641310)",
+      "artist": "Archibald Thorburn",
+      "date": "1915",
+      "collection": "British Birds",
+      "historical": true,
+      "source_url": "https://commons.wikimedia.org/wiki/File:British_birds_(1915)_(20228641310).jpg",
+      "license": "No restrictions",
+      "license_url": "https://www.flickr.com/commons/usage/"
+    }
+  },
+  {
+    "scientific_name": "Orthotomus sutorius",
+    "common_name": "Common Tailorbird",
+    "image": "/assets/birds/orthotomus-sutorius.jpg",
+    "artwork": {
+      "title": "Orthotomus sutorius edela 1838",
+      "artist": "Nicolas Huet / Jean-Gabriel Prêtre",
+      "date": "1838",
+      "collection": "Nouveau recueil de planches coloriées d'oiseaux",
+      "historical": true,
+      "source_url": "https://commons.wikimedia.org/wiki/File:Orthotomus_sutorius_edela_1838.jpg",
+      "license": "Public domain",
+      "license_url": "https://commons.wikimedia.org/wiki/File:Orthotomus_sutorius_edela_1838.jpg"
+    }
+  },
+  {
+    "scientific_name": "Tyto javanica",
+    "common_name": "Eastern Barn Owl",
+    "image": "/assets/birds/tyto-javanica.jpg",
+    "artwork": {
+      "title": "StrixIndicaGould",
+      "artist": "John Gould / H. C. Richter",
+      "date": "1850–1883",
+      "collection": "The Birds of Asia",
+      "historical": true,
+      "source_url": "https://commons.wikimedia.org/wiki/File:StrixIndicaGould.jpg",
+      "license": "Public domain",
+      "license_url": "https://commons.wikimedia.org/wiki/File:StrixIndicaGould.jpg"
+    }
+  },
+  {
+    "scientific_name": "Cecropis daurica",
+    "common_name": "Eastern Red-rumped Swallow",
+    "image": "/assets/birds/cecropis-daurica.jpg",
+    "artwork": {
+      "title": "Cecropis daurica (rufula) Dresser - ro",
+      "artist": "H. E. Dresser",
+      "date": "1871–1881",
+      "collection": "A History of the Birds of Europe",
+      "historical": true,
+      "source_url": "https://commons.wikimedia.org/wiki/File:Cecropis_daurica_(rufula)_Dresser_-_ro.jpg",
+      "license": "Public domain",
+      "license_url": "https://commons.wikimedia.org/wiki/File:Cecropis_daurica_(rufula)_Dresser_-_ro.jpg"
+    }
+  },
+  {
+    "scientific_name": "Streptopelia decaocto",
+    "common_name": "Eurasian Collared-Dove",
+    "image": "/assets/birds/streptopelia-decaocto.jpg",
+    "artwork": {
+      "title": "Columba decaocto Frivaldski",
+      "artist": "Imre Frivaldszky",
+      "date": "1838",
+      "collection": "Wikimedia Commons",
+      "historical": true,
+      "source_url": "https://commons.wikimedia.org/wiki/File:Columba_decaocto_Frivaldski.jpg",
+      "license": "Public domain",
+      "license_url": "https://commons.wikimedia.org/wiki/File:Columba_decaocto_Frivaldski.jpg"
+    }
+  },
+  {
+    "scientific_name": "Fulica atra",
+    "common_name": "Eurasian Coot",
+    "image": "/assets/birds/fulica-atra.jpg",
+    "artwork": {
+      "title": "Nederlandsche vogelen (KB) - Fulica atra (062a)",
+      "artist": "Cornelius Nozeman / Christiaan Sepp",
+      "date": "1770–1829",
+      "collection": "Nederlandsche Vogelen",
+      "historical": true,
+      "source_url": "https://commons.wikimedia.org/wiki/File:Nederlandsche_vogelen_(KB)_-_Fulica_atra_(062a).jpg",
+      "license": "Public domain",
+      "license_url": "https://commons.wikimedia.org/wiki/File:Nederlandsche_vogelen_(KB)_-_Fulica_atra_(062a).jpg"
+    }
+  },
+  {
+    "scientific_name": "Ptyonoprogne rupestris",
+    "common_name": "Eurasian Crag-Martin",
+    "image": "/assets/birds/ptyonoprogne-rupestris.jpg",
+    "artwork": {
+      "title": "Ptyonoprogne rupestris 1894",
+      "artist": "Richard Bowdler Sharpe",
+      "date": "1894",
+      "collection": "Wikimedia Commons",
+      "historical": true,
+      "source_url": "https://commons.wikimedia.org/wiki/File:Ptyonoprogne_rupestris_1894.jpg",
+      "license": "Public domain",
+      "license_url": "https://commons.wikimedia.org/wiki/File:Ptyonoprogne_rupestris_1894.jpg"
+    }
+  },
+  {
+    "scientific_name": "Numenius arquata",
+    "common_name": "Eurasian Curlew",
+    "image": "/assets/birds/numenius-arquata.jpg",
+    "artwork": {
+      "title": "Numenius arquata - 1800-1812 - Print - Iconographia Zoologica - Special Collections University of Amsterdam - UBA01 IZ17400041",
+      "artist": "Unknown artist",
+      "date": "1800–1812",
+      "collection": "Iconographia Zoologica, University of Amsterdam",
+      "historical": true,
+      "source_url": "https://commons.wikimedia.org/wiki/File:Numenius_arquata_-_1800-1812_-_Print_-_Iconographia_Zoologica_-_Special_Collections_University_of_Amsterdam_-_UBA01_IZ17400041.tif",
+      "license": "Public domain",
+      "license_url": "https://commons.wikimedia.org/wiki/File:Numenius_arquata_-_1800-1812_-_Print_-_Iconographia_Zoologica_-_Special_Collections_University_of_Amsterdam_-_UBA01_IZ17400041.tif"
+    }
+  },
+  {
+    "scientific_name": "Ardea cinerea",
+    "common_name": "Gray Heron",
+    "image": "/assets/birds/ardea-cinerea.jpg",
+    "artwork": {
+      "title": "Naturalis Biodiversity Center - RMNH.ART.456 - Ardea cinerea - Yūshi Ishizaki - Cock Blomhoff Collection - pencil drawing - water colour",
+      "artist": "Ishizaki Yūshi",
+      "date": "1817–1823",
+      "collection": "Naturalis Biodiversity Center",
+      "historical": true,
+      "source_url": "https://commons.wikimedia.org/wiki/File:Naturalis_Biodiversity_Center_-_RMNH.ART.456_-_Ardea_cinerea_-_Y%C5%ABshi_Ishizaki_-_Cock_Blomhoff_Collection_-_pencil_drawing_-_water_colour.jpg",
+      "license": "Public domain",
+      "license_url": "https://commons.wikimedia.org/wiki/File:Naturalis_Biodiversity_Center_-_RMNH.ART.456_-_Ardea_cinerea_-_Y%C5%ABshi_Ishizaki_-_Cock_Blomhoff_Collection_-_pencil_drawing_-_water_colour.jpg"
+    }
+  },
+  {
+    "scientific_name": "Motacilla cinerea",
+    "common_name": "Gray Wagtail",
+    "image": "/assets/birds/motacilla-cinerea.jpg",
+    "artwork": {
+      "title": "Nederlandsche vogelen (KB) - Motacilla cinerea (432b)",
+      "artist": "Cornelius Nozeman / Christiaan Sepp",
+      "date": "1770–1829",
+      "collection": "Nederlandsche Vogelen",
+      "historical": true,
+      "source_url": "https://commons.wikimedia.org/wiki/File:Nederlandsche_vogelen_(KB)_-_Motacilla_cinerea_(432b).jpg",
+      "license": "Public domain",
+      "license_url": "https://commons.wikimedia.org/wiki/File:Nederlandsche_vogelen_(KB)_-_Motacilla_cinerea_(432b).jpg"
+    }
+  },
+  {
+    "scientific_name": "Passer domesticus",
+    "common_name": "House Sparrow",
+    "image": "/assets/birds/passer-domesticus.jpg",
+    "artwork": {
+      "title": "British birds (1915) (20408015492)",
+      "artist": "Archibald Thorburn",
+      "date": "1915",
+      "collection": "British Birds",
+      "historical": true,
+      "source_url": "https://commons.wikimedia.org/wiki/File:British_birds_(1915)_(20408015492).jpg",
+      "license": "No restrictions",
+      "license_url": "https://www.flickr.com/commons/usage/"
+    }
+  },
+  {
+    "scientific_name": "Ocyceros birostris",
+    "common_name": "Indian Gray Hornbill",
+    "image": "/assets/birds/ocyceros-birostris.jpg",
+    "artwork": {
+      "title": "A monograph of the Bucerotidæ, or family of the hornbills (Plate XLVIII) (6944168160)",
+      "artist": "Daniel Giraud Elliot",
+      "date": "1882",
+      "collection": "A Monograph of the Hornbills",
+      "historical": true,
+      "source_url": "https://commons.wikimedia.org/wiki/File:A_monograph_of_the_Bucerotid%C3%A6,_or_family_of_the_hornbills_(Plate_XLVIII)_(6944168160).jpg",
+      "license": "Public domain",
+      "license_url": "https://commons.wikimedia.org/wiki/File:A_monograph_of_the_Bucerotid%C3%A6,_or_family_of_the_hornbills_(Plate_XLVIII)_(6944168160).jpg"
+    }
+  },
+  {
+    "scientific_name": "Zosterops palpebrosus",
+    "common_name": "Indian White-eye",
+    "image": "/assets/birds/zosterops-palpebrosus.jpg",
+    "artwork": {
+      "title": "Zosterops palpebrosus 1838",
+      "artist": "Nicolas Huet / Jean-Gabriel Prêtre",
+      "date": "1838",
+      "collection": "Nouveau recueil de planches coloriées d'oiseaux",
+      "historical": true,
+      "source_url": "https://commons.wikimedia.org/wiki/File:Zosterops_palpebrosus_1838.jpg",
+      "license": "Public domain",
+      "license_url": "https://commons.wikimedia.org/wiki/File:Zosterops_palpebrosus_1838.jpg"
+    }
+  },
+  {
+    "scientific_name": "Tachybaptus ruficollis",
+    "common_name": "Little Grebe",
+    "image": "/assets/birds/tachybaptus-ruficollis.jpg",
+    "artwork": {
+      "title": "Nederlandsche vogelen (KB) - Tachybaptus ruficollis (231pl)",
+      "artist": "Cornelius Nozeman / Christiaan Sepp",
+      "date": "1770–1829",
+      "collection": "Nederlandsche Vogelen",
+      "historical": true,
+      "source_url": "https://commons.wikimedia.org/wiki/File:Nederlandsche_vogelen_(KB)_-_Tachybaptus_ruficollis_(231pl).jpg",
+      "license": "Public domain",
+      "license_url": "https://commons.wikimedia.org/wiki/File:Nederlandsche_vogelen_(KB)_-_Tachybaptus_ruficollis_(231pl).jpg"
+    }
+  },
+  {
+    "scientific_name": "Pycnonotus cafer",
+    "common_name": "Red-vented Bulbul",
+    "image": "/assets/birds/pycnonotus-cafer.jpg",
+    "artwork": {
+      "title": "Pycnonotus cafer - 1700-1880 - Print - Iconographia Zoologica - Special Collections University of Amsterdam - UBA01 IZ16400013",
+      "artist": "Unknown artist",
+      "date": "18th–19th century",
+      "collection": "Iconographia Zoologica, University of Amsterdam",
+      "historical": true,
+      "source_url": "https://commons.wikimedia.org/wiki/File:Pycnonotus_cafer_-_1700-1880_-_Print_-_Iconographia_Zoologica_-_Special_Collections_University_of_Amsterdam_-_UBA01_IZ16400013.tif",
+      "license": "Public domain",
+      "license_url": "https://commons.wikimedia.org/wiki/File:Pycnonotus_cafer_-_1700-1880_-_Print_-_Iconographia_Zoologica_-_Special_Collections_University_of_Amsterdam_-_UBA01_IZ16400013.tif"
+    }
+  },
+  {
+    "scientific_name": "Vanellus indicus",
+    "common_name": "Red-wattled Lapwing",
+    "image": "/assets/birds/vanellus-indicus.jpg",
+    "artwork": {
+      "title": "Redwattledlapwing gwillim",
+      "artist": "Elizabeth Gwillim",
+      "date": "1801",
+      "collection": "Gwillim natural-history drawings",
+      "historical": true,
+      "source_url": "https://commons.wikimedia.org/wiki/File:Redwattledlapwing_gwillim.jpg",
+      "license": "Public domain",
+      "license_url": "https://commons.wikimedia.org/wiki/File:Redwattledlapwing_gwillim.jpg"
+    }
+  },
+  {
+    "scientific_name": "Pycnonotus jocosus",
+    "common_name": "Red-whiskered Bulbul",
+    "image": "/assets/birds/pycnonotus-jocosus.jpg",
+    "artwork": {
+      "title": "Pycnonotus jocosus - 1700-1880 - Print - Iconographia Zoologica - Special Collections University of Amsterdam - UBA01 IZ16400029",
+      "artist": "Unknown artist",
+      "date": "18th–19th century",
+      "collection": "Iconographia Zoologica, University of Amsterdam",
+      "historical": true,
+      "source_url": "https://commons.wikimedia.org/wiki/File:Pycnonotus_jocosus_-_1700-1880_-_Print_-_Iconographia_Zoologica_-_Special_Collections_University_of_Amsterdam_-_UBA01_IZ16400029.tif",
+      "license": "Public domain",
+      "license_url": "https://commons.wikimedia.org/wiki/File:Pycnonotus_jocosus_-_1700-1880_-_Print_-_Iconographia_Zoologica_-_Special_Collections_University_of_Amsterdam_-_UBA01_IZ16400029.tif"
+    }
+  },
+  {
+    "scientific_name": "Psittacula krameri",
+    "common_name": "Rose-ringed Parakeet",
+    "image": "/assets/birds/psittacula-krameri.jpg",
+    "artwork": {
+      "title": "Levaillant Parrot 22",
+      "artist": "Jacques Barraband",
+      "date": "1801",
+      "collection": "Histoire naturelle des perroquets",
+      "historical": true,
+      "source_url": "https://commons.wikimedia.org/wiki/File:Levaillant_Parrot_22.jpg",
+      "license": "Public domain",
+      "license_url": "https://commons.wikimedia.org/wiki/File:Levaillant_Parrot_22.jpg"
+    }
+  },
+  {
+    "scientific_name": "Caprimulgus affinis",
+    "common_name": "Savanna Nightjar",
+    "image": "/assets/birds/caprimulgus-affinis.jpg",
+    "artwork": {
+      "title": "CaprimulgusGriseatusKeulemans",
+      "artist": "John Gerrard Keulemans",
+      "date": "1892",
+      "collection": "Wikimedia Commons",
+      "historical": true,
+      "source_url": "https://commons.wikimedia.org/wiki/File:CaprimulgusGriseatusKeulemans.jpg",
+      "license": "Public domain",
+      "license_url": "https://commons.wikimedia.org/wiki/File:CaprimulgusGriseatusKeulemans.jpg"
+    }
+  },
+  {
+    "scientific_name": "Muscicapa striata",
+    "common_name": "Spotted Flycatcher",
+    "image": "/assets/birds/muscicapa-striata.jpg",
+    "artwork": {
+      "title": "Natural History, Birds - Flycatcher",
+      "artist": "Philip Henry Gosse",
+      "date": "1849",
+      "collection": "Natural History: Birds",
+      "historical": true,
+      "source_url": "https://commons.wikimedia.org/wiki/File:Natural_History,_Birds_-_Flycatcher.jpg",
+      "license": "Public domain",
+      "license_url": "https://commons.wikimedia.org/wiki/File:Natural_History,_Birds_-_Flycatcher.jpg"
+    }
+  },
+  {
+    "scientific_name": "Anthus trivialis",
+    "common_name": "Tree Pipit",
+    "image": "/assets/birds/anthus-trivialis.jpg",
+    "artwork": {
+      "title": "GouldBirdsEuropeIITree Pipit",
+      "artist": "John Gould / Edward Lear",
+      "date": "1837",
+      "collection": "The Birds of Europe",
+      "historical": true,
+      "source_url": "https://commons.wikimedia.org/wiki/File:GouldBirdsEuropeIITree_Pipit.jpg",
+      "license": "Public domain",
+      "license_url": "https://commons.wikimedia.org/wiki/File:GouldBirdsEuropeIITree_Pipit.jpg"
+    }
+  },
+  {
+    "scientific_name": "Motacilla alba",
+    "common_name": "White Wagtail",
+    "image": "/assets/birds/motacilla-alba.jpg",
+    "artwork": {
+      "title": "Selby's Illustrations of British ornithology Volume 1 Land birds Plate III",
+      "artist": "Prideaux John Selby",
+      "date": "1833",
+      "collection": "Illustrations of British Ornithology",
+      "historical": true,
+      "source_url": "https://commons.wikimedia.org/wiki/File:Selby%27s_Illustrations_of_British_ornithology_Volume_1_Land_birds_Plate_III.jpg",
+      "license": "Public domain",
+      "license_url": "https://commons.wikimedia.org/wiki/File:Selby%27s_Illustrations_of_British_ornithology_Volume_1_Land_birds_Plate_III.jpg"
+    }
+  },
+  {
+    "scientific_name": "Motacilla maderaspatensis",
+    "common_name": "White-browed Wagtail",
+    "image": "/assets/birds/motacilla-maderaspatensis.jpg",
+    "artwork": {
+      "title": "MotacillaMaderaspatensis",
+      "artist": "W. T. Blanford / E. W. Oates",
+      "date": "1890",
+      "collection": "The Fauna of British India",
+      "historical": true,
+      "source_url": "https://commons.wikimedia.org/wiki/File:MotacillaMaderaspatensis.jpg",
+      "license": "Public domain",
+      "license_url": "https://commons.wikimedia.org/wiki/File:MotacillaMaderaspatensis.jpg"
+    }
+  },
+  {
+    "scientific_name": "Cisticola juncidis",
+    "common_name": "Zitting Cisticola",
+    "image": "/assets/birds/cisticola-juncidis.jpg",
+    "artwork": {
+      "title": "PriniaCursitansJerdon",
+      "artist": "C. V. Kistnarajoo",
+      "date": "1847",
+      "collection": "Illustrations of Indian Ornithology",
+      "historical": true,
+      "source_url": "https://commons.wikimedia.org/wiki/File:PriniaCursitansJerdon.jpg",
+      "license": "Public domain",
+      "license_url": "https://commons.wikimedia.org/wiki/File:PriniaCursitansJerdon.jpg"
+    }
+  },
+  {
+    "scientific_name": "Oriolus chinensis",
+    "common_name": "Black-naped Oriole",
+    "image": "/assets/birds/oriolus-chinensis.jpg",
+    "artwork": {
+      "title": "OriolusSinensisJerdon",
+      "artist": "C. V. Kistnarajoo",
+      "date": "1847",
+      "collection": "Illustrations of Indian Ornithology",
+      "historical": true,
+      "source_url": "https://commons.wikimedia.org/wiki/File:OriolusSinensisJerdon.jpg",
+      "license": "Public domain",
+      "license_url": "https://commons.wikimedia.org/wiki/File:OriolusSinensisJerdon.jpg"
+    }
+  },
+  {
+    "scientific_name": "Ninox scutulata",
+    "common_name": "Brown Boobook",
+    "image": "/assets/birds/ninox-scutulata.jpg",
+    "artwork": {
+      "title": "Ninox scutulata 1838 (1)",
+      "artist": "Nicolas Huet / Jean-Gabriel Prêtre",
+      "date": "1838",
+      "collection": "Nouveau recueil de planches coloriées d'oiseaux",
+      "historical": true,
+      "source_url": "https://commons.wikimedia.org/wiki/File:Ninox_scutulata_1838_(1).jpg",
+      "license": "Public domain",
+      "license_url": "https://commons.wikimedia.org/wiki/File:Ninox_scutulata_1838_(1).jpg"
+    }
+  },
+  {
+    "scientific_name": "Tringa nebularia",
+    "common_name": "Common Greenshank",
+    "image": "/assets/birds/tringa-nebularia.jpg",
+    "artwork": {
+      "title": "Nederlandsche vogelen (KB) - Tringa nebularia (318b)",
+      "artist": "Cornelius Nozeman / Christiaan Sepp",
+      "date": "1770–1829",
+      "collection": "Nederlandsche Vogelen",
+      "historical": true,
+      "source_url": "https://commons.wikimedia.org/wiki/File:Nederlandsche_vogelen_(KB)_-_Tringa_nebularia_(318b).jpg",
+      "license": "Public domain",
+      "license_url": "https://commons.wikimedia.org/wiki/File:Nederlandsche_vogelen_(KB)_-_Tringa_nebularia_(318b).jpg"
+    }
+  },
+  {
+    "scientific_name": "Alcedo atthis",
+    "common_name": "Common Kingfisher",
+    "image": "/assets/birds/alcedo-atthis.jpg",
+    "artwork": {
+      "title": "Coloured illustrations of British birds, and their eggs (Pl. 39) (7830899678)",
+      "artist": "H. L. Meyer",
+      "date": "1842",
+      "collection": "Coloured Illustrations of British Birds",
+      "historical": true,
+      "source_url": "https://commons.wikimedia.org/wiki/File:Coloured_illustrations_of_British_birds,_and_their_eggs_(Pl._39)_(7830899678).jpg",
+      "license": "Public domain",
+      "license_url": "https://commons.wikimedia.org/wiki/File:Coloured_illustrations_of_British_birds,_and_their_eggs_(Pl._39)_(7830899678).jpg"
+    }
+  },
+  {
+    "scientific_name": "Spilornis cheela",
+    "common_name": "Crested Serpent-Eagle",
+    "image": "/assets/birds/spilornis-cheela.jpg",
+    "artwork": {
+      "title": "Crestedserpenteagle Gwillim",
+      "artist": "Elizabeth Gwillim",
+      "date": "1801",
+      "collection": "Gwillim natural-history drawings",
+      "historical": true,
+      "source_url": "https://commons.wikimedia.org/wiki/File:Crestedserpenteagle_Gwillim.jpg",
+      "license": "Public domain",
+      "license_url": "https://commons.wikimedia.org/wiki/File:Crestedserpenteagle_Gwillim.jpg"
+    }
+  },
+  {
+    "scientific_name": "Falco subbuteo",
+    "common_name": "Eurasian Hobby",
+    "image": "/assets/birds/falco-subbuteo.jpg",
+    "artwork": {
+      "title": "Falco subbuteo Falco biarmicus Falco tinnunculus",
+      "artist": "Jacques Christophe Werner",
+      "date": "1824",
+      "collection": "Wikimedia Commons",
+      "historical": true,
+      "source_url": "https://commons.wikimedia.org/wiki/File:Falco_subbuteo_Falco_biarmicus_Falco_tinnunculus.jpg",
+      "license": "Public domain",
+      "license_url": "https://commons.wikimedia.org/wiki/File:Falco_subbuteo_Falco_biarmicus_Falco_tinnunculus.jpg"
+    }
+  },
+  {
+    "scientific_name": "Phoenicopterus roseus",
+    "common_name": "Greater Flamingo",
+    "image": "/assets/birds/phoenicopterus-roseus.jpg",
+    "artwork": {
+      "title": "Mark Catesby, The Flamingo (Phoenicopterus ruber), published 1731-1743, NGA 73652",
+      "artist": "Mark Catesby",
+      "date": "1731–1743",
+      "collection": "National Gallery of Art",
+      "historical": true,
+      "source_url": "https://commons.wikimedia.org/wiki/File:Mark_Catesby,_The_Flamingo_(Phoenicopterus_ruber),_published_1731-1743,_NGA_73652.jpg",
+      "license": "CC0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
+    }
+  },
+  {
+    "scientific_name": "Terpsiphone paradisi",
+    "common_name": "Indian Paradise-Flycatcher",
+    "image": "/assets/birds/terpsiphone-paradisi.jpg",
+    "artwork": {
+      "title": "TerpsiphoneParadisiJerdon",
+      "artist": "C. V. Kistnarajoo",
+      "date": "1847",
+      "collection": "Illustrations of Indian Ornithology",
+      "historical": true,
+      "source_url": "https://commons.wikimedia.org/wiki/File:TerpsiphoneParadisiJerdon.jpg",
+      "license": "Public domain",
+      "license_url": "https://commons.wikimedia.org/wiki/File:TerpsiphoneParadisiJerdon.jpg"
+    }
+  },
+  {
+    "scientific_name": "Anthus richardi",
+    "common_name": "Richard's Pipit",
+    "image": "/assets/birds/anthus-richardi.jpg",
+    "artwork": {
+      "title": "Anthus richardi - 1825-1830 - Print - Iconographia Zoologica - Special Collections University of Amsterdam - UBA01 IZ16300153",
+      "artist": "Polydore Roux",
+      "date": "1825–1830",
+      "collection": "Iconographia Zoologica, University of Amsterdam",
+      "historical": true,
+      "source_url": "https://commons.wikimedia.org/wiki/File:Anthus_richardi_-_1825-1830_-_Print_-_Iconographia_Zoologica_-_Special_Collections_University_of_Amsterdam_-_UBA01_IZ16300153.tif",
+      "license": "Public domain",
+      "license_url": "https://commons.wikimedia.org/wiki/File:Anthus_richardi_-_1825-1830_-_Print_-_Iconographia_Zoologica_-_Special_Collections_University_of_Amsterdam_-_UBA01_IZ16300153.tif"
+    }
+  },
+  {
+    "scientific_name": "Dendrocitta vagabunda",
+    "common_name": "Rufous Treepie",
+    "image": "/assets/birds/dendrocitta-vagabunda.jpg",
+    "artwork": {
+      "title": "Dendrocitta vagabunda Hardwicke",
+      "artist": "Thomas Hardwicke",
+      "date": "1830–1832",
+      "collection": "Hardwicke natural-history drawings",
+      "historical": true,
+      "source_url": "https://commons.wikimedia.org/wiki/File:Dendrocitta_vagabunda_Hardwicke.jpg",
+      "license": "Public domain",
+      "license_url": "https://commons.wikimedia.org/wiki/File:Dendrocitta_vagabunda_Hardwicke.jpg"
+    }
+  },
+  {
+    "scientific_name": "Lonchura punctulata",
+    "common_name": "Scaly-breasted Munia",
+    "image": "/assets/birds/lonchura-punctulata.jpg",
+    "artwork": {
+      "title": "Lonchura punctulata nisoria 1838",
+      "artist": "Nicolas Huet / Jean-Gabriel Prêtre",
+      "date": "1838",
+      "collection": "Nouveau recueil de planches coloriées d'oiseaux",
+      "historical": true,
+      "source_url": "https://commons.wikimedia.org/wiki/File:Lonchura_punctulata_nisoria_1838.jpg",
+      "license": "Public domain",
+      "license_url": "https://commons.wikimedia.org/wiki/File:Lonchura_punctulata_nisoria_1838.jpg"
+    }
+  },
+  {
+    "scientific_name": "Ardea ibis",
+    "common_name": "Western Cattle-Egret",
+    "image": "/assets/birds/ardea-ibis.jpg",
+    "artwork": {
+      "title": "British birds (1915) (20390434076)",
+      "artist": "Archibald Thorburn",
+      "date": "1915",
+      "collection": "British Birds",
+      "historical": true,
+      "source_url": "https://commons.wikimedia.org/wiki/File:British_birds_(1915)_(20390434076).jpg",
+      "license": "No restrictions",
+      "license_url": "https://www.flickr.com/commons/usage/"
+    }
+  },
+  {
+    "scientific_name": "Motacilla flava",
+    "common_name": "Western Yellow Wagtail",
+    "image": "/assets/birds/motacilla-flava.jpg",
+    "artwork": {
+      "title": "Yellow Wagtail woodcut in Bewick British Birds 1797",
+      "artist": "Thomas Bewick",
+      "date": "1797",
+      "collection": "A History of British Birds",
+      "historical": true,
+      "source_url": "https://commons.wikimedia.org/wiki/File:Yellow_Wagtail_woodcut_in_Bewick_British_Birds_1797.jpg",
+      "license": "Public domain",
+      "license_url": "https://commons.wikimedia.org/wiki/File:Yellow_Wagtail_woodcut_in_Bewick_British_Birds_1797.jpg"
+    }
+  }
+]
