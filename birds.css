@@ -1,118 +1,157 @@
 .birds-page {
+  --instrument: #07110f;
+  --instrument-soft: #0c1a17;
+  --instrument-line: rgba(219, 186, 116, 0.22);
+  --instrument-bright: rgba(219, 186, 116, 0.58);
+  --copper: #d59a58;
+  --vermilion: #d95d42;
+  --folio: #eee5d2;
+  --folio-deep: #d7c8aa;
+  --folio-ink: #29271f;
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
   background:
-    radial-gradient(circle at 78% 6%, rgba(117, 215, 168, 0.1), transparent 28rem),
-    radial-gradient(circle at 8% 20%, rgba(247, 178, 27, 0.12), transparent 32rem),
-    linear-gradient(180deg, var(--bg), var(--bg-deep));
+    radial-gradient(circle at 50% 20%, rgba(49, 107, 82, 0.16), transparent 37rem),
+    radial-gradient(circle at 10% 8%, rgba(213, 154, 88, 0.08), transparent 27rem),
+    linear-gradient(180deg, #0b1515 0%, #07100f 55%, #09100f 100%);
+}
+
+.birds-page .page-grid {
+  opacity: 0.35;
+  background-size: 64px 64px;
+  mask-image: radial-gradient(circle at 50% 23%, black, transparent 72%);
+}
+
+.birds-page .site-header {
+  background: rgba(7, 17, 15, 0.9);
+}
+
+.birds-page .site-header::before {
+  background: rgba(7, 17, 15, 0.9);
 }
 
 .site-header nav a[aria-current="page"] {
-  color: var(--yellow);
+  color: var(--copper);
 }
 
 .site-header nav a[aria-current="page"]::before {
-  content: "• ";
+  content: "◉ ";
   color: var(--green);
 }
 
 .birds-main {
-  padding-bottom: 104px;
+  width: min(1480px, calc(100% - 48px));
+  padding-bottom: 110px;
 }
 
-.bird-hero {
-  min-height: 620px;
+.orrery-section {
+  padding: clamp(54px, 7vw, 92px) 0 104px;
+}
+
+.orrery-intro {
   display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(330px, 0.8fr);
-  align-items: center;
-  gap: clamp(42px, 7vw, 90px);
-  padding: clamp(72px, 10vw, 126px) 0;
-  border-bottom: 1px solid var(--line);
+  grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.8fr);
+  align-items: end;
+  gap: clamp(40px, 8vw, 120px);
+  padding-bottom: 42px;
+  border-bottom: 1px solid var(--instrument-line);
 }
 
-.bird-hero h1 {
-  max-width: 820px;
-  margin-bottom: 28px;
-  font-size: clamp(58px, 8.5vw, 104px);
-  line-height: 0.85;
+.orrery-intro .eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 22px;
+  color: var(--copper);
+  font: 700 10px/1 var(--mono);
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.orrery-intro .eyebrow span + span {
+  color: var(--muted);
+}
+
+.orrery-intro .eyebrow span + span::before {
+  content: "—";
+  margin-right: 14px;
+  color: var(--instrument-bright);
+}
+
+.orrery-intro h1 {
+  max-width: 900px;
+  margin: 0;
+  font: 400 clamp(68px, 10vw, 148px)/0.72 var(--serif);
   letter-spacing: -0.075em;
 }
 
-.bird-lede {
-  max-width: 720px;
+.orrery-intro h1 em {
+  color: var(--folio);
+  font-weight: 400;
+}
+
+.orrery-prologue {
+  padding: 0 0 8px 25px;
+  border-left: 1px solid var(--instrument-bright);
+}
+
+.orrery-prologue p {
   margin-bottom: 18px;
-  color: #d9dee3;
-  font-size: clamp(18px, 2vw, 22px);
-  line-height: 1.65;
+  color: #e4e0d6;
+  font: 400 clamp(18px, 2vw, 23px)/1.55 var(--serif);
 }
 
-.bird-caveat {
-  display: inline-flex;
-  margin: 0;
-  padding: 8px 11px;
-  color: var(--blue);
-  background: rgba(183, 213, 232, 0.06);
-  border: 1px solid var(--line);
-  border-radius: 6px;
-  font: 11px/1.5 var(--mono);
-}
-
-.listening-panel {
-  position: relative;
-  overflow: hidden;
-  padding: 26px;
-  background:
-    linear-gradient(145deg, rgba(117, 215, 168, 0.06), rgba(183, 213, 232, 0.025)),
-    var(--panel);
-  border: 1px solid rgba(117, 215, 168, 0.34);
-  border-radius: 32px 10px 32px 10px;
-  box-shadow: 18px 18px 0 rgba(117, 215, 168, 0.045);
-}
-
-.listening-panel::after {
-  content: "";
-  position: absolute;
-  right: -60px;
-  bottom: -84px;
-  width: 220px;
-  aspect-ratio: 1;
-  border: 1px solid rgba(117, 215, 168, 0.15);
-  border-radius: 50%;
-  box-shadow: 0 0 0 28px rgba(117, 215, 168, 0.025), 0 0 0 58px rgba(117, 215, 168, 0.018);
-}
-
-.listening-head,
-.stream-indicator {
-  display: flex;
-  align-items: center;
-}
-
-.listening-head {
-  position: relative;
-  z-index: 1;
-  justify-content: space-between;
-  gap: 18px;
-  padding-bottom: 19px;
+.orrery-prologue small {
+  display: block;
+  max-width: 470px;
   color: var(--muted);
-  border-bottom: 1px solid var(--line);
-  font: 10px var(--mono);
-  letter-spacing: 0.08em;
+  font: 10px/1.6 var(--mono);
+}
+
+.instrument-readout {
+  display: grid;
+  grid-template-columns: minmax(170px, 0.48fr) minmax(520px, 1.45fr) minmax(230px, 0.62fr);
+  align-items: stretch;
+  margin: 28px 0 18px;
+  border-top: 1px solid var(--instrument-line);
+  border-bottom: 1px solid var(--instrument-line);
+}
+
+.readout-live,
+.latest-detection {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 18px 20px;
+}
+
+.readout-live {
+  gap: 9px;
+  border-right: 1px solid var(--instrument-line);
+  color: var(--muted);
+  font: 9px var(--mono);
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
 .stream-indicator {
-  gap: 8px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
   color: var(--green);
 }
 
 .stream-indicator i {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
+  flex: none;
   background: currentColor;
   border-radius: 50%;
-  box-shadow: 0 0 0 5px rgba(117, 215, 168, 0.09);
+  box-shadow: 0 0 0 5px rgba(117, 215, 168, 0.08);
 }
 
 .stream-indicator.is-waiting {
-  color: var(--yellow);
+  color: var(--copper);
 }
 
 .stream-indicator.is-offline {
@@ -120,97 +159,42 @@
 }
 
 .bird-metrics {
-  position: relative;
-  z-index: 1;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1px;
-  margin: 22px 0 0;
-  background: var(--line);
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  overflow: hidden;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 0;
 }
 
 .bird-metrics div {
-  min-height: 92px;
-  padding: 16px;
-  background: rgba(13, 20, 34, 0.88);
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 15px 18px;
+  border-right: 1px solid var(--instrument-line);
 }
 
 .bird-metrics dt {
-  margin-bottom: 8px;
+  overflow: hidden;
+  margin-bottom: 7px;
   color: var(--muted);
-  font: 10px var(--mono);
+  font: 9px var(--mono);
+  letter-spacing: 0.05em;
+  text-overflow: ellipsis;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .bird-metrics dd {
   margin: 0;
-  color: var(--text);
-  font-size: clamp(21px, 3vw, 30px);
-  font-weight: 780;
-  letter-spacing: -0.045em;
+  color: var(--folio);
+  font: 400 clamp(20px, 2.4vw, 31px)/1 var(--serif);
 }
 
 .latest-detection {
-  position: relative;
-  z-index: 1;
-  min-height: 43px;
-  margin: 20px 0 0;
+  min-height: 76px;
+  margin: 0;
   color: var(--blue);
-  font: 11px/1.6 var(--mono);
-}
-
-.aviary-section {
-  padding: 96px 0 112px;
-  border-bottom: 1px solid var(--line);
-}
-
-.aviary-heading {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: end;
-  gap: 32px;
-  margin-bottom: 42px;
-}
-
-.aviary-heading h2,
-.field-method h2 {
-  margin-bottom: 0;
-  font-size: clamp(40px, 6vw, 68px);
-  line-height: 0.98;
-  letter-spacing: -0.055em;
-}
-
-.rarity-key {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--muted);
-  font: 10px var(--mono);
-}
-
-.rarity-key i {
-  display: block;
-  background: var(--paper);
-  border: 1px solid rgba(247, 178, 27, 0.42);
-  border-radius: 2px;
-}
-
-.key-small {
-  width: 9px;
-  height: 9px;
-}
-
-.key-medium {
-  width: 15px;
-  height: 15px;
-}
-
-.key-large {
-  width: 22px;
-  height: 22px;
+  font: 10px/1.6 var(--mono);
 }
 
 .bird-state {
@@ -218,9 +202,8 @@
   align-items: center;
   gap: 12px;
   min-height: 48px;
-  margin-bottom: 18px;
   color: var(--muted);
-  font: 12px var(--mono);
+  font: 11px var(--mono);
 }
 
 .bird-state[hidden] {
@@ -228,21 +211,19 @@
 }
 
 .state-spinner {
-  width: 16px;
-  height: 16px;
-  border: 2px solid var(--line);
-  border-top-color: var(--yellow);
+  width: 15px;
+  height: 15px;
+  border: 1px solid var(--instrument-bright);
+  border-top-color: var(--green);
   border-radius: 50%;
   animation: bird-spin 900ms linear infinite;
 }
 
 .bird-state.is-error {
-  max-width: 620px;
-  padding: 18px;
+  margin: 28px 0;
+  padding: 16px 18px;
   color: #ffc1c4;
-  background: rgba(239, 90, 97, 0.08);
-  border: 1px solid rgba(239, 90, 97, 0.3);
-  border-radius: 10px;
+  border: 1px solid rgba(239, 90, 97, 0.36);
 }
 
 .bird-state.is-error .state-spinner {
@@ -253,66 +234,248 @@
   to { transform: rotate(360deg); }
 }
 
-.bird-wall {
-  display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  grid-auto-flow: dense;
-  grid-auto-rows: 64px;
-  gap: 14px;
+.orrery-shell {
+  position: relative;
+  isolation: isolate;
+  width: min(100%, 1380px);
+  aspect-ratio: 1;
+  margin: 0 auto;
+  background:
+    radial-gradient(circle at center, rgba(117, 215, 168, 0.06) 0 8%, transparent 8.2%),
+    radial-gradient(circle at center, rgba(213, 154, 88, 0.045), transparent 57%),
+    repeating-conic-gradient(from -0.5deg at center, rgba(219, 186, 116, 0.1) 0 1deg, transparent 1deg 15deg);
+  border-radius: 50%;
+}
+
+.orrery-shell::before,
+.orrery-shell::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.orrery-shell::before {
+  inset: 2.5%;
+  border: 1px solid rgba(219, 186, 116, 0.08);
+  border-radius: 50%;
+}
+
+.orrery-shell::after {
+  top: 50%;
+  left: 2.5%;
+  right: 2.5%;
+  height: 1px;
+  background: rgba(219, 186, 116, 0.07);
+}
+
+.orrery-rings,
+.bird-orrery {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.orrery-rings {
+  z-index: 1;
+  overflow: visible;
+}
+
+.orbit,
+.orbit-core {
+  fill: none;
+  vector-effect: non-scaling-stroke;
+}
+
+.orbit {
+  stroke: rgba(219, 186, 116, 0.28);
+  stroke-width: 1;
+}
+
+.orbit-rare {
+  stroke-dasharray: 2 7;
+}
+
+.orbit-occasional {
+  stroke-dasharray: 18 5 2 5;
+  stroke-opacity: 0.78;
+}
+
+.orbit-familiar {
+  stroke: rgba(117, 215, 168, 0.34);
+}
+
+.orbit-core {
+  stroke: rgba(117, 215, 168, 0.46);
+  stroke-width: 1.5;
+}
+
+.detection-ray {
+  opacity: 0;
+  stroke: var(--vermilion);
+  stroke-width: 2;
+  stroke-dasharray: 4 7;
+  vector-effect: non-scaling-stroke;
+}
+
+.detection-ray.is-active {
+  animation: register-ray 2.8s ease both;
+}
+
+@keyframes register-ray {
+  0% { opacity: 0; stroke-dashoffset: 55; }
+  18%, 70% { opacity: 0.92; }
+  100% { opacity: 0; stroke-dashoffset: 0; }
+}
+
+.orbit-label {
+  position: absolute;
+  z-index: 2;
+  padding: 5px 8px;
+  color: rgba(219, 205, 176, 0.7);
+  background: rgba(7, 17, 15, 0.9);
+  font: 8px var(--mono);
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+.label-rare { top: 12.2%; left: 12%; }
+.label-occasional { top: 31%; right: 15%; }
+.label-familiar { top: 39.5%; left: 39%; }
+
+.orrery-core {
+  position: absolute;
+  z-index: 6;
+  top: 50%;
+  left: 50%;
+  width: 17%;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 2.2%;
+  color: var(--folio);
+  background:
+    radial-gradient(circle at 42% 34%, rgba(117, 215, 168, 0.14), transparent 48%),
+    rgba(7, 17, 15, 0.96);
+  border: 1px solid rgba(117, 215, 168, 0.4);
+  border-radius: 50%;
+  box-shadow: 0 0 0 8px rgba(117, 215, 168, 0.025), 0 0 60px rgba(117, 215, 168, 0.08);
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+
+.core-signal {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 16px;
+  margin-bottom: 9px;
+}
+
+.core-signal i {
+  width: 2px;
+  height: 7px;
+  display: block;
+  background: var(--green);
+  animation: signal-breathe 1.8s ease-in-out infinite alternate;
+}
+
+.core-signal i:nth-child(2) {
+  height: 14px;
+  animation-delay: -0.7s;
+}
+
+.core-signal i:nth-child(3) {
+  height: 10px;
+  animation-delay: -1.2s;
+}
+
+@keyframes signal-breathe {
+  from { opacity: 0.35; transform: scaleY(0.62); }
+  to { opacity: 1; transform: scaleY(1); }
+}
+
+.orrery-core small,
+.orrery-core span:last-child {
+  color: var(--muted);
+  font: 7px/1.35 var(--mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.orrery-core strong {
+  max-width: 100%;
+  display: block;
+  margin: 7px 0 6px;
+  overflow: hidden;
+  font: 400 clamp(10px, 1.3vw, 18px)/1.05 var(--serif);
+  text-overflow: ellipsis;
+}
+
+.bird-orrery {
+  z-index: 4;
 }
 
 .bird-card {
-  position: relative;
-  min-width: 0;
-  grid-column: span var(--bird-columns, 3);
-  grid-row: span var(--bird-rows, 4);
-  display: grid;
-  grid-template-rows: minmax(0, 1fr) auto;
+  position: absolute;
+  top: var(--bird-y);
+  left: var(--bird-x);
+  z-index: 4;
+  width: var(--bird-size);
+  margin: 0;
   padding: 0;
-  overflow: hidden;
-  color: var(--text);
-  background: var(--panel);
-  border: 1px solid var(--line);
-  border-radius: 14px 4px 14px 4px;
+  color: var(--folio);
+  background: transparent;
+  border: 0;
   font-family: var(--sans);
   text-align: left;
   cursor: pointer;
-  box-shadow: 7px 7px 0 rgba(183, 213, 232, 0.025);
-  transition: transform 170ms ease, border-color 170ms ease, box-shadow 170ms ease;
+  transform: translate(-50%, -50%);
 }
 
-.bird-card:hover {
-  z-index: 2;
-  border-color: rgba(247, 178, 27, 0.62);
-  box-shadow: 9px 9px 0 rgba(247, 178, 27, 0.08);
-  transform: translateY(-3px);
-}
-
+.bird-card:hover,
+.bird-card:focus-visible,
 .bird-card.is-new {
-  animation: bird-arrival 2.4s ease;
+  z-index: 30;
 }
 
-@keyframes bird-arrival {
-  0%, 30% { border-color: var(--green); box-shadow: 0 0 0 5px rgba(117, 215, 168, 0.16); }
-  100% { border-color: var(--line); box-shadow: 7px 7px 0 rgba(183, 213, 232, 0.025); }
+.bird-card-frame {
+  position: relative;
+  display: block;
+  filter: saturate(0.92) contrast(1.02);
+  transform: rotate(var(--bird-tilt));
+  transform-origin: 50% 72%;
+  transition: filter 220ms ease, transform 260ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.bird-card:hover .bird-card-frame,
+.bird-card:focus-visible .bird-card-frame {
+  filter: saturate(1.05) contrast(1.02);
+  transform: rotate(0deg) scale(1.09);
 }
 
 .bird-plate {
   position: relative;
-  min-height: 0;
+  aspect-ratio: 1 / 0.78;
   display: grid;
   place-items: center;
   overflow: hidden;
   background:
-    linear-gradient(135deg, rgba(112, 81, 37, 0.05), transparent 42%),
-    var(--paper);
+    linear-gradient(135deg, rgba(105, 79, 41, 0.08), transparent 45%),
+    var(--folio);
+  border: 1px solid rgba(41, 39, 31, 0.35);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.33), 0 0 0 1px rgba(238, 229, 210, 0.12);
 }
 
 .bird-plate::after {
   content: "";
   position: absolute;
-  inset: 8px;
-  border: 1px solid rgba(23, 32, 51, 0.12);
+  inset: 5px;
+  border: 1px solid rgba(41, 39, 31, 0.13);
   pointer-events: none;
 }
 
@@ -321,124 +484,285 @@
   height: 100%;
   display: block;
   object-fit: contain;
-  transition: transform 280ms ease;
 }
 
-.bird-card:hover .bird-plate img {
-  transform: scale(1.018);
-}
-
-.rarity-tag {
+.figure-code {
   position: absolute;
-  z-index: 1;
-  top: 12px;
-  right: 12px;
-  padding: 6px 8px;
-  color: var(--paper-ink);
-  background: rgba(242, 238, 229, 0.88);
-  border: 1px solid rgba(23, 32, 51, 0.15);
-  border-radius: 4px;
-  font: 700 9px var(--mono);
-  text-transform: uppercase;
-  backdrop-filter: blur(6px);
+  z-index: 2;
+  top: 8px;
+  left: 8px;
+  padding: 3px 4px;
+  color: rgba(41, 39, 31, 0.8);
+  background: rgba(238, 229, 210, 0.78);
+  font: 700 7px var(--mono);
+  letter-spacing: 0.08em;
+}
+
+.live-stamp {
+  position: absolute;
+  z-index: 3;
+  right: 8px;
+  bottom: 8px;
+  display: none;
+  padding: 4px 6px;
+  color: #8c3022;
+  border: 1px solid currentColor;
+  font: 800 7px var(--mono);
+  letter-spacing: 0.08em;
+  transform: rotate(-7deg);
+}
+
+.bird-card.is-new .live-stamp {
+  display: block;
+  animation: wet-ink 2.8s ease both;
+}
+
+.bird-card.is-new .bird-plate {
+  animation: plate-register 2.8s ease;
+}
+
+@keyframes wet-ink {
+  0% { opacity: 0; transform: scale(1.45) rotate(-11deg); }
+  18%, 78% { opacity: 1; transform: scale(1) rotate(-7deg); }
+  100% { opacity: 0; }
+}
+
+@keyframes plate-register {
+  0%, 18% { box-shadow: 0 0 0 5px rgba(217, 93, 66, 0.28), 0 10px 28px rgba(0, 0, 0, 0.33); }
+  100% { box-shadow: 0 10px 28px rgba(0, 0, 0, 0.33), 0 0 0 1px rgba(238, 229, 210, 0.12); }
 }
 
 .bird-card-copy {
-  min-height: 92px;
+  position: relative;
+  left: -10%;
+  width: 120%;
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: end;
-  gap: 14px;
-  padding: 15px 16px 16px;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.025), transparent), var(--panel);
+  gap: 8px;
+  margin-top: 6px;
+  padding-top: 6px;
+  border-top: 1px solid rgba(219, 186, 116, 0.32);
+  text-shadow: 0 1px 8px #07110f, 0 1px 8px #07110f;
 }
 
 .bird-card-copy strong {
   display: block;
   overflow: hidden;
-  font-size: clamp(15px, 1.8vw, 21px);
-  line-height: 1.08;
-  letter-spacing: -0.025em;
-  text-overflow: ellipsis;
-}
-
-.bird-card-copy em {
-  display: block;
-  margin-top: 7px;
-  overflow: hidden;
-  color: var(--muted);
-  font: italic 10px var(--mono);
+  font: 400 clamp(9px, 1.05vw, 15px)/1 var(--serif);
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.bird-card-copy em,
+.plate-credit {
+  display: block;
+  margin-top: 3px;
+  overflow: hidden;
+  color: var(--muted);
+  font: italic clamp(6px, 0.56vw, 8px)/1.25 var(--mono);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.plate-credit {
+  color: rgba(219, 205, 176, 0.66);
+  font-style: normal;
+  letter-spacing: 0.02em;
 }
 
 .bird-card-count {
-  color: var(--yellow);
-  font: 750 10px var(--mono);
+  color: var(--copper);
+  font: 700 clamp(6px, 0.62vw, 9px) var(--mono);
   white-space: nowrap;
 }
 
-.field-method {
+.bird-card[data-orbit="familiar"] .bird-card-copy,
+.bird-card[data-orbit="occasional"] .plate-credit {
+  opacity: 0;
+  transition: opacity 160ms ease;
+}
+
+.bird-card[data-orbit="occasional"] .bird-card-copy {
+  width: 140%;
+  left: -20%;
+}
+
+.bird-card[data-orbit="familiar"] .bird-card-copy {
+  width: 210%;
+  left: -55%;
+  padding: 7px 8px;
+  background: rgba(7, 17, 15, 0.94);
+  border: 1px solid var(--instrument-line);
+}
+
+.bird-card:hover .bird-card-copy,
+.bird-card:focus-visible .bird-card-copy,
+.bird-card:hover .plate-credit,
+.bird-card:focus-visible .plate-credit {
+  opacity: 1;
+}
+
+.orrery-key {
   display: grid;
-  grid-template-columns: minmax(250px, 0.72fr) minmax(0, 1.28fr);
-  gap: clamp(42px, 7vw, 90px);
-  padding: 104px 0 0;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 20px;
+  border-top: 1px solid var(--instrument-line);
+  border-bottom: 1px solid var(--instrument-line);
 }
 
-.method-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1px;
-  overflow: hidden;
-  background: var(--line);
-  border: 1px solid var(--line);
-  border-radius: 12px;
+.orrery-key p {
+  min-height: 92px;
+  margin: 0;
+  padding: 18px 24px;
+  border-right: 1px solid var(--instrument-line);
 }
 
-.method-grid article {
-  min-height: 210px;
-  padding: 24px;
-  background: var(--panel);
+.orrery-key p:last-child {
+  border-right: 0;
 }
 
-.method-grid span {
-  color: var(--yellow);
-  font: 11px var(--mono);
+.orrery-key b,
+.orrery-key span {
+  display: block;
 }
 
-.method-grid h3 {
-  margin: 36px 0 10px;
-  font-size: 19px;
+.orrery-key b {
+  margin-bottom: 8px;
+  color: var(--copper);
+  font: 700 9px var(--mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
-.method-grid p,
-.archive-note {
+.orrery-key span {
   color: var(--muted);
-  font-size: 14px;
+  font: 13px/1.55 var(--serif);
+}
+
+.hearing-ledger {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.55fr) minmax(0, 1.45fr);
+  gap: clamp(36px, 6vw, 90px);
+  margin-top: 86px;
+  padding-top: 28px;
+  border-top: 1px solid var(--instrument-bright);
+}
+
+.hearing-ledger h2 {
+  margin: 0;
+  font: 400 clamp(32px, 4vw, 52px)/0.95 var(--serif);
+  letter-spacing: -0.04em;
+}
+
+.hearing-ledger ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hearing-ledger li {
+  display: grid;
+  grid-template-columns: 74px minmax(0, 1fr) auto;
+  gap: 18px;
+  padding: 15px 0;
+  border-bottom: 1px solid var(--instrument-line);
+  font: 10px/1.35 var(--mono);
+}
+
+.hearing-ledger time {
+  color: var(--vermilion);
+}
+
+.hearing-ledger strong {
+  color: var(--folio);
+  font: 400 18px/1 var(--serif);
+}
+
+.hearing-ledger small {
+  color: var(--muted);
+  font: inherit;
+}
+
+.hearing-ledger .ledger-empty {
+  display: block;
+  color: var(--muted);
+}
+
+.instrument-notes {
+  display: grid;
+  grid-template-columns: minmax(270px, 0.68fr) minmax(0, 1.32fr);
+  gap: clamp(46px, 8vw, 120px);
+  padding: 100px 0 0;
+  border-top: 1px solid var(--instrument-line);
+}
+
+.section-kicker {
+  margin-bottom: 14px;
+  color: var(--copper);
+  font: 700 9px var(--mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.instrument-notes h2 {
+  margin: 0;
+  font: 400 clamp(42px, 5vw, 72px)/0.95 var(--serif);
+  letter-spacing: -0.055em;
+}
+
+.reading-notes {
+  border-top: 1px solid var(--instrument-bright);
+}
+
+.reading-notes article {
+  display: grid;
+  grid-template-columns: 48px minmax(170px, 0.55fr) minmax(0, 1fr);
+  gap: 22px;
+  align-items: baseline;
+  padding: 25px 0;
+  border-bottom: 1px solid var(--instrument-line);
+}
+
+.reading-notes span {
+  color: var(--copper);
+  font: 16px var(--serif);
+}
+
+.reading-notes h3 {
+  margin: 0;
+  color: var(--folio);
+  font: 400 20px/1.1 var(--serif);
+}
+
+.reading-notes p,
+.archive-note {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
   line-height: 1.7;
 }
 
 .archive-note {
   grid-column: 2;
-  margin: -60px 0 0;
-  padding-top: 22px;
-  border-top: 1px solid var(--line);
+  padding-top: 24px;
+  border-top: 1px solid var(--instrument-line);
 }
 
 .bird-dialog {
-  width: min(980px, calc(100% - 32px));
-  max-height: min(820px, calc(100vh - 32px));
+  width: min(1080px, calc(100% - 32px));
+  max-height: min(860px, calc(100vh - 32px));
   padding: 0;
   overflow: auto;
-  color: var(--text);
-  background: var(--panel);
-  border: 1px solid rgba(247, 178, 27, 0.55);
-  border-radius: 22px 7px 22px 7px;
-  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.58);
+  color: var(--folio);
+  background: var(--instrument-soft);
+  border: 1px solid var(--instrument-bright);
+  border-radius: 0;
+  box-shadow: 0 35px 110px rgba(0, 0, 0, 0.68);
 }
 
 .bird-dialog::backdrop {
-  background: rgba(5, 9, 15, 0.84);
+  background: rgba(3, 8, 7, 0.88);
   backdrop-filter: blur(8px);
 }
 
@@ -451,102 +775,101 @@
   height: 38px;
   display: grid;
   place-items: center;
-  color: var(--text);
-  background: rgba(13, 20, 34, 0.84);
-  border: 1px solid var(--line);
+  color: var(--folio);
+  background: rgba(7, 17, 15, 0.9);
+  border: 1px solid var(--instrument-bright);
   border-radius: 50%;
-  font: 24px/1 var(--sans);
+  font: 24px/1 var(--serif);
   cursor: pointer;
 }
 
 .dialog-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
-  min-height: 620px;
+  grid-template-columns: minmax(0, 1.12fr) minmax(340px, 0.88fr);
+  min-height: 650px;
 }
 
 .dialog-grid figure {
-  min-height: 520px;
+  min-height: 540px;
   display: grid;
   place-items: center;
   margin: 0;
-  padding: 24px;
-  background: var(--paper);
+  padding: 28px;
+  background: var(--folio);
+  border: 13px solid var(--folio-deep);
+  box-shadow: inset 0 0 0 1px rgba(41, 39, 31, 0.24);
 }
 
 .dialog-grid figure img {
   width: 100%;
   height: 100%;
-  max-height: 690px;
+  max-height: 720px;
   object-fit: contain;
 }
 
 .dialog-copy {
   display: flex;
   flex-direction: column;
-  padding: 44px 34px 32px;
+  padding: 48px 36px 34px;
 }
 
 .dialog-kicker {
-  margin-bottom: 24px;
-  color: var(--yellow);
-  font: 700 10px var(--mono);
-  letter-spacing: 0.14em;
+  margin-bottom: 25px;
+  color: var(--copper);
+  font: 700 9px var(--mono);
+  letter-spacing: 0.16em;
   text-transform: uppercase;
 }
 
 .dialog-copy h2 {
   margin-bottom: 8px;
-  font-size: clamp(34px, 5vw, 56px);
-  line-height: 0.98;
+  font: 400 clamp(38px, 5vw, 64px)/0.9 var(--serif);
   letter-spacing: -0.055em;
 }
 
 .dialog-scientific {
   color: var(--muted);
-  font: italic 13px var(--mono);
+  font: italic 12px var(--mono);
 }
 
 .dialog-stats {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1px;
-  margin: 24px 0;
-  overflow: hidden;
-  background: var(--line);
-  border: 1px solid var(--line);
-  border-radius: 8px;
+  margin: 26px 0;
+  border-top: 1px solid var(--instrument-line);
+  border-left: 1px solid var(--instrument-line);
 }
 
 .dialog-stats div {
-  min-height: 77px;
+  min-height: 78px;
   padding: 13px;
-  background: rgba(13, 20, 34, 0.7);
+  border-right: 1px solid var(--instrument-line);
+  border-bottom: 1px solid var(--instrument-line);
 }
 
 .dialog-stats dt,
 .art-credit > span {
   color: var(--muted);
-  font: 9px var(--mono);
+  font: 8px var(--mono);
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
 .dialog-stats dd {
   margin: 8px 0 0;
-  font-size: 13px;
-  font-weight: 700;
+  font: 400 14px/1.25 var(--serif);
 }
 
 .art-credit {
   margin-top: auto;
   padding-top: 22px;
-  border-top: 1px solid var(--line);
+  border-top: 1px solid var(--instrument-line);
 }
 
 .art-credit strong {
   display: block;
   margin-top: 9px;
+  font-family: var(--serif);
   line-height: 1.45;
 }
 
@@ -559,104 +882,205 @@
 
 .art-credit a {
   display: inline-block;
-  margin-top: 16px;
-  color: var(--yellow);
-  font: 700 11px var(--mono);
+  margin-top: 17px;
+  color: var(--copper);
+  font: 700 10px var(--mono);
   text-decoration: none;
 }
 
-@media (max-width: 980px) {
-  .bird-hero,
-  .field-method {
+@media (max-width: 1100px) {
+  .instrument-readout {
+    grid-template-columns: 180px minmax(0, 1fr);
+  }
+
+  .latest-detection {
+    grid-column: 1 / -1;
+    min-height: 52px;
+    border-top: 1px solid var(--instrument-line);
+  }
+
+  .bird-metrics div:last-child {
+    border-right: 0;
+  }
+}
+
+@media (max-width: 820px) {
+  .birds-main {
+    width: min(100% - 28px, 720px);
+    padding-bottom: 74px;
+  }
+
+  .orrery-section {
+    padding: 48px 0 76px;
+  }
+
+  .orrery-intro,
+  .instrument-notes,
+  .hearing-ledger {
     grid-template-columns: 1fr;
   }
 
-  .bird-hero {
-    min-height: auto;
+  .orrery-intro {
+    gap: 30px;
   }
 
-  .listening-panel {
-    width: min(620px, 100%);
+  .orrery-intro h1 {
+    font-size: clamp(62px, 20vw, 104px);
   }
 
-  .bird-wall {
-    grid-template-columns: repeat(8, minmax(0, 1fr));
+  .orrery-prologue {
+    max-width: 620px;
+  }
+
+  .instrument-readout {
+    display: block;
+  }
+
+  .readout-live {
+    border-right: 0;
+    border-bottom: 1px solid var(--instrument-line);
+  }
+
+  .bird-metrics {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .bird-metrics div {
+    border-bottom: 1px solid var(--instrument-line);
+  }
+
+  .bird-metrics div:nth-child(2n) {
+    border-right: 0;
+  }
+
+  .bird-metrics div:nth-last-child(-n + 2) {
+    border-bottom: 0;
+  }
+
+  .orrery-shell {
+    width: 100%;
+    aspect-ratio: auto;
+    margin-top: 28px;
+    padding: 66px 0 58px;
+    background:
+      linear-gradient(90deg, transparent calc(50% - 0.5px), rgba(219, 186, 116, 0.18) 50%, transparent calc(50% + 0.5px)),
+      radial-gradient(circle at 50% 92px, rgba(117, 215, 168, 0.08), transparent 170px);
+    border-top: 1px solid var(--instrument-line);
+    border-bottom: 1px solid var(--instrument-line);
+    border-radius: 0;
+  }
+
+  .orrery-shell::before,
+  .orrery-shell::after,
+  .orrery-rings,
+  .orbit-label {
+    display: none;
+  }
+
+  .orrery-core {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 184px;
+    margin: 0 auto 80px;
+    padding: 26px;
+    transform: none;
+  }
+
+  .orrery-core strong {
+    font-size: 16px;
+  }
+
+  .bird-orrery {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
   }
 
   .bird-card {
-    grid-column: span var(--bird-columns, 3);
+    position: relative;
+    top: auto;
+    left: auto;
+    width: var(--mobile-size);
+    transform: none;
+  }
+
+  .bird-card:nth-child(even) {
+    margin-left: auto;
+  }
+
+  .bird-card:nth-child(odd) {
+    margin-right: auto;
+  }
+
+  .bird-card-frame {
+    transform: rotate(var(--bird-tilt));
+  }
+
+  .bird-card-copy,
+  .bird-card[data-orbit="familiar"] .bird-card-copy,
+  .bird-card[data-orbit="occasional"] .bird-card-copy {
+    left: 0;
+    width: 100%;
+    opacity: 1;
+    background: rgba(7, 17, 15, 0.82);
+    border: 0;
+    border-top: 1px solid var(--instrument-line);
+  }
+
+  .bird-card[data-orbit="occasional"] .plate-credit,
+  .bird-card[data-orbit="familiar"] .plate-credit {
+    opacity: 1;
+  }
+
+  .bird-card-copy strong {
+    font-size: clamp(15px, 4.4vw, 22px);
+  }
+
+  .bird-card-copy em,
+  .plate-credit,
+  .bird-card-count {
+    font-size: 9px;
+  }
+
+  .orrery-key {
+    grid-template-columns: 1fr;
+  }
+
+  .orrery-key p {
+    min-height: auto;
+    border-right: 0;
+    border-bottom: 1px solid var(--instrument-line);
+  }
+
+  .orrery-key p:last-child {
+    border-bottom: 0;
+  }
+
+  .hearing-ledger {
+    gap: 28px;
+    margin-top: 68px;
+  }
+
+  .instrument-notes {
+    gap: 52px;
+    padding-top: 76px;
+  }
+
+  .reading-notes article {
+    grid-template-columns: 34px minmax(0, 1fr);
+  }
+
+  .reading-notes p {
+    grid-column: 2;
   }
 
   .archive-note {
     grid-column: 1;
-    margin-top: 0;
-  }
-}
-
-@media (max-width: 720px) {
-  .birds-main {
-    padding-bottom: 72px;
-  }
-
-  .bird-hero {
-    gap: 40px;
-    padding: 52px 0 68px;
-  }
-
-  .bird-hero h1 {
-    font-size: clamp(50px, 17vw, 72px);
-  }
-
-  .bird-lede {
-    font-size: 17px;
-  }
-
-  .listening-panel {
-    padding: 20px;
-    border-radius: 24px 8px 24px 8px;
-  }
-
-  .listening-head {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
-  .bird-metrics div {
-    min-height: 80px;
-    padding: 13px;
-  }
-
-  .aviary-section {
-    padding: 72px 0 84px;
-  }
-
-  .aviary-heading {
-    grid-template-columns: 1fr;
-    align-items: start;
-  }
-
-  .rarity-key {
-    flex-wrap: wrap;
-  }
-
-  .bird-wall {
-    grid-template-columns: 1fr;
-    grid-auto-rows: auto;
-    gap: 16px;
-  }
-
-  .bird-card {
-    min-height: 410px;
-    grid-column: 1;
-    grid-row: auto;
-  }
-
-  .method-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .method-grid article {
-    min-height: 180px;
   }
 
   .dialog-grid {
@@ -664,16 +1088,52 @@
   }
 
   .dialog-grid figure {
-    min-height: 360px;
+    min-height: 370px;
   }
 
   .dialog-copy {
-    padding: 30px 22px 26px;
+    padding: 34px 23px 28px;
+  }
+}
+
+@media (max-width: 520px) {
+  .orrery-intro .eyebrow {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .orrery-intro .eyebrow span + span::before {
+    display: none;
+  }
+
+  .bird-metrics dd {
+    font-size: 23px;
+  }
+
+  .hearing-ledger li {
+    grid-template-columns: 62px minmax(0, 1fr);
+  }
+
+  .hearing-ledger li > small:last-child {
+    grid-column: 2;
+  }
+
+  .dialog-stats {
+    grid-template-columns: 1fr;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .state-spinner {
-    animation: none;
+  .birds-page *,
+  .birds-page *::before,
+  .birds-page *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .bird-card.is-new .live-stamp {
+    opacity: 1;
   }
 }

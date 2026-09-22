@@ -3,11 +3,11 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Birds Heard in Bengaluru — Abhishek Does Stuff</title>
-    <meta name="description" content="A live, illustrated view of recurring bird species heard by a BirdNET microphone in Bengaluru, paired with historical natural-history art." />
+    <title>The Listening Orrery — Birds Heard in Bengaluru</title>
+    <meta name="description" content="A live acoustic orrery: recurring birds heard from a Bengaluru home, arranged by microphone rarity and illustrated with historical natural-history plates." />
     <meta name="author" content="Abhishek Bagade" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta name="theme-color" content="#0d1422" />
+    <meta name="theme-color" content="#07110f" />
     <link rel="canonical" href="https://abhishekdoesstuff.com/birds/" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png" />
@@ -15,13 +15,13 @@
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="en_IN" />
     <meta property="og:site_name" content="Abhishek Does Stuff" />
-    <meta property="og:title" content="Birds Heard in Bengaluru" />
-    <meta property="og:description" content="Live BirdNET detections meet historical natural-history plates. Larger birds are less often heard by this microphone." />
+    <meta property="og:title" content="The Listening Orrery" />
+    <meta property="og:description" content="A live Bengaluru soundscape arranged as an orrery of historical bird plates. Rare voices occupy the outer dark—and more paper." />
     <meta property="og:url" content="https://abhishekdoesstuff.com/birds/" />
     <meta property="og:image" content="https://abhishekdoesstuff.com/og.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="stylesheet" href="/styles.css?v=20260713-6" />
-    <link rel="stylesheet" href="/birds.css?v=20260922-1" />
+    <link rel="stylesheet" href="/birds.css?v=20260923-1" />
   </head>
   <body class="birds-page">
     <a class="skip-link" href="#main-content">Skip to birds</a>
@@ -45,85 +45,94 @@
     </header>
 
     <main id="main-content" class="birds-main">
-      <section class="bird-hero" aria-labelledby="bird-title">
-        <div class="bird-hero-copy">
-          <p class="eyebrow"><span>live acoustic field note</span><span>Bengaluru</span></p>
-          <h1 id="bird-title">Birds heard<br />from home.</h1>
-          <p class="bird-lede">
-            A live BirdNET microphone meets old natural-history plates. Each bird has been heard at least twice;
-            the larger the plate, the less often this microphone has heard it.
-          </p>
-          <p class="bird-caveat">This is microphone rarity—not ecological rarity or conservation status.</p>
-        </div>
+      <section class="orrery-section" aria-labelledby="bird-title">
+        <header class="orrery-intro">
+          <div>
+            <p class="eyebrow"><span>live acoustic instrument</span><span>Bengaluru · 12.97° N</span></p>
+            <h1 id="bird-title">The listening<br /><em>orrery.</em></h1>
+          </div>
+          <div class="orrery-prologue">
+            <p>
+              A microphone listens from home. Naturalists from three centuries supply the pictures.
+              Familiar voices circle close; rare voices occupy the outer dark—and more paper.
+            </p>
+            <small>This is rarity to this microphone, not ecological rarity or conservation status.</small>
+          </div>
+        </header>
 
-        <aside class="listening-panel" aria-label="Live listening status">
-          <div class="listening-head">
+        <div class="instrument-readout" aria-label="Live listening status">
+          <div class="readout-live">
             <span class="stream-indicator"><i aria-hidden="true"></i><b id="stream-label">connecting</b></span>
-            <span>BirdNET / all history</span>
+            <span>BirdNET · archive open</span>
           </div>
           <dl class="bird-metrics">
-            <div><dt>species</dt><dd id="species-count">—</dd></div>
-            <div><dt>detections</dt><dd id="detection-count">—</dd></div>
+            <div><dt>in orbit</dt><dd id="species-count">—</dd></div>
+            <div><dt>registrations</dt><dd id="detection-count">—</dd></div>
             <div><dt>last heard</dt><dd id="last-heard">—</dd></div>
-            <div><dt>one-offs hidden</dt><dd id="filtered-count">—</dd></div>
+            <div><dt>one-offs withheld</dt><dd id="filtered-count">—</dd></div>
           </dl>
-          <p id="latest-detection" class="latest-detection" aria-live="polite">Waiting for the live microphone…</p>
-        </aside>
-      </section>
-
-      <section class="aviary-section" aria-labelledby="aviary-title">
-        <div class="aviary-heading">
-          <div>
-            <p class="section-kicker">the live aviary / recurring detections</p>
-            <h2 id="aviary-title">Rare voices take more room.</h2>
-          </div>
-          <div class="rarity-key" aria-label="Rarity size legend">
-            <span>often heard</span>
-            <i class="key-small" aria-hidden="true"></i>
-            <i class="key-medium" aria-hidden="true"></i>
-            <i class="key-large" aria-hidden="true"></i>
-            <span>rarely heard</span>
-          </div>
+          <p id="latest-detection" class="latest-detection" aria-live="polite">Waiting for the next call…</p>
         </div>
 
         <div id="bird-state" class="bird-state" role="status" aria-live="polite">
           <span class="state-spinner" aria-hidden="true"></span>
-          Asking the microphone what it has heard…
+          Calibrating the instrument…
         </div>
-        <div id="bird-wall" class="bird-wall" aria-live="polite" aria-busy="true"></div>
+
+        <div class="orrery-shell" aria-describedby="orrery-caption">
+          <svg class="orrery-rings" viewBox="0 0 1000 1000" aria-hidden="true">
+            <circle class="orbit orbit-rare" cx="500" cy="500" r="420"></circle>
+            <circle class="orbit orbit-occasional" cx="500" cy="500" r="280"></circle>
+            <circle class="orbit orbit-familiar" cx="500" cy="500" r="155"></circle>
+            <circle class="orbit-core" cx="500" cy="500" r="92"></circle>
+            <line id="detection-ray" class="detection-ray" x1="500" y1="500" x2="500" y2="500"></line>
+          </svg>
+
+          <span class="orbit-label label-rare" aria-hidden="true">outer orbit · 2–5 heard</span>
+          <span class="orbit-label label-occasional" aria-hidden="true">middle orbit · 6–50</span>
+          <span class="orbit-label label-familiar" aria-hidden="true">daily chorus · 51+</span>
+
+          <div class="orrery-core" aria-hidden="true">
+            <span class="core-signal"><i></i><i></i><i></i></span>
+            <small>listening point</small>
+            <strong id="core-bird">awaiting a call</strong>
+            <span id="core-time">live from home</span>
+          </div>
+
+          <div id="bird-wall" class="bird-orrery" aria-label="Recurring bird species arranged by microphone rarity" aria-busy="true"></div>
+        </div>
+
+        <div id="orrery-caption" class="orrery-key">
+          <p><b>Radius</b><span>Common voices stay near the microphone. Seldom-heard voices travel outward.</span></p>
+          <p><b>Plate size</b><span>Inverse logarithmic frequency: fewer registrations give a bird more paper.</span></p>
+          <p><b>Fresh ink</b><span>A live call draws a ray from the listening point to its historical plate.</span></p>
+        </div>
+
+        <aside class="hearing-ledger" aria-labelledby="ledger-title">
+          <div>
+            <p class="section-kicker">wet ink</p>
+            <h2 id="ledger-title">Fresh registrations</h2>
+          </div>
+          <ol id="recent-hearings">
+            <li class="ledger-empty">The next live detection will be registered here.</li>
+          </ol>
+        </aside>
       </section>
 
-      <section class="field-method" aria-labelledby="method-title">
-        <div>
-          <p class="section-kicker">field method</p>
-          <h2 id="method-title">A listening log, illustrated backwards in time.</h2>
-        </div>
-        <div class="method-grid">
-          <article>
-            <span>01</span>
-            <h3>Listen live</h3>
-            <p>BirdNET identifies calls at the microphone. New detections arrive here over a live event stream.</p>
-          </article>
-          <article>
-            <span>02</span>
-            <h3>Remove one-offs</h3>
-            <p>A species enters the wall only after its second detection, reducing accidental and uncertain labels.</p>
-          </article>
-          <article>
-            <span>03</span>
-            <h3>Scale by rarity</h3>
-            <p>Card area uses an inverse logarithmic scale across this microphone’s archive: fewer detections, more room.</p>
-          </article>
-          <article>
-            <span>04</span>
-            <h3>Pair with a plate</h3>
-            <p>Scientific names connect detections to open historical art. Artist, date, licence, and source travel with every image.</p>
-          </article>
+      <section class="instrument-notes" aria-labelledby="method-title">
+        <header>
+          <p class="section-kicker">instrument notes</p>
+          <h2 id="method-title">Natural history, rearranged by an electronic ear.</h2>
+        </header>
+        <div class="reading-notes">
+          <article><span>Ⅰ</span><h3>Calls become records</h3><p>BirdNET identifies calls at the microphone and sends new detections into the instrument as they happen.</p></article>
+          <article><span>Ⅱ</span><h3>Doubt stays outside</h3><p>A species enters an orbit only after its second detection. Single occurrences remain visible only as a withheld count.</p></article>
+          <article><span>Ⅲ</span><h3>Old plates meet new data</h3><p>Scientific names join the live archive to openly licensed natural-history art, with source and credit intact.</p></article>
         </div>
         <p class="archive-note">
-          Artwork is served locally from open collections including Wikimedia Commons, the Biodiversity Heritage Library,
-          Naturalis, and the National Gallery of Art. One modern open illustration stands in for the Ashy Prinia because its
-          1798–1805 British Library watercolor is catalogued but not digitized.
+          The plates come from open collections including Wikimedia Commons, the Biodiversity Heritage Library,
+          Naturalis, and the National Gallery of Art. One modern open illustration stands in for the Ashy Prinia:
+          its 1798–1805 British Library watercolor is catalogued, but not digitized.
         </p>
       </section>
     </main>
@@ -135,7 +144,7 @@
           <img id="dialog-image" alt="" />
         </figure>
         <div class="dialog-copy">
-          <p class="dialog-kicker">field card</p>
+          <p class="dialog-kicker">open folio</p>
           <h2 id="dialog-name"></h2>
           <p id="dialog-scientific" class="dialog-scientific"></p>
           <dl class="dialog-stats">
@@ -165,7 +174,7 @@
       </div>
     </footer>
 
-    <script src="/birds.js?v=20260922-1" defer></script>
+    <script src="/birds.js?v=20260923-1" defer></script>
     <script src="/analytics.js" defer></script>
   </body>
 </html>

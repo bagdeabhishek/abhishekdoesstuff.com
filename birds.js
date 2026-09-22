@@ -11,6 +11,10 @@
     latestDetection: document.getElementById("latest-detection"),
     streamLabel: document.getElementById("stream-label"),
     streamIndicator: document.querySelector(".stream-indicator"),
+    coreBird: document.getElementById("core-bird"),
+    coreTime: document.getElementById("core-time"),
+    detectionRay: document.getElementById("detection-ray"),
+    recentHearings: document.getElementById("recent-hearings"),
     dialog: document.getElementById("bird-dialog"),
     dialogClose: document.querySelector(".dialog-close"),
     dialogImage: document.getElementById("dialog-image"),
@@ -26,9 +30,17 @@
     dialogSource: document.getElementById("dialog-source"),
   };
 
+  const orbitConfig = {
+    rare: { radius: 42, phase: -90, label: "outer orbit" },
+    occasional: { radius: 28, phase: -75, label: "middle orbit" },
+    familiar: { radius: 15.5, phase: -90, label: "daily chorus" },
+  };
+
   let species = [];
+  let recentDetections = [];
   let refreshTimer = null;
   let eventSource = null;
+  let rayTimer = null;
 
   const numberFormat = new Intl.NumberFormat("en-IN");
   const dateFormat = new Intl.DateTimeFormat("en-IN", {
@@ -61,16 +73,66 @@
     elements.streamIndicator.classList.toggle("is-offline", state === "offline");
   }
 
-  function rarityFor(count, minCount, maxCount) {
-    if (maxCount <= minCount) return 0.5;
-    const position = (Math.log(count) - Math.log(minCount)) / (Math.log(maxCount) - Math.log(minCount));
-    return Math.max(0, Math.min(1, 1 - position));
+  function clamp(value, min, max) {
+    return Math.max(min, Math.min(max, value));
   }
 
-  function rarityLabel(rarity) {
-    if (rarity >= 0.78) return "rarely heard";
-    if (rarity >= 0.45) return "occasional";
-    return "often heard";
+  function rarityFor(count, maxCount) {
+    if (maxCount <= 2) return 1;
+    return clamp(1 - Math.log(Math.max(2, count) / 2) / Math.log(maxCount / 2), 0, 1);
+  }
+
+  function orbitFor(count) {
+    if (count <= 5) return "rare";
+    if (count <= 50) return "occasional";
+    return "familiar";
+  }
+
+  function hashName(value) {
+    let hash = 0x811c9dc5;
+    for (let index = 0; index < value.length; index += 1) {
+      hash ^= value.charCodeAt(index);
+      hash = Math.imul(hash, 0x01000193);
+    }
+    return hash >>> 0;
+  }
+
+  function layoutBirds(birds) {
+    const maxCount = Math.max(2, ...birds.map((bird) => bird.count));
+    const groups = { rare: [], occasional: [], familiar: [] };
+
+    for (const bird of birds) groups[orbitFor(bird.count)].push(bird);
+    for (const group of Object.values(groups)) {
+      group.sort((a, b) => hashName(a.scientific_name) - hashName(b.scientific_name));
+    }
+
+    const layouts = [];
+    for (const orbit of ["rare", "occasional", "familiar"]) {
+      const group = groups[orbit];
+      const config = orbitConfig[orbit];
+      group.forEach((bird, index) => {
+        const rarity = rarityFor(bird.count, maxCount);
+        const baseSize = 5 + 9 * rarity ** 1.35;
+        const slotLimit = group.length > 1
+          ? 2 * config.radius * Math.sin(Math.PI / group.length) - 0.8
+          : baseSize;
+        const size = Math.min(baseSize, slotLimit);
+        const angle = config.phase + index * (360 / Math.max(1, group.length));
+        const radians = angle * Math.PI / 180;
+        const hash = hashName(bird.scientific_name);
+        layouts.push({
+          bird,
+          orbit,
+          x: 50 + Math.cos(radians) * config.radius,
+          y: 50 + Math.sin(radians) * config.radius,
+          size,
+          mobileSize: 52 + 48 * clamp((size - 5) / 9, 0, 1),
+          tilt: (hash % 7) - 3,
+          figure: layouts.length + 1,
+        });
+      });
+    }
+    return layouts;
   }
 
   function textElement(tag, className, text) {
@@ -97,62 +159,114 @@
     elements.dialog.showModal();
   }
 
-  function createBirdCard(bird, minCount, maxCount, index) {
-    const rarity = rarityFor(bird.count, minCount, maxCount);
-    const columns = Math.round(3 + rarity * 3);
-    const rows = Math.round(4 + rarity * 2);
+  function createBirdCard(bird) {
     const card = document.createElement("button");
     card.type = "button";
     card.className = "bird-card";
     card.dataset.scientificName = bird.scientific_name;
-    card.style.setProperty("--bird-columns", String(columns));
-    card.style.setProperty("--bird-rows", String(rows));
-    card.setAttribute("aria-label", `${bird.common_name}, heard ${numberFormat.format(bird.count)} times. Open details.`);
 
+    const frame = document.createElement("span");
+    frame.className = "bird-card-frame";
     const plate = document.createElement("span");
     plate.className = "bird-plate";
     const image = document.createElement("img");
-    image.src = bird.image;
-    image.alt = `${bird.artwork.historical ? "Historical natural-history plate" : "Open illustration"} of ${bird.common_name}`;
     image.width = 1200;
-    image.height = 1200;
+    image.height = 936;
     image.decoding = "async";
-    image.loading = index < 4 ? "eager" : "lazy";
-    plate.append(image, textElement("span", "rarity-tag", rarityLabel(rarity)));
+    const figure = textElement("span", "figure-code", "");
+    figure.dataset.role = "figure";
+    const stamp = textElement("span", "live-stamp", "HEARD NOW");
+    stamp.dataset.role = "stamp";
+    plate.append(image, figure, stamp);
 
     const copy = document.createElement("span");
     copy.className = "bird-card-copy";
     const names = document.createElement("span");
-    names.append(textElement("strong", "", bird.common_name), textElement("em", "", bird.scientific_name));
-    const count = textElement("span", "bird-card-count", `${numberFormat.format(bird.count)} heard`);
+    const commonName = textElement("strong", "", "");
+    commonName.dataset.role = "common-name";
+    const scientificName = textElement("em", "", "");
+    scientificName.dataset.role = "scientific-name";
+    const credit = textElement("small", "plate-credit", "");
+    credit.dataset.role = "credit";
+    names.append(commonName, scientificName, credit);
+    const count = textElement("span", "bird-card-count", "");
     count.dataset.role = "count";
     copy.append(names, count);
-    card.append(plate, copy);
-    card.addEventListener("click", () => openDialog(bird));
+    frame.append(plate, copy);
+    card.append(frame);
+    card.addEventListener("click", () => openDialog(card._bird));
     return card;
+  }
+
+  function updateBirdCard(card, layout, index) {
+    const { bird, orbit, x, y, size, mobileSize, tilt, figure } = layout;
+    card._bird = bird;
+    card.dataset.orbit = orbit;
+    card.dataset.x = x.toFixed(3);
+    card.dataset.y = y.toFixed(3);
+    card.style.setProperty("--bird-x", `${x.toFixed(3)}%`);
+    card.style.setProperty("--bird-y", `${y.toFixed(3)}%`);
+    card.style.setProperty("--bird-size", `${size.toFixed(3)}%`);
+    card.style.setProperty("--mobile-size", `${mobileSize.toFixed(2)}%`);
+    card.style.setProperty("--bird-tilt", `${tilt}deg`);
+    card.setAttribute(
+      "aria-label",
+      `${bird.common_name}, ${numberFormat.format(bird.count)} registrations, ${orbitConfig[orbit].label}. Open folio.`
+    );
+
+    const image = card.querySelector("img");
+    if (image.getAttribute("src") !== bird.image) image.src = bird.image;
+    image.alt = `${bird.artwork.historical ? "Historical natural-history plate" : "Open illustration"} of ${bird.common_name}`;
+    image.loading = index < 8 ? "eager" : "lazy";
+    card.querySelector('[data-role="figure"]').textContent = `PL. ${String(figure).padStart(3, "0")}`;
+    card.querySelector('[data-role="common-name"]').textContent = bird.common_name;
+    card.querySelector('[data-role="scientific-name"]').textContent = bird.scientific_name;
+    card.querySelector('[data-role="credit"]').textContent = `${bird.artwork.artist} · ${bird.artwork.date}`;
+    card.querySelector('[data-role="count"]').textContent = `${numberFormat.format(bird.count)} heard`;
   }
 
   function renderBirds(nextSpecies) {
     species = nextSpecies;
-    elements.wall.replaceChildren();
-    if (species.length === 0) return;
-    const counts = species.map((bird) => bird.count);
-    const minCount = Math.min(...counts);
-    const maxCount = Math.max(...counts);
-    const fragment = document.createDocumentFragment();
-    species.forEach((bird, index) => fragment.append(createBirdCard(bird, minCount, maxCount, index)));
-    elements.wall.append(fragment);
+    const focusedName = document.activeElement?.classList?.contains("bird-card")
+      ? document.activeElement.dataset.scientificName
+      : null;
+    const existing = new Map(
+      Array.from(elements.wall.querySelectorAll(".bird-card"), (card) => [card.dataset.scientificName, card])
+    );
+    const liveNames = new Set();
+
+    layoutBirds(species).forEach((layout, index) => {
+      const name = layout.bird.scientific_name;
+      liveNames.add(name);
+      const card = existing.get(name) || createBirdCard(layout.bird);
+      updateBirdCard(card, layout, index);
+      if (!card.isConnected) elements.wall.append(card);
+    });
+
+    for (const [name, card] of existing) {
+      if (!liveNames.has(name)) card.remove();
+    }
+    if (focusedName) {
+      elements.wall.querySelector(`[data-scientific-name="${CSS.escape(focusedName)}"]`)?.focus({ preventScroll: true });
+    }
   }
 
   function validSummary(payload) {
     return payload && typeof payload === "object" && Array.isArray(payload.species);
   }
 
+  function newestBird(birds) {
+    return birds.reduce((latest, bird) => {
+      if (!latest) return bird;
+      return Date.parse(bird.last_heard || "") > Date.parse(latest.last_heard || "") ? bird : latest;
+    }, null);
+  }
+
   async function loadSummary({ quiet = false } = {}) {
     if (!quiet) {
       elements.state.hidden = false;
       elements.state.classList.remove("is-error");
-      elements.state.lastChild.textContent = " Asking the microphone what it has heard…";
+      elements.state.lastChild.textContent = " Calibrating the instrument…";
       elements.wall.setAttribute("aria-busy", "true");
     }
     try {
@@ -169,19 +283,24 @@
       elements.detectionCount.textContent = numberFormat.format(payload.total_detections);
       elements.lastHeard.textContent = relativeTime(payload.last_detection_at);
       elements.filteredCount.textContent = numberFormat.format(payload.one_offs_filtered);
-      elements.state.hidden = true;
+      elements.state.hidden = payload.species.length > 0;
       elements.wall.setAttribute("aria-busy", "false");
-      if (!elements.latestDetection.dataset.live) {
-        elements.latestDetection.textContent = payload.last_detection_at
-          ? `Latest archive detection: ${formatDate(payload.last_detection_at)}`
-          : "The microphone has no recurring bird detections yet.";
+
+      if (payload.species.length === 0) {
+        elements.state.textContent = "No recurring detections have entered the instrument yet.";
+      } else if (!elements.latestDetection.dataset.live) {
+        const latest = newestBird(payload.species);
+        elements.latestDetection.textContent = `Latest archive registration: ${latest.common_name} · ${formatDate(latest.last_heard)}`;
+        elements.coreBird.textContent = latest.common_name;
+        elements.coreTime.textContent = `last heard ${relativeTime(latest.last_heard)}`;
       }
     } catch (error) {
       if (!quiet || species.length === 0) {
         elements.state.hidden = false;
         elements.state.classList.add("is-error");
-        elements.state.textContent = "The BirdNET feed is unavailable right now. The live gallery will return when the local microphone responds.";
+        elements.state.textContent = "The BirdNET feed is unavailable right now. The instrument will resume when the local microphone responds.";
         elements.wall.setAttribute("aria-busy", "false");
+        setStreamState("offline", "offline");
       }
     }
   }
@@ -191,19 +310,56 @@
     refreshTimer = window.setTimeout(() => loadSummary({ quiet: true }), 900);
   }
 
+  function renderRecentHearings() {
+    elements.recentHearings.replaceChildren();
+    for (const detection of recentDetections) {
+      const item = document.createElement("li");
+      const time = document.createElement("time");
+      time.dateTime = detection.detected_at || `${detection.date}T${detection.time}`;
+      time.textContent = detection.time.slice(0, 5);
+      const name = textElement("strong", "", detection.common_name);
+      const confidence = textElement("small", "", `${Math.round(detection.confidence * 100)}% confidence`);
+      item.append(time, name, confidence);
+      elements.recentHearings.append(item);
+    }
+  }
+
+  function drawDetectionRay(card, confidence) {
+    window.clearTimeout(rayTimer);
+    elements.detectionRay.setAttribute("x2", String(Number(card.dataset.x) * 10));
+    elements.detectionRay.setAttribute("y2", String(Number(card.dataset.y) * 10));
+    elements.detectionRay.style.strokeOpacity = String(0.45 + confidence * 0.55);
+    elements.detectionRay.classList.remove("is-active");
+    void elements.detectionRay.getBoundingClientRect();
+    elements.detectionRay.classList.add("is-active");
+    rayTimer = window.setTimeout(() => elements.detectionRay.classList.remove("is-active"), 2900);
+  }
+
   function highlightDetection(detection) {
+    const bird = species.find((item) => item.scientific_name === detection.scientific_name);
     elements.latestDetection.dataset.live = "true";
+    if (!bird) {
+      elements.latestDetection.textContent = "A first-time call is being held outside the instrument for confirmation.";
+      elements.coreBird.textContent = "unconfirmed call";
+      elements.coreTime.textContent = "waiting for a second registration";
+      scheduleSummaryRefresh();
+      return;
+    }
+
     elements.latestDetection.textContent = `Now hearing ${detection.common_name} · ${Math.round(detection.confidence * 100)}% confidence`;
-    const card = Array.from(elements.wall.querySelectorAll(".bird-card")).find(
-      (candidate) => candidate.dataset.scientificName === detection.scientific_name
-    );
+    elements.coreBird.textContent = detection.common_name;
+    elements.coreTime.textContent = `registered at ${detection.time.slice(0, 5)}`;
+    recentDetections = [detection, ...recentDetections].slice(0, 3);
+    renderRecentHearings();
+
+    const card = elements.wall.querySelector(`[data-scientific-name="${CSS.escape(detection.scientific_name)}"]`);
     if (card) {
       card.classList.remove("is-new");
       void card.offsetWidth;
       card.classList.add("is-new");
-      const count = card.querySelector('[data-role="count"]');
-      const bird = species.find((item) => item.scientific_name === detection.scientific_name);
-      if (count && bird) count.textContent = `${numberFormat.format(bird.count + 1)} heard`;
+      card.querySelector('[data-role="stamp"]').textContent = `HEARD NOW · ${Math.round(detection.confidence * 100)}%`;
+      card.querySelector('[data-role="count"]').textContent = `${numberFormat.format(bird.count + 1)} heard`;
+      drawDetectionRay(card, detection.confidence);
     }
     scheduleSummaryRefresh();
   }
@@ -215,7 +371,7 @@
     }
     setStreamState("connecting", "waiting");
     eventSource = new EventSource("/api/birds/stream");
-    eventSource.addEventListener("ready", () => setStreamState("live", "live"));
+    eventSource.addEventListener("ready", () => setStreamState("listening live", "live"));
     eventSource.addEventListener("detection", (event) => {
       try {
         const detection = JSON.parse(event.data);
