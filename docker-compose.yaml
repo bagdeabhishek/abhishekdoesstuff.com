@@ -7,6 +7,7 @@ services:
       NODE_ENV: production
       PORT: "3000"
       STATUS_UPSTREAM: http://192.168.1.61:9109/status
+      BIRDNET_UPSTREAM: ${BIRDNET_UPSTREAM:-http://192.168.1.110:8080}
     expose:
       - "3000"
     restart: unless-stopped
