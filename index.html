@@ -42,7 +42,7 @@
             "@id": "https://abhishekdoesstuff.com/#profile",
             "url": "https://abhishekdoesstuff.com/",
             "name": "Abhishek Bagade's project workbench",
-            "dateModified": "2026-07-13",
+            "dateModified": "2026-09-28",
             "mainEntity": { "@id": "https://abhishekdoesstuff.com/#abhishek-bagade" }
           },
           {
@@ -83,7 +83,8 @@
             "inLanguage": "en-IN",
             "hasPart": [
               { "@id": "https://reppilot.abhishekdoesstuff.com/#app" },
-              { "@id": "https://github.com/bagdeabhishek/prepare-india-tax-return#project" }
+              { "@id": "https://github.com/bagdeabhishek/prepare-india-tax-return#project" },
+              { "@id": "https://abhishekdoesstuff.com/debabufy/#app" }
             ]
           },
           {
@@ -112,11 +113,24 @@
               "https://x.com/abizekbagde/status/2082437919734960539",
               "https://x.com/abizekbagde/status/2082923124140708098"
             ]
+          },
+          {
+            "@type": "SoftwareApplication",
+            "@id": "https://abhishekdoesstuff.com/debabufy/#app",
+            "name": "DeBabufy",
+            "url": "https://abhishekdoesstuff.com/debabufy/",
+            "description": "A local-first desktop app for deterministic, reviewable automation of repetitive Indian government workflows.",
+            "applicationCategory": "UtilitiesApplication",
+            "operatingSystem": "Windows, macOS, Linux",
+            "downloadUrl": "https://github.com/bagdeabhishek/debabufy/releases/latest",
+            "codeRepository": "https://github.com/bagdeabhishek/debabufy",
+            "license": "https://opensource.org/license/mit",
+            "author": { "@id": "https://abhishekdoesstuff.com/#abhishek-bagade" }
           }
         ]
       }
     </script>
-    <link rel="stylesheet" href="./styles.css?v=20260713-6" />
+    <link rel="stylesheet" href="./styles.css?v=20260928-1" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to content</a>
@@ -132,6 +146,7 @@
       </a>
       <nav aria-label="Primary navigation">
         <a href="#builds">builds</a>
+        <a href="/debabufy/">debabufy</a>
         <a href="/musings/">musings</a>
         <a href="/birds/">birds</a>
         <a href="#field-notes">field notes</a>
@@ -231,6 +246,24 @@
               <a href="https://x.com/abizekbagde/status/2082437919734960539">Launch post ↗</a>
               <a href="https://x.com/abizekbagde/status/2082923124140708098">Follow-up ↗</a>
             </div>
+          </article>
+
+          <article class="build-card debabufy-card">
+            <div class="debabufy-card-copy">
+              <div class="card-meta"><span class="status-pill live">open source alpha</span><span>Desktop · Playwright · local first</span></div>
+              <p class="project-number">BUILD 05</p>
+              <h3>DeBabufy</h3>
+              <p class="debabufy-card-tagline">Your paperwork. <strong>Less babu.</strong> More done.</p>
+              <p>A deterministic desktop tool for the repetitive parts of Indian government portals. It reads the previous document locally, carries forward stable facts, fills the portal, and leaves login, review, submission, and payment with you.</p>
+              <div class="card-links debabufy-card-links">
+                <a href="/debabufy/">Meet DeBabufy &rarr;</a>
+                <a href="https://github.com/bagdeabhishek/debabufy/releases/latest">Download &rarr;</a>
+                <span>Windows · macOS · Linux</span>
+              </div>
+            </div>
+            <a class="debabufy-card-mark" href="/debabufy/" aria-label="Open the DeBabufy project page">
+              <img src="/assets/projects/debabufy-mark.png" alt="DeBabufy logo: a document breaking free from red tape into a teal check mark" width="1254" height="1254" loading="lazy" />
+            </a>
           </article>
 
           <aside class="build-card status-card" id="lab" aria-labelledby="lab-title">

@@ -33,6 +33,9 @@ const PUBLIC_FILES = new Map([
   ["/birds/index.html", { file: path.join("birds", "index.html"), cache: CACHE.document }],
   ["/birds.css", { file: "birds.css", cache: CACHE.document }],
   ["/birds.js", { file: "birds.js", cache: CACHE.asset }],
+  ["/debabufy", { file: path.join("debabufy", "index.html"), cache: CACHE.document }],
+  ["/debabufy/", { file: path.join("debabufy", "index.html"), cache: CACHE.document }],
+  ["/debabufy/index.html", { file: path.join("debabufy", "index.html"), cache: CACHE.document }],
   ["/robots.txt", { file: "robots.txt", cache: CACHE.metadata }],
   ["/sitemap.xml", { file: "sitemap.xml", cache: CACHE.metadata }],
   ["/humans.txt", { file: "humans.txt", cache: CACHE.metadata }],
@@ -60,6 +63,10 @@ const PUBLIC_FILES = new Map([
   [
     "/assets/projects/twitter-network.webp",
     { file: path.join("assets", "projects", "twitter-network.webp"), cache: CACHE.asset },
+  ],
+  [
+    "/assets/projects/debabufy-mark.png",
+    { file: path.join("assets", "projects", "debabufy-mark.png"), cache: CACHE.asset },
   ],
   [
     "/notes/stock-picker-experiment.html",
