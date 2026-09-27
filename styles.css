@@ -814,6 +814,7 @@ nav a:hover {
   --deb-teal: #58d3c5;
   --deb-teal-deep: #0aa69a;
   --deb-coral: #e06f39;
+  overflow-x: hidden;
 }
 
 .debabufy-shell {
@@ -1521,6 +1522,67 @@ footer span,
 .muted {
   color: var(--muted);
   line-height: 1.7;
+}
+
+/* A desktop browser can be portrait while still exceeding the width breakpoint. */
+@media (orientation: portrait) and (min-width: 981px) {
+  .debabufy-card {
+    grid-template-columns: 1fr;
+  }
+
+  .debabufy-card-mark {
+    width: min(480px, 60vw);
+    justify-self: center;
+  }
+
+  .debabufy-hero {
+    min-height: auto;
+    grid-template-columns: 1fr;
+    gap: 64px;
+    padding: 80px 0 96px;
+  }
+
+  .debabufy-hero-copy {
+    max-width: 880px;
+  }
+
+  .debabufy-mark-wrap {
+    width: min(560px, 72vw);
+    justify-self: center;
+  }
+
+  .debabufy-flow {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .debabufy-flow li:nth-child(2) {
+    border-right: 0;
+  }
+
+  .debabufy-flow li:nth-child(-n + 2) {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .debut-workflow,
+  .debabufy-cta {
+    grid-template-columns: 1fr;
+  }
+
+  .workflow-copy {
+    max-width: 800px;
+  }
+
+  .workflow-terminal {
+    width: min(760px, 100%);
+  }
+
+  .debabufy-cta {
+    align-items: start;
+  }
+
+  .debabufy-cta .actions {
+    justify-content: flex-start;
+  }
 }
 
 @media (max-width: 980px) {
