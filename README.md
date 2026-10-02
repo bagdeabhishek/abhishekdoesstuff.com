@@ -58,7 +58,7 @@ npm start
 Set optional env vars:
 
 - `STATUS_UPSTREAM=http://192.168.1.61:9109/status` — live M900 telemetry source.
-- `BIRDNET_UPSTREAM=http://192.168.1.110:8080` — BirdNET-Go base URL for the live `/birds/` summary and detection stream. The Compose deployment exposes this as an editable Coolify environment variable.
+- `BIRDNET_UPSTREAM=http://192.168.1.91` — BirdNET-Go base URL for the live `/birds/` summary and detection stream. The Compose deployment exposes this as an editable Coolify environment variable.
 - `GA_MEASUREMENT_ID=G-XXXXXXXXXX` — enables Google Analytics 4 via `/analytics.js`.
 
 The public bird routes are deliberately narrow: `/api/birds` exposes only aggregated species counts and artwork metadata, while `/api/birds/stream` rewrites BirdNET-Go events to species, confidence, and detection time. It never forwards microphone names, source IDs, clip names, internal URLs, or audio paths.

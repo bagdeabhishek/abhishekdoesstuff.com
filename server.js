@@ -6,7 +6,7 @@ const birdArt = require("./data/bird-art.json");
 
 const PORT = Number(process.env.PORT || 3000);
 const STATUS_UPSTREAM = process.env.STATUS_UPSTREAM || "http://192.168.1.61:9109/status";
-const BIRDNET_UPSTREAM = process.env.BIRDNET_UPSTREAM || "http://192.168.1.110:8080";
+const BIRDNET_UPSTREAM = process.env.BIRDNET_UPSTREAM || "http://192.168.1.91";
 const GA_MEASUREMENT_ID = process.env.GA_MEASUREMENT_ID || process.env.GOOGLE_ANALYTICS_ID || "";
 const ROOT = __dirname;
 const STATUS_TIMEOUT_MS = 3000;

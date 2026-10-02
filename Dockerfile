@@ -4,7 +4,7 @@ WORKDIR /app
 ENV NODE_ENV=production
 ENV PORT=3000
 ENV STATUS_UPSTREAM=http://192.168.1.61:9109/status
-ENV BIRDNET_UPSTREAM=http://192.168.1.110:8080
+ENV BIRDNET_UPSTREAM=http://192.168.1.91
 
 COPY package.json package-lock.json ./
 RUN npm ci --omit=dev
