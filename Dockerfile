@@ -8,10 +8,11 @@ ENV BIRDNET_UPSTREAM=http://192.168.1.91
 
 COPY package.json package-lock.json ./
 RUN npm ci --omit=dev
-COPY index.html styles.css status.js birds.css birds.js server.js musings.js robots.txt sitemap.xml humans.txt og.png og.svg logo.jpg logo-transparent.png logo-512.webp favicon.ico favicon-48.png favicon-192.png apple-touch-icon.png ./
+COPY index.html styles.css character-article.css status.js birds.css birds.js server.js musings.js robots.txt sitemap.xml humans.txt og.png og.svg logo.jpg logo-transparent.png logo-512.webp favicon.ico favicon-48.png favicon-192.png apple-touch-icon.png ./
 COPY assets ./assets
 COPY birds ./birds
 COPY debabufy ./debabufy
+COPY movie-character-llm-experiment ./movie-character-llm-experiment
 COPY data ./data
 COPY notes ./notes
 COPY content ./content

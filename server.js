@@ -33,6 +33,15 @@ const PUBLIC_FILES = new Map([
   ["/birds/index.html", { file: path.join("birds", "index.html"), cache: CACHE.document }],
   ["/birds.css", { file: "birds.css", cache: CACHE.document }],
   ["/birds.js", { file: "birds.js", cache: CACHE.asset }],
+  [
+    "/movie-character-llm-experiment/",
+    { file: path.join("movie-character-llm-experiment", "index.html"), cache: CACHE.document },
+  ],
+  [
+    "/movie-character-llm-experiment/index.html",
+    { file: path.join("movie-character-llm-experiment", "index.html"), cache: CACHE.document },
+  ],
+  ["/character-article.css", { file: "character-article.css", cache: CACHE.document }],
   ["/debabufy", { file: path.join("debabufy", "index.html"), cache: CACHE.document }],
   ["/debabufy/", { file: path.join("debabufy", "index.html"), cache: CACHE.document }],
   ["/debabufy/index.html", { file: path.join("debabufy", "index.html"), cache: CACHE.document }],
@@ -772,6 +781,10 @@ const server = http.createServer((req, res) => {
   }
   if (pathname === "/birds") {
     send(req, res, 301, { location: "/birds/", "cache-control": CACHE.metadata });
+    return;
+  }
+  if (pathname === "/movie-character-llm-experiment") {
+    send(req, res, 301, { location: "/movie-character-llm-experiment/", "cache-control": CACHE.metadata });
     return;
   }
   if (/^\/musings\/[^/]+$/.test(pathname)) {
