@@ -53,11 +53,22 @@ async function refreshStatus() {
   }
 }
 
-refreshStatus();
-setInterval(refreshStatus, 60000);
+if ($("metric-updated")) {
+  refreshStatus();
+  setInterval(refreshStatus, 60000);
+}
 
 // Progressive homepage navigation; the directory also works without JavaScript.
 (() => {
+  const contentsMenus = [...document.querySelectorAll("[data-contents]")];
+  if (contentsMenus.length) {
+    const compactContents = matchMedia("(max-width: 980px)");
+    const updateContents = () => {
+      for (const contents of contentsMenus) contents.open = !compactContents.matches;
+    };
+    compactContents.addEventListener("change", updateContents);
+    updateContents();
+  }
   const menu = document.querySelector("[data-nav-menu]");
   if (!menu) return;
   const summary = menu.querySelector("summary");
@@ -83,6 +94,7 @@ setInterval(refreshStatus, 60000);
     }
   });
 
+  if (document.body.classList.contains("subpage")) return;
   const links = [...document.querySelectorAll("[data-section-link]")];
   const sections = ["top", "builds", "listening", "field-notes", "writing"]
     .map((id) => document.getElementById(id)).filter(Boolean);

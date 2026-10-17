@@ -3,199 +3,755 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Can an LLM Sound Like a Movie Character Without Getting Dumber? — Abhishek Does Stuff</title>
-    <meta name="description" content="How I turned Mirzapur dialogue evidence into portable LLM character renderers while protecting the model's reasoning, accuracy, safety, and output format." />
+    <title>
+      Can an LLM Sound Like a Movie Character Without Getting Dumber? — Abhishek
+      Does Stuff
+    </title>
+    <meta
+      name="description"
+      content="How I turned Mirzapur dialogue evidence into portable LLM character renderers while protecting the model's reasoning, accuracy, safety, and output format."
+    />
     <meta name="author" content="Abhishek Bagade" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta name="theme-color" content="#0d1422" />
-    <link rel="canonical" href="https://abhishekdoesstuff.com/movie-character-llm-experiment/" />
+    <meta name="theme-color" content="#f5f3ea" />
+    <link
+      rel="canonical"
+      href="https://abhishekdoesstuff.com/movie-character-llm-experiment/"
+    />
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta property="og:type" content="article" />
     <meta property="og:locale" content="en_IN" />
     <meta property="og:site_name" content="Abhishek Does Stuff" />
-    <meta property="og:title" content="Can an LLM Sound Like a Movie Character Without Getting Dumber?" />
-    <meta property="og:description" content="From diarized Mirzapur audio to linguistic fingerprints, capability locks, and a live three-character test." />
-    <meta property="og:url" content="https://abhishekdoesstuff.com/movie-character-llm-experiment/" />
+    <meta
+      property="og:title"
+      content="Can an LLM Sound Like a Movie Character Without Getting Dumber?"
+    />
+    <meta
+      property="og:description"
+      content="From diarized Mirzapur audio to linguistic fingerprints, capability locks, and a live three-character test."
+    />
+    <meta
+      property="og:url"
+      content="https://abhishekdoesstuff.com/movie-character-llm-experiment/"
+    />
     <meta property="og:image" content="https://abhishekdoesstuff.com/og.png" />
-    <meta property="article:published_time" content="2026-10-11T18:30:00+05:30" />
+    <meta
+      property="article:published_time"
+      content="2026-10-11T18:30:00+05:30"
+    />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Can an LLM Sound Like a Movie Character Without Getting Dumber?" />
-    <meta name="twitter:description" content="An experiment in adding recognizable character voice without damaging the intelligence underneath." />
+    <meta
+      name="twitter:title"
+      content="Can an LLM Sound Like a Movie Character Without Getting Dumber?"
+    />
+    <meta
+      name="twitter:description"
+      content="An experiment in adding recognizable character voice without damaging the intelligence underneath."
+    />
     <meta name="twitter:image" content="https://abhishekdoesstuff.com/og.png" />
     <script type="application/ld+json">
-      {"@context":"https://schema.org","@type":"Article","headline":"Can an LLM Sound Like a Movie Character Without Getting Dumber?","description":"How Abhishek Bagade turned Mirzapur dialogue evidence into portable, capability-preserving LLM character renderers.","url":"https://abhishekdoesstuff.com/movie-character-llm-experiment/","datePublished":"2026-10-11T18:30:00+05:30","dateModified":"2026-10-11T18:30:00+05:30","inLanguage":"en-IN","author":{"@type":"Person","@id":"https://abhishekdoesstuff.com/#abhishek-bagade","name":"Abhishek Bagade"},"isPartOf":{"@type":"WebSite","name":"Abhishek Does Stuff","url":"https://abhishekdoesstuff.com/"}}
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Can an LLM Sound Like a Movie Character Without Getting Dumber?",
+        "description": "How Abhishek Bagade turned Mirzapur dialogue evidence into portable, capability-preserving LLM character renderers.",
+        "url": "https://abhishekdoesstuff.com/movie-character-llm-experiment/",
+        "datePublished": "2026-10-11T18:30:00+05:30",
+        "dateModified": "2026-10-11T18:30:00+05:30",
+        "inLanguage": "en-IN",
+        "author": {
+          "@type": "Person",
+          "@id": "https://abhishekdoesstuff.com/#abhishek-bagade",
+          "name": "Abhishek Bagade"
+        },
+        "isPartOf": {
+          "@type": "WebSite",
+          "name": "Abhishek Does Stuff",
+          "url": "https://abhishekdoesstuff.com/"
+        }
+      }
     </script>
-    <link rel="stylesheet" href="/styles.css?v=20260928-3" />
-    <link rel="stylesheet" href="/character-article.css?v=20261011-1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;600;650;700;750&family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css?v=20261017-4" />
+    <link rel="stylesheet" href="/character-article.css?v=20261017-4" />
   </head>
-  <body class="character-article">
+  <body class="character-article workbench subpage" id="page-top">
     <a class="skip-link" href="#main-content">Skip to article</a>
     <div class="page-grid" aria-hidden="true"></div>
     <header class="site-header">
-      <a class="brand" href="/" aria-label="Abhishek Does Stuff home"><span class="brand-badge" aria-hidden="true">A//</span><span class="brand-copy"><strong>Abhishek Does Stuff</strong><small>project workbench · Bengaluru</small></span></a>
-      <nav aria-label="Primary navigation"><a href="/#builds">builds</a><a href="/musings/">musings</a><a href="https://github.com/bagdeabhishek/bollywood-character-dialogues">source ↗</a></nav>
+      <a class="brand" href="/" aria-label="Abhishek Does Stuff home"
+        ><span class="brand-badge" aria-hidden="true">a.</span
+        ><span class="brand-copy"
+          ><strong>abhishek does stuff</strong
+          ><small>An independent workbench</small></span
+        ></a
+      >
+      <nav class="primary-links" aria-label="Primary navigation">
+        <a href="/#builds">Builds <span>06</span></a>
+        <a href="/#field-notes">Field notes</a>
+        <a href="/musings/">Musings</a>
+        <a href="/birds/">Birds</a>
+        <a href="/#lab">Lab</a>
+      </nav>
+      <details class="site-directory" data-nav-menu>
+        <summary>
+          Explore <span class="menu-cross" aria-hidden="true"></span>
+        </summary>
+        <nav class="directory-panel" aria-label="Site directory">
+          <div class="directory-group">
+            <p>The workbench</p>
+            <a href="/"><span>The workbench</span><small>Start here</small></a>
+            <a href="/#builds"
+              ><span>Selected builds</span><small>Six projects</small></a
+            >
+            <a href="/#field-notes"
+              ><span>Field notes</span><small>Made &amp; repaired</small></a
+            >
+            <a href="/#writing"
+              ><span>Research notes</span><small>Open questions</small></a
+            >
+            <a href="/#lab"
+              ><span>The homelab</span><small>Live vitals</small></a
+            >
+          </div>
+          <div class="directory-group">
+            <p>Other corners</p>
+            <a href="/musings/"
+              ><span>Musings</span><small>Research archive ↗</small></a
+            >
+            <a href="/birds/"
+              ><span>Listening Orrery</span><small>Live birdsong ↗</small></a
+            >
+            <a href="https://abagade.com/"
+              ><span>Long-form writing</span><small>abagade.com ↗</small></a
+            >
+            <a href="https://www.instagram.com/abhishek_does_stuff/"
+              ><span>Instagram</span><small>Builds &amp; bike hacks ↗</small></a
+            >
+            <a href="mailto:admin@abhishekdoesstuff.com"
+              ><span>Say hello</span><small>Send a note ↗</small></a
+            >
+          </div>
+        </nav>
+      </details>
     </header>
 
     <main id="main-content">
+      <p class="page-breadcrumb">
+        <a href="/">The workbench</a><span>/</span
+        ><span>Movie character LLMs</span>
+      </p>
       <article>
         <header class="character-article-shell character-hero">
           <div>
+            <a class="character-back" href="/musings/">← All musings</a>
             <p class="section-kicker">experiment 006 / language models</p>
-            <h1>Can an LLM sound like a movie character <em>without getting dumber?</em></h1>
-            <p class="character-hero-lede">I turned one season of <cite>Mirzapur</cite> into measurable linguistic fingerprints, then used them as an expression layer over a capable language model. The architecture worked. The characters did not all work equally well.</p>
-            <div class="character-hero-meta"><span>Abhishek Bagade</span><span>11 October 2026</span><span>experiment log</span></div>
+            <h1>
+              Can an LLM sound like a movie character
+              <em>without getting dumber?</em>
+            </h1>
+            <p class="character-hero-lede">
+              I turned one season of <cite>Mirzapur</cite> into measurable
+              linguistic fingerprints, then used them as an expression layer
+              over a capable language model. The architecture worked. The
+              characters did not all work equally well.
+            </p>
+            <div class="character-hero-meta">
+              <span>Abhishek Bagade</span><span>11 October 2026</span
+              ><span>experiment log</span>
+            </div>
           </div>
-          <aside class="character-thesis" aria-label="Core design principle"><p>The character layer owns expression. Not intelligence.</p></aside>
+          <aside class="character-thesis" aria-label="Core design principle">
+            <p>The character layer owns expression. Not intelligence.</p>
+          </aside>
         </header>
 
-        <section class="character-article-shell experiment-strip" aria-label="Experiment at a glance">
-          <div><strong>9</strong><span>season-one episodes processed</span></div>
+        <section
+          class="character-article-shell experiment-strip"
+          aria-label="Experiment at a glance"
+        >
+          <div>
+            <strong>9</strong><span>season-one episodes processed</span>
+          </div>
           <div><strong>3</strong><span>character renderers built</span></div>
-          <div><strong>569</strong><span>high-confidence dialogue cues</span></div>
+          <div>
+            <strong>569</strong><span>high-confidence dialogue cues</span>
+          </div>
           <div><strong>2</strong><span>Hindi scripts supported</span></div>
         </section>
 
         <div class="character-article-shell article-layout">
           <div class="character-prose">
-            <h2>The original idea</h2>
-            <p>The goal was not another general role-playing chatbot. It was narrower: could a normal, intelligent LLM answer an ordinary question in a way that makes an Indian viewer immediately think, “Yes, that sounds like the character”?</p>
-            <p>Character-agent research often begins with psychology—goals, memories, beliefs, motives, personality inventories, and consistency across long conversations. Those are useful when a character must sustain a story for hundreds of turns. They are not necessarily what creates the first ten seconds of recognition.</p>
-            <p>For someone who simply wants to feel as if they are talking to a familiar screen character, language arrives first: pronouns, forms of address, rhythm, sentence length, code-switching, interruptions, humour, rhetorical questions, and the way advice is framed. If those are wrong, a perfect psychological profile cannot rescue the illusion.</p>
-            <p>Our working instinct was that perhaps 90% of the “wow” factor could be achieved with much less than full academic character modelling—provided we measured the right surface and conversational signals.</p>
+            <h2 id="original-idea">The original idea</h2>
+            <p>
+              The goal was not another general role-playing chatbot. It was
+              narrower: could a normal, intelligent LLM answer an ordinary
+              question in a way that makes an Indian viewer immediately think,
+              “Yes, that sounds like the character”?
+            </p>
+            <p>
+              Character-agent research often begins with psychology—goals,
+              memories, beliefs, motives, personality inventories, and
+              consistency across long conversations. Those are useful when a
+              character must sustain a story for hundreds of turns. They are not
+              necessarily what creates the first ten seconds of recognition.
+            </p>
+            <p>
+              For someone who simply wants to feel as if they are talking to a
+              familiar screen character, language arrives first: pronouns, forms
+              of address, rhythm, sentence length, code-switching,
+              interruptions, humour, rhetorical questions, and the way advice is
+              framed. If those are wrong, a perfect psychological profile cannot
+              rescue the illusion.
+            </p>
+            <p>
+              Our working instinct was that perhaps 90% of the “wow” factor
+              could be achieved with much less than full academic character
+              modelling—provided we measured the right surface and
+              conversational signals.
+            </p>
 
-            <h2>The constraint that shaped everything</h2>
-            <p>I had one major concern: adding a character layer should not make the underlying model worse. If the base model can explain Class 12 physics, return exact JSON, write code, or give sensible emergency guidance, a fictional voice should not erase those abilities.</p>
-            <blockquote><p>The character layer must not own intelligence. It owns expression.</p></blockquote>
-            <p>The base model remains responsible for facts, reasoning, equations, numbers, units, code, citations, uncertainty, safety information, and the requested output format. The renderer may change diction, pronouns, cadence, humour, warmth, bluntness, and conversational pacing—but not the substance.</p>
-            <p>This matters because “think like the character” can contaminate domains where a fictional worldview adds no value. A character’s ideas about power, loyalty, or humiliation should not change the derivation of escape velocity.</p>
+            <h2 id="capability-boundary">
+              The constraint that shaped everything
+            </h2>
+            <p>
+              I had one major concern: adding a character layer should not make
+              the underlying model worse. If the base model can explain Class 12
+              physics, return exact JSON, write code, or give sensible emergency
+              guidance, a fictional voice should not erase those abilities.
+            </p>
+            <blockquote>
+              <p>
+                The character layer must not own intelligence. It owns
+                expression.
+              </p>
+            </blockquote>
+            <p>
+              The base model remains responsible for facts, reasoning,
+              equations, numbers, units, code, citations, uncertainty, safety
+              information, and the requested output format. The renderer may
+              change diction, pronouns, cadence, humour, warmth, bluntness, and
+              conversational pacing—but not the substance.
+            </p>
+            <p>
+              This matters because “think like the character” can contaminate
+              domains where a fictional worldview adds no value. A character’s
+              ideas about power, loyalty, or humiliation should not change the
+              derivation of escape velocity.
+            </p>
 
-            <h2>Solve first. Render second.</h2>
-            <p>The strongest version uses two independent calls. The first solves the problem without a persona and produces a structured content artifact. The second receives that artifact as data and changes only its delivery.</p>
-            <div class="architecture" aria-label="Capability-preserving response pipeline">
-              <div><span>01 / SOLVE</span><strong>Answer with the full base model</strong></div>
-              <div><span>02 / LOCK</span><strong>Protect facts, code, safety, and exact tokens</strong></div>
-              <div><span>03 / MODE</span><strong>Classify casual, technical, vulnerable, or high-stakes</strong></div>
-              <div><span>04 / RENDER</span><strong>Change expression, not content</strong></div>
-              <div><span>05 / VERIFY</span><strong>Check that locked content survived</strong></div>
+            <h2 id="response-pipeline">Solve first. Render second.</h2>
+            <p>
+              The strongest version uses two independent calls. The first solves
+              the problem without a persona and produces a structured content
+              artifact. The second receives that artifact as data and changes
+              only its delivery.
+            </p>
+            <div
+              class="architecture"
+              aria-label="Capability-preserving response pipeline"
+            >
+              <div>
+                <span>01 / SOLVE</span
+                ><strong>Answer with the full base model</strong>
+              </div>
+              <div>
+                <span>02 / LOCK</span
+                ><strong>Protect facts, code, safety, and exact tokens</strong>
+              </div>
+              <div>
+                <span>03 / MODE</span
+                ><strong
+                  >Classify casual, technical, vulnerable, or
+                  high-stakes</strong
+                >
+              </div>
+              <div>
+                <span>04 / RENDER</span
+                ><strong>Change expression, not content</strong>
+              </div>
+              <div>
+                <span>05 / VERIFY</span
+                ><strong>Check that locked content survived</strong>
+              </div>
             </div>
-            <p>Style strength changes with the task. Casual conversation can carry a strong voice. Technical explanations preserve terminology. Vulnerable discussions prioritize warmth. High-stakes guidance nearly removes the persona. Exact-format answers bypass the renderer completely.</p>
-            <p>If the user requests exact JSON, the system returns exact JSON. If the user reports chest pain and difficulty breathing, emergency guidance stays direct instead of becoming a performance.</p>
+            <p>
+              Style strength changes with the task. Casual conversation can
+              carry a strong voice. Technical explanations preserve terminology.
+              Vulnerable discussions prioritize warmth. High-stakes guidance
+              nearly removes the persona. Exact-format answers bypass the
+              renderer completely.
+            </p>
+            <p>
+              If the user requests exact JSON, the system returns exact JSON. If
+              the user reports chest pain and difficulty breathing, emergency
+              guidance stays direct instead of becoming a performance.
+            </p>
 
-            <h2>Evidence without publishing the screenplay</h2>
-            <p>We selected Kaleen Bhaiya, Guddu Bhaiya, and Munna Bhaiya from season one of <cite>Mirzapur</cite>. The private source consisted of locally available episodes 1–9, Hindi SDH/HI subtitles, and English subtitles used only for temporal matching.</p>
-            <p>The public repository contains no episode video, extracted audio, complete subtitles, or reconstructable transcript tables. It keeps aggregate measurements, synthetic examples, role contracts, evaluation fixtures, source hashes, and reproducible pipeline code.</p>
-            <p>The hard problem was not extracting text. It was deciding who said what. Many cues had no reliable speaker name, and scenes contained overlaps, noise, short utterances, and rapid speaker changes. Guessing aggressively would create a larger but contaminated corpus, so the pipeline preferred <code>Unknown</code> over a confident-looking error.</p>
+            <h2 id="evidence">Evidence without publishing the screenplay</h2>
+            <p>
+              We selected Kaleen Bhaiya, Guddu Bhaiya, and Munna Bhaiya from
+              season one of <cite>Mirzapur</cite>. The private source consisted
+              of locally available episodes 1–9, Hindi SDH/HI subtitles, and
+              English subtitles used only for temporal matching.
+            </p>
+            <p>
+              The public repository contains no episode video, extracted audio,
+              complete subtitles, or reconstructable transcript tables. It keeps
+              aggregate measurements, synthetic examples, role contracts,
+              evaluation fixtures, source hashes, and reproducible pipeline
+              code.
+            </p>
+            <p>
+              The hard problem was not extracting text. It was deciding who said
+              what. Many cues had no reliable speaker name, and scenes contained
+              overlaps, noise, short utterances, and rapid speaker changes.
+              Guessing aggressively would create a larger but contaminated
+              corpus, so the pipeline preferred <code>Unknown</code> over a
+              confident-looking error.
+            </p>
 
-            <h2>The diarization pipeline</h2>
-            <p>Audio was normalized to mono 16 kHz. <a href="https://huggingface.co/nvidia/Nemotron-3-Diarization">NVIDIA Nemotron-3-Diarization</a> handled scenes, while <a href="https://huggingface.co/speechbrain/spkrec-ecapa-voxceleb">SpeechBrain’s ECAPA model</a> produced speaker embeddings.</p>
+            <h2 id="diarization">The diarization pipeline</h2>
+            <p>
+              Audio was normalized to mono 16 kHz.
+              <a href="https://huggingface.co/nvidia/Nemotron-3-Diarization"
+                >NVIDIA Nemotron-3-Diarization</a
+              >
+              handled scenes, while
+              <a href="https://huggingface.co/speechbrain/spkrec-ecapa-voxceleb"
+                >SpeechBrain’s ECAPA model</a
+              >
+              produced speaker embeddings.
+            </p>
             <ol>
-              <li>Use Hindi SDH labels to identify high-confidence anchor clips.</li>
-              <li>Diarize audio within scenes and aggregate speaker embeddings.</li>
+              <li>
+                Use Hindi SDH labels to identify high-confidence anchor clips.
+              </li>
+              <li>
+                Diarize audio within scenes and aggregate speaker embeddings.
+              </li>
               <li>Build episode-balanced character centroids.</li>
-              <li>Assign a separate voice score to every candidate subtitle cue.</li>
-              <li>Reject weak alignment, overlaps, unsuitable clips, and ambiguous identities.</li>
-              <li>Run an additional three-way comparison to remove Kaleen/Guddu/Munna collisions.</li>
-              <li>Reconstruct accepted cues into utterances and calculate linguistic features.</li>
+              <li>
+                Assign a separate voice score to every candidate subtitle cue.
+              </li>
+              <li>
+                Reject weak alignment, overlaps, unsuitable clips, and ambiguous
+                identities.
+              </li>
+              <li>
+                Run an additional three-way comparison to remove
+                Kaleen/Guddu/Munna collisions.
+              </li>
+              <li>
+                Reconstruct accepted cues into utterances and calculate
+                linguistic features.
+              </li>
             </ol>
-            <table>
-              <thead><tr><th>Character</th><th>Verified cues</th><th>Utterances</th><th>Measured signal</th></tr></thead>
-              <tbody>
-                <tr><td><strong>Kaleen</strong></td><td>223</td><td>197</td><td>39:1 plural/singular self-reference; 19.8% questions</td></tr>
-                <tr><td><strong>Guddu</strong></td><td>178</td><td>159</td><td>No accepted singular self-reference; 23.9% questions</td></tr>
-                <tr><td><strong>Munna</strong></td><td>168</td><td>141</td><td>No accepted singular self-reference; 27.7% questions</td></tr>
-              </tbody>
-            </table>
-            <p>These numbers are evidence for a renderer. They are not a complete model of a person.</p>
-
-            <h2>From measurements to <code>roles.md</code></h2>
-            <p>Each package has two important files. <code>roles.md</code> contains the portable contract: identity boundaries, capability preservation, Roman/Devanagari routing, evidence-backed tendencies, emotional switching, and prohibited failure modes.</p>
-            <p><code>runtime-prompt.md</code> is a smaller, higher-priority live-chat layer. Its job is to sharpen contrast and stop the model from drifting toward one generic Hinglish voice.</p>
-            <p>The default script router mirrors the user: Devanagari input produces Devanagari Hindi; Roman Hindi or English produces Roman Hindi. Code, equations, URLs, filenames, model names, and exact identifiers are never transliterated.</p>
-            <p>We deliberately avoided a catchphrase bank. Repeating famous dialogue would create quick recognition, but it would be brittle, potentially copyright-sensitive, and scientifically uninteresting. The aim was a linguistic operating pattern, not screenplay retrieval.</p>
-
-            <h2>The first failure: generic Hinglish tough guy</h2>
-            <p>The early versions were recognizable as a category, not as individuals. They sounded like broadly assertive North Indian men: short sentences, a few dialect markers, some teasing, and occasional threat-shaped metaphors. The names differed; the voice did not differ enough.</p>
-            <p>A profile can correctly say that a character uses plural self-reference, asks many rhetorical questions, and speaks directly while still producing generic dialogue.</p>
-            <blockquote><p>Frequency is not placement.</p></blockquote>
-            <p>Two characters may share a feature but use it for different social purposes. A rhetorical question can establish authority, seek reassurance, provoke conflict, or mock someone. A global “Hinglish ratio” says little about which concepts stay in English or when emotion pushes speech toward Hindi.</p>
-            <p>We added contrastive rules: characteristic opening moves, the social function of humour, attitudes toward status, the shape of escalation, how advice is organized, and which polished phrases should be avoided.</p>
-
-            <h2>The live-chat test</h2>
-            <p>We eventually stopped staring at validation files and opened three clean ChatGPT conversations. Each loaded its package directly from public GitHub URLs. No local Python environment was involved, so this also tested audience distribution.</p>
-            <p>All three received the same prompt:</p>
-            <blockquote><p>Kal client demo hai. Core feature chal raha hai, UI aadhi polished hai, aur team button colors par behas kar rahi hai. Tum kya karoge? Roman Hindi mein jawab do.</p></blockquote>
-            <p>All three gave competent advice: freeze scope, focus on the core flow, rehearse, prepare a backup, and be honest about unfinished work. The renderer did not destroy problem-solving ability. The stylistic separation, however, was uneven.</p>
-            <div class="result-grid" aria-label="Live character comparison">
-              <article class="result-card"><span>STRONGEST SEPARATION</span><strong>Kaleen · 7/10</strong><p>Calm authority, plural self-reference, trust and responsibility, and measured aphoristic framing. Still slightly too organized.</p></article>
-              <article class="result-card"><span>VISIBLE ENERGY</span><strong>Munna · 6/10</strong><p>Mockery, impatience, status play, and a showy closing line. Also a polished startup manager wearing swagger.</p></article>
-              <article class="result-card"><span>WEAKEST SEPARATION</span><strong>Guddu · 4/10</strong><p>Direct and practical, but mostly a generic blunt Hinglish team lead.</p></article>
+            <div
+              class="character-table-scroll"
+              role="region"
+              aria-label="Verified character dialogue measurements"
+              tabindex="0"
+            >
+              <table>
+                <caption>
+                  Accepted dialogue evidence, by character
+                </caption>
+                <thead>
+                  <tr>
+                    <th>Character</th>
+                    <th>Verified cues</th>
+                    <th>Utterances</th>
+                    <th>Measured signal</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Kaleen</strong></td>
+                    <td>223</td>
+                    <td>197</td>
+                    <td>
+                      39:1 plural/singular self-reference; 19.8% questions
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Guddu</strong></td>
+                    <td>178</td>
+                    <td>159</td>
+                    <td>
+                      No accepted singular self-reference; 23.9% questions
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Munna</strong></td>
+                    <td>168</td>
+                    <td>141</td>
+                    <td>
+                      No accepted singular self-reference; 27.7% questions
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
-            <p>These are not scientific benchmark scores. They are an honest first-pass judgement from the live outputs.</p>
+            <p>
+              These numbers are evidence for a renderer. They are not a complete
+              model of a person.
+            </p>
 
-            <h2>Maybe it is partly the character</h2>
-            <p>The interesting explanation is not simply “the Guddu prompt needs more work.” Some screen characters may have a larger <strong>text-addressable signature</strong> than others.</p>
-            <p>Part of identity lives in words and syntax. Other parts live in vocal texture, timing, pauses, facial reaction, body language, relationships, scene stakes, and accumulated emotional history.</p>
-            <p>Kaleen’s measured authority transfers into text comparatively well. Munna’s volatility and mockery leave a visible trace, although a helpful model polishes them into management advice. Guddu may be harder to recognize in decontextualized helpful answers because much of what makes him Guddu is embodied performance and situational pressure—not a reusable verbal ornament.</p>
-            <p>We could force stronger slang, aggression, or dialect into every answer. That might improve instant recognition, but it could also become caricature. More obvious is not automatically more faithful.</p>
+            <h2 id="character-packages">
+              From measurements to <code>roles.md</code>
+            </h2>
+            <p>
+              Each package has two important files.
+              <code>roles.md</code> contains the portable contract: identity
+              boundaries, capability preservation, Roman/Devanagari routing,
+              evidence-backed tendencies, emotional switching, and prohibited
+              failure modes.
+            </p>
+            <p>
+              <code>runtime-prompt.md</code> is a smaller, higher-priority
+              live-chat layer. Its job is to sharpen contrast and stop the model
+              from drifting toward one generic Hinglish voice.
+            </p>
+            <p>
+              The default script router mirrors the user: Devanagari input
+              produces Devanagari Hindi; Roman Hindi or English produces Roman
+              Hindi. Code, equations, URLs, filenames, model names, and exact
+              identifiers are never transliterated.
+            </p>
+            <p>
+              We deliberately avoided a catchphrase bank. Repeating famous
+              dialogue would create quick recognition, but it would be brittle,
+              potentially copyright-sensitive, and scientifically uninteresting.
+              The aim was a linguistic operating pattern, not screenplay
+              retrieval.
+            </p>
 
-            <h2>The prompt may also be part of the problem</h2>
-            <p>A software-demo question naturally pulls any capable model toward structured project-management advice. It is useful for checking whether the renderer damages competence, but it may be a poor test of character separation.</p>
-            <p>A domestic disagreement, status insult, loyalty conflict, or personal setback could expose stronger differences. The next useful experiment is not a thousand-prompt benchmark. It is a small blind comparison across three socially meaningful situations, with names removed before readers attribute the answers.</p>
+            <h2 id="first-failure">
+              The first failure: generic Hinglish tough guy
+            </h2>
+            <p>
+              The early versions were recognizable as a category, not as
+              individuals. They sounded like broadly assertive North Indian men:
+              short sentences, a few dialect markers, some teasing, and
+              occasional threat-shaped metaphors. The names differed; the voice
+              did not differ enough.
+            </p>
+            <p>
+              A profile can correctly say that a character uses plural
+              self-reference, asks many rhetorical questions, and speaks
+              directly while still producing generic dialogue.
+            </p>
+            <blockquote><p>Frequency is not placement.</p></blockquote>
+            <p>
+              Two characters may share a feature but use it for different social
+              purposes. A rhetorical question can establish authority, seek
+              reassurance, provoke conflict, or mock someone. A global “Hinglish
+              ratio” says little about which concepts stay in English or when
+              emotion pushes speech toward Hindi.
+            </p>
+            <p>
+              We added contrastive rules: characteristic opening moves, the
+              social function of humour, attitudes toward status, the shape of
+              escalation, how advice is organized, and which polished phrases
+              should be avoided.
+            </p>
 
-            <h2>What worked</h2>
+            <h2 id="live-chat-test">The live-chat test</h2>
+            <p>
+              We eventually stopped staring at validation files and opened three
+              clean ChatGPT conversations. Each loaded its package directly from
+              public GitHub URLs. No local Python environment was involved, so
+              this also tested audience distribution.
+            </p>
+            <p>All three received the same prompt:</p>
+            <blockquote>
+              <p>
+                Kal client demo hai. Core feature chal raha hai, UI aadhi
+                polished hai, aur team button colors par behas kar rahi hai. Tum
+                kya karoge? Roman Hindi mein jawab do.
+              </p>
+            </blockquote>
+            <p>
+              All three gave competent advice: freeze scope, focus on the core
+              flow, rehearse, prepare a backup, and be honest about unfinished
+              work. The renderer did not destroy problem-solving ability. The
+              stylistic separation, however, was uneven.
+            </p>
+            <div class="result-grid" aria-label="Live character comparison">
+              <article class="result-card">
+                <span>STRONGEST SEPARATION</span><strong>Kaleen · 7/10</strong>
+                <p>
+                  Calm authority, plural self-reference, trust and
+                  responsibility, and measured aphoristic framing. Still
+                  slightly too organized.
+                </p>
+              </article>
+              <article class="result-card">
+                <span>VISIBLE ENERGY</span><strong>Munna · 6/10</strong>
+                <p>
+                  Mockery, impatience, status play, and a showy closing line.
+                  Also a polished startup manager wearing swagger.
+                </p>
+              </article>
+              <article class="result-card">
+                <span>WEAKEST SEPARATION</span><strong>Guddu · 4/10</strong>
+                <p>
+                  Direct and practical, but mostly a generic blunt Hinglish team
+                  lead.
+                </p>
+              </article>
+            </div>
+            <p>
+              These are not scientific benchmark scores. They are an honest
+              first-pass judgement from the live outputs.
+            </p>
+
+            <h2 id="character-limits">Maybe it is partly the character</h2>
+            <p>
+              The interesting explanation is not simply “the Guddu prompt needs
+              more work.” Some screen characters may have a larger
+              <strong>text-addressable signature</strong> than others.
+            </p>
+            <p>
+              Part of identity lives in words and syntax. Other parts live in
+              vocal texture, timing, pauses, facial reaction, body language,
+              relationships, scene stakes, and accumulated emotional history.
+            </p>
+            <p>
+              Kaleen’s measured authority transfers into text comparatively
+              well. Munna’s volatility and mockery leave a visible trace,
+              although a helpful model polishes them into management advice.
+              Guddu may be harder to recognize in decontextualized helpful
+              answers because much of what makes him Guddu is embodied
+              performance and situational pressure—not a reusable verbal
+              ornament.
+            </p>
+            <p>
+              We could force stronger slang, aggression, or dialect into every
+              answer. That might improve instant recognition, but it could also
+              become caricature. More obvious is not automatically more
+              faithful.
+            </p>
+
+            <h2 id="prompt-limits">
+              The prompt may also be part of the problem
+            </h2>
+            <p>
+              A software-demo question naturally pulls any capable model toward
+              structured project-management advice. It is useful for checking
+              whether the renderer damages competence, but it may be a poor test
+              of character separation.
+            </p>
+            <p>
+              A domestic disagreement, status insult, loyalty conflict, or
+              personal setback could expose stronger differences. The next
+              useful experiment is not a thousand-prompt benchmark. It is a
+              small blind comparison across three socially meaningful
+              situations, with names removed before readers attribute the
+              answers.
+            </p>
+
+            <h2 id="what-worked">What worked</h2>
             <ul>
-              <li><strong>Expression versus intelligence:</strong> voice does not need to control reasoning.</li>
-              <li><strong>Corpus-derived constraints:</strong> measured pronouns, questions, address, and code-switching beat generic archetypes.</li>
-              <li><strong>Contrastive authoring:</strong> what a character avoids matters as much as what the character does.</li>
-              <li><strong>Two first-class Hindi scripts:</strong> Roman Hindi and Devanagari are explicit targets, not a vague Hinglish toggle.</li>
-              <li><strong>Plain Markdown distribution:</strong> fresh chats successfully loaded the public packages directly from GitHub.</li>
+              <li>
+                <strong>Expression versus intelligence:</strong> voice does not
+                need to control reasoning.
+              </li>
+              <li>
+                <strong>Corpus-derived constraints:</strong> measured pronouns,
+                questions, address, and code-switching beat generic archetypes.
+              </li>
+              <li>
+                <strong>Contrastive authoring:</strong> what a character avoids
+                matters as much as what the character does.
+              </li>
+              <li>
+                <strong>Two first-class Hindi scripts:</strong> Roman Hindi and
+                Devanagari are explicit targets, not a vague Hinglish toggle.
+              </li>
+              <li>
+                <strong>Plain Markdown distribution:</strong> fresh chats
+                successfully loaded the public packages directly from GitHub.
+              </li>
             </ul>
 
-            <h2>What did not work yet</h2>
+            <h2 id="what-did-not">What did not work yet</h2>
             <ul>
-              <li><strong>Measurements did not guarantee recognition.</strong> Correct aggregate features can still produce a bland average.</li>
-              <li><strong>Helpful-model polish leaked through.</strong> Neat bullets and professional frameworks overpowered conversational messiness.</li>
-              <li><strong>Guddu remained under-specified in text.</strong> Directness and plural self-reference were not enough.</li>
-              <li><strong>Portable is not yet one-click.</strong> An audience should not need to understand prompt loading order.</li>
+              <li>
+                <strong>Measurements did not guarantee recognition.</strong>
+                Correct aggregate features can still produce a bland average.
+              </li>
+              <li>
+                <strong>Helpful-model polish leaked through.</strong> Neat
+                bullets and professional frameworks overpowered conversational
+                messiness.
+              </li>
+              <li>
+                <strong>Guddu remained under-specified in text.</strong>
+                Directness and plural self-reference were not enough.
+              </li>
+              <li>
+                <strong>Portable is not yet one-click.</strong> An audience
+                should not need to understand prompt loading order.
+              </li>
             </ul>
 
-            <h2>Broader lessons</h2>
+            <h2 id="lessons">Broader lessons</h2>
             <ol>
-              <li><strong>Linguistic fingerprints create recognition, but conditionally.</strong> They depend on the addressee, emotional mode, and speech act.</li>
-              <li><strong>Capability preservation must be engineered.</strong> “Stay accurate while role-playing” is not a sufficient boundary.</li>
-              <li><strong>Anti-generic rules matter as much as positive traits.</strong> A trait list otherwise collapses into genre.</li>
-              <li><strong>More style is not always more fidelity.</strong> Exact JSON should stay exact; emergencies should stay direct.</li>
-              <li><strong>Text-only fidelity has a variable ceiling.</strong> The accessible portion of performance differs by character.</li>
-              <li><strong>Generation remains stochastic.</strong> The package changes probabilities; it does not guarantee a reproducible voice.</li>
+              <li>
+                <strong
+                  >Linguistic fingerprints create recognition, but
+                  conditionally.</strong
+                >
+                They depend on the addressee, emotional mode, and speech act.
+              </li>
+              <li>
+                <strong>Capability preservation must be engineered.</strong>
+                “Stay accurate while role-playing” is not a sufficient boundary.
+              </li>
+              <li>
+                <strong
+                  >Anti-generic rules matter as much as positive traits.</strong
+                >
+                A trait list otherwise collapses into genre.
+              </li>
+              <li>
+                <strong>More style is not always more fidelity.</strong> Exact
+                JSON should stay exact; emergencies should stay direct.
+              </li>
+              <li>
+                <strong>Text-only fidelity has a variable ceiling.</strong> The
+                accessible portion of performance differs by character.
+              </li>
+              <li>
+                <strong>Generation remains stochastic.</strong> The package
+                changes probabilities; it does not guarantee a reproducible
+                voice.
+              </li>
             </ol>
 
-            <h2>Where the project stands</h2>
-            <p>We did not prove that an LLM can perfectly become a movie character. We built a reproducible way to ask a more useful question:</p>
-            <blockquote><p>How much recognizable character can be added to an intelligent answer without damaging the answer itself?</p></blockquote>
-            <p>The early answer is: enough to be interesting, but not equally for everyone. Kaleen survived the trip from screen to linguistic renderer best. Munna arrived with energy but too much polish. Guddu exposed the limits of reducing embodied performance to text features.</p>
-            <p>That weaker result is not a failure to hide. It is evidence about where character identity actually lives—and about which parts of it a language model can carry.</p>
+            <h2 id="project-status">Where the project stands</h2>
+            <p>
+              We did not prove that an LLM can perfectly become a movie
+              character. We built a reproducible way to ask a more useful
+              question:
+            </p>
+            <blockquote>
+              <p>
+                How much recognizable character can be added to an intelligent
+                answer without damaging the answer itself?
+              </p>
+            </blockquote>
+            <p>
+              The early answer is: enough to be interesting, but not equally for
+              everyone. Kaleen survived the trip from screen to linguistic
+              renderer best. Munna arrived with energy but too much polish.
+              Guddu exposed the limits of reducing embodied performance to text
+              features.
+            </p>
+            <p>
+              That weaker result is not a failure to hide. It is evidence about
+              where character identity actually lives—and about which parts of
+              it a language model can carry.
+            </p>
 
             <section class="article-cta" aria-labelledby="source-title">
-              <p class="section-kicker">open experiment / reproducible pipeline</p>
+              <p class="section-kicker">
+                open experiment / reproducible pipeline
+              </p>
               <h2 id="source-title">Inspect the character packages.</h2>
-              <p>The repository contains the three renderers, aggregate profiles, provenance, capability locks, synthetic evaluation fixtures, and pipeline code. It contains no episode media or full transcripts.</p>
-              <div class="actions"><a class="button primary" href="https://github.com/bagdeabhishek/bollywood-character-dialogues">View source on GitHub</a><a class="button" href="https://github.com/bagdeabhishek/bollywood-character-dialogues/tree/main/roles/mirzapur-s01">Open the role packages</a></div>
+              <p>
+                The repository contains the three renderers, aggregate profiles,
+                provenance, capability locks, synthetic evaluation fixtures, and
+                pipeline code. It contains no episode media or full transcripts.
+              </p>
+              <div class="actions">
+                <a
+                  class="button primary"
+                  href="https://github.com/bagdeabhishek/bollywood-character-dialogues"
+                  >View source on GitHub</a
+                ><a
+                  class="button"
+                  href="https://github.com/bagdeabhishek/bollywood-character-dialogues/tree/main/roles/mirzapur-s01"
+                  >Open the role packages</a
+                >
+              </div>
             </section>
           </div>
 
           <aside class="article-rail" aria-label="Article details">
-            <section class="rail-card"><strong>Characters</strong><ul><li>Kaleen Bhaiya</li><li>Guddu Bhaiya</li><li>Munna Bhaiya</li></ul></section>
-            <section class="rail-card"><strong>Models</strong><p>Nemotron-3-Diarization<br />SpeechBrain ECAPA<br />capable host LLM</p></section>
-            <section class="rail-card"><strong>Language target</strong><p>Hindi in Roman script or Devanagari, selected from the user’s input.</p></section>
-            <section class="rail-card"><strong>Boundary</strong><p>Unofficial research simulations. No claim of endorsement, actor identity, or real character memory.</p></section>
+            <details class="article-contents" open>
+              <summary>Inside the experiment</summary>
+              <nav class="article-toc" aria-label="Article contents">
+                <a href="#original-idea"
+                  ><span>01</span> The idea &amp; constraint</a
+                >
+                <a href="#response-pipeline"
+                  ><span>02</span> Solve, then render</a
+                >
+                <a href="#evidence"><span>03</span> Building the evidence</a>
+                <a href="#first-failure"><span>04</span> The first failure</a>
+                <a href="#live-chat-test"><span>05</span> The live-chat test</a>
+                <a href="#lessons"><span>06</span> Lessons &amp; next steps</a>
+                <a href="#source-title"><span>↗</span> Source &amp; packages</a>
+              </nav>
+            </details>
+            <section class="rail-card">
+              <strong>Characters</strong>
+              <ul>
+                <li>Kaleen Bhaiya</li>
+                <li>Guddu Bhaiya</li>
+                <li>Munna Bhaiya</li>
+              </ul>
+            </section>
+            <section class="rail-card">
+              <strong>Models</strong>
+              <p>
+                Nemotron-3-Diarization<br />SpeechBrain ECAPA<br />capable host
+                LLM
+              </p>
+            </section>
+            <section class="rail-card">
+              <strong>Language target</strong>
+              <p>
+                Hindi in Roman script or Devanagari, selected from the user’s
+                input.
+              </p>
+            </section>
+            <section class="rail-card">
+              <strong>Boundary</strong>
+              <p>
+                Unofficial research simulations. No claim of endorsement, actor
+                identity, or real character memory.
+              </p>
+            </section>
           </aside>
         </div>
       </article>
     </main>
 
-    <footer><div><strong>Abhishek Bagade</strong><span>ML platforms · maker projects · Bengaluru</span></div><div class="footer-links"><a href="/">Home</a><a href="https://github.com/bagdeabhishek/bollywood-character-dialogues">GitHub</a><a href="mailto:admin@abhishekdoesstuff.com">Email</a></div></footer>
+    <footer>
+      <div>
+        <strong>Abhishek Bagade</strong
+        ><span>ML platforms · maker projects · Bengaluru</span>
+      </div>
+      <div class="footer-links">
+        <a href="/">Home</a
+        ><a
+          href="https://github.com/bagdeabhishek/bollywood-character-dialogues"
+          >GitHub</a
+        ><a href="mailto:admin@abhishekdoesstuff.com">Email</a>
+      </div>
+    </footer>
     <script src="/analytics.js" defer></script>
+    <script src="/status.js?v=20261017-4" defer></script>
   </body>
 </html>

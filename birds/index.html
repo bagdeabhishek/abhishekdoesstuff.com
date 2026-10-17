@@ -4,10 +4,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>The Listening Orrery — Birds Heard in Bengaluru</title>
-    <meta name="description" content="A live acoustic orrery: recurring birds heard from a Bengaluru home, arranged by microphone rarity and illustrated with historical natural-history plates." />
+    <meta
+      name="description"
+      content="A live acoustic orrery: recurring birds heard from a Bengaluru home, arranged by microphone rarity and illustrated with historical natural-history plates."
+    />
     <meta name="author" content="Abhishek Bagade" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta name="theme-color" content="#07110f" />
+    <meta name="theme-color" content="#f5f3ea" />
     <link rel="canonical" href="https://abhishekdoesstuff.com/birds/" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png" />
@@ -16,81 +19,191 @@
     <meta property="og:locale" content="en_IN" />
     <meta property="og:site_name" content="Abhishek Does Stuff" />
     <meta property="og:title" content="The Listening Orrery" />
-    <meta property="og:description" content="A live Bengaluru soundscape arranged as an orrery of historical bird plates. Rare voices occupy the outer dark—and more paper." />
+    <meta
+      property="og:description"
+      content="A live Bengaluru soundscape arranged as an orrery of historical bird plates. Familiar voices circle close; rare voices travel further—and get more paper."
+    />
     <meta property="og:url" content="https://abhishekdoesstuff.com/birds/" />
     <meta property="og:image" content="https://abhishekdoesstuff.com/og.png" />
     <meta name="twitter:card" content="summary_large_image" />
-    <link rel="stylesheet" href="/styles.css?v=20260713-6" />
-    <link rel="stylesheet" href="/birds.css?v=20260923-1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;600;650;700;750&family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css?v=20261017-4" />
+    <link rel="stylesheet" href="/birds.css?v=20261017-4" />
   </head>
-  <body class="birds-page">
+  <body class="workbench subpage birds-page" id="page-top">
     <a class="skip-link" href="#main-content">Skip to birds</a>
     <div class="page-grid" aria-hidden="true"></div>
 
     <header class="site-header">
-      <a class="brand" href="/" aria-label="Abhishek Does Stuff home">
-        <span class="brand-badge" aria-hidden="true">A//</span>
-        <span class="brand-copy">
-          <strong>Abhishek Does Stuff</strong>
-          <small>project workbench · Bengaluru</small>
-        </span>
-      </a>
-      <nav aria-label="Primary navigation">
-        <a href="/#builds">builds</a>
-        <a href="/musings/">musings</a>
-        <a href="/birds/" aria-current="page">birds</a>
-        <a href="/#field-notes">field notes</a>
-        <a href="https://abagade.com/">writing ↗</a>
+      <a class="brand" href="/" aria-label="Abhishek Does Stuff home"
+        ><span class="brand-badge" aria-hidden="true">a.</span
+        ><span class="brand-copy"
+          ><strong>abhishek does stuff</strong
+          ><small>An independent workbench</small></span
+        ></a
+      >
+      <nav class="primary-links" aria-label="Primary navigation">
+        <a href="/#builds">Builds <span>06</span></a>
+        <a href="/#field-notes">Field notes</a>
+        <a href="/musings/">Musings</a>
+        <a href="/birds/" aria-current="page">Birds</a>
+        <a href="/#lab">Lab</a>
       </nav>
+      <details class="site-directory" data-nav-menu>
+        <summary>
+          Explore <span class="menu-cross" aria-hidden="true"></span>
+        </summary>
+        <nav class="directory-panel" aria-label="Site directory">
+          <div class="directory-group">
+            <p>The workbench</p>
+            <a href="/"><span>The workbench</span><small>Start here</small></a>
+            <a href="/#builds"
+              ><span>Selected builds</span><small>Six projects</small></a
+            >
+            <a href="/#field-notes"
+              ><span>Field notes</span><small>Made &amp; repaired</small></a
+            >
+            <a href="/#writing"
+              ><span>Research notes</span><small>Open questions</small></a
+            >
+            <a href="/#lab"
+              ><span>The homelab</span><small>Live vitals</small></a
+            >
+          </div>
+          <div class="directory-group">
+            <p>Other corners</p>
+            <a href="/musings/"
+              ><span>Musings</span><small>Research archive ↗</small></a
+            >
+            <a href="/birds/" aria-current="page"
+              ><span>Listening Orrery</span><small>Live birdsong ↗</small></a
+            >
+            <a href="https://abagade.com/"
+              ><span>Long-form writing</span><small>abagade.com ↗</small></a
+            >
+            <a href="https://www.instagram.com/abhishek_does_stuff/"
+              ><span>Instagram</span><small>Builds &amp; bike hacks ↗</small></a
+            >
+            <a href="mailto:admin@abhishekdoesstuff.com"
+              ><span>Say hello</span><small>Send a note ↗</small></a
+            >
+          </div>
+        </nav>
+      </details>
     </header>
 
     <main id="main-content" class="birds-main">
+      <p class="page-breadcrumb">
+        <a href="/">The workbench</a><span>/</span><span>Listening Orrery</span>
+      </p>
       <section class="orrery-section" aria-labelledby="bird-title">
         <header class="orrery-intro">
           <div>
-            <p class="eyebrow"><span>live acoustic instrument</span><span>Bengaluru · 12.97° N</span></p>
+            <p class="eyebrow">
+              <span>live acoustic instrument</span
+              ><span>Bengaluru · 12.97° N</span>
+            </p>
             <h1 id="bird-title">The listening<br /><em>orrery.</em></h1>
           </div>
           <div class="orrery-prologue">
             <p>
-              A microphone listens from home. Naturalists from three centuries supply the pictures.
-              Familiar voices circle close; rare voices occupy the outer dark—and more paper.
+              A microphone listens from home. Naturalists from three centuries
+              supply the pictures. Familiar voices circle close; rare voices
+              travel further—and get more paper.
             </p>
-            <small>This is rarity to this microphone, not ecological rarity or conservation status.</small>
+            <small
+              >This is rarity to this microphone, not ecological rarity or
+              conservation status.</small
+            >
           </div>
         </header>
 
         <div class="instrument-readout" aria-label="Live listening status">
           <div class="readout-live">
-            <span class="stream-indicator"><i aria-hidden="true"></i><b id="stream-label">connecting</b></span>
+            <span class="stream-indicator"
+              ><i aria-hidden="true"></i
+              ><b id="stream-label">connecting</b></span
+            >
             <span>BirdNET · archive open</span>
           </div>
           <dl class="bird-metrics">
-            <div><dt>in orbit</dt><dd id="species-count">—</dd></div>
-            <div><dt>registrations</dt><dd id="detection-count">—</dd></div>
-            <div><dt>last heard</dt><dd id="last-heard">—</dd></div>
-            <div><dt>one-offs withheld</dt><dd id="filtered-count">—</dd></div>
+            <div>
+              <dt>in orbit</dt>
+              <dd id="species-count">—</dd>
+            </div>
+            <div>
+              <dt>registrations</dt>
+              <dd id="detection-count">—</dd>
+            </div>
+            <div>
+              <dt>last heard</dt>
+              <dd id="last-heard">—</dd>
+            </div>
+            <div>
+              <dt>one-offs withheld</dt>
+              <dd id="filtered-count">—</dd>
+            </div>
           </dl>
-          <p id="latest-detection" class="latest-detection" aria-live="polite">Waiting for the next call…</p>
+          <p id="latest-detection" class="latest-detection" aria-live="polite">
+            Waiting for the next call…
+          </p>
         </div>
 
-        <div id="bird-state" class="bird-state" role="status" aria-live="polite">
+        <div
+          id="bird-state"
+          class="bird-state"
+          role="status"
+          aria-live="polite"
+        >
           <span class="state-spinner" aria-hidden="true"></span>
           Calibrating the instrument…
         </div>
 
+        <p class="plate-invitation">
+          Open a plate to inspect the bird’s record, original artwork, and
+          source.
+        </p>
+
         <div class="orrery-shell" aria-describedby="orrery-caption">
           <svg class="orrery-rings" viewBox="0 0 1000 1000" aria-hidden="true">
             <circle class="orbit orbit-rare" cx="500" cy="500" r="420"></circle>
-            <circle class="orbit orbit-occasional" cx="500" cy="500" r="280"></circle>
-            <circle class="orbit orbit-familiar" cx="500" cy="500" r="155"></circle>
+            <circle
+              class="orbit orbit-occasional"
+              cx="500"
+              cy="500"
+              r="280"
+            ></circle>
+            <circle
+              class="orbit orbit-familiar"
+              cx="500"
+              cy="500"
+              r="155"
+            ></circle>
             <circle class="orbit-core" cx="500" cy="500" r="92"></circle>
-            <line id="detection-ray" class="detection-ray" x1="500" y1="500" x2="500" y2="500"></line>
+            <line
+              id="detection-ray"
+              class="detection-ray"
+              x1="500"
+              y1="500"
+              x2="500"
+              y2="500"
+            ></line>
           </svg>
 
-          <span class="orbit-label label-rare" aria-hidden="true">outer orbit · 2–5 heard</span>
-          <span class="orbit-label label-occasional" aria-hidden="true">middle orbit · 6–50</span>
-          <span class="orbit-label label-familiar" aria-hidden="true">daily chorus · 51+</span>
+          <span class="orbit-label label-rare" aria-hidden="true"
+            >outer orbit · 2–5 heard</span
+          >
+          <span class="orbit-label label-occasional" aria-hidden="true"
+            >middle orbit · 6–50</span
+          >
+          <span class="orbit-label label-familiar" aria-hidden="true"
+            >daily chorus · 51+</span
+          >
 
           <div class="orrery-core" aria-hidden="true">
             <span class="core-signal"><i></i><i></i><i></i></span>
@@ -99,13 +212,36 @@
             <span id="core-time">live from home</span>
           </div>
 
-          <div id="bird-wall" class="bird-orrery" aria-label="Recurring bird species arranged by microphone rarity" aria-busy="true"></div>
+          <div
+            id="bird-wall"
+            class="bird-orrery"
+            aria-label="Recurring bird species arranged by microphone rarity"
+            aria-busy="true"
+          ></div>
         </div>
 
         <div id="orrery-caption" class="orrery-key">
-          <p><b>Radius</b><span>Common voices stay near the microphone. Seldom-heard voices travel outward.</span></p>
-          <p><b>Plate size</b><span>Inverse logarithmic frequency: fewer registrations give a bird more paper.</span></p>
-          <p><b>Fresh ink</b><span>A live call draws a ray from the listening point to its historical plate.</span></p>
+          <p>
+            <b>Radius</b
+            ><span
+              >Common voices stay near the microphone. Seldom-heard voices
+              travel outward.</span
+            >
+          </p>
+          <p>
+            <b>Plate size</b
+            ><span
+              >Inverse logarithmic frequency: fewer registrations give a bird
+              more paper.</span
+            >
+          </p>
+          <p>
+            <b>Fresh ink</b
+            ><span
+              >A live call draws a ray from the listening point to its
+              historical plate.</span
+            >
+          </p>
         </div>
 
         <aside class="hearing-ledger" aria-labelledby="ledger-title">
@@ -114,7 +250,9 @@
             <h2 id="ledger-title">Fresh registrations</h2>
           </div>
           <ol id="recent-hearings">
-            <li class="ledger-empty">The next live detection will be registered here.</li>
+            <li class="ledger-empty">
+              The next live detection will be registered here.
+            </li>
           </ol>
         </aside>
       </section>
@@ -122,23 +260,53 @@
       <section class="instrument-notes" aria-labelledby="method-title">
         <header>
           <p class="section-kicker">instrument notes</p>
-          <h2 id="method-title">Natural history, rearranged by an electronic ear.</h2>
+          <h2 id="method-title">
+            Natural history, rearranged by an electronic ear.
+          </h2>
         </header>
         <div class="reading-notes">
-          <article><span>Ⅰ</span><h3>Calls become records</h3><p>BirdNET identifies calls at the microphone and sends new detections into the instrument as they happen.</p></article>
-          <article><span>Ⅱ</span><h3>Doubt stays outside</h3><p>A species enters an orbit only after its second detection. Single occurrences remain visible only as a withheld count.</p></article>
-          <article><span>Ⅲ</span><h3>Old plates meet new data</h3><p>Scientific names join the live archive to openly licensed natural-history art, with source and credit intact.</p></article>
+          <article>
+            <span>Ⅰ</span>
+            <h3>Calls become records</h3>
+            <p>
+              BirdNET identifies calls at the microphone and sends new
+              detections into the instrument as they happen.
+            </p>
+          </article>
+          <article>
+            <span>Ⅱ</span>
+            <h3>Doubt stays outside</h3>
+            <p>
+              A species enters an orbit only after its second detection. Single
+              occurrences remain visible only as a withheld count.
+            </p>
+          </article>
+          <article>
+            <span>Ⅲ</span>
+            <h3>Old plates meet new data</h3>
+            <p>
+              Scientific names join the live archive to openly licensed
+              natural-history art, with source and credit intact.
+            </p>
+          </article>
         </div>
         <p class="archive-note">
-          The plates come from open collections including Wikimedia Commons, the Biodiversity Heritage Library,
-          Naturalis, and the National Gallery of Art. One modern open illustration stands in for the Ashy Prinia:
-          its 1798–1805 British Library watercolor is catalogued, but not digitized.
+          The plates come from open collections including Wikimedia Commons, the
+          Biodiversity Heritage Library, Naturalis, and the National Gallery of
+          Art. One modern open illustration stands in for the Ashy Prinia: its
+          1798–1805 British Library watercolor is catalogued, but not digitized.
         </p>
       </section>
     </main>
 
     <dialog id="bird-dialog" class="bird-dialog" aria-labelledby="dialog-name">
-      <button class="dialog-close" type="button" aria-label="Close bird details">×</button>
+      <button
+        class="dialog-close"
+        type="button"
+        aria-label="Close bird details"
+      >
+        ×
+      </button>
       <div class="dialog-grid">
         <figure>
           <img id="dialog-image" alt="" />
@@ -148,33 +316,68 @@
           <h2 id="dialog-name"></h2>
           <p id="dialog-scientific" class="dialog-scientific"></p>
           <dl class="dialog-stats">
-            <div><dt>heard</dt><dd id="dialog-count"></dd></div>
-            <div><dt>first</dt><dd id="dialog-first"></dd></div>
-            <div><dt>latest</dt><dd id="dialog-last"></dd></div>
-            <div><dt>confidence</dt><dd id="dialog-confidence"></dd></div>
+            <div>
+              <dt>heard</dt>
+              <dd id="dialog-count"></dd>
+            </div>
+            <div>
+              <dt>first</dt>
+              <dd id="dialog-first"></dd>
+            </div>
+            <div>
+              <dt>latest</dt>
+              <dd id="dialog-last"></dd>
+            </div>
+            <div>
+              <dt>confidence</dt>
+              <dd id="dialog-confidence"></dd>
+            </div>
           </dl>
           <div class="art-credit">
             <span>artwork</span>
             <strong id="dialog-art"></strong>
             <p id="dialog-collection"></p>
             <p id="dialog-note"></p>
-            <a id="dialog-source" href="" target="_blank" rel="noreferrer">View source and licence ↗</a>
+            <a id="dialog-source" href="" target="_blank" rel="noreferrer"
+              >View source and licence ↗</a
+            >
           </div>
         </div>
       </div>
     </dialog>
 
-    <footer>
-      <div><strong>Abhishek Bagade</strong><span>ML platforms · maker projects · Bengaluru</span></div>
-      <div class="footer-links">
-        <a rel="me" href="https://github.com/bagdeabhishek">GitHub</a>
-        <a rel="me" href="https://www.instagram.com/abhishek_does_stuff/">Instagram</a>
-        <a rel="me" href="https://www.linkedin.com/in/bagdeabhishek/">LinkedIn</a>
-        <a href="mailto:admin@abhishekdoesstuff.com">Email</a>
+    <footer class="workshop-footer">
+      <div class="footer-main">
+        <div>
+          <p class="workshop-kicker">Something on your workbench?</p>
+          <a class="footer-hello" href="mailto:admin@abhishekdoesstuff.com"
+            >Let’s compare notes<span aria-hidden="true">↗</span></a
+          >
+        </div>
+        <div class="footer-links">
+          <a rel="me" href="https://github.com/bagdeabhishek">GitHub ↗</a
+          ><a rel="me" href="https://www.instagram.com/abhishek_does_stuff/"
+            >Instagram ↗</a
+          ><a rel="me" href="https://www.linkedin.com/in/bagdeabhishek/"
+            >LinkedIn ↗</a
+          ><a href="https://abagade.com/">Writing ↗</a>
+        </div>
+      </div>
+      <nav class="footer-directory" aria-label="Footer navigation">
+        <a href="/#builds">Builds</a><a href="/#field-notes">Field notes</a
+        ><a href="/musings/">Musings</a><a href="/birds/">Birds</a
+        ><a href="/#lab">Lab</a
+        ><a href="mailto:admin@abhishekdoesstuff.com">Email ↗</a>
+      </nav>
+      <div class="footer-colophon">
+        <span>© Abhishek Bagade</span
+        ><span>An ongoing collection. Served from home.</span
+        ><a href="#page-top">Back to the top ↑</a>
       </div>
     </footer>
 
     <script src="/birds.js?v=20260923-1" defer></script>
     <script src="/analytics.js" defer></script>
+    <script src="/status.js?v=20261017-4" defer></script>
   </body>
 </html>

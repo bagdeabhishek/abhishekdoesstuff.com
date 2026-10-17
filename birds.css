@@ -1,123 +1,106 @@
+/* A naturalist's paper instrument; live data and orbit geometry remain in birds.js. */
 .birds-page {
-  --instrument: #07110f;
-  --instrument-soft: #0c1a17;
-  --instrument-line: rgba(219, 186, 116, 0.22);
-  --instrument-bright: rgba(219, 186, 116, 0.58);
-  --copper: #d59a58;
-  --vermilion: #d95d42;
-  --folio: #eee5d2;
-  --folio-deep: #d7c8aa;
-  --folio-ink: #29271f;
-  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
-  background:
-    radial-gradient(circle at 50% 20%, rgba(49, 107, 82, 0.16), transparent 37rem),
-    radial-gradient(circle at 10% 8%, rgba(213, 154, 88, 0.08), transparent 27rem),
-    linear-gradient(180deg, #0b1515 0%, #07100f 55%, #09100f 100%);
+  --instrument: #f5f3ea;
+  --instrument-soft: #eeece2;
+  --instrument-line: #ccd0c2;
+  --instrument-bright: #929f89;
+  --copper: #284b3c;
+  --vermilion: #ad3c27;
+  --folio: #faf5e8;
+  --folio-deep: #e8e1cd;
+  --folio-ink: #262b25;
+  --serif: Georgia, "Times New Roman", serif;
+  color: var(--ink, #262b25);
+  background: var(--sheet, #f5f3ea);
 }
 
-.birds-page .page-grid {
-  opacity: 0.35;
-  background-size: 64px 64px;
-  mask-image: radial-gradient(circle at 50% 23%, black, transparent 72%);
-}
+.birds-page .page-grid { display: none; }
 
-.birds-page .site-header {
-  background: rgba(7, 17, 15, 0.9);
-}
-
-.birds-page .site-header::before {
-  background: rgba(7, 17, 15, 0.9);
-}
-
-.site-header nav a[aria-current="page"] {
-  color: var(--copper);
-}
-
-.site-header nav a[aria-current="page"]::before {
-  content: "◉ ";
-  color: var(--green);
-}
-
-.birds-main {
-  width: min(1480px, calc(100% - 48px));
+.birds-page .birds-main {
+  width: min(1280px, calc(100% - 104px));
   padding-bottom: 110px;
 }
 
-.orrery-section {
+.birds-page .orrery-section {
   padding: clamp(54px, 7vw, 92px) 0 104px;
 }
 
-.orrery-intro {
+.birds-page .orrery-intro {
   display: grid;
   grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.8fr);
   align-items: end;
   gap: clamp(40px, 8vw, 120px);
   padding-bottom: 42px;
-  border-bottom: 1px solid var(--instrument-line);
+  border-bottom: 1px solid var(--ink, #262b25);
 }
 
-.orrery-intro .eyebrow {
+.birds-page .orrery-intro .eyebrow {
   display: flex;
   align-items: center;
-  gap: 14px;
-  margin-bottom: 22px;
+  flex-wrap: wrap;
+  gap: 12px 20px;
+  margin-bottom: 26px;
   color: var(--copper);
-  font: 700 10px/1 var(--mono);
-  letter-spacing: 0.13em;
+  font: 400 10px/1.6 var(--mono);
+  letter-spacing: 0.06em;
   text-transform: uppercase;
 }
 
-.orrery-intro .eyebrow span + span {
-  color: var(--muted);
+.birds-page .orrery-intro .eyebrow span + span {
+  color: var(--subtle, #62675c);
 }
 
-.orrery-intro .eyebrow span + span::before {
-  content: "—";
-  margin-right: 14px;
-  color: var(--instrument-bright);
+.birds-page .orrery-intro .eyebrow span + span::before {
+  content: "/";
+  margin-right: 20px;
+  color: var(--vermilion);
 }
 
-.orrery-intro h1 {
+.birds-page .orrery-intro h1 {
   max-width: 900px;
   margin: 0;
-  font: 400 clamp(68px, 10vw, 148px)/0.72 var(--serif);
-  letter-spacing: -0.075em;
+  font: 500 clamp(66px, 7.9vw, 112px)/.99 var(--display, sans-serif);
+  letter-spacing: -0.065em;
 }
 
-.orrery-intro h1 em {
-  color: var(--folio);
+.birds-page .orrery-intro h1 em {
+  color: var(--moss, #284b3c);
+  font-family: var(--serif);
   font-weight: 400;
+  letter-spacing: -0.06em;
 }
 
-.orrery-prologue {
+.birds-page .orrery-prologue {
   padding: 0 0 8px 25px;
   border-left: 1px solid var(--instrument-bright);
 }
 
-.orrery-prologue p {
+.birds-page .orrery-prologue p {
   margin-bottom: 18px;
-  color: #e4e0d6;
+  color: var(--ink, #262b25);
   font: 400 clamp(18px, 2vw, 23px)/1.55 var(--serif);
 }
 
-.orrery-prologue small {
+.birds-page .orrery-prologue small {
   display: block;
   max-width: 470px;
-  color: var(--muted);
-  font: 10px/1.6 var(--mono);
+  color: var(--subtle, #62675c);
+  font: 11px/1.7 var(--mono);
 }
 
-.instrument-readout {
+.birds-page .instrument-readout {
   display: grid;
-  grid-template-columns: minmax(170px, 0.48fr) minmax(520px, 1.45fr) minmax(230px, 0.62fr);
+  grid-template-columns: 170px minmax(0, 1.5fr) minmax(210px, .75fr);
   align-items: stretch;
   margin: 28px 0 18px;
   border-top: 1px solid var(--instrument-line);
   border-bottom: 1px solid var(--instrument-line);
+  border-inline: 1px solid var(--instrument-line);
+  background: #eeeee3;
 }
 
-.readout-live,
-.latest-detection {
+.birds-page .readout-live,
+.birds-page .latest-detection {
   min-width: 0;
   display: flex;
   flex-direction: column;
@@ -125,46 +108,46 @@
   padding: 18px 20px;
 }
 
-.readout-live {
+.birds-page .readout-live {
   gap: 9px;
   border-right: 1px solid var(--instrument-line);
-  color: var(--muted);
+  color: var(--subtle, #62675c);
   font: 9px var(--mono);
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
-.stream-indicator {
+.birds-page .stream-indicator {
   display: flex;
   align-items: center;
   gap: 9px;
-  color: var(--green);
+  color: var(--moss, #284b3c);
 }
 
-.stream-indicator i {
+.birds-page .stream-indicator i {
   width: 7px;
   height: 7px;
   flex: none;
   background: currentColor;
   border-radius: 50%;
-  box-shadow: 0 0 0 5px rgba(117, 215, 168, 0.08);
+  box-shadow: 0 0 0 5px rgba(40, 75, 60, 0.08);
 }
 
-.stream-indicator.is-waiting {
-  color: var(--copper);
+.birds-page .stream-indicator.is-waiting {
+  color: #775d27;
 }
 
-.stream-indicator.is-offline {
-  color: var(--red);
+.birds-page .stream-indicator.is-offline {
+  color: var(--vermilion);
 }
 
-.bird-metrics {
+.birds-page .bird-metrics {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   margin: 0;
 }
 
-.bird-metrics div {
+.birds-page .bird-metrics div {
   min-width: 0;
   display: flex;
   flex-direction: column;
@@ -173,145 +156,153 @@
   border-right: 1px solid var(--instrument-line);
 }
 
-.bird-metrics dt {
-  overflow: hidden;
-  margin-bottom: 7px;
-  color: var(--muted);
-  font: 9px var(--mono);
-  letter-spacing: 0.05em;
-  text-overflow: ellipsis;
+.birds-page .bird-metrics dt {
+  margin-bottom: 10px;
+  color: var(--subtle, #62675c);
+  font: 9px/1.5 var(--mono);
+  letter-spacing: 0.025em;
   text-transform: uppercase;
-  white-space: nowrap;
 }
 
-.bird-metrics dd {
+.birds-page .bird-metrics dd {
   margin: 0;
-  color: var(--folio);
-  font: 400 clamp(20px, 2.4vw, 31px)/1 var(--serif);
+  color: var(--moss, #284b3c);
+  font: 500 clamp(18px, 2vw, 29px)/1.1 var(--display, sans-serif);
 }
 
-.latest-detection {
+.birds-page .latest-detection {
   min-height: 76px;
   margin: 0;
-  color: var(--blue);
-  font: 10px/1.6 var(--mono);
+  color: var(--moss, #284b3c);
+  font: 11px/1.75 var(--mono);
 }
 
-.bird-state {
+.birds-page .bird-state {
   display: flex;
   align-items: center;
   gap: 12px;
   min-height: 48px;
-  color: var(--muted);
-  font: 11px var(--mono);
+  color: var(--subtle, #62675c);
+  font: 12px/1.7 var(--mono);
 }
 
-.bird-state[hidden] {
+.birds-page .bird-state[hidden] {
   display: none;
 }
 
-.state-spinner {
+.birds-page .state-spinner {
+  flex: none;
   width: 15px;
   height: 15px;
   border: 1px solid var(--instrument-bright);
-  border-top-color: var(--green);
+  border-top-color: var(--moss, #284b3c);
   border-radius: 50%;
   animation: bird-spin 900ms linear infinite;
 }
 
-.bird-state.is-error {
+.birds-page .bird-state.is-error {
   margin: 28px 0;
   padding: 16px 18px;
-  color: #ffc1c4;
-  border: 1px solid rgba(239, 90, 97, 0.36);
+  color: var(--vermilion);
+  border: 1px solid rgba(173, 60, 39, 0.36);
+  border-left: 3px solid var(--vermilion);
+  background: #f2e8dc;
 }
 
-.bird-state.is-error .state-spinner {
+.birds-page .bird-state.is-error .state-spinner {
   display: none;
+}
+
+.birds-page .plate-invitation {
+  margin: 22px 0 12px;
+  color: var(--subtle, #62675c);
+  font: 11px/1.7 var(--mono);
 }
 
 @keyframes bird-spin {
   to { transform: rotate(360deg); }
 }
 
-.orrery-shell {
+.birds-page .orrery-shell {
   position: relative;
   isolation: isolate;
   width: min(100%, 1380px);
   aspect-ratio: 1;
   margin: 0 auto;
   background:
-    radial-gradient(circle at center, rgba(117, 215, 168, 0.06) 0 8%, transparent 8.2%),
-    radial-gradient(circle at center, rgba(213, 154, 88, 0.045), transparent 57%),
-    repeating-conic-gradient(from -0.5deg at center, rgba(219, 186, 116, 0.1) 0 1deg, transparent 1deg 15deg);
+    repeating-conic-gradient(from -0.5deg at center, rgba(40, 75, 60, 0.045) 0 1deg, transparent 1deg 15deg);
   border-radius: 50%;
 }
 
-.orrery-shell::before,
-.orrery-shell::after {
+.birds-page .orrery-shell:has(.bird-orrery[aria-busy="false"]:empty) {
+  width: min(100%, 650px);
+}
+
+.birds-page .orrery-shell::before,
+.birds-page .orrery-shell::after {
   content: "";
   position: absolute;
   z-index: 0;
   pointer-events: none;
 }
 
-.orrery-shell::before {
+.birds-page .orrery-shell::before {
   inset: 2.5%;
-  border: 1px solid rgba(219, 186, 116, 0.08);
+  border: 1px solid rgba(40, 75, 60, 0.08);
   border-radius: 50%;
 }
 
-.orrery-shell::after {
+.birds-page .orrery-shell::after {
   top: 50%;
   left: 2.5%;
   right: 2.5%;
   height: 1px;
-  background: rgba(219, 186, 116, 0.07);
+  background: rgba(40, 75, 60, 0.07);
 }
 
-.orrery-rings,
-.bird-orrery {
+.birds-page .orrery-rings,
+.birds-page .bird-orrery {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
 }
 
-.orrery-rings {
+.birds-page .orrery-rings {
   z-index: 1;
   overflow: visible;
 }
 
-.orbit,
-.orbit-core {
+.birds-page .orbit,
+.birds-page .orbit-core {
   fill: none;
   vector-effect: non-scaling-stroke;
 }
 
-.orbit {
-  stroke: rgba(219, 186, 116, 0.28);
+.birds-page .orbit {
+  stroke: #8e9d83;
   stroke-width: 1;
 }
 
-.orbit-rare {
+.birds-page .orbit-rare {
   stroke-dasharray: 2 7;
 }
 
-.orbit-occasional {
+.birds-page .orbit-occasional {
   stroke-dasharray: 18 5 2 5;
   stroke-opacity: 0.78;
 }
 
-.orbit-familiar {
-  stroke: rgba(117, 215, 168, 0.34);
+.birds-page .orbit-familiar {
+  stroke: #68876c;
 }
 
-.orbit-core {
-  stroke: rgba(117, 215, 168, 0.46);
+.birds-page .orbit-core {
+  stroke: rgba(40, 75, 60, 0.46);
   stroke-width: 1.5;
 }
 
-.detection-ray {
+.birds-page .detection-ray {
   opacity: 0;
   stroke: var(--vermilion);
   stroke-width: 2;
@@ -319,7 +310,7 @@
   vector-effect: non-scaling-stroke;
 }
 
-.detection-ray.is-active {
+.birds-page .detection-ray.is-active {
   animation: register-ray 2.8s ease both;
 }
 
@@ -329,23 +320,23 @@
   100% { opacity: 0; stroke-dashoffset: 0; }
 }
 
-.orbit-label {
+.birds-page .orbit-label {
   position: absolute;
   z-index: 2;
   padding: 5px 8px;
-  color: rgba(219, 205, 176, 0.7);
-  background: rgba(7, 17, 15, 0.9);
+  color: var(--subtle, #62675c);
+  background: rgba(245, 243, 234, 0.97);
   font: 8px var(--mono);
   letter-spacing: 0.09em;
   text-transform: uppercase;
   pointer-events: none;
 }
 
-.label-rare { top: 12.2%; left: 12%; }
-.label-occasional { top: 31%; right: 15%; }
-.label-familiar { top: 39.5%; left: 39%; }
+.birds-page .label-rare { top: 12.2%; left: 12%; }
+.birds-page .label-occasional { top: 31%; right: 15%; }
+.birds-page .label-familiar { top: 39.5%; left: 39%; }
 
-.orrery-core {
+.birds-page .orrery-core {
   position: absolute;
   z-index: 6;
   top: 50%;
@@ -357,18 +348,16 @@
   justify-content: center;
   flex-direction: column;
   padding: 2.2%;
-  color: var(--folio);
-  background:
-    radial-gradient(circle at 42% 34%, rgba(117, 215, 168, 0.14), transparent 48%),
-    rgba(7, 17, 15, 0.96);
-  border: 1px solid rgba(117, 215, 168, 0.4);
+  color: var(--ink, #262b25);
+  background: #e3e8dc;
+  border: 1px solid rgba(40, 75, 60, 0.4);
   border-radius: 50%;
-  box-shadow: 0 0 0 8px rgba(117, 215, 168, 0.025), 0 0 60px rgba(117, 215, 168, 0.08);
+  box-shadow: 0 0 0 7px var(--sheet, #f5f3ea);
   text-align: center;
   transform: translate(-50%, -50%);
 }
 
-.core-signal {
+.birds-page .core-signal {
   display: flex;
   align-items: flex-end;
   gap: 3px;
@@ -376,20 +365,20 @@
   margin-bottom: 9px;
 }
 
-.core-signal i {
+.birds-page .core-signal i {
   width: 2px;
   height: 7px;
   display: block;
-  background: var(--green);
+  background: var(--moss, #284b3c);
   animation: signal-breathe 1.8s ease-in-out infinite alternate;
 }
 
-.core-signal i:nth-child(2) {
+.birds-page .core-signal i:nth-child(2) {
   height: 14px;
   animation-delay: -0.7s;
 }
 
-.core-signal i:nth-child(3) {
+.birds-page .core-signal i:nth-child(3) {
   height: 10px;
   animation-delay: -1.2s;
 }
@@ -399,15 +388,15 @@
   to { opacity: 1; transform: scaleY(1); }
 }
 
-.orrery-core small,
-.orrery-core span:last-child {
-  color: var(--muted);
+.birds-page .orrery-core small,
+.birds-page .orrery-core span:last-child {
+  color: var(--subtle, #62675c);
   font: 7px/1.35 var(--mono);
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
-.orrery-core strong {
+.birds-page .orrery-core strong {
   max-width: 100%;
   display: block;
   margin: 7px 0 6px;
@@ -416,11 +405,11 @@
   text-overflow: ellipsis;
 }
 
-.bird-orrery {
+.birds-page .bird-orrery {
   z-index: 4;
 }
 
-.bird-card {
+.birds-page .bird-card {
   position: absolute;
   top: var(--bird-y);
   left: var(--bird-x);
@@ -428,50 +417,52 @@
   width: var(--bird-size);
   margin: 0;
   padding: 0;
-  color: var(--folio);
+  color: var(--ink, #262b25);
   background: transparent;
   border: 0;
+  border-radius: 0;
   font-family: var(--sans);
   text-align: left;
   cursor: pointer;
   transform: translate(-50%, -50%);
 }
 
-.bird-card:hover,
-.bird-card:focus-visible,
-.bird-card.is-new {
+.birds-page .bird-card:hover,
+.birds-page .bird-card:focus-visible,
+.birds-page .bird-card.is-new {
   z-index: 30;
 }
 
-.bird-card-frame {
+.birds-page .bird-card:focus-visible {
+  outline: 2px solid var(--vermilion);
+  outline-offset: 6px;
+}
+
+.birds-page .bird-card-frame {
   position: relative;
   display: block;
-  filter: saturate(0.92) contrast(1.02);
   transform: rotate(var(--bird-tilt));
   transform-origin: 50% 72%;
   transition: filter 220ms ease, transform 260ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.bird-card:hover .bird-card-frame,
-.bird-card:focus-visible .bird-card-frame {
-  filter: saturate(1.05) contrast(1.02);
+.birds-page .bird-card:hover .bird-card-frame,
+.birds-page .bird-card:focus-visible .bird-card-frame {
   transform: rotate(0deg) scale(1.09);
 }
 
-.bird-plate {
+.birds-page .bird-plate {
   position: relative;
   aspect-ratio: 1 / 0.78;
   display: grid;
   place-items: center;
   overflow: hidden;
-  background:
-    linear-gradient(135deg, rgba(105, 79, 41, 0.08), transparent 45%),
-    var(--folio);
+  background: var(--folio);
   border: 1px solid rgba(41, 39, 31, 0.35);
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.33), 0 0 0 1px rgba(238, 229, 210, 0.12);
+  box-shadow: 3px 4px 0 rgba(40, 75, 60, 0.07);
 }
 
-.bird-plate::after {
+.birds-page .bird-plate::after {
   content: "";
   position: absolute;
   inset: 5px;
@@ -479,45 +470,49 @@
   pointer-events: none;
 }
 
-.bird-plate img {
+.birds-page .bird-plate img {
   width: 100%;
   height: 100%;
   display: block;
   object-fit: contain;
+  mix-blend-mode: multiply;
 }
 
-.figure-code {
+.birds-page .bird-plate > .figure-code {
   position: absolute;
   z-index: 2;
   top: 8px;
   left: 8px;
+  margin: 0;
   padding: 3px 4px;
   color: rgba(41, 39, 31, 0.8);
   background: rgba(238, 229, 210, 0.78);
-  font: 700 7px var(--mono);
+  font: 400 7px var(--mono);
   letter-spacing: 0.08em;
 }
 
-.live-stamp {
+.birds-page .bird-plate > .live-stamp {
   position: absolute;
   z-index: 3;
   right: 8px;
   bottom: 8px;
   display: none;
+  margin: 0;
   padding: 4px 6px;
   color: #8c3022;
+  background: var(--folio);
   border: 1px solid currentColor;
   font: 800 7px var(--mono);
   letter-spacing: 0.08em;
   transform: rotate(-7deg);
 }
 
-.bird-card.is-new .live-stamp {
+.birds-page .bird-card.is-new .live-stamp {
   display: block;
   animation: wet-ink 2.8s ease both;
 }
 
-.bird-card.is-new .bird-plate {
+.birds-page .bird-card.is-new .bird-plate {
   animation: plate-register 2.8s ease;
 }
 
@@ -528,11 +523,11 @@
 }
 
 @keyframes plate-register {
-  0%, 18% { box-shadow: 0 0 0 5px rgba(217, 93, 66, 0.28), 0 10px 28px rgba(0, 0, 0, 0.33); }
-  100% { box-shadow: 0 10px 28px rgba(0, 0, 0, 0.33), 0 0 0 1px rgba(238, 229, 210, 0.12); }
+  0%, 18% { box-shadow: 0 0 0 5px rgba(173, 60, 39, 0.28), 0 10px 28px rgba(40, 75, 60, 0.12); }
+  100% { box-shadow: 0 10px 28px rgba(40, 75, 60, 0.12), 0 0 0 1px rgba(238, 229, 210, 0.12); }
 }
 
-.bird-card-copy {
+.birds-page .bird-card-copy {
   position: relative;
   left: -10%;
   width: 120%;
@@ -542,68 +537,68 @@
   gap: 8px;
   margin-top: 6px;
   padding-top: 6px;
-  border-top: 1px solid rgba(219, 186, 116, 0.32);
-  text-shadow: 0 1px 8px #07110f, 0 1px 8px #07110f;
+  border-top: 1px solid rgba(40, 75, 60, 0.32);
+  background: rgba(245, 243, 234, 0.96);
 }
 
-.bird-card-copy strong {
+.birds-page .bird-card-copy strong {
   display: block;
   overflow: hidden;
-  font: 400 clamp(9px, 1.05vw, 15px)/1 var(--serif);
+  font: 400 clamp(10px, 1.05vw, 15px)/1.2 var(--serif);
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-.bird-card-copy em,
-.plate-credit {
+.birds-page .bird-card-copy em,
+.birds-page .plate-credit {
   display: block;
   margin-top: 3px;
   overflow: hidden;
-  color: var(--muted);
-  font: italic clamp(6px, 0.56vw, 8px)/1.25 var(--mono);
+  color: var(--subtle, #62675c);
+  font: italic clamp(7px, 0.56vw, 8px)/1.4 var(--serif);
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-.plate-credit {
-  color: rgba(219, 205, 176, 0.66);
+.birds-page .plate-credit {
+  color: var(--subtle, #62675c);
   font-style: normal;
   letter-spacing: 0.02em;
 }
 
-.bird-card-count {
+.birds-page .bird-card-count {
   color: var(--copper);
-  font: 700 clamp(6px, 0.62vw, 9px) var(--mono);
+  font: 500 clamp(7px, 0.62vw, 9px)/1.5 var(--mono);
   white-space: nowrap;
 }
 
-.bird-card[data-orbit="familiar"] .bird-card-copy,
-.bird-card[data-orbit="occasional"] .plate-credit {
+.birds-page .bird-card[data-orbit="familiar"] .bird-card-copy,
+.birds-page .bird-card[data-orbit="occasional"] .plate-credit {
   opacity: 0;
   transition: opacity 160ms ease;
 }
 
-.bird-card[data-orbit="occasional"] .bird-card-copy {
+.birds-page .bird-card[data-orbit="occasional"] .bird-card-copy {
   width: 140%;
   left: -20%;
 }
 
-.bird-card[data-orbit="familiar"] .bird-card-copy {
+.birds-page .bird-card[data-orbit="familiar"] .bird-card-copy {
   width: 210%;
   left: -55%;
   padding: 7px 8px;
-  background: rgba(7, 17, 15, 0.94);
+  background: rgba(245, 243, 234, 0.97);
   border: 1px solid var(--instrument-line);
 }
 
-.bird-card:hover .bird-card-copy,
-.bird-card:focus-visible .bird-card-copy,
-.bird-card:hover .plate-credit,
-.bird-card:focus-visible .plate-credit {
+.birds-page .bird-card:hover .bird-card-copy,
+.birds-page .bird-card:focus-visible .bird-card-copy,
+.birds-page .bird-card:hover .plate-credit,
+.birds-page .bird-card:focus-visible .plate-credit {
   opacity: 1;
 }
 
-.orrery-key {
+.birds-page .orrery-key {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   margin-top: 20px;
@@ -611,23 +606,23 @@
   border-bottom: 1px solid var(--instrument-line);
 }
 
-.orrery-key p {
-  min-height: 92px;
+.birds-page .orrery-key p {
+  min-height: 120px;
   margin: 0;
   padding: 18px 24px;
   border-right: 1px solid var(--instrument-line);
 }
 
-.orrery-key p:last-child {
+.birds-page .orrery-key p:last-child {
   border-right: 0;
 }
 
-.orrery-key b,
-.orrery-key span {
+.birds-page .orrery-key b,
+.birds-page .orrery-key span {
   display: block;
 }
 
-.orrery-key b {
+.birds-page .orrery-key b {
   margin-bottom: 8px;
   color: var(--copper);
   font: 700 9px var(--mono);
@@ -635,87 +630,88 @@
   text-transform: uppercase;
 }
 
-.orrery-key span {
-  color: var(--muted);
-  font: 13px/1.55 var(--serif);
+.birds-page .orrery-key span {
+  color: var(--subtle, #62675c);
+  font: 14px/1.7 var(--sans);
 }
 
-.hearing-ledger {
+.birds-page .hearing-ledger {
   display: grid;
   grid-template-columns: minmax(220px, 0.55fr) minmax(0, 1.45fr);
   gap: clamp(36px, 6vw, 90px);
   margin-top: 86px;
   padding-top: 28px;
-  border-top: 1px solid var(--instrument-bright);
+  border-top: 1px solid var(--ink, #262b25);
 }
 
-.hearing-ledger h2 {
+.birds-page .hearing-ledger h2 {
   margin: 0;
-  font: 400 clamp(32px, 4vw, 52px)/0.95 var(--serif);
+  font: 500 clamp(29px, 3.2vw, 44px)/1.08 var(--display, sans-serif);
   letter-spacing: -0.04em;
 }
 
-.hearing-ledger ol {
+.birds-page .hearing-ledger ol {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.hearing-ledger li {
+.birds-page .hearing-ledger li {
   display: grid;
   grid-template-columns: 74px minmax(0, 1fr) auto;
   gap: 18px;
   padding: 15px 0;
   border-bottom: 1px solid var(--instrument-line);
-  font: 10px/1.35 var(--mono);
+  font: 11px/1.6 var(--mono);
 }
 
-.hearing-ledger time {
+.birds-page .hearing-ledger time {
   color: var(--vermilion);
 }
 
-.hearing-ledger strong {
-  color: var(--folio);
-  font: 400 18px/1 var(--serif);
+.birds-page .hearing-ledger strong {
+  color: var(--ink, #262b25);
+  font: 500 19px/1.3 var(--display, sans-serif);
 }
 
-.hearing-ledger small {
-  color: var(--muted);
+.birds-page .hearing-ledger small {
+  color: var(--subtle, #62675c);
   font: inherit;
 }
 
-.hearing-ledger .ledger-empty {
+.birds-page .hearing-ledger .ledger-empty {
   display: block;
-  color: var(--muted);
+  color: var(--subtle, #62675c);
 }
 
-.instrument-notes {
+.birds-page .instrument-notes {
   display: grid;
   grid-template-columns: minmax(270px, 0.68fr) minmax(0, 1.32fr);
-  gap: clamp(46px, 8vw, 120px);
-  padding: 100px 0 0;
-  border-top: 1px solid var(--instrument-line);
+  column-gap: clamp(36px, 7vw, 100px);
+  row-gap: 35px;
+  padding: 65px 0 0;
+  border-top: 1px solid var(--ink, #262b25);
 }
 
-.section-kicker {
+.birds-page .section-kicker {
   margin-bottom: 14px;
   color: var(--copper);
-  font: 700 9px var(--mono);
-  letter-spacing: 0.12em;
+  font: 400 10px/1.6 var(--mono);
+  letter-spacing: 0.055em;
   text-transform: uppercase;
 }
 
-.instrument-notes h2 {
+.birds-page .instrument-notes h2 {
   margin: 0;
-  font: 400 clamp(42px, 5vw, 72px)/0.95 var(--serif);
+  font: 500 clamp(32px, 3.6vw, 50px)/1.12 var(--display, sans-serif);
   letter-spacing: -0.055em;
 }
 
-.reading-notes {
+.birds-page .reading-notes {
   border-top: 1px solid var(--instrument-bright);
 }
 
-.reading-notes article {
+.birds-page .reading-notes article {
   display: grid;
   grid-template-columns: 48px minmax(170px, 0.55fr) minmax(0, 1fr);
   gap: 22px;
@@ -724,72 +720,72 @@
   border-bottom: 1px solid var(--instrument-line);
 }
 
-.reading-notes span {
+.birds-page .reading-notes span {
   color: var(--copper);
   font: 16px var(--serif);
 }
 
-.reading-notes h3 {
+.birds-page .reading-notes h3 {
   margin: 0;
-  color: var(--folio);
-  font: 400 20px/1.1 var(--serif);
+  color: var(--ink, #262b25);
+  font: 500 20px/1.3 var(--display, sans-serif);
 }
 
-.reading-notes p,
-.archive-note {
+.birds-page .reading-notes p,
+.birds-page .archive-note {
   margin: 0;
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.7;
+  color: var(--subtle, #62675c);
+  font-size: 14px;
+  line-height: 1.8;
 }
 
-.archive-note {
+.birds-page .archive-note {
   grid-column: 2;
   padding-top: 24px;
   border-top: 1px solid var(--instrument-line);
 }
 
-.bird-dialog {
+.birds-page .bird-dialog {
   width: min(1080px, calc(100% - 32px));
-  max-height: min(860px, calc(100vh - 32px));
+  max-height: calc(100dvh - 32px);
   padding: 0;
   overflow: auto;
-  color: var(--folio);
-  background: var(--instrument-soft);
+  color: var(--ink, #262b25);
+  background: var(--sheet, #f5f3ea);
   border: 1px solid var(--instrument-bright);
   border-radius: 0;
-  box-shadow: 0 35px 110px rgba(0, 0, 0, 0.68);
+  box-shadow: 12px 16px 0 rgba(40, 75, 60, 0.12);
 }
 
-.bird-dialog::backdrop {
-  background: rgba(3, 8, 7, 0.88);
-  backdrop-filter: blur(8px);
+.birds-page .bird-dialog::backdrop {
+  background: rgba(35, 57, 45, 0.84);
+  backdrop-filter: blur(3px);
 }
 
-.dialog-close {
+.birds-page .dialog-close {
   position: absolute;
   z-index: 3;
   top: 14px;
   right: 14px;
-  width: 38px;
-  height: 38px;
+  width: 44px;
+  height: 44px;
   display: grid;
   place-items: center;
-  color: var(--folio);
-  background: rgba(7, 17, 15, 0.9);
+  color: var(--ink, #262b25);
+  background: rgba(245, 243, 234, 0.97);
   border: 1px solid var(--instrument-bright);
   border-radius: 50%;
   font: 24px/1 var(--serif);
   cursor: pointer;
 }
 
-.dialog-grid {
+.birds-page .dialog-grid {
   display: grid;
   grid-template-columns: minmax(0, 1.12fr) minmax(340px, 0.88fr);
   min-height: 650px;
 }
 
-.dialog-grid figure {
+.birds-page .dialog-grid figure {
   min-height: 540px;
   display: grid;
   place-items: center;
@@ -800,20 +796,22 @@
   box-shadow: inset 0 0 0 1px rgba(41, 39, 31, 0.24);
 }
 
-.dialog-grid figure img {
+.birds-page .dialog-grid figure img {
   width: 100%;
   height: 100%;
   max-height: 720px;
   object-fit: contain;
+  mix-blend-mode: multiply;
 }
 
-.dialog-copy {
+.birds-page .dialog-copy {
+  min-width: 0;
   display: flex;
   flex-direction: column;
   padding: 48px 36px 34px;
 }
 
-.dialog-kicker {
+.birds-page .dialog-kicker {
   margin-bottom: 25px;
   color: var(--copper);
   font: 700 9px var(--mono);
@@ -821,18 +819,19 @@
   text-transform: uppercase;
 }
 
-.dialog-copy h2 {
+.birds-page .dialog-copy h2 {
   margin-bottom: 8px;
-  font: 400 clamp(38px, 5vw, 64px)/0.9 var(--serif);
+  font: 500 clamp(32px, 3.6vw, 48px)/1.05 var(--display, sans-serif);
   letter-spacing: -0.055em;
+  overflow-wrap: anywhere;
 }
 
-.dialog-scientific {
-  color: var(--muted);
-  font: italic 12px var(--mono);
+.birds-page .dialog-scientific {
+  color: var(--moss, #284b3c);
+  font: italic 18px/1.4 var(--serif);
 }
 
-.dialog-stats {
+.birds-page .dialog-stats {
   display: grid;
   grid-template-columns: 1fr 1fr;
   margin: 26px 0;
@@ -840,144 +839,148 @@
   border-left: 1px solid var(--instrument-line);
 }
 
-.dialog-stats div {
+.birds-page .dialog-stats div {
   min-height: 78px;
   padding: 13px;
   border-right: 1px solid var(--instrument-line);
   border-bottom: 1px solid var(--instrument-line);
 }
 
-.dialog-stats dt,
-.art-credit > span {
-  color: var(--muted);
+.birds-page .dialog-stats dt,
+.birds-page .art-credit > span {
+  color: var(--subtle, #62675c);
   font: 8px var(--mono);
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
-.dialog-stats dd {
+.birds-page .dialog-stats dd {
   margin: 8px 0 0;
-  font: 400 14px/1.25 var(--serif);
+  font: 14px/1.5 var(--sans);
 }
 
-.art-credit {
+.birds-page .art-credit {
   margin-top: auto;
   padding-top: 22px;
   border-top: 1px solid var(--instrument-line);
 }
 
-.art-credit strong {
+.birds-page .art-credit strong {
   display: block;
   margin-top: 9px;
   font-family: var(--serif);
   line-height: 1.45;
 }
 
-.art-credit p {
+.birds-page .art-credit p {
   margin: 5px 0 0;
-  color: var(--muted);
-  font-size: 12px;
-  line-height: 1.5;
+  color: var(--subtle, #62675c);
+  font-size: 13px;
+  line-height: 1.7;
 }
 
-.art-credit a {
+.birds-page .art-credit a {
   display: inline-block;
   margin-top: 17px;
   color: var(--copper);
-  font: 700 10px var(--mono);
-  text-decoration: none;
+  padding: 5px 0;
+  font: 13px/1.6 var(--sans);
+  text-underline-offset: 4px;
 }
 
 @media (max-width: 1100px) {
-  .instrument-readout {
+  .birds-page .birds-main { width: calc(100% - 64px); }
+
+  .birds-page .reading-notes article { grid-template-columns: 25px minmax(0, 1fr); }
+  .birds-page .reading-notes p { grid-column: 2; }
+  .birds-page .instrument-readout {
     grid-template-columns: 180px minmax(0, 1fr);
   }
 
-  .latest-detection {
+  .birds-page .latest-detection {
     grid-column: 1 / -1;
     min-height: 52px;
     border-top: 1px solid var(--instrument-line);
   }
 
-  .bird-metrics div:last-child {
+  .birds-page .bird-metrics div:last-child {
     border-right: 0;
   }
 }
 
 @media (max-width: 820px) {
-  .birds-main {
-    width: min(100% - 28px, 720px);
+  .birds-page .birds-main {
+    width: calc(100% - 40px);
     padding-bottom: 74px;
   }
 
-  .orrery-section {
+  .birds-page .orrery-section {
     padding: 48px 0 76px;
   }
 
-  .orrery-intro,
-  .instrument-notes,
-  .hearing-ledger {
+  .birds-page .orrery-intro,
+  .birds-page .instrument-notes,
+  .birds-page .hearing-ledger {
     grid-template-columns: 1fr;
   }
 
-  .orrery-intro {
+  .birds-page .orrery-intro {
     gap: 30px;
   }
 
-  .orrery-intro h1 {
-    font-size: clamp(62px, 20vw, 104px);
+  .birds-page .orrery-intro h1 {
+    font-size: clamp(58px, 13vw, 98px);
   }
 
-  .orrery-prologue {
+  .birds-page .orrery-prologue {
     max-width: 620px;
   }
 
-  .instrument-readout {
+  .birds-page .instrument-readout {
     display: block;
   }
 
-  .readout-live {
+  .birds-page .readout-live {
     border-right: 0;
     border-bottom: 1px solid var(--instrument-line);
   }
 
-  .bird-metrics {
+  .birds-page .bird-metrics {
     grid-template-columns: 1fr 1fr;
   }
 
-  .bird-metrics div {
+  .birds-page .bird-metrics div {
     border-bottom: 1px solid var(--instrument-line);
   }
 
-  .bird-metrics div:nth-child(2n) {
+  .birds-page .bird-metrics div:nth-child(2n) {
     border-right: 0;
   }
 
-  .bird-metrics div:nth-last-child(-n + 2) {
+  .birds-page .bird-metrics div:nth-last-child(-n + 2) {
     border-bottom: 0;
   }
 
-  .orrery-shell {
+  .birds-page .orrery-shell,
+  .birds-page .orrery-shell:has(.bird-orrery[aria-busy="false"]:empty) {
     width: 100%;
     aspect-ratio: auto;
     margin-top: 28px;
     padding: 66px 0 58px;
-    background:
-      linear-gradient(90deg, transparent calc(50% - 0.5px), rgba(219, 186, 116, 0.18) 50%, transparent calc(50% + 0.5px)),
-      radial-gradient(circle at 50% 92px, rgba(117, 215, 168, 0.08), transparent 170px);
+    background: none;
     border-top: 1px solid var(--instrument-line);
     border-bottom: 1px solid var(--instrument-line);
     border-radius: 0;
   }
 
-  .orrery-shell::before,
-  .orrery-shell::after,
-  .orrery-rings,
-  .orbit-label {
+  .birds-page .orrery-shell::before,
+  .birds-page .orrery-shell::after,
+  .birds-page .orrery-rings,
+  .birds-page .orbit-label {
     display: none;
   }
 
-  .orrery-core {
+  .birds-page .orrery-core {
     position: relative;
     top: auto;
     left: auto;
@@ -987,11 +990,14 @@
     transform: none;
   }
 
-  .orrery-core strong {
+  .birds-page .orrery-core strong {
     font-size: 16px;
   }
 
-  .bird-orrery {
+  .birds-page .bird-orrery:empty { display: none; }
+  .birds-page .orrery-shell:has(.bird-orrery:empty) .orrery-core { margin-bottom: 0; }
+
+  .birds-page .bird-orrery {
     position: relative;
     inset: auto;
     width: 100%;
@@ -1001,124 +1007,134 @@
     gap: 64px;
   }
 
-  .bird-card {
+  .birds-page .bird-card {
     position: relative;
     top: auto;
     left: auto;
     width: var(--mobile-size);
+    min-width: min(235px, 82%);
     transform: none;
   }
 
-  .bird-card:nth-child(even) {
+  .birds-page .bird-card:nth-child(even) {
     margin-left: auto;
   }
 
-  .bird-card:nth-child(odd) {
+  .birds-page .bird-card:nth-child(odd) {
     margin-right: auto;
   }
 
-  .bird-card-frame {
+  .birds-page .bird-card-frame {
     transform: rotate(var(--bird-tilt));
   }
 
-  .bird-card-copy,
-  .bird-card[data-orbit="familiar"] .bird-card-copy,
-  .bird-card[data-orbit="occasional"] .bird-card-copy {
+  .birds-page .bird-card-copy,
+  .birds-page .bird-card[data-orbit="familiar"] .bird-card-copy,
+  .birds-page .bird-card[data-orbit="occasional"] .bird-card-copy {
     left: 0;
     width: 100%;
     opacity: 1;
-    background: rgba(7, 17, 15, 0.82);
+    background: rgba(245, 243, 234, 0.97);
     border: 0;
     border-top: 1px solid var(--instrument-line);
   }
 
-  .bird-card[data-orbit="occasional"] .plate-credit,
-  .bird-card[data-orbit="familiar"] .plate-credit {
+  .birds-page .bird-card[data-orbit="occasional"] .plate-credit,
+  .birds-page .bird-card[data-orbit="familiar"] .plate-credit {
     opacity: 1;
   }
 
-  .bird-card-copy strong {
-    font-size: clamp(15px, 4.4vw, 22px);
+  .birds-page .bird-card-copy strong {
+    font-size: 18px;
   }
 
-  .bird-card-copy em,
-  .plate-credit,
-  .bird-card-count {
-    font-size: 9px;
+  .birds-page .bird-card-copy em,
+  .birds-page .plate-credit,
+  .birds-page .bird-card-count {
+    font-size: 11px;
   }
 
-  .orrery-key {
+  .birds-page .orrery-key {
     grid-template-columns: 1fr;
   }
 
-  .orrery-key p {
+  .birds-page .orrery-key p {
     min-height: auto;
     border-right: 0;
     border-bottom: 1px solid var(--instrument-line);
   }
 
-  .orrery-key p:last-child {
+  .birds-page .orrery-key p:last-child {
     border-bottom: 0;
   }
 
-  .hearing-ledger {
+  .birds-page .hearing-ledger {
     gap: 28px;
     margin-top: 68px;
   }
 
-  .instrument-notes {
-    gap: 52px;
-    padding-top: 76px;
+  .birds-page .instrument-notes {
+    gap: 30px;
+    padding-top: 50px;
   }
 
-  .reading-notes article {
+  .birds-page .reading-notes article {
     grid-template-columns: 34px minmax(0, 1fr);
   }
 
-  .reading-notes p {
+  .birds-page .reading-notes p {
     grid-column: 2;
   }
 
-  .archive-note {
+  .birds-page .archive-note {
     grid-column: 1;
   }
 
-  .dialog-grid {
+  .birds-page .dialog-grid {
     grid-template-columns: 1fr;
   }
 
-  .dialog-grid figure {
-    min-height: 370px;
+  .birds-page .dialog-grid figure {
+    min-height: 0;
+    height: min(52vh, 440px);
+    padding: 22px;
+    border-width: 10px;
   }
 
-  .dialog-copy {
+  .birds-page .dialog-copy {
     padding: 34px 23px 28px;
   }
 }
 
 @media (max-width: 520px) {
-  .orrery-intro .eyebrow {
+  .birds-page .orrery-intro h1 { font-size: clamp(49px, 14vw, 72px); }
+  .birds-page .orrery-prologue small { font-size: 10px; }
+  .birds-page .bird-state { font-size: 11px; }
+  .birds-page .bird-card-copy { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+  .birds-page .bird-card-count { justify-self: start; font-size: 10px; }
+  .birds-page .dialog-copy h2 { font-size: 33px; }
+  .birds-page .orrery-intro .eyebrow {
     align-items: flex-start;
     flex-direction: column;
   }
 
-  .orrery-intro .eyebrow span + span::before {
+  .birds-page .orrery-intro .eyebrow span + span::before {
     display: none;
   }
 
-  .bird-metrics dd {
+  .birds-page .bird-metrics dd {
     font-size: 23px;
   }
 
-  .hearing-ledger li {
+  .birds-page .hearing-ledger li {
     grid-template-columns: 62px minmax(0, 1fr);
   }
 
-  .hearing-ledger li > small:last-child {
+  .birds-page .hearing-ledger li > small:last-child {
     grid-column: 2;
   }
 
-  .dialog-stats {
+  .birds-page .dialog-stats {
     grid-template-columns: 1fr;
   }
 }
@@ -1133,7 +1149,7 @@
     transition-duration: 0.01ms !important;
   }
 
-  .bird-card.is-new .live-stamp {
+  .birds-page .bird-card.is-new .live-stamp {
     opacity: 1;
   }
 }

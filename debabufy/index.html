@@ -4,10 +4,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>DeBabufy — Less babu. More done.</title>
-    <meta name="description" content="DeBabufy is a local-first desktop app that automates repetitive Indian government-portal workflows while keeping login, review, submission, and payment under your control." />
+    <meta
+      name="description"
+      content="DeBabufy is a local-first desktop app that automates repetitive Indian government-portal workflows while keeping login, review, submission, and payment under your control."
+    />
     <meta name="author" content="Abhishek Bagade" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta name="theme-color" content="#0d1422" />
+    <meta name="theme-color" content="#f5f3ea" />
     <link rel="canonical" href="https://abhishekdoesstuff.com/debabufy/" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png" />
@@ -16,19 +19,40 @@
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="en_IN" />
     <meta property="og:site_name" content="Abhishek Does Stuff" />
-    <meta property="og:title" content="DeBabufy — Your paperwork. Less babu. More done." />
-    <meta property="og:description" content="A local-first desktop app for deterministic, reviewable automation of repetitive Indian government workflows." />
+    <meta
+      property="og:title"
+      content="DeBabufy — Your paperwork. Less babu. More done."
+    />
+    <meta
+      property="og:description"
+      content="A local-first desktop app for deterministic, reviewable automation of repetitive Indian government workflows."
+    />
     <meta property="og:url" content="https://abhishekdoesstuff.com/debabufy/" />
-    <meta property="og:image" content="https://abhishekdoesstuff.com/assets/projects/debabufy-mark.png" />
-    <meta property="og:image:alt" content="DeBabufy logo: a document breaking free from red tape into a teal check mark" />
+    <meta
+      property="og:image"
+      content="https://abhishekdoesstuff.com/assets/projects/debabufy-mark.png"
+    />
+    <meta
+      property="og:image:alt"
+      content="DeBabufy logo: a document breaking free from red tape into a teal check mark"
+    />
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1254" />
     <meta property="og:image:height" content="1254" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="DeBabufy — Less babu. More done." />
-    <meta name="twitter:description" content="Local-first desktop automation for repetitive Indian government workflows." />
-    <meta name="twitter:image" content="https://abhishekdoesstuff.com/assets/projects/debabufy-mark.png" />
-    <meta name="twitter:image:alt" content="DeBabufy logo: a document breaking free from red tape into a teal check mark" />
+    <meta
+      name="twitter:description"
+      content="Local-first desktop automation for repetitive Indian government workflows."
+    />
+    <meta
+      name="twitter:image"
+      content="https://abhishekdoesstuff.com/assets/projects/debabufy-mark.png"
+    />
+    <meta
+      name="twitter:image:alt"
+      content="DeBabufy logo: a document breaking free from red tape into a teal check mark"
+    />
 
     <script type="application/ld+json">
       {
@@ -51,41 +75,158 @@
         }
       }
     </script>
-    <link rel="stylesheet" href="/styles.css?v=20260928-3" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;600;650;700;750&family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css?v=20261017-4" />
   </head>
-  <body class="debabufy-page">
+  <body class="workbench subpage debabufy-page" id="page-top">
     <a class="skip-link" href="#main-content">Skip to content</a>
     <div class="page-grid" aria-hidden="true"></div>
 
     <header class="site-header">
-      <a class="brand" href="/" aria-label="Abhishek Does Stuff home">
-        <span class="brand-badge" aria-hidden="true">A//</span>
-        <span class="brand-copy"><strong>Abhishek Does Stuff</strong><small>project workbench · Bengaluru</small></span>
-      </a>
-      <nav aria-label="Primary navigation">
-        <a href="/#builds">builds</a>
-        <a href="/musings/">musings</a>
-        <a href="https://github.com/bagdeabhishek/debabufy">source ↗</a>
-        <a href="https://github.com/bagdeabhishek/debabufy/releases/latest">download ↗</a>
+      <a class="brand" href="/" aria-label="Abhishek Does Stuff home"
+        ><span class="brand-badge" aria-hidden="true">a.</span
+        ><span class="brand-copy"
+          ><strong>abhishek does stuff</strong
+          ><small>An independent workbench</small></span
+        ></a
+      >
+      <nav class="primary-links" aria-label="Primary navigation">
+        <a href="/#builds">Builds <span>06</span></a>
+        <a href="/#field-notes">Field notes</a>
+        <a href="/musings/">Musings</a>
+        <a href="/birds/">Birds</a>
+        <a href="/#lab">Lab</a>
       </nav>
+      <details class="site-directory" data-nav-menu>
+        <summary>
+          Explore <span class="menu-cross" aria-hidden="true"></span>
+        </summary>
+        <nav class="directory-panel" aria-label="Site directory">
+          <div class="directory-group">
+            <p>The workbench</p>
+            <a href="/"><span>The workbench</span><small>Start here</small></a>
+            <a href="/#builds"
+              ><span>Selected builds</span><small>Six projects</small></a
+            >
+            <a href="/#field-notes"
+              ><span>Field notes</span><small>Made &amp; repaired</small></a
+            >
+            <a href="/#writing"
+              ><span>Research notes</span><small>Open questions</small></a
+            >
+            <a href="/#lab"
+              ><span>The homelab</span><small>Live vitals</small></a
+            >
+          </div>
+          <div class="directory-group">
+            <p>Other corners</p>
+            <a href="/musings/"
+              ><span>Musings</span><small>Research archive ↗</small></a
+            >
+            <a href="/birds/"
+              ><span>Listening Orrery</span><small>Live birdsong ↗</small></a
+            >
+            <a href="https://abagade.com/"
+              ><span>Long-form writing</span><small>abagade.com ↗</small></a
+            >
+            <a href="https://www.instagram.com/abhishek_does_stuff/"
+              ><span>Instagram</span><small>Builds &amp; bike hacks ↗</small></a
+            >
+            <a href="mailto:admin@abhishekdoesstuff.com"
+              ><span>Say hello</span><small>Send a note ↗</small></a
+            >
+          </div>
+        </nav>
+      </details>
     </header>
 
     <main id="main-content" class="debabufy-shell">
+      <p class="page-breadcrumb">
+        <a href="/">The workbench</a><span>/</span><span>DeBabufy</span>
+      </p>
       <section class="debabufy-hero" aria-labelledby="debabufy-title">
         <div class="debabufy-hero-copy">
           <div class="debabufy-hero-label">
-            <img class="debabufy-hero-icon" src="/assets/projects/debabufy-mark.png" alt="" width="1254" height="1254" fetchpriority="high" />
-            <p class="eyebrow"><span>open source</span><span>local first</span><span>India made</span></p>
+            <img
+              class="debabufy-hero-icon"
+              src="/assets/projects/debabufy-mark.png"
+              alt=""
+              width="1254"
+              height="1254"
+              fetchpriority="high"
+            />
+            <div>
+              <p class="debabufy-wordmark">DeBabufy</p>
+              <p class="eyebrow">
+                <span>open source</span><span>local first</span
+                ><span>India made</span>
+              </p>
+            </div>
           </div>
-          <h1 id="debabufy-title">Your paperwork.<br /><em>Less babu.</em><br />More done.</h1>
-          <p class="debabufy-lede">India runs on forms. DeBabufy handles the repetitive bits with deterministic desktop automations you can watch, review, and stop.</p>
+          <h1 id="debabufy-title">
+            Your paperwork.<br /><em>Less babu.</em><br />More done.
+          </h1>
+          <p class="debabufy-lede">
+            India runs on forms. DeBabufy handles the repetitive bits with
+            deterministic desktop automations you can watch, review, and stop.
+          </p>
           <div class="actions">
-            <a class="button primary" href="https://github.com/bagdeabhishek/debabufy/releases/latest">Download DeBabufy</a>
-            <a class="button" href="https://github.com/bagdeabhishek/debabufy">View source on GitHub</a>
+            <a
+              class="button primary"
+              href="https://github.com/bagdeabhishek/debabufy/releases/latest"
+              >Download DeBabufy</a
+            >
+            <a class="button" href="https://github.com/bagdeabhishek/debabufy"
+              >View source on GitHub</a
+            >
           </div>
-          <p class="release-note">Alpha · Windows, macOS &amp; Linux · MIT licensed</p>
+          <p class="release-note">
+            Alpha · Windows, macOS &amp; Linux · MIT licensed
+          </p>
+        </div>
+        <div class="paperwork-drawing" aria-hidden="true">
+          <div class="paperwork-caption">A little less paperwork.</div>
+          <div class="paperwork-sheet paperwork-previous">
+            <span class="paperwork-sheet-label">Previous statement</span>
+            <div class="paperwork-lines"></div>
+            <div class="paperwork-lines short"></div>
+            <div class="paperwork-lines"></div>
+            <div class="paperwork-lines short"></div>
+            <span class="paperwork-red-tape"></span>
+          </div>
+          <div class="paperwork-sheet paperwork-current">
+            <span class="paperwork-sheet-label">This instalment</span
+            ><span class="paperwork-form-title"
+              >Carry forward.<br />Check. Continue.</span
+            >
+            <div class="paperwork-row"><span>Party details</span><b>✓</b></div>
+            <div class="paperwork-row">
+              <span>Property details</span><b>✓</b>
+            </div>
+            <div class="paperwork-row"><span>New values</span><b>✓</b></div>
+            <div class="paperwork-review">
+              Your review comes next <span>↗</span>
+            </div>
+          </div>
+          <span class="paperwork-pencil"></span
+          ><span class="paperwork-footnote"
+            >The final step is always yours.</span
+          >
         </div>
       </section>
+
+      <nav class="debabufy-index" aria-label="On this page">
+        <span>Inside this project</span
+        ><a href="#how-title">How it works <span>01</span></a
+        ><a href="#workflow-title">First workflow <span>02</span></a
+        ><a href="#trust-title">The ground rules <span>03</span></a
+        ><a href="#cta-title">Get involved <span>04</span></a>
+      </nav>
 
       <section class="debabufy-strip" aria-label="DeBabufy principles">
         <div><strong>01</strong><span>Runs on your machine</span></div>
@@ -95,26 +236,65 @@
 
       <section class="debabufy-section" aria-labelledby="how-title">
         <div class="section-heading">
-          <div><p class="section-kicker">how it works / no magic tricks</p><h2 id="how-title">Bring the old paperwork.<br />Change what changed.</h2></div>
-          <p>DeBabufy carries forward the stable facts, calculates the new values with explicit rules, and fills the portal in an ordinary Chrome session.</p>
+          <div>
+            <p class="section-kicker">01 / how it works / no magic tricks</p>
+            <h2 id="how-title">
+              Bring the old paperwork.<br /><em>Change what changed.</em>
+            </h2>
+          </div>
+          <p>
+            DeBabufy carries forward the stable facts, calculates the new values
+            with explicit rules, and fills the portal in an ordinary Chrome
+            session.
+          </p>
         </div>
         <ol class="debabufy-flow">
-          <li><span>01</span><strong>Add the previous document</strong><p>Your source stays local on your computer.</p></li>
-          <li><span>02</span><strong>Enter this time’s amount</strong><p>Review every inferred party, date, and tax value.</p></li>
-          <li><span>03</span><strong>Log in normally</strong><p>You handle credentials, OTP, and CAPTCHA yourself.</p></li>
-          <li><span>04</span><strong>Watch it fill the portal</strong><p>DeBabufy stops before submission or payment.</p></li>
+          <li>
+            <span>01</span><strong>Add the previous document</strong>
+            <p>Your source stays local on your computer.</p>
+          </li>
+          <li>
+            <span>02</span><strong>Enter this time’s amount</strong>
+            <p>Review every inferred party, date, and tax value.</p>
+          </li>
+          <li>
+            <span>03</span><strong>Log in normally</strong>
+            <p>You handle credentials, OTP, and CAPTCHA yourself.</p>
+          </li>
+          <li>
+            <span>04</span><strong>Watch it fill the portal</strong>
+            <p>DeBabufy stops before submission or payment.</p>
+          </li>
         </ol>
       </section>
 
-      <section class="debabufy-section debut-workflow" aria-labelledby="workflow-title">
+      <section
+        class="debabufy-section debut-workflow"
+        aria-labelledby="workflow-title"
+      >
         <div class="workflow-copy">
-          <p class="section-kicker">workflow 001 / available now</p>
+          <p class="section-kicker">02 / workflow 001 / available now</p>
           <h2 id="workflow-title">Form 141.<br />Schedule B.</h2>
-          <p>Property-TDS instalments with joint buyers and corporate or non-corporate sellers. The workflow reads the previous statement, carries forward property and party details, calculates whole-rupee portal values, then fills each portal section in sequence.</p>
-          <a class="text-link" href="https://github.com/bagdeabhishek/debabufy#available-today">See exactly what it automates →</a>
+          <p>
+            Property-TDS instalments with joint buyers and corporate or
+            non-corporate sellers. The workflow reads the previous statement,
+            carries forward property and party details, calculates whole-rupee
+            portal values, then fills each portal section in sequence.
+          </p>
+          <a
+            class="text-link"
+            href="https://github.com/bagdeabhishek/debabufy#available-today"
+            >See exactly what it automates →</a
+          >
         </div>
-        <div class="workflow-terminal" aria-label="Example DeBabufy workflow status">
-          <div class="terminal-bar"><span></span><span></span><span></span><b>debabufy / form-141</b></div>
+        <div
+          class="workflow-terminal"
+          aria-label="Example DeBabufy workflow status"
+        >
+          <div class="terminal-bar">
+            <b>debabufy / form-141</b
+            ><span class="workflow-example-label">Example run</span>
+          </div>
           <p><i>✓</i> previous statement read</p>
           <p><i>✓</i> parties &amp; property inferred</p>
           <p><i>✓</i> whole-rupee values calculated</p>
@@ -124,36 +304,98 @@
         </div>
       </section>
 
-      <section class="debabufy-section trust-section" aria-labelledby="trust-title">
-        <p class="section-kicker">trust, not magic</p>
-        <h2 id="trust-title">Boring by design.</h2>
+      <section
+        class="debabufy-section trust-section"
+        aria-labelledby="trust-title"
+      >
+        <p class="section-kicker">03 / the ground rules</p>
+        <h2 id="trust-title">Boring <em>by design.</em></h2>
         <div class="trust-grid">
-          <article><strong>Local by default</strong><p>No filing backend, telemetry, or document upload service.</p></article>
-          <article><strong>Deterministic</strong><p>No model improvising with PANs, dates, amounts, or portal actions.</p></article>
-          <article><strong>Human controlled</strong><p>Login, OTP, review, submission, and payment stay with you.</p></article>
-          <article><strong>Open to inspection</strong><p>The code, workflow rules, issues, and releases are public on GitHub.</p></article>
+          <article>
+            <strong>Local by default</strong>
+            <p>No filing backend, telemetry, or document upload service.</p>
+          </article>
+          <article>
+            <strong>Deterministic</strong>
+            <p>
+              No model improvising with PANs, dates, amounts, or portal actions.
+            </p>
+          </article>
+          <article>
+            <strong>Human controlled</strong>
+            <p>Login, OTP, review, submission, and payment stay with you.</p>
+          </article>
+          <article>
+            <strong>Open to inspection</strong>
+            <p>
+              The code, workflow rules, issues, and releases are public on
+              GitHub.
+            </p>
+          </article>
         </div>
       </section>
 
       <section class="debabufy-cta" aria-labelledby="cta-title">
         <div>
-          <p class="section-kicker">built in the open</p>
+          <p class="section-kicker">04 / built in the open</p>
           <h2 id="cta-title">One boring workflow at a time.</h2>
-          <p>Try the first workflow, report a portal change, or help build the next bit of Indian paperwork out of existence.</p>
+          <p>
+            Try the first workflow, report a portal change, or help build the
+            next bit of Indian paperwork out of existence.
+          </p>
         </div>
         <div class="actions">
-          <a class="button primary" href="https://github.com/bagdeabhishek/debabufy/releases/latest">Get the latest release</a>
-          <a class="button" href="https://github.com/bagdeabhishek/debabufy/blob/main/CONTRIBUTING.md">Contribute on GitHub</a>
+          <a
+            class="button primary"
+            href="https://github.com/bagdeabhishek/debabufy/releases/latest"
+            >Get the latest release</a
+          >
+          <a
+            class="button"
+            href="https://github.com/bagdeabhishek/debabufy/blob/main/CONTRIBUTING.md"
+            >Contribute on GitHub</a
+          >
         </div>
       </section>
 
-      <p class="debabufy-disclaimer">DeBabufy is unofficial alpha software. It is not affiliated with or endorsed by the Government of India or the Income Tax Department, and it does not provide tax or legal advice. Always review the portal before continuing.</p>
+      <p class="debabufy-disclaimer">
+        DeBabufy is unofficial alpha software. It is not affiliated with or
+        endorsed by the Government of India or the Income Tax Department, and it
+        does not provide tax or legal advice. Always review the portal before
+        continuing.
+      </p>
     </main>
 
-    <footer>
-      <div><strong>Abhishek Bagade</strong><span>ML platforms · maker projects · Bengaluru</span></div>
-      <div class="footer-links"><a href="/">Home</a><a href="https://github.com/bagdeabhishek/debabufy">GitHub</a><a href="mailto:admin@abhishekdoesstuff.com">Email</a></div>
+    <footer class="workshop-footer">
+      <div class="footer-main">
+        <div>
+          <p class="workshop-kicker">Something on your workbench?</p>
+          <a class="footer-hello" href="mailto:admin@abhishekdoesstuff.com"
+            >Let’s compare notes<span aria-hidden="true">↗</span></a
+          >
+        </div>
+        <div class="footer-links">
+          <a rel="me" href="https://github.com/bagdeabhishek">GitHub ↗</a
+          ><a rel="me" href="https://www.instagram.com/abhishek_does_stuff/"
+            >Instagram ↗</a
+          ><a rel="me" href="https://www.linkedin.com/in/bagdeabhishek/"
+            >LinkedIn ↗</a
+          ><a href="https://abagade.com/">Writing ↗</a>
+        </div>
+      </div>
+      <nav class="footer-directory" aria-label="Footer navigation">
+        <a href="/#builds">Builds</a><a href="/#field-notes">Field notes</a
+        ><a href="/musings/">Musings</a><a href="/birds/">Birds</a
+        ><a href="/#lab">Lab</a
+        ><a href="mailto:admin@abhishekdoesstuff.com">Email ↗</a>
+      </nav>
+      <div class="footer-colophon">
+        <span>© Abhishek Bagade</span
+        ><span>An ongoing collection. Served from home.</span
+        ><a href="#page-top">Back to the top ↑</a>
+      </div>
     </footer>
     <script src="/analytics.js" defer></script>
+    <script src="/status.js?v=20261017-4" defer></script>
   </body>
 </html>
