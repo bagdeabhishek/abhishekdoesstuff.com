@@ -46,3 +46,60 @@ async function refreshStatus() {
 
 refreshStatus();
 setInterval(refreshStatus, 60000);
+
+// Progressive homepage navigation; the directory also works without JavaScript.
+(() => {
+  const menu = document.querySelector("[data-nav-menu]");
+  if (!menu) return;
+  const summary = menu.querySelector("summary");
+  menu.addEventListener("click", (event) => {
+    const link = event.target.closest("a");
+    if (!link) return;
+    menu.open = false;
+    if (link.hash && link.pathname === location.pathname) {
+      const target = document.getElementById(link.hash.slice(1));
+      if (target) {
+        target.tabIndex = -1;
+        target.focus({ preventScroll: true });
+      }
+    }
+  });
+  document.addEventListener("click", (event) => {
+    if (menu.open && !menu.contains(event.target)) menu.open = false;
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && menu.open) {
+      menu.open = false;
+      summary.focus();
+    }
+  });
+
+  const links = [...document.querySelectorAll("[data-section-link]")];
+  const sections = ["top", "builds", "listening", "field-notes", "writing", "lab"]
+    .map((id) => document.getElementById(id)).filter(Boolean);
+  const header = document.querySelector(".site-header");
+  let scheduled = false;
+  function updateLocation() {
+    const cutoff = header.getBoundingClientRect().bottom + 80;
+    let current = sections[0]?.id;
+    for (const section of sections) {
+      if (section.getBoundingClientRect().top <= cutoff) current = section.id;
+    }
+    if (innerHeight + scrollY >= document.documentElement.scrollHeight - 4) {
+      current = sections[sections.length - 1]?.id;
+    }
+    for (const link of links) {
+      if (link.dataset.sectionLink === current) link.setAttribute("aria-current", "location");
+      else link.removeAttribute("aria-current");
+    }
+    scheduled = false;
+  }
+  function scheduleLocation() {
+    if (scheduled) return;
+    scheduled = true;
+    requestAnimationFrame(updateLocation);
+  }
+  addEventListener("scroll", scheduleLocation, { passive: true });
+  addEventListener("resize", scheduleLocation);
+  updateLocation();
+})();

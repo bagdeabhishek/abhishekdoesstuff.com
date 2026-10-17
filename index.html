@@ -76,7 +76,7 @@
             "@id": "https://abhishekdoesstuff.com/#profile",
             "url": "https://abhishekdoesstuff.com/",
             "name": "Abhishek Bagade's project workbench",
-            "dateModified": "2026-09-28",
+            "dateModified": "2026-10-17",
             "mainEntity": {
               "@id": "https://abhishekdoesstuff.com/#abhishek-bagade"
             }
@@ -188,7 +188,7 @@
       href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;600;650;700;750&family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/styles.css?v=20261017-1" />
+    <link rel="stylesheet" href="/styles.css?v=20261017-2" />
   </head>
   <body class="workbench">
     <a class="skip-link" href="#main-content">Skip to content</a>
@@ -200,14 +200,56 @@
           ><small>An independent workbench</small></span
         ></a
       >
-      <nav aria-label="Primary navigation">
-        <a href="#builds">The builds <span>06</span></a
-        ><a href="/musings/">Musings</a><a href="/birds/">Birds</a
-        ><a href="https://abagade.com/">Writing ↗</a>
+      <nav class="primary-links" aria-label="Primary navigation">
+        <a href="#builds" data-section-link="builds">Builds <span>06</span></a>
+        <a href="#field-notes" data-section-link="field-notes">Field notes</a>
+        <a href="/musings/">Musings</a>
+        <a href="/birds/">Birds</a>
+        <a href="#lab" data-section-link="lab">Lab</a>
       </nav>
-      <a class="header-contact" href="mailto:admin@abhishekdoesstuff.com"
-        >Say hello <span aria-hidden="true">↗</span></a
-      >
+      <details class="site-directory" data-nav-menu>
+        <summary>
+          Explore <span class="menu-cross" aria-hidden="true"></span>
+        </summary>
+        <nav class="directory-panel" aria-label="Site directory">
+          <div class="directory-group">
+            <p>On this page</p>
+            <a href="#top" data-section-link="top"
+              ><span>The workbench</span><small>Start here</small></a
+            >
+            <a href="#builds" data-section-link="builds"
+              ><span>Selected builds</span><small>Six projects</small></a
+            >
+            <a href="#field-notes" data-section-link="field-notes"
+              ><span>Field notes</span><small>Made &amp; repaired</small></a
+            >
+            <a href="#writing" data-section-link="writing"
+              ><span>Research notes</span><small>Open questions</small></a
+            >
+            <a href="#lab" data-section-link="lab"
+              ><span>The homelab</span><small>Live vitals</small></a
+            >
+          </div>
+          <div class="directory-group">
+            <p>Other corners</p>
+            <a href="/musings/"
+              ><span>Musings</span><small>Research archive ↗</small></a
+            >
+            <a href="/birds/"
+              ><span>Listening Orrery</span><small>Live birdsong ↗</small></a
+            >
+            <a href="https://abagade.com/"
+              ><span>Long-form writing</span><small>abagade.com ↗</small></a
+            >
+            <a href="https://www.instagram.com/abhishek_does_stuff/"
+              ><span>Instagram</span><small>Builds &amp; bike hacks ↗</small></a
+            >
+            <a href="mailto:admin@abhishekdoesstuff.com"
+              ><span>Say hello</span><small>Send a note ↗</small></a
+            >
+          </div>
+        </nav>
+      </details>
     </header>
     <main id="main-content">
       <section class="workshop-hero" id="top" aria-labelledby="hero-title">
@@ -236,10 +278,8 @@
               </svg>
             </h1>
             <p class="intro-copy">
-              Code, circuits, and the occasional rabbit hole.<br />I build
-              things to see what happens. The useful bits,<br
-                class="desktop-break"
-              />
+              Code, circuits, and the occasional bike hack.<br />I build things
+              to see what happens. The useful bits,<br class="desktop-break" />
               reusable files, and honest failures live here.
             </p>
             <a class="workshop-button" href="#builds"
@@ -813,7 +853,15 @@
             A few things that made it past<br />“wouldn’t it be interesting if…”
           </p>
         </div>
-        <article class="featured-build coastgen-build">
+        <nav class="project-shortcuts" aria-label="Jump to a project">
+          <a href="#coastgen"><span>01</span> CoastGen</a
+          ><a href="#reppilot"><span>02</span> RepPilot</a
+          ><a href="#debabufy"><span>03</span> DeBabufy</a
+          ><a href="#stock-picker"><span>04</span> Stock picker</a
+          ><a href="#tax-return"><span>05</span> Tax returns</a
+          ><a href="#movie-llms"><span>06</span> Movie LLMs</a>
+        </nav>
+        <article class="featured-build coastgen-build" id="coastgen">
           <div
             class="coaster-visual"
             aria-label="Illustration of a photograph becoming a layered, 3D-printable coaster"
@@ -924,7 +972,7 @@
           </div>
         </article>
         <div class="project-pair">
-          <article class="journal-project reppilot-build">
+          <article class="journal-project reppilot-build" id="reppilot">
             <div class="project-meta">
               <span class="project-id">BUILD 002</span
               ><span class="project-state"
@@ -972,7 +1020,7 @@
               </div>
             </div>
           </article>
-          <article class="journal-project debabufy-build">
+          <article class="journal-project debabufy-build" id="debabufy">
             <div class="project-meta">
               <span class="project-id">BUILD 003</span
               ><span class="project-state alpha">Open source alpha</span>
@@ -1007,7 +1055,7 @@
             </div>
           </article>
         </div>
-        <article class="failed-build">
+        <article class="failed-build" id="stock-picker">
           <div class="failed-chart">
             <div class="project-meta">
               <span class="project-id">BUILD 004</span
@@ -1058,7 +1106,7 @@
           </div>
         </article>
         <div class="project-index">
-          <article class="index-project">
+          <article class="index-project" id="tax-return">
             <span class="project-id">005</span>
             <div>
               <p class="project-category">
@@ -1084,7 +1132,7 @@
               >Source <span aria-hidden="true">↗</span></a
             >
           </article>
-          <article class="index-project">
+          <article class="index-project" id="movie-llms">
             <span class="project-id">006</span>
             <div>
               <p class="project-category">LLMs / Hindi / Diarization</p>
@@ -1110,7 +1158,11 @@
         </div>
       </section>
 
-      <section class="listening-feature" aria-labelledby="listening-title">
+      <section
+        id="listening"
+        class="listening-feature"
+        aria-labelledby="listening-title"
+      >
         <div class="bird-plate">
           <img
             src="/assets/birds/psittacula-krameri.jpg"
@@ -1220,6 +1272,57 @@
             </div></a
           >
         </div>
+        <aside class="instagram-note" aria-labelledby="instagram-title">
+          <div class="instagram-glyph" aria-hidden="true"><span></span></div>
+          <div>
+            <p class="workshop-kicker">More from the workbench</p>
+            <h3 id="instagram-title">The things between the projects.</h3>
+            <p>
+              3D prints, electronics, bike hacks, and the making along the way.
+            </p>
+          </div>
+          <a href="https://www.instagram.com/abhishek_does_stuff/"
+            >@abhishek_does_stuff <span aria-hidden="true">↗</span></a
+          >
+        </aside>
+        <div class="instagram-stories" aria-label="More builds on Instagram">
+          <a
+            href="https://www.instagram.com/abhishek_does_stuff/reel/DF-HW5vvk1A/"
+            ><span class="workshop-kicker">3D printing / Motorcycle</span>
+            <h3>My Interceptor, in miniature.</h3>
+            <p>
+              A printed, sanded, and painted model of my own Royal Enfield
+              Interceptor 650.
+            </p>
+            <span class="reel-action"
+              >Watch the build <span aria-hidden="true">↗</span></span
+            ></a
+          >
+          <a
+            href="https://www.instagram.com/abhishek_does_stuff/reel/DHlPxgmv7bO/"
+            ><span class="workshop-kicker">BlenderGIS / Terrain</span>
+            <h3>A trek I can hold in my hand.</h3>
+            <p>
+              Kedarkantha terrain data, turned into a 3D print and finished with
+              hand-painted details.
+            </p>
+            <span class="reel-action"
+              >Watch the build <span aria-hidden="true">↗</span></span
+            ></a
+          >
+          <a
+            href="https://www.instagram.com/abhishek_does_stuff/reel/DcrLf_Hsi3Z/"
+            ><span class="workshop-kicker">Repair / Useful prints</span>
+            <h3>A less wobbly printer shelf.</h3>
+            <p>
+              3D-printed corner braces and a few screws to steady an IKEA BROR
+              shelf.
+            </p>
+            <span class="reel-action"
+              >Watch the repair <span aria-hidden="true">↗</span></span
+            ></a
+          >
+        </div>
       </section>
 
       <section
@@ -1322,13 +1425,19 @@
           ><a href="https://abagade.com/">Writing ↗</a>
         </div>
       </div>
+      <nav class="footer-directory" aria-label="Footer navigation">
+        <a href="#builds">Builds</a><a href="#field-notes">Field notes</a
+        ><a href="/musings/">Musings</a><a href="/birds/">Birds</a
+        ><a href="#lab">Lab</a
+        ><a href="mailto:admin@abhishekdoesstuff.com">Email ↗</a>
+      </nav>
       <div class="footer-colophon">
         <span>© Abhishek Bagade</span
         ><span>An ongoing collection. Served from home.</span
         ><a href="#top">Back to the top ↑</a>
       </div>
     </footer>
-    <script src="/status.js" defer></script>
+    <script src="/status.js?v=20261017-2" defer></script>
     <script src="/analytics.js" defer></script>
   </body>
 </html>
