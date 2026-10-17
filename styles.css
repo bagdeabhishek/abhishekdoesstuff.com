@@ -3970,3 +3970,115 @@ html:has(.workbench) {
     font-size: 13px;
   }
 }
+/* The serving machine belongs at the front door, with genuine live readings. */
+.workbench .hero-lab {
+  grid-template-columns: 1fr 1.3fr;
+  gap: 18px 36px;
+  padding: 23px 25px 15px;
+  margin-top: 23px;
+  background: #e5e9df;
+  border: 1px solid #bdc8b9;
+}
+.workbench .hero-lab .lab-intro {
+  gap: 16px;
+}
+.workbench .hero-lab .lab-icon {
+  width: 42px;
+  height: 42px;
+  font-size: 30px;
+}
+.workbench .hero-lab .workshop-kicker {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--subtle);
+  font-size: 9px;
+}
+.workbench .lab-indicator {
+  flex: none;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #73796c;
+}
+.workbench .hero-lab[data-status="online"] .lab-indicator {
+  background: var(--moss);
+  box-shadow: 0 0 0 3px #284b3c16;
+}
+.workbench .hero-lab[data-status="online"] .workshop-kicker {
+  color: var(--moss);
+}
+.workbench .hero-lab[data-status="unavailable"] .lab-indicator {
+  background: #91612e;
+}
+.workbench .hero-lab .lab-intro h2 {
+  margin: 8px 0 6px;
+  font-size: 23px;
+}
+.workbench .hero-lab .lab-intro p:last-child {
+  font-size: 11px;
+}
+.workbench .hero-lab .lab-readings {
+  grid-template-columns: repeat(6, auto);
+  justify-content: space-between;
+  gap: 18px;
+}
+.workbench .hero-lab .lab-readings dt {
+  font-size: 9px;
+}
+.workbench .hero-lab .lab-readings dd {
+  font-size: 11px;
+}
+.workbench .hero-lab .last-seen {
+  position: static;
+  grid-column: 1 / -1;
+  margin: 0;
+  padding-top: 10px;
+  border-top: 1px solid #bdc8b9;
+  text-align: right;
+  font-size: 9px;
+}
+@media (max-width: 1100px) {
+  .workbench .hero-lab {
+    grid-template-columns: 1fr;
+    row-gap: 22px;
+  }
+  .workbench .hero-lab .lab-readings {
+    gap: 18px;
+  }
+}
+@media (max-width: 760px) {
+  .workbench .hero-lab {
+    padding: 20px 19px 13px;
+    margin-top: 20px;
+    row-gap: 20px;
+  }
+  .workbench .hero-lab .lab-intro h2 {
+    font-size: 21px;
+  }
+  .workbench .hero-lab .last-seen {
+    font-size: 8px;
+    text-align: left;
+    line-height: 1.7;
+  }
+  .workbench .hero-lab .lab-readings {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px 16px;
+  }
+}
+@media (max-width: 359px) {
+  .workbench .hero-lab .lab-icon {
+    width: 34px;
+    height: 38px;
+    font-size: 26px;
+  }
+  .workbench .hero-lab .lab-intro {
+    gap: 11px;
+  }
+  .workbench .hero-lab .lab-intro h2 {
+    font-size: 18px;
+  }
+  .workbench .hero-lab .lab-intro p:last-child {
+    font-size: 10px;
+  }
+}

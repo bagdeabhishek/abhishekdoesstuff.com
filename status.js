@@ -37,10 +37,19 @@ async function refreshStatus() {
     setPct("metric-ram", "metric-ram-bar", data.memory_used_pct);
     setPct("metric-disk", "metric-disk-bar", data.disk_used_pct);
 
+    $("lab").dataset.status = "online";
+    $("metric-connection").textContent = "Live homelab telemetry";
     const stamp = data.updated_at ? new Date(data.updated_at) : new Date();
     $("metric-updated").textContent = `updated ${stamp.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}`;
   } catch (error) {
-    $("metric-updated").textContent = "status API offline; page still static";
+    $("lab").dataset.status = "unavailable";
+    $("metric-connection").textContent = "Live vitals unavailable";
+    for (const id of ["metric-uptime", "metric-load", "metric-temp", "metric-ram", "metric-disk"]) {
+      $(id).textContent = "—";
+    }
+    $("metric-ram-bar").style.width = "0%";
+    $("metric-disk-bar").style.width = "0%";
+    $("metric-updated").textContent = "Telemetry is unavailable. Retrying every minute.";
   }
 }
 
@@ -75,7 +84,7 @@ setInterval(refreshStatus, 60000);
   });
 
   const links = [...document.querySelectorAll("[data-section-link]")];
-  const sections = ["top", "builds", "listening", "field-notes", "writing", "lab"]
+  const sections = ["top", "builds", "listening", "field-notes", "writing"]
     .map((id) => document.getElementById(id)).filter(Boolean);
   const header = document.querySelector(".site-header");
   let scheduled = false;
@@ -84,6 +93,10 @@ setInterval(refreshStatus, 60000);
     let current = sections[0]?.id;
     for (const section of sections) {
       if (section.getBoundingClientRect().top <= cutoff) current = section.id;
+    }
+    const labBounds = $("lab").getBoundingClientRect();
+    if (labBounds.top <= cutoff && labBounds.bottom > header.getBoundingClientRect().bottom + 10) {
+      current = "lab";
     }
     if (innerHeight + scrollY >= document.documentElement.scrollHeight - 4) {
       current = sections[sections.length - 1]?.id;

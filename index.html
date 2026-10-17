@@ -188,7 +188,7 @@
       href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;600;650;700;750&family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/styles.css?v=20261017-2" />
+    <link rel="stylesheet" href="/styles.css?v=20261017-3" />
   </head>
   <body class="workbench">
     <a class="skip-link" href="#main-content">Skip to content</a>
@@ -259,6 +259,63 @@
             &amp; curious detours</span
           ><span>Bengaluru, IN · 12.97° N</span>
         </div>
+        <aside
+          class="workshop-lab hero-lab"
+          data-status="loading"
+          id="lab"
+          aria-labelledby="lab-title"
+        >
+          <div class="lab-intro">
+            <span class="lab-icon" aria-hidden="true">▤</span>
+            <div>
+              <p class="workshop-kicker">
+                <span class="lab-indicator" aria-hidden="true"></span
+                ><span id="metric-connection">Checking live vitals…</span>
+              </p>
+              <h2 id="lab-title">Served from my homelab.</h2>
+              <p>Lenovo M900 Tiny · Bengaluru</p>
+            </div>
+          </div>
+          <dl class="lab-readings">
+            <div>
+              <dt>Host</dt>
+              <dd id="metric-host">m900-tiny</dd>
+            </div>
+            <div>
+              <dt>Uptime</dt>
+              <dd id="metric-uptime">Checking…</dd>
+            </div>
+            <div>
+              <dt>Load</dt>
+              <dd id="metric-load">—</dd>
+            </div>
+            <div>
+              <dt>CPU</dt>
+              <dd id="metric-temp">—</dd>
+            </div>
+            <div>
+              <dt>RAM</dt>
+              <dd>
+                <b id="metric-ram">—</b
+                ><span class="bar" aria-hidden="true"
+                  ><span id="metric-ram-bar"></span
+                ></span>
+              </dd>
+            </div>
+            <div>
+              <dt>Disk</dt>
+              <dd>
+                <b id="metric-disk">—</b
+                ><span class="bar" aria-hidden="true"
+                  ><span id="metric-disk-bar"></span
+                ></span>
+              </dd>
+            </div>
+          </dl>
+          <p id="metric-updated" class="last-seen" aria-live="polite">
+            Connecting to the machine serving this page.
+          </p>
+        </aside>
         <div class="hero-layout">
           <div class="workshop-intro">
             <p class="workshop-kicker">Engineer by day. Maker by default.</p>
@@ -1357,56 +1414,6 @@
           >
         </div>
       </section>
-
-      <aside class="workshop-lab" id="lab" aria-labelledby="lab-title">
-        <div class="lab-intro">
-          <span class="lab-icon" aria-hidden="true">▤</span>
-          <div>
-            <p class="workshop-kicker">The machine behind this page</p>
-            <h2 id="lab-title">Small computer. Many jobs.</h2>
-            <p>A Lenovo M900 Tiny, at home in Bengaluru.</p>
-          </div>
-        </div>
-        <dl class="lab-readings">
-          <div>
-            <dt>Host</dt>
-            <dd id="metric-host">m900-tiny</dd>
-          </div>
-          <div>
-            <dt>Uptime</dt>
-            <dd id="metric-uptime">Checking…</dd>
-          </div>
-          <div>
-            <dt>Load</dt>
-            <dd id="metric-load">—</dd>
-          </div>
-          <div>
-            <dt>CPU</dt>
-            <dd id="metric-temp">—</dd>
-          </div>
-          <div>
-            <dt>RAM</dt>
-            <dd>
-              <b id="metric-ram">—</b
-              ><span class="bar" aria-hidden="true"
-                ><span id="metric-ram-bar"></span
-              ></span>
-            </dd>
-          </div>
-          <div>
-            <dt>Disk</dt>
-            <dd>
-              <b id="metric-disk">—</b
-              ><span class="bar" aria-hidden="true"
-                ><span id="metric-disk-bar"></span
-              ></span>
-            </dd>
-          </div>
-        </dl>
-        <p id="metric-updated" class="last-seen" aria-live="polite">
-          Waiting for live telemetry.
-        </p>
-      </aside>
     </main>
     <footer class="workshop-footer">
       <div class="footer-main">
@@ -1437,7 +1444,7 @@
         ><a href="#top">Back to the top ↑</a>
       </div>
     </footer>
-    <script src="/status.js?v=20261017-2" defer></script>
+    <script src="/status.js?v=20261017-3" defer></script>
     <script src="/analytics.js" defer></script>
   </body>
 </html>
