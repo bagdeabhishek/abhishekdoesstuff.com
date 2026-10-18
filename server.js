@@ -53,6 +53,8 @@ const PUBLIC_FILES = new Map([
   ["/logo.jpg", { file: "logo.jpg", cache: CACHE.asset }],
   ["/logo-transparent.png", { file: "logo-transparent.png", cache: CACHE.asset }],
   ["/logo-512.webp", { file: "logo-512.webp", cache: CACHE.asset }],
+  ["/assets/brand/portrait.webp", { file: "assets/brand/portrait.webp", cache: CACHE.asset }],
+  ["/assets/brand/portrait.png", { file: "assets/brand/portrait.png", cache: CACHE.asset }],
   ["/favicon.ico", { file: "favicon.ico", cache: CACHE.asset }],
   ["/favicon-48.png", { file: "favicon-48.png", cache: CACHE.asset }],
   ["/favicon-192.png", { file: "favicon-192.png", cache: CACHE.asset }],
