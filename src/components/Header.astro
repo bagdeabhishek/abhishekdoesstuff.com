@@ -1,0 +1,79 @@
+---
+import ThemeToggle from "./ThemeToggle.astro";
+
+interface Props {
+  home?: boolean;
+  canonicalPath: string;
+}
+
+const { home = false, canonicalPath } = Astro.props;
+const birdsCurrent = canonicalPath.startsWith("/birds/");
+const musingsCurrent = canonicalPath.startsWith("/musings/");
+const sectionHref = (section: string) => home ? `#${section}` : `/#${section}`;
+---
+
+<header class="site-header">
+  <a class="brand" href={home ? "#top" : "/"} aria-label="Abhishek Does Stuff home">
+    <img
+      class="brand-wordmark"
+      src="/logo-512.webp?v=20261018-6"
+      alt=""
+      width="176"
+      height="73"
+      decoding="async"
+    />
+  </a>
+  <nav class="primary-links" aria-label="Primary navigation">
+    <a href={sectionHref("builds")} data-section-link={home ? "builds" : undefined}>Builds <span>06</span></a>
+    <a href={sectionHref("field-notes")} data-section-link={home ? "field-notes" : undefined}>Field notes</a>
+    <a href="/musings/" aria-current={musingsCurrent ? "page" : undefined}>Musings</a>
+    <a href="/birds/" aria-current={birdsCurrent ? "page" : undefined}>Birds</a>
+    <a href={sectionHref("lab")} data-section-link={home ? "lab" : undefined}>Lab</a>
+  </nav>
+  <div class="header-tools">
+    <ThemeToggle />
+    <details class="site-directory" data-nav-menu>
+      <summary>
+        Explore <span class="menu-cross" aria-hidden="true"></span>
+      </summary>
+      <nav class="directory-panel" aria-label="Site directory">
+        <div class="directory-group">
+          <p>{home ? "On this page" : "The workbench"}</p>
+          <a href={home ? "#top" : "/"} data-section-link={home ? "top" : undefined}>
+            <span>The workbench</span><small>Start here</small>
+          </a>
+          <a href={sectionHref("builds")} data-section-link={home ? "builds" : undefined}>
+            <span>Selected builds</span><small>Six projects</small>
+          </a>
+          <a href={sectionHref("field-notes")} data-section-link={home ? "field-notes" : undefined}>
+            <span>Field notes</span><small>Made &amp; repaired</small>
+          </a>
+          <a href={sectionHref("writing")} data-section-link={home ? "writing" : undefined}>
+            <span>Research notes</span><small>Open questions</small>
+          </a>
+          <a href={sectionHref("lab")} data-section-link={home ? "lab" : undefined}>
+            <span>The homelab</span><small>Live vitals</small>
+          </a>
+        </div>
+        <div class="directory-group">
+          <p>Other corners</p>
+          <a href="/musings/" aria-current={musingsCurrent ? "page" : undefined}>
+            <span>Musings</span><small>Research archive ↗</small>
+          </a>
+          <a href="/birds/" aria-current={birdsCurrent ? "page" : undefined}>
+            <span>Listening Orrery</span><small>Live birdsong ↗</small>
+          </a>
+          <a href="https://abagade.com/">
+            <span>Long-form writing</span><small>abagade.com ↗</small>
+          </a>
+          <a href="https://www.instagram.com/abhishek_does_stuff/">
+            <span>Instagram</span><small>Builds &amp; bike hacks ↗</small>
+          </a>
+          <a href="mailto:admin@abhishekdoesstuff.com">
+            <span>Say hello</span><small>Send a note ↗</small>
+          </a>
+        </div>
+      </nav>
+    </details>
+  </div>
+</header>

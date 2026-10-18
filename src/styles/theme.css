@@ -1,0 +1,163 @@
+.subpage .article-header .section-kicker {
+  font: 400 10px/1.7 var(--mono);
+}
+.subpage .reading-single {
+  grid-template-columns: minmax(0, 790px);
+}
+
+.subpage .prose .notebook-meta { color: var(--subtle); font: 10px/1.8 var(--mono); padding-bottom: 20px; margin-bottom: 30px; border-bottom: 1px solid var(--rule); overflow-wrap: anywhere; }
+
+/* A custom wordmark signs the homepage and every subpage. */
+.workbench .brand {
+  min-height: 64px;
+  flex-shrink: 0;
+}
+.workbench .brand-wordmark {
+  display: block;
+  width: 176px;
+  height: 73px;
+  object-fit: contain;
+}
+.workbench .maker-note {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  align-items: center;
+  gap: 58px;
+  padding: 8px 0 42px;
+  margin-bottom: 36px;
+  border-bottom: 1px solid var(--rule);
+}
+.workbench .maker-portrait {
+  margin: 0;
+}
+.workbench .maker-portrait img {
+  display: block;
+  width: 220px;
+  height: auto;
+}
+.workbench .maker-portrait figcaption {
+  margin-top: 14px;
+  color: var(--subtle);
+  font: 9px/1.6 var(--mono);
+  text-align: center;
+}
+.workbench .maker-note h2 {
+  margin: 14px 0 16px;
+  color: var(--moss);
+  font: 400 clamp(32px, 3.5vw, 44px)/1.15 Georgia, serif;
+  letter-spacing: -0.04em;
+}
+.workbench .maker-note-copy > p:last-child {
+  max-width: 55ch;
+  margin: 0;
+  color: var(--subtle);
+  font: 14px/1.9 var(--sans);
+}
+
+/* The same workbench, after hours. Art plates retain their original paper. */
+:root[data-theme="dark"] .workbench {
+  --sheet: #191e1a;
+  --ink: #e5e3d9;
+  --subtle: #b0b6a8;
+  --rule: #3c463d;
+  --moss: #aec9a7;
+  --vermilion: #ec9a7c;
+  --surface: #232b24;
+  --wash: #29352b;
+  --wash-translucent: #29352b99;
+  --wash-ink: #c0d3b9;
+  --surface-strong: #354438;
+  --soft-rule: #425744;
+  --strong-rule: #6c7d68;
+  --note: #332b25;
+  --note-ink: #d1bda6;
+  --note-rule: #65513e;
+  --quote: #2b2b24;
+  --quote-ink: #cfc5ae;
+  --quote-rule: #a18b63;
+  --raised: #283329;
+  --demo-rule: #54624e;
+  --demo-toolbar: #232b24;
+  --demo-shadow: #101611;
+  --warm-ink: #daba86;
+  color-scheme: dark;
+}
+:root[data-theme="dark"] .brand-wordmark {
+  filter: invert(1) hue-rotate(180deg) saturate(.6) brightness(1.1);
+}
+:root[data-theme="dark"] .maker-portrait img {
+  padding: 10px;
+  background: #eae7dd;
+  border: 1px solid #d3d0c1;
+}
+:root[data-theme="dark"] .workbench .workshop-button {
+  color: var(--sheet);
+}
+:root[data-theme="dark"] .workbench .red-tape {
+  color: var(--sheet);
+}
+.workbench .header-tools {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+.workbench .theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  color: var(--ink);
+  background: transparent;
+  border: 1px solid var(--rule);
+  border-radius: 0;
+  cursor: pointer;
+}
+.workbench .theme-toggle:hover {
+  background: var(--wash);
+  border-color: var(--moss);
+}
+.workbench .theme-toggle[hidden] {
+  display: none;
+}
+.workbench .theme-toggle svg {
+  display: block;
+  width: 19px;
+  height: 19px;
+}
+.workbench .theme-toggle .theme-sun,
+:root[data-theme="dark"] .theme-toggle .theme-moon {
+  display: none;
+}
+:root[data-theme="dark"] .theme-toggle .theme-sun {
+  display: block;
+}
+@media (max-width: 760px) {
+  .workbench .brand {
+    min-height: 52px;
+  }
+  .workbench .brand-wordmark {
+    width: 128px;
+    height: 54px;
+  }
+  .workbench .header-tools {
+    gap: 8px;
+  }
+  .workbench .theme-toggle {
+    width: 40px;
+  }
+  .workbench .maker-note {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding-bottom: 32px;
+    margin-bottom: 30px;
+  }
+  .workbench .maker-portrait {
+    width: 160px;
+  }
+  .workbench .maker-portrait img {
+    width: 160px;
+  }
+}

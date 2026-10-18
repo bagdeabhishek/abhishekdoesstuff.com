@@ -1,0 +1,121 @@
+---
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import globalStyles from "../styles/global.css?url";
+
+interface Props {
+  title: string;
+  description: string;
+  canonicalPath: string;
+  bodyClass?: string;
+  bodyId?: string;
+  home?: boolean;
+  ogType?: string;
+  schema?: unknown;
+  socialTitle?: string;
+  socialDescription?: string;
+  socialImage?: string;
+  socialImageAlt?: string;
+  socialImageType?: string;
+  socialImageWidth?: string | number;
+  socialImageHeight?: string | number;
+  twitterTitle?: string;
+  twitterDescription?: string;
+  twitterImage?: string;
+  twitterImageAlt?: string;
+  twitterCard?: string;
+  styles?: string[];
+}
+
+const {
+  title,
+  description,
+  canonicalPath,
+  bodyClass = "workbench subpage",
+  bodyId = "page-top",
+  home = false,
+  ogType = "website",
+  schema,
+  socialTitle = title,
+  socialDescription = description,
+  socialImage = "https://abhishekdoesstuff.com/og.png?v=20261018-6",
+  socialImageAlt = "Abhishek Does Stuff project workbench",
+  socialImageType = "image/png",
+  socialImageWidth = 1200,
+  socialImageHeight = 630,
+  twitterTitle = socialTitle,
+  twitterDescription = socialDescription,
+  twitterImage = socialImage,
+  twitterImageAlt = socialImageAlt,
+  twitterCard = "summary_large_image",
+  styles = [],
+} = Astro.props;
+
+const origin = Astro.site ?? new URL("https://abhishekdoesstuff.com");
+const canonicalUrl = new URL(canonicalPath, origin).href;
+const skipLabel = canonicalPath === "/birds/"
+  ? "Skip to birds"
+  : bodyClass.includes("character-article") || bodyClass.includes("stock-note")
+    ? "Skip to article"
+    : "Skip to content";
+const skipTarget = bodyClass.includes("stock-note") ? "#article-content" : "#main-content";
+---
+
+<!doctype html>
+<html lang="en-IN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="color-scheme" content="light dark" />
+    <script is:inline src="/assets/theme.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content="Abhishek Bagade" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="theme-color" content="#f5f3ea" />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="icon" href="/favicon.ico?v=20261018-6" sizes="any" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png?v=20261018-6" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=20261018-6" />
+    <link rel="alternate" type="application/rss+xml" title="Abhishek Bagade's long-form writing" href="https://abagade.com/feed.xml" />
+    <link rel="alternate" type="text/plain" href="https://abhishekdoesstuff.com/humans.txt" />
+    <link rel="sitemap" type="application/xml" href="https://abhishekdoesstuff.com/sitemap.xml" />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:locale" content="en_IN" />
+    <meta property="og:site_name" content="Abhishek Does Stuff" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={socialTitle} />
+    <meta property="og:description" content={socialDescription} />
+    <meta property="og:image" content={socialImage} />
+    <meta property="og:image:alt" content={socialImageAlt} />
+    <meta property="og:image:type" content={socialImageType} />
+    <meta property="og:image:width" content={String(socialImageWidth)} />
+    <meta property="og:image:height" content={String(socialImageHeight)} />
+    <meta name="twitter:card" content={twitterCard} />
+    <meta name="twitter:title" content={twitterTitle} />
+    <meta name="twitter:description" content={twitterDescription} />
+    <meta name="twitter:image" content={twitterImage} />
+    <meta name="twitter:image:alt" content={twitterImageAlt} />
+    <link rel="stylesheet" href={globalStyles} />
+    {styles.map((href) => <link rel="stylesheet" {href} />)}
+    <slot name="head" />
+    {schema !== undefined && (
+      <script type="application/ld+json" set:html={JSON.stringify(schema).replaceAll("<", "\\u003c")}></script>
+    )}
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;600;650;700;750&family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class={bodyClass} id={bodyId}>
+    <a class="skip-link" href={skipTarget}>{skipLabel}</a>
+    <Header {home} {canonicalPath} />
+    <slot />
+    <Footer {home} />
+    <slot name="scripts" />
+    <script is:inline src="/status.js?v=20261017-4" defer></script>
+    <script is:inline src="/analytics.js" defer></script>
+  </body>
+</html>

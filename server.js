@@ -1,7 +1,6 @@
 const http = require("http");
 const fs = require("fs");
 const path = require("path");
-const { buildMusings } = require("./musings");
 const birdArt = require("./data/bird-art.json");
 
 const PORT = Number(process.env.PORT || 3000);
@@ -9,6 +8,8 @@ const STATUS_UPSTREAM = process.env.STATUS_UPSTREAM || "http://192.168.1.61:9109
 const BIRDNET_UPSTREAM = process.env.BIRDNET_UPSTREAM || "http://192.168.1.91";
 const GA_MEASUREMENT_ID = process.env.GA_MEASUREMENT_ID || process.env.GOOGLE_ANALYTICS_ID || "";
 const ROOT = __dirname;
+const DIST = path.join(ROOT, "dist");
+const MANIFEST_PATH = path.join(ROOT, "build", "manifest.json");
 const STATUS_TIMEOUT_MS = 3000;
 const STATUS_MAX_BYTES = 16 * 1024;
 const BIRDNET_TIMEOUT_MS = 5000;
@@ -21,77 +22,6 @@ const CACHE = {
   metadata: "public, max-age=3600, must-revalidate",
   asset: "public, max-age=3600, stale-while-revalidate=86400",
 };
-
-// The application source lives beside the static files in Nixpacks deployments.
-// Only these explicit routes are public; adding a file to the repo never exposes it.
-const PUBLIC_FILES = new Map([
-  ["/", { file: "index.html", cache: CACHE.document }],
-  ["/index.html", { file: "index.html", cache: CACHE.document }],
-  ["/styles.css", { file: "styles.css", cache: CACHE.document }],
-  ["/status.js", { file: "status.js", cache: CACHE.asset }],
-  ["/assets/theme.js", { file: "assets/theme.js", cache: CACHE.asset }],
-  ["/birds/", { file: path.join("birds", "index.html"), cache: CACHE.document }],
-  ["/birds/index.html", { file: path.join("birds", "index.html"), cache: CACHE.document }],
-  ["/birds.css", { file: "birds.css", cache: CACHE.document }],
-  ["/birds.js", { file: "birds.js", cache: CACHE.asset }],
-  [
-    "/movie-character-llm-experiment/",
-    { file: path.join("movie-character-llm-experiment", "index.html"), cache: CACHE.document },
-  ],
-  [
-    "/movie-character-llm-experiment/index.html",
-    { file: path.join("movie-character-llm-experiment", "index.html"), cache: CACHE.document },
-  ],
-  ["/character-article.css", { file: "character-article.css", cache: CACHE.document }],
-  ["/debabufy", { file: path.join("debabufy", "index.html"), cache: CACHE.document }],
-  ["/debabufy/", { file: path.join("debabufy", "index.html"), cache: CACHE.document }],
-  ["/debabufy/index.html", { file: path.join("debabufy", "index.html"), cache: CACHE.document }],
-  ["/robots.txt", { file: "robots.txt", cache: CACHE.metadata }],
-  ["/sitemap.xml", { file: "sitemap.xml", cache: CACHE.metadata }],
-  ["/humans.txt", { file: "humans.txt", cache: CACHE.metadata }],
-  ["/og.png", { file: "og.png", cache: CACHE.asset }],
-  ["/og.svg", { file: "og.svg", cache: CACHE.asset }],
-  ["/logo.jpg", { file: "logo.jpg", cache: CACHE.asset }],
-  ["/logo-transparent.png", { file: "logo-transparent.png", cache: CACHE.asset }],
-  ["/logo-512.webp", { file: "logo-512.webp", cache: CACHE.asset }],
-  ["/assets/brand/portrait.webp", { file: "assets/brand/portrait.webp", cache: CACHE.asset }],
-  ["/assets/brand/portrait.png", { file: "assets/brand/portrait.png", cache: CACHE.asset }],
-  ["/favicon.ico", { file: "favicon.ico", cache: CACHE.asset }],
-  ["/favicon-48.png", { file: "favicon-48.png", cache: CACHE.asset }],
-  ["/favicon-192.png", { file: "favicon-192.png", cache: CACHE.asset }],
-  ["/apple-touch-icon.png", { file: "apple-touch-icon.png", cache: CACHE.asset }],
-  [
-    "/assets/projects/ambilight.webp",
-    { file: path.join("assets", "projects", "ambilight.webp"), cache: CACHE.asset },
-  ],
-  [
-    "/assets/projects/edifier-repair.webp",
-    { file: path.join("assets", "projects", "edifier-repair.webp"), cache: CACHE.asset },
-  ],
-  [
-    "/assets/projects/jarrarium.webp",
-    { file: path.join("assets", "projects", "jarrarium.webp"), cache: CACHE.asset },
-  ],
-  [
-    "/assets/projects/twitter-network.webp",
-    { file: path.join("assets", "projects", "twitter-network.webp"), cache: CACHE.asset },
-  ],
-  [
-    "/assets/projects/debabufy-mark.png",
-    { file: path.join("assets", "projects", "debabufy-mark.png"), cache: CACHE.asset },
-  ],
-  [
-    "/notes/stock-picker-experiment.html",
-    { file: path.join("notes", "stock-picker-experiment.html"), cache: CACHE.document },
-  ],
-]);
-
-for (const entry of birdArt) {
-  PUBLIC_FILES.set(entry.image, {
-    file: entry.image.replace(/^\//, ""),
-    cache: "public, max-age=31536000, immutable",
-  });
-}
 
 const TYPES = {
   ".html": "text/html; charset=utf-8",
@@ -213,14 +143,61 @@ function isNotModified(req, stat, etag) {
   return Math.floor(stat.mtimeMs / 1000) * 1000 <= since;
 }
 
-function serveFile(req, res, pathname) {
-  const publicFile = PUBLIC_FILES.get(pathname);
+function loadStaticManifest() {
+  let manifest;
+  try {
+    manifest = JSON.parse(fs.readFileSync(MANIFEST_PATH, "utf8"));
+  } catch (error) {
+    throw new Error(`Unable to load ${path.relative(ROOT, MANIFEST_PATH)}. Run \`npm run build\` before starting the server.`, { cause: error });
+  }
+
+  if (!manifest || manifest.version !== 1 || !manifest.files || !manifest.redirects) {
+    throw new Error(`Invalid static manifest at ${path.relative(ROOT, MANIFEST_PATH)}. Run \`npm run build\` to regenerate it.`);
+  }
+
+  const files = new Map();
+  for (const [route, entry] of Object.entries(manifest.files)) {
+    if (
+      !route.startsWith("/") ||
+      route.includes("\\") ||
+      !entry ||
+      typeof entry.file !== "string" ||
+      !["document", "metadata", "asset", "immutable"].includes(entry.cache)
+    ) {
+      throw new Error(`Invalid file entry in ${path.relative(ROOT, MANIFEST_PATH)}: ${route}`);
+    }
+    const filePath = path.resolve(DIST, entry.file);
+    if (path.isAbsolute(entry.file) || (filePath !== DIST && !filePath.startsWith(`${DIST}${path.sep}`))) {
+      throw new Error(`Static manifest entry escapes dist: ${route}`);
+    }
+    files.set(route, { filePath, cache: entry.cache });
+  }
+
+  const redirects = new Map();
+  for (const [route, location] of Object.entries(manifest.redirects)) {
+    if (
+      !route.startsWith("/") ||
+      route.includes("\\") ||
+      typeof location !== "string" ||
+      location.length === 0 ||
+      /[\r\n]/.test(location)
+    ) {
+      throw new Error(`Invalid redirect entry in ${path.relative(ROOT, MANIFEST_PATH)}: ${route}`);
+    }
+    redirects.set(route, location);
+  }
+
+  return { files, redirects };
+}
+
+function serveFile(req, res, pathname, staticFiles) {
+  const publicFile = staticFiles.get(pathname);
   if (!publicFile) {
     sendTextError(req, res, 404, "Not found");
     return;
   }
 
-  const filePath = path.join(ROOT, publicFile.file);
+  const filePath = publicFile.filePath;
   fs.stat(filePath, (statError, stat) => {
     if (statError || !stat.isFile()) {
       sendTextError(req, res, 404, "Not found");
@@ -229,7 +206,7 @@ function serveFile(req, res, pathname) {
 
     const etag = fileEtag(stat);
     const commonHeaders = {
-      "cache-control": publicFile.cache,
+      "cache-control": CACHE[publicFile.cache] || "public, max-age=31536000, immutable",
       etag,
       "last-modified": stat.mtime.toUTCString(),
     };
@@ -250,17 +227,6 @@ function serveFile(req, res, pathname) {
       }, data);
     });
   });
-}
-
-function serveMusing(req, res, pathname, musings) {
-  const page = musings.pages.get(pathname);
-  if (!page) return false;
-  if (page.redirect) {
-    send(req, res, 301, { location: page.redirect, "cache-control": CACHE.metadata });
-  } else {
-    send(req, res, 200, { "content-type": TYPES[".html"], "cache-control": CACHE.document }, page.html);
-  }
-  return true;
 }
 
 function upstreamUrl() {
@@ -742,8 +708,8 @@ function serveAnalytics(req, res) {
   }, body);
 }
 
-async function start() {
-const musings = await buildMusings(ROOT);
+function start() {
+const staticManifest = loadStaticManifest();
 const server = http.createServer((req, res) => {
   if (req.method !== "GET" && req.method !== "HEAD") {
     sendTextError(req, res, 405, "Method not allowed", { allow: "GET, HEAD" });
@@ -778,24 +744,12 @@ const server = http.createServer((req, res) => {
     serveAnalytics(req, res);
     return;
   }
-  if (pathname === "/musings") {
-    send(req, res, 301, { location: "/musings/", "cache-control": CACHE.metadata });
+  const redirect = staticManifest.redirects.get(pathname);
+  if (redirect) {
+    send(req, res, 301, { location: redirect, "cache-control": CACHE.metadata });
     return;
   }
-  if (pathname === "/birds") {
-    send(req, res, 301, { location: "/birds/", "cache-control": CACHE.metadata });
-    return;
-  }
-  if (pathname === "/movie-character-llm-experiment") {
-    send(req, res, 301, { location: "/movie-character-llm-experiment/", "cache-control": CACHE.metadata });
-    return;
-  }
-  if (/^\/musings\/[^/]+$/.test(pathname)) {
-    send(req, res, 301, { location: `${pathname}/`, "cache-control": CACHE.metadata });
-    return;
-  }
-  if (serveMusing(req, res, pathname, musings)) return;
-  serveFile(req, res, pathname);
+  serveFile(req, res, pathname, staticManifest.files);
 });
 
 server.listen(PORT, "0.0.0.0", () => {
@@ -803,7 +757,9 @@ server.listen(PORT, "0.0.0.0", () => {
 });
 }
 
-start().catch((error) => {
-  console.error("Unable to build Markdown Musings", error);
+try {
+  start();
+} catch (error) {
+  console.error("Unable to start server:", error.message);
   process.exitCode = 1;
-});
+}

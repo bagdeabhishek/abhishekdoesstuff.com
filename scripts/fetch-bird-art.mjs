@@ -3,7 +3,8 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const ASSET_DIR = path.join(ROOT, "assets", "birds");
+const PUBLIC_DIR = path.join(ROOT, "public");
+const ASSET_DIR = path.join(PUBLIC_DIR, "assets", "birds");
 const DATA_FILE = path.join(ROOT, "data", "bird-art.json");
 const COMMONS_API = "https://commons.wikimedia.org/w/api.php";
 
@@ -137,7 +138,7 @@ for (const [index, work] of works.entries()) {
   const existing = existingByName.get(work.scientificName);
   if (existing && process.env.BIRD_ART_REFRESH !== "1") {
     try {
-      await access(path.join(ROOT, existing.image.replace(/^\//, "")));
+      await access(path.join(PUBLIC_DIR, existing.image.replace(/^\//, "")));
       manifest.push(existing);
       process.stdout.write(`[${index + 1}/${works.length}] ${work.commonName} (cached)\n`);
       continue;

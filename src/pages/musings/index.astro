@@ -1,0 +1,57 @@
+---
+import ResearchNotice from "../../components/ResearchNotice.astro";
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import {
+  collectionSchema,
+  displayExcerpt,
+  getMusingSummaries,
+} from "../../lib/musings";
+
+const title = "Musings";
+const description =
+  "AI-assisted research notes on GenAI, CAD, hardware, media, and other practical questions.";
+const articles = await getMusingSummaries();
+---
+
+<SiteLayout
+  title={`${title} — Abhishek Does Stuff`}
+  socialTitle={title}
+  description={description}
+  canonicalPath="/musings/"
+  bodyClass="workbench subpage musing-index"
+  ogType="article"
+  schema={collectionSchema(description)}
+>
+  <main id="main-content" class="article-shell musing-shell">
+    <p class="page-breadcrumb">
+      <a href="/">The workbench</a><span>/</span><span>Musings</span>
+    </p>
+    <header class="article-header">
+      <p class="section-kicker">Research / Open questions</p>
+      <h1>{title}</h1>
+      <p class="article-deck">{description}</p>
+    </header>
+    <ResearchNotice />
+    <div class="prose">
+      <div class="musing-index-meta">
+        <span>{articles.length} notes / an ongoing collection</span>
+        <span>GenAI / CAD / Hardware / Media</span>
+      </div>
+      <p class="musing-index-intro">
+        Notes on GenAI, CAD, hardware, media, and other practical questions.
+      </p>
+      <ul class="musing-list">
+        {
+          articles.map((article) => (
+            <li>
+              <a href={article.route}>
+                <strong>{article.title}</strong>
+                <span>{displayExcerpt(article.description)}</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </main>
+</SiteLayout>

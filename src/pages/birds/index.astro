@@ -1,126 +1,19 @@
-<!doctype html>
-<html lang="en-IN">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="color-scheme" content="light dark" />
-    <script src="/assets/theme.js?v=20261018-7"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>The Listening Orrery — Birds Heard in Bengaluru</title>
-    <meta
-      name="description"
-      content="A live acoustic orrery: recurring birds heard from a Bengaluru home, arranged by microphone rarity and illustrated with historical natural-history plates."
-    />
-    <meta name="author" content="Abhishek Bagade" />
-    <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta name="theme-color" content="#f5f3ea" />
-    <link rel="canonical" href="https://abhishekdoesstuff.com/birds/" />
-    <link rel="icon" href="/favicon.ico?v=20261018-6" sizes="any" />
-    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png?v=20261018-6" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=20261018-6" />
-    <meta property="og:type" content="website" />
-    <meta property="og:locale" content="en_IN" />
-    <meta property="og:site_name" content="Abhishek Does Stuff" />
-    <meta property="og:title" content="The Listening Orrery" />
-    <meta
-      property="og:description"
-      content="A live Bengaluru soundscape arranged as an orrery of historical bird plates. Familiar voices circle close; rare voices travel further—and get more paper."
-    />
-    <meta property="og:url" content="https://abhishekdoesstuff.com/birds/" />
-    <meta property="og:image" content="https://abhishekdoesstuff.com/og.png?v=20261018-6" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;600;650;700;750&family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="/styles.css?v=20261018-7" />
-    <link rel="stylesheet" href="/birds.css?v=20261018-7" />
-  </head>
-  <body class="workbench subpage birds-page" id="page-top">
-    <a class="skip-link" href="#main-content">Skip to birds</a>
-    <div class="page-grid" aria-hidden="true"></div>
+---
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import birdsStyles from "../../styles/birds.css?url";
 
-    <header class="site-header">
-      <a class="brand" href="/" aria-label="Abhishek Does Stuff home"
-        ><img
-          class="brand-wordmark"
-          src="/logo-512.webp?v=20261018-6"
-          alt=""
-          width="176"
-          height="73"
-          decoding="async"
-        /></a
-      >
-      <nav class="primary-links" aria-label="Primary navigation">
-        <a href="/#builds">Builds <span>06</span></a>
-        <a href="/#field-notes">Field notes</a>
-        <a href="/musings/">Musings</a>
-        <a href="/birds/" aria-current="page">Birds</a>
-        <a href="/#lab">Lab</a>
-      </nav>
-      <div class="header-tools">
-        <button
-          class="theme-toggle"
-          type="button"
-          data-theme-toggle
-          aria-label="Dark mode"
-          aria-pressed="false"
-          title="Switch to dark theme"
-          hidden
-        >
-          <svg class="theme-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-            <path d="M20.6 13.2A8.8 8.8 0 0 1 10.8 3.4a8.8 8.8 0 1 0 9.8 9.8Z" />
-          </svg>
-          <svg class="theme-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-            <circle cx="12" cy="12" r="4" /><path d="M12 1v3m0 16v3M1 12h3m16 0h3M4.2 4.2l2.1 2.1m11.4 11.4 2.1 2.1M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1" />
-          </svg>
-        </button>
-      <details class="site-directory" data-nav-menu>
-        <summary>
-          Explore <span class="menu-cross" aria-hidden="true"></span>
-        </summary>
-        <nav class="directory-panel" aria-label="Site directory">
-          <div class="directory-group">
-            <p>The workbench</p>
-            <a href="/"><span>The workbench</span><small>Start here</small></a>
-            <a href="/#builds"
-              ><span>Selected builds</span><small>Six projects</small></a
-            >
-            <a href="/#field-notes"
-              ><span>Field notes</span><small>Made &amp; repaired</small></a
-            >
-            <a href="/#writing"
-              ><span>Research notes</span><small>Open questions</small></a
-            >
-            <a href="/#lab"
-              ><span>The homelab</span><small>Live vitals</small></a
-            >
-          </div>
-          <div class="directory-group">
-            <p>Other corners</p>
-            <a href="/musings/"
-              ><span>Musings</span><small>Research archive ↗</small></a
-            >
-            <a href="/birds/" aria-current="page"
-              ><span>Listening Orrery</span><small>Live birdsong ↗</small></a
-            >
-            <a href="https://abagade.com/"
-              ><span>Long-form writing</span><small>abagade.com ↗</small></a
-            >
-            <a href="https://www.instagram.com/abhishek_does_stuff/"
-              ><span>Instagram</span><small>Builds &amp; bike hacks ↗</small></a
-            >
-            <a href="mailto:admin@abhishekdoesstuff.com"
-              ><span>Say hello</span><small>Send a note ↗</small></a
-            >
-          </div>
-        </nav>
-      </details>
-      </div>
-    </header>
+---
 
-    <main id="main-content" class="birds-main">
+<SiteLayout
+  title="The Listening Orrery — Birds Heard in Bengaluru"
+  description="A live acoustic orrery: recurring birds heard from a Bengaluru home, arranged by microphone rarity and illustrated with historical natural-history plates."
+  canonicalPath="/birds/"
+  bodyClass="workbench subpage birds-page"
+  styles={[birdsStyles]}
+  socialTitle="The Listening Orrery"
+  socialDescription="A live Bengaluru soundscape arranged as an orrery of historical bird plates. Familiar voices circle close; rare voices travel further—and get more paper."
+>
+<main id="main-content" class="birds-main">
       <p class="page-breadcrumb">
         <a href="/">The workbench</a><span>/</span><span>Listening Orrery</span>
       </p>
@@ -370,38 +263,7 @@
       </div>
     </dialog>
 
-    <footer class="workshop-footer">
-      <div class="footer-main">
-        <div>
-          <p class="workshop-kicker">Something on your workbench?</p>
-          <a class="footer-hello" href="mailto:admin@abhishekdoesstuff.com"
-            >Let’s compare notes<span aria-hidden="true">↗</span></a
-          >
-        </div>
-        <div class="footer-links">
-          <a rel="me" href="https://github.com/bagdeabhishek">GitHub ↗</a
-          ><a rel="me" href="https://www.instagram.com/abhishek_does_stuff/"
-            >Instagram ↗</a
-          ><a rel="me" href="https://www.linkedin.com/in/bagdeabhishek/"
-            >LinkedIn ↗</a
-          ><a href="https://abagade.com/">Writing ↗</a>
-        </div>
-      </div>
-      <nav class="footer-directory" aria-label="Footer navigation">
-        <a href="/#builds">Builds</a><a href="/#field-notes">Field notes</a
-        ><a href="/musings/">Musings</a><a href="/birds/">Birds</a
-        ><a href="/#lab">Lab</a
-        ><a href="mailto:admin@abhishekdoesstuff.com">Email ↗</a>
-      </nav>
-      <div class="footer-colophon">
-        <span>© Abhishek Bagade</span
-        ><span>An ongoing collection. Served from home.</span
-        ><a href="#page-top">Back to the top ↑</a>
-      </div>
-    </footer>
-
-    <script src="/birds.js?v=20260923-1" defer></script>
-    <script src="/analytics.js" defer></script>
-    <script src="/status.js?v=20261017-4" defer></script>
-  </body>
-</html>
+  <Fragment slot="scripts">
+    <script is:inline src="/birds.js?v=20260923-1" defer></script>
+  </Fragment>
+</SiteLayout>

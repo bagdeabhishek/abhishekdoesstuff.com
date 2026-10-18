@@ -1,4 +1,20 @@
-FROM node:22-alpine
+FROM node:24-alpine AS build
+
+WORKDIR /app
+ENV ASTRO_TELEMETRY_DISABLED=1
+
+COPY package.json package-lock.json ./
+RUN npm ci
+
+COPY astro.config.mjs tsconfig.json server.js ./
+COPY src ./src
+COPY content ./content
+COPY public ./public
+COPY scripts ./scripts
+COPY data ./data
+RUN npm run build
+
+FROM node:24-alpine AS runtime
 
 WORKDIR /app
 ENV NODE_ENV=production
@@ -6,16 +22,10 @@ ENV PORT=3000
 ENV STATUS_UPSTREAM=http://192.168.1.61:9109/status
 ENV BIRDNET_UPSTREAM=http://192.168.1.91
 
-COPY package.json package-lock.json ./
-RUN npm ci --omit=dev
-COPY index.html styles.css character-article.css status.js birds.css birds.js server.js musings.js robots.txt sitemap.xml humans.txt og.png og.svg logo.jpg logo-transparent.png logo-512.webp favicon.ico favicon-48.png favicon-192.png apple-touch-icon.png ./
-COPY assets ./assets
-COPY birds ./birds
-COPY debabufy ./debabufy
-COPY movie-character-llm-experiment ./movie-character-llm-experiment
-COPY data ./data
-COPY notes ./notes
-COPY content ./content
+COPY --from=build /app/server.js ./server.js
+COPY --from=build /app/dist ./dist
+COPY --from=build /app/build/manifest.json ./build/manifest.json
+COPY --from=build /app/data/bird-art.json ./data/bird-art.json
 
 EXPOSE 3000
 CMD ["node", "server.js"]

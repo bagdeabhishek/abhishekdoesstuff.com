@@ -1,221 +1,86 @@
-<!doctype html>
-<html lang="en-IN">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="color-scheme" content="light dark" />
-    <script src="/assets/theme.js?v=20261018-7"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Telegram Stock Picker Backtest: A Negative Result | Abhishek</title>
-    <meta
-      name="description"
-      content="An honest account of turning Telegram stock-selection heuristics into an AI-assisted NSE scanner, testing it, and publishing the negative result."
-    />
-    <meta name="author" content="Abhishek Bagade" />
-    <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta name="theme-color" content="#f5f3ea" />
-    <link
-      rel="canonical"
-      href="https://abhishekdoesstuff.com/notes/stock-picker-experiment.html"
-    />
-    <link rel="icon" href="/favicon.ico?v=20261018-6" sizes="any" />
-    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png?v=20261018-6" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=20261018-6" />
-    <link
-      rel="alternate"
-      type="application/rss+xml"
-      title="Abhishek Bagade's long-form writing"
-      href="https://abagade.com/feed.xml"
-    />
-    <meta property="og:type" content="article" />
-    <meta property="og:locale" content="en_IN" />
-    <meta property="og:site_name" content="Abhishek Does Stuff" />
-    <meta
-      property="og:title"
-      content="I built a stock picker from Telegram tips. The backtest said no."
-    />
-    <meta
-      property="og:description"
-      content="Telegram heuristics, an AI-assisted NSE scanner, and a result worth publishing precisely because it did not work."
-    />
-    <meta
-      property="og:url"
-      content="https://abhishekdoesstuff.com/notes/stock-picker-experiment.html"
-    />
-    <meta property="og:image" content="https://abhishekdoesstuff.com/og.png?v=20261018-6" />
-    <meta
-      property="og:image:alt"
-      content="Abhishek Does Stuff stock picker experiment"
-    />
-    <meta property="og:image:type" content="image/png" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="article:published_time" content="2026-07-12" />
-    <meta property="article:modified_time" content="2026-07-12" />
-    <meta property="article:section" content="Experiments" />
-    <meta property="article:author" content="Abhishek Bagade" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta
-      name="twitter:title"
-      content="I built a stock picker from Telegram tips. The backtest said no."
-    />
-    <meta
-      name="twitter:description"
-      content="An honest negative-result experiment in AI-assisted stock research."
-    />
-    <meta name="twitter:image" content="https://abhishekdoesstuff.com/og.png?v=20261018-6" />
-    <meta
-      name="twitter:image:alt"
-      content="Abhishek Does Stuff stock picker experiment"
-    />
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@graph": [
-          {
-            "@type": "BlogPosting",
-            "@id": "https://abhishekdoesstuff.com/notes/stock-picker-experiment.html#article",
-            "headline": "I built a stock picker from Telegram tips. The backtest said no.",
-            "description": "An honest account of turning Telegram stock-selection heuristics into an AI-assisted NSE scanner, testing it, and publishing the negative result.",
-            "datePublished": "2026-07-12",
-            "dateModified": "2026-07-12",
-            "author": {
-              "@type": "Person",
-              "name": "Abhishek Bagade",
-              "url": "https://abhishekdoesstuff.com/"
-            },
-            "publisher": {
-              "@type": "Person",
-              "name": "Abhishek Bagade",
-              "url": "https://abhishekdoesstuff.com/"
-            },
-            "mainEntityOfPage": "https://abhishekdoesstuff.com/notes/stock-picker-experiment.html",
-            "isPartOf": {
-              "@type": "WebSite",
-              "name": "Abhishek Does Stuff",
-              "url": "https://abhishekdoesstuff.com/"
-            },
-            "image": "https://abhishekdoesstuff.com/og.png?v=20261018-6",
-            "articleSection": "Experiments",
-            "keywords": [
-              "AI stock picker",
-              "NSE backtest",
-              "Telegram stock tips",
-              "negative results",
-              "algorithmic trading experiment"
-            ],
-            "inLanguage": "en-IN"
-          },
-          {
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-              {
-                "@type": "ListItem",
-                "position": 1,
-                "name": "Home",
-                "item": "https://abhishekdoesstuff.com/"
-              },
-              {
-                "@type": "ListItem",
-                "position": 2,
-                "name": "Stock picker experiment",
-                "item": "https://abhishekdoesstuff.com/notes/stock-picker-experiment.html"
-              }
-            ]
-          }
-        ]
-      }
-    </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;600;650;700;750&family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="/styles.css?v=20261018-7" />
-  </head>
-  <body class="workbench subpage stock-note" id="page-top">
-    <a class="skip-link" href="#article-content">Skip to article</a>
-    <div class="page-grid" aria-hidden="true"></div>
-    <header class="site-header">
-      <a class="brand" href="/" aria-label="Abhishek Does Stuff home"
-        ><img
-          class="brand-wordmark"
-          src="/logo-512.webp?v=20261018-6"
-          alt=""
-          width="176"
-          height="73"
-          decoding="async"
-        /></a
-      >
-      <nav class="primary-links" aria-label="Primary navigation">
-        <a href="/#builds">Builds <span>06</span></a>
-        <a href="/#field-notes">Field notes</a>
-        <a href="/musings/">Musings</a>
-        <a href="/birds/">Birds</a>
-        <a href="/#lab">Lab</a>
-      </nav>
-      <div class="header-tools">
-        <button
-          class="theme-toggle"
-          type="button"
-          data-theme-toggle
-          aria-label="Dark mode"
-          aria-pressed="false"
-          title="Switch to dark theme"
-          hidden
-        >
-          <svg class="theme-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-            <path d="M20.6 13.2A8.8 8.8 0 0 1 10.8 3.4a8.8 8.8 0 1 0 9.8 9.8Z" />
-          </svg>
-          <svg class="theme-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-            <circle cx="12" cy="12" r="4" /><path d="M12 1v3m0 16v3M1 12h3m16 0h3M4.2 4.2l2.1 2.1m11.4 11.4 2.1 2.1M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1" />
-          </svg>
-        </button>
-      <details class="site-directory" data-nav-menu>
-        <summary>
-          Explore <span class="menu-cross" aria-hidden="true"></span>
-        </summary>
-        <nav class="directory-panel" aria-label="Site directory">
-          <div class="directory-group">
-            <p>The workbench</p>
-            <a href="/"><span>The workbench</span><small>Start here</small></a>
-            <a href="/#builds"
-              ><span>Selected builds</span><small>Six projects</small></a
-            >
-            <a href="/#field-notes"
-              ><span>Field notes</span><small>Made &amp; repaired</small></a
-            >
-            <a href="/#writing"
-              ><span>Research notes</span><small>Open questions</small></a
-            >
-            <a href="/#lab"
-              ><span>The homelab</span><small>Live vitals</small></a
-            >
-          </div>
-          <div class="directory-group">
-            <p>Other corners</p>
-            <a href="/musings/"
-              ><span>Musings</span><small>Research archive ↗</small></a
-            >
-            <a href="/birds/"
-              ><span>Listening Orrery</span><small>Live birdsong ↗</small></a
-            >
-            <a href="https://abagade.com/"
-              ><span>Long-form writing</span><small>abagade.com ↗</small></a
-            >
-            <a href="https://www.instagram.com/abhishek_does_stuff/"
-              ><span>Instagram</span><small>Builds &amp; bike hacks ↗</small></a
-            >
-            <a href="mailto:admin@abhishekdoesstuff.com"
-              ><span>Say hello</span><small>Send a note ↗</small></a
-            >
-          </div>
-        </nav>
-      </details>
-      </div>
-    </header>
+---
+import SiteLayout from "../../layouts/SiteLayout.astro";
 
-    <main class="article-shell stock-note-shell" id="article-content">
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "@id": "https://abhishekdoesstuff.com/notes/stock-picker-experiment.html#article",
+      "headline": "I built a stock picker from Telegram tips. The backtest said no.",
+      "description": "An honest account of turning Telegram stock-selection heuristics into an AI-assisted NSE scanner, testing it, and publishing the negative result.",
+      "datePublished": "2026-07-12",
+      "dateModified": "2026-07-12",
+      "author": {
+        "@type": "Person",
+        "name": "Abhishek Bagade",
+        "url": "https://abhishekdoesstuff.com/"
+      },
+      "publisher": {
+        "@type": "Person",
+        "name": "Abhishek Bagade",
+        "url": "https://abhishekdoesstuff.com/"
+      },
+      "mainEntityOfPage": "https://abhishekdoesstuff.com/notes/stock-picker-experiment.html",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Abhishek Does Stuff",
+        "url": "https://abhishekdoesstuff.com/"
+      },
+      "image": "https://abhishekdoesstuff.com/og.png?v=20261018-6",
+      "articleSection": "Experiments",
+      "keywords": [
+        "AI stock picker",
+        "NSE backtest",
+        "Telegram stock tips",
+        "negative results",
+        "algorithmic trading experiment"
+      ],
+      "inLanguage": "en-IN"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://abhishekdoesstuff.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Stock picker experiment",
+          "item": "https://abhishekdoesstuff.com/notes/stock-picker-experiment.html"
+        }
+      ]
+    }
+  ]
+};
+---
+
+<SiteLayout
+  title="Telegram Stock Picker Backtest: A Negative Result | Abhishek"
+  description="An honest account of turning Telegram stock-selection heuristics into an AI-assisted NSE scanner, testing it, and publishing the negative result."
+  canonicalPath="/notes/stock-picker-experiment.html"
+  bodyClass="workbench subpage stock-note" ogType="article"
+  schema={schema}
+  socialTitle="I built a stock picker from Telegram tips. The backtest said no."
+  socialDescription="Telegram heuristics, an AI-assisted NSE scanner, and a result worth publishing precisely because it did not work."
+  socialImageAlt="Abhishek Does Stuff stock picker experiment"
+  twitterTitle="I built a stock picker from Telegram tips. The backtest said no."
+  twitterDescription="An honest negative-result experiment in AI-assisted stock research."
+  twitterImageAlt="Abhishek Does Stuff stock picker experiment"
+>
+  <Fragment slot="head">
+  <link rel="alternate" type="application/rss+xml" title="Abhishek Bagade's long-form writing" href="https://abagade.com/feed.xml" />
+  <meta property="article:published_time" content="2026-07-12" />
+  <meta property="article:modified_time" content="2026-07-12" />
+  <meta property="article:section" content="Experiments" />
+  <meta property="article:author" content="Abhishek Bagade" />
+  </Fragment>
+
+<main class="article-shell stock-note-shell" id="article-content">
       <p class="page-breadcrumb">
         <a href="/">The workbench</a><span>/</span
         ><a href="/#builds">Experiments</a>
@@ -535,37 +400,4 @@
         </details>
       </div>
     </main>
-
-    <footer class="workshop-footer">
-      <div class="footer-main">
-        <div>
-          <p class="workshop-kicker">Something on your workbench?</p>
-          <a class="footer-hello" href="mailto:admin@abhishekdoesstuff.com"
-            >Let’s compare notes<span aria-hidden="true">↗</span></a
-          >
-        </div>
-        <div class="footer-links">
-          <a rel="me" href="https://github.com/bagdeabhishek">GitHub ↗</a
-          ><a rel="me" href="https://www.instagram.com/abhishek_does_stuff/"
-            >Instagram ↗</a
-          ><a rel="me" href="https://www.linkedin.com/in/bagdeabhishek/"
-            >LinkedIn ↗</a
-          ><a href="https://abagade.com/">Writing ↗</a>
-        </div>
-      </div>
-      <nav class="footer-directory" aria-label="Footer navigation">
-        <a href="/#builds">Builds</a><a href="/#field-notes">Field notes</a
-        ><a href="/musings/">Musings</a><a href="/birds/">Birds</a
-        ><a href="/#lab">Lab</a
-        ><a href="mailto:admin@abhishekdoesstuff.com">Email ↗</a>
-      </nav>
-      <div class="footer-colophon">
-        <span>© Abhishek Bagade</span
-        ><span>An ongoing collection. Served from home.</span
-        ><a href="#page-top">Back to the top ↑</a>
-      </div>
-    </footer>
-    <script src="../analytics.js" defer></script>
-    <script src="/status.js?v=20261017-4" defer></script>
-  </body>
-</html>
+</SiteLayout>

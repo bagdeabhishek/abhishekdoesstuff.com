@@ -1,280 +1,148 @@
-<!doctype html>
-<html lang="en-IN">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="color-scheme" content="light dark" />
-    <script src="/assets/theme.js?v=20261018-7"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Abhishek Does Stuff — GenAI, CAD &amp; Homelab Builds</title>
-    <meta
-      name="description"
-      content="Abhishek Bagade builds practical GenAI tools, CAD experiments, electronics, 3D-printed objects, and self-hosted systems in Bengaluru."
-    />
-    <meta name="author" content="Abhishek Bagade" />
-    <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta name="theme-color" content="#f5f3ea" />
-    <link rel="canonical" href="https://abhishekdoesstuff.com/" />
-    <link rel="icon" href="/favicon.ico?v=20261018-6" sizes="any" />
-    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png?v=20261018-6" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=20261018-6" />
-    <link
-      rel="alternate"
-      type="application/rss+xml"
-      title="Abhishek Bagade's long-form writing"
-      href="https://abagade.com/feed.xml"
-    />
-    <link
-      rel="alternate"
-      type="text/plain"
-      href="https://abhishekdoesstuff.com/humans.txt"
-    />
-    <link
-      rel="sitemap"
-      type="application/xml"
-      href="https://abhishekdoesstuff.com/sitemap.xml"
-    />
+---
+import SiteLayout from "../layouts/SiteLayout.astro";
 
-    <meta property="og:type" content="website" />
-    <meta property="og:locale" content="en_IN" />
-    <meta property="og:site_name" content="Abhishek Does Stuff" />
-    <meta
-      property="og:title"
-      content="Abhishek Does Stuff — GenAI, CAD &amp; Homelab Builds"
-    />
-    <meta
-      property="og:description"
-      content="Practical tools, useful files, honest failures, and the workbench notes that survive after something finally works."
-    />
-    <meta property="og:url" content="https://abhishekdoesstuff.com/" />
-    <meta property="og:image" content="https://abhishekdoesstuff.com/og.png?v=20261018-6" />
-    <meta
-      property="og:image:alt"
-      content="Abhishek Does Stuff project workbench"
-    />
-    <meta property="og:image:type" content="image/png" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta
-      name="twitter:title"
-      content="Abhishek Does Stuff — GenAI, CAD &amp; Homelab Builds"
-    />
-    <meta
-      name="twitter:description"
-      content="Practical ML, CAD, electronics, 3D-printing, and homelab projects from Bengaluru."
-    />
-    <meta name="twitter:image" content="https://abhishekdoesstuff.com/og.png?v=20261018-6" />
-    <meta
-      name="twitter:image:alt"
-      content="Abhishek Does Stuff project workbench"
-    />
-
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@graph": [
-          {
-            "@type": "ProfilePage",
-            "@id": "https://abhishekdoesstuff.com/#profile",
-            "url": "https://abhishekdoesstuff.com/",
-            "name": "Abhishek Bagade's project workbench",
-            "dateModified": "2026-10-17",
-            "mainEntity": {
-              "@id": "https://abhishekdoesstuff.com/#abhishek-bagade"
-            }
-          },
-          {
-            "@type": "Person",
-            "@id": "https://abhishekdoesstuff.com/#abhishek-bagade",
-            "name": "Abhishek Bagade",
-            "alternateName": "Abhishek Does Stuff",
-            "url": "https://abhishekdoesstuff.com/",
-            "image": "https://abhishekdoesstuff.com/assets/brand/portrait.webp?v=20261018-6",
-            "description": "ML platform engineer and maker building practical GenAI, CAD, electronics, 3D-printing, and homelab projects.",
-            "homeLocation": { "@type": "Place", "name": "Bengaluru, India" },
-            "jobTitle": "ML Platform Engineer",
-            "alumniOf": {
-              "@type": "CollegeOrUniversity",
-              "name": "IIT Bombay"
-            },
-            "knowsAbout": [
-              "GenAI",
-              "Machine learning platforms",
-              "CAD automation",
-              "3D printing",
-              "Electronics",
-              "Homelab infrastructure",
-              "Self-hosting"
-            ],
-            "sameAs": [
-              "https://abagade.com/",
-              "https://github.com/bagdeabhishek",
-              "https://www.instagram.com/abhishek_does_stuff/",
-              "https://www.linkedin.com/in/bagdeabhishek/"
-            ]
-          },
-          {
-            "@type": "WebSite",
-            "@id": "https://abhishekdoesstuff.com/#website",
-            "url": "https://abhishekdoesstuff.com/",
-            "name": "Abhishek Does Stuff",
-            "alternateName": [
-              "Abhishek Bagade's projects",
-              "Abhishek's workbench"
-            ],
-            "description": "Practical GenAI, CAD, electronics, 3D-printing, and homelab projects by Abhishek Bagade.",
-            "publisher": {
-              "@id": "https://abhishekdoesstuff.com/#abhishek-bagade"
-            },
-            "inLanguage": "en-IN",
-            "hasPart": [
-              { "@id": "https://reppilot.abhishekdoesstuff.com/#app" },
-              {
-                "@id": "https://github.com/bagdeabhishek/prepare-india-tax-return#project"
-              },
-              { "@id": "https://abhishekdoesstuff.com/debabufy/#app" }
-            ]
-          },
-          {
-            "@type": "WebApplication",
-            "@id": "https://reppilot.abhishekdoesstuff.com/#app",
-            "name": "RepPilot",
-            "alternateName": "FitnessTracker",
-            "url": "https://reppilot.abhishekdoesstuff.com/",
-            "description": "An offline-first progressive web app for importing AI-generated workout plans, logging gym sets, timing rests, and reviewing training history.",
-            "applicationCategory": "HealthApplication",
-            "operatingSystem": "Web, Android, iOS",
-            "codeRepository": "https://github.com/bagdeabhishek/FitnessTracker",
-            "license": "https://opensource.org/license/mit",
-            "author": {
-              "@id": "https://abhishekdoesstuff.com/#abhishek-bagade"
-            }
-          },
-          {
-            "@type": "SoftwareSourceCode",
-            "@id": "https://github.com/bagdeabhishek/prepare-india-tax-return#project",
-            "name": "Prepare India Tax Return",
-            "description": "A document-first Codex skill for preparing Indian individual tax returns, including foreign income, Schedule FA, Form 67, reconciliation, and screen-by-screen filing guidance.",
-            "codeRepository": "https://github.com/bagdeabhishek/prepare-india-tax-return",
-            "programmingLanguage": "Python",
-            "license": "https://opensource.org/license/mit",
-            "author": {
-              "@id": "https://abhishekdoesstuff.com/#abhishek-bagade"
-            },
-            "sameAs": [
-              "https://x.com/abizekbagde/status/2082437919734960539",
-              "https://x.com/abizekbagde/status/2082923124140708098"
-            ]
-          },
-          {
-            "@type": "SoftwareApplication",
-            "@id": "https://abhishekdoesstuff.com/debabufy/#app",
-            "name": "DeBabufy",
-            "url": "https://abhishekdoesstuff.com/debabufy/",
-            "description": "A local-first desktop app for deterministic, reviewable automation of repetitive Indian government workflows.",
-            "applicationCategory": "UtilitiesApplication",
-            "operatingSystem": "Windows, macOS, Linux",
-            "downloadUrl": "https://github.com/bagdeabhishek/debabufy/releases/latest",
-            "codeRepository": "https://github.com/bagdeabhishek/debabufy",
-            "license": "https://opensource.org/license/mit",
-            "author": {
-              "@id": "https://abhishekdoesstuff.com/#abhishek-bagade"
-            }
-          }
-        ]
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfilePage",
+      "@id": "https://abhishekdoesstuff.com/#profile",
+      "url": "https://abhishekdoesstuff.com/",
+      "name": "Abhishek Bagade's project workbench",
+      "dateModified": "2026-10-17",
+      "mainEntity": {
+        "@id": "https://abhishekdoesstuff.com/#abhishek-bagade"
       }
-    </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;600;650;700;750&family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="/styles.css?v=20261018-7" />
-  </head>
-  <body class="workbench">
-    <a class="skip-link" href="#main-content">Skip to content</a>
-    <header class="site-header">
-      <a class="brand" href="#top" aria-label="Abhishek Does Stuff home"
-        ><img
-          class="brand-wordmark"
-          src="/logo-512.webp?v=20261018-6"
-          alt=""
-          width="176"
-          height="73"
-          decoding="async"
-        /></a
-      >
-      <nav class="primary-links" aria-label="Primary navigation">
-        <a href="#builds" data-section-link="builds">Builds <span>06</span></a>
-        <a href="#field-notes" data-section-link="field-notes">Field notes</a>
-        <a href="/musings/">Musings</a>
-        <a href="/birds/">Birds</a>
-        <a href="#lab" data-section-link="lab">Lab</a>
-      </nav>
-      <div class="header-tools">
-        <button
-          class="theme-toggle"
-          type="button"
-          data-theme-toggle
-          aria-label="Dark mode"
-          aria-pressed="false"
-          title="Switch to dark theme"
-          hidden
-        >
-          <svg class="theme-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-            <path d="M20.6 13.2A8.8 8.8 0 0 1 10.8 3.4a8.8 8.8 0 1 0 9.8 9.8Z" />
-          </svg>
-          <svg class="theme-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-            <circle cx="12" cy="12" r="4" /><path d="M12 1v3m0 16v3M1 12h3m16 0h3M4.2 4.2l2.1 2.1m11.4 11.4 2.1 2.1M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1" />
-          </svg>
-        </button>
-      <details class="site-directory" data-nav-menu>
-        <summary>
-          Explore <span class="menu-cross" aria-hidden="true"></span>
-        </summary>
-        <nav class="directory-panel" aria-label="Site directory">
-          <div class="directory-group">
-            <p>On this page</p>
-            <a href="#top" data-section-link="top"
-              ><span>The workbench</span><small>Start here</small></a
-            >
-            <a href="#builds" data-section-link="builds"
-              ><span>Selected builds</span><small>Six projects</small></a
-            >
-            <a href="#field-notes" data-section-link="field-notes"
-              ><span>Field notes</span><small>Made &amp; repaired</small></a
-            >
-            <a href="#writing" data-section-link="writing"
-              ><span>Research notes</span><small>Open questions</small></a
-            >
-            <a href="#lab" data-section-link="lab"
-              ><span>The homelab</span><small>Live vitals</small></a
-            >
-          </div>
-          <div class="directory-group">
-            <p>Other corners</p>
-            <a href="/musings/"
-              ><span>Musings</span><small>Research archive ↗</small></a
-            >
-            <a href="/birds/"
-              ><span>Listening Orrery</span><small>Live birdsong ↗</small></a
-            >
-            <a href="https://abagade.com/"
-              ><span>Long-form writing</span><small>abagade.com ↗</small></a
-            >
-            <a href="https://www.instagram.com/abhishek_does_stuff/"
-              ><span>Instagram</span><small>Builds &amp; bike hacks ↗</small></a
-            >
-            <a href="mailto:admin@abhishekdoesstuff.com"
-              ><span>Say hello</span><small>Send a note ↗</small></a
-            >
-          </div>
-        </nav>
-      </details>
-      </div>
-    </header>
-    <main id="main-content">
+    },
+    {
+      "@type": "Person",
+      "@id": "https://abhishekdoesstuff.com/#abhishek-bagade",
+      "name": "Abhishek Bagade",
+      "alternateName": "Abhishek Does Stuff",
+      "url": "https://abhishekdoesstuff.com/",
+      "image": "https://abhishekdoesstuff.com/assets/brand/portrait.webp?v=20261018-6",
+      "description": "ML platform engineer and maker building practical GenAI, CAD, electronics, 3D-printing, and homelab projects.",
+      "homeLocation": {
+        "@type": "Place",
+        "name": "Bengaluru, India"
+      },
+      "jobTitle": "ML Platform Engineer",
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "IIT Bombay"
+      },
+      "knowsAbout": [
+        "GenAI",
+        "Machine learning platforms",
+        "CAD automation",
+        "3D printing",
+        "Electronics",
+        "Homelab infrastructure",
+        "Self-hosting"
+      ],
+      "sameAs": [
+        "https://abagade.com/",
+        "https://github.com/bagdeabhishek",
+        "https://www.instagram.com/abhishek_does_stuff/",
+        "https://www.linkedin.com/in/bagdeabhishek/"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://abhishekdoesstuff.com/#website",
+      "url": "https://abhishekdoesstuff.com/",
+      "name": "Abhishek Does Stuff",
+      "alternateName": [
+        "Abhishek Bagade's projects",
+        "Abhishek's workbench"
+      ],
+      "description": "Practical GenAI, CAD, electronics, 3D-printing, and homelab projects by Abhishek Bagade.",
+      "publisher": {
+        "@id": "https://abhishekdoesstuff.com/#abhishek-bagade"
+      },
+      "inLanguage": "en-IN",
+      "hasPart": [
+        {
+          "@id": "https://reppilot.abhishekdoesstuff.com/#app"
+        },
+        {
+          "@id": "https://github.com/bagdeabhishek/prepare-india-tax-return#project"
+        },
+        {
+          "@id": "https://abhishekdoesstuff.com/debabufy/#app"
+        }
+      ]
+    },
+    {
+      "@type": "WebApplication",
+      "@id": "https://reppilot.abhishekdoesstuff.com/#app",
+      "name": "RepPilot",
+      "alternateName": "FitnessTracker",
+      "url": "https://reppilot.abhishekdoesstuff.com/",
+      "description": "An offline-first progressive web app for importing AI-generated workout plans, logging gym sets, timing rests, and reviewing training history.",
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "Web, Android, iOS",
+      "codeRepository": "https://github.com/bagdeabhishek/FitnessTracker",
+      "license": "https://opensource.org/license/mit",
+      "author": {
+        "@id": "https://abhishekdoesstuff.com/#abhishek-bagade"
+      }
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      "@id": "https://github.com/bagdeabhishek/prepare-india-tax-return#project",
+      "name": "Prepare India Tax Return",
+      "description": "A document-first Codex skill for preparing Indian individual tax returns, including foreign income, Schedule FA, Form 67, reconciliation, and screen-by-screen filing guidance.",
+      "codeRepository": "https://github.com/bagdeabhishek/prepare-india-tax-return",
+      "programmingLanguage": "Python",
+      "license": "https://opensource.org/license/mit",
+      "author": {
+        "@id": "https://abhishekdoesstuff.com/#abhishek-bagade"
+      },
+      "sameAs": [
+        "https://x.com/abizekbagde/status/2082437919734960539",
+        "https://x.com/abizekbagde/status/2082923124140708098"
+      ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://abhishekdoesstuff.com/debabufy/#app",
+      "name": "DeBabufy",
+      "url": "https://abhishekdoesstuff.com/debabufy/",
+      "description": "A local-first desktop app for deterministic, reviewable automation of repetitive Indian government workflows.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Windows, macOS, Linux",
+      "downloadUrl": "https://github.com/bagdeabhishek/debabufy/releases/latest",
+      "codeRepository": "https://github.com/bagdeabhishek/debabufy",
+      "license": "https://opensource.org/license/mit",
+      "author": {
+        "@id": "https://abhishekdoesstuff.com/#abhishek-bagade"
+      }
+    }
+  ]
+};
+---
+
+<SiteLayout
+  title="Abhishek Does Stuff — GenAI, CAD & Homelab Builds"
+  description="Abhishek Bagade builds practical GenAI tools, CAD experiments, electronics, 3D-printed objects, and self-hosted systems in Bengaluru."
+  canonicalPath="/"
+  bodyClass="workbench" home={true}
+  schema={schema}
+  socialTitle="Abhishek Does Stuff — GenAI, CAD &amp; Homelab Builds"
+  socialDescription="Practical tools, useful files, honest failures, and the workbench notes that survive after something finally works."
+  socialImageAlt="Abhishek Does Stuff project workbench"
+  twitterTitle="Abhishek Does Stuff — GenAI, CAD &amp; Homelab Builds"
+  twitterDescription="Practical ML, CAD, electronics, 3D-printing, and homelab projects from Bengaluru."
+  twitterImageAlt="Abhishek Does Stuff project workbench"
+>
+  <Fragment slot="head">
+  <link rel="alternate" type="application/rss+xml" title="Abhishek Bagade's long-form writing" href="https://abagade.com/feed.xml" />
+  <link rel="alternate" type="text/plain" href="https://abhishekdoesstuff.com/humans.txt" />
+  <link rel="sitemap" type="application/xml" href="https://abhishekdoesstuff.com/sitemap.xml" />
+  </Fragment>
+
+<main id="main-content">
       <section class="workshop-hero" id="top" aria-labelledby="hero-title">
         <div class="hero-topline">
           <span
@@ -1438,58 +1306,4 @@
         </div>
       </section>
     </main>
-    <footer class="workshop-footer">
-      <section class="maker-note" id="about" aria-labelledby="maker-note-title">
-        <figure class="maker-portrait">
-          <img
-            src="/assets/brand/portrait.webp?v=20261018-6"
-            alt="Pen-and-ink portrait of Abhishek, drawn from a beach photograph"
-            width="800"
-            height="1200"
-            loading="lazy"
-            decoding="async"
-          />
-          <figcaption>Abhishek Bagade · Bengaluru</figcaption>
-        </figure>
-        <div class="maker-note-copy">
-          <p class="workshop-kicker">A note from the workbench</p>
-          <h2 id="maker-note-title">Hi, I’m Abhishek.</h2>
-          <p>
-            Engineer by day, maker whenever I get the chance. This is where I
-            keep the things I build, fix, and figure out after work. Some turn
-            into useful projects. Others leave me with a good story.
-          </p>
-        </div>
-      </section>
-      <div class="footer-main">
-        <div>
-          <p class="workshop-kicker">Something on your workbench?</p>
-          <a class="footer-hello" href="mailto:admin@abhishekdoesstuff.com"
-            >Let’s compare notes<span aria-hidden="true">↗</span></a
-          >
-        </div>
-        <div class="footer-links">
-          <a rel="me" href="https://github.com/bagdeabhishek">GitHub ↗</a
-          ><a rel="me" href="https://www.instagram.com/abhishek_does_stuff/"
-            >Instagram ↗</a
-          ><a rel="me" href="https://www.linkedin.com/in/bagdeabhishek/"
-            >LinkedIn ↗</a
-          ><a href="https://abagade.com/">Writing ↗</a>
-        </div>
-      </div>
-      <nav class="footer-directory" aria-label="Footer navigation">
-        <a href="#builds">Builds</a><a href="#field-notes">Field notes</a
-        ><a href="/musings/">Musings</a><a href="/birds/">Birds</a
-        ><a href="#lab">Lab</a
-        ><a href="mailto:admin@abhishekdoesstuff.com">Email ↗</a>
-      </nav>
-      <div class="footer-colophon">
-        <span>© Abhishek Bagade</span
-        ><span>An ongoing collection. Served from home.</span
-        ><a href="#top">Back to the top ↑</a>
-      </div>
-    </footer>
-    <script src="/status.js?v=20261017-4" defer></script>
-    <script src="/analytics.js" defer></script>
-  </body>
-</html>
+</SiteLayout>

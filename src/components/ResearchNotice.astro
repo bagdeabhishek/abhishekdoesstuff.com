@@ -1,0 +1,16 @@
+---
+interface Props {
+  title?: string;
+}
+
+const { title = "" } = Astro.props;
+const isMedical = /retina|retinal/i.test(title);
+---
+
+<aside class="ai-note">
+  <strong>Research note</strong>
+  <p>
+    AI-assisted research note. Verify important claims with primary sources.{isMedical &&
+      " This page is general information, not medical diagnosis. Sudden flashes, new floaters, or a curtain over vision require urgent professional assessment."}
+  </p>
+</aside>

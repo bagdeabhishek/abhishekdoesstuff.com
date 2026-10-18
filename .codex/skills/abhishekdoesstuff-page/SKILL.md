@@ -9,45 +9,37 @@ Work from the repository root. Read `AGENTS.md`, then inspect the working tree b
 
 ## Choose the page type
 
-- Use `content/musings/<slug>/index.md` for an article or research note. `musings.js` builds these routes at startup; follow the front matter documented in `README.md`.
-- Use `<slug>/index.html` plus root-level `<slug>.css` and `<slug>.js` for a designed or interactive page. Existing examples are `birds/` and `debabufy/`.
+- Use `content/musings/<slug>/index.md` for an article or research note. Astro's content collection renders these at build time; follow the front matter documented in `README.md`.
+- Use `src/pages/<slug>/index.astro` for a designed or interactive page. Put reusable UI in `src/components/`, shared document structure in `src/layouts/`, and imported page styles in `src/styles/`. Existing examples include `birds` and `debabufy`.
 - Extend the homepage only when the request truly belongs on `/`; keep it static and fast.
 
-Before designing, inspect `index.html`, `styles.css`, and the closest existing page. Reuse the maker-lab visual language, header/footer, CSS variables, typography, and practical tone unless the request explicitly calls for a new direction.
+Before designing, inspect the shared layouts and components, the global styles, and the closest existing page. Reuse the maker-lab visual language, header/footer, CSS variables, typography, and practical tone unless the request explicitly calls for a new direction.
 
 ## Build a standalone page
 
-1. Create semantic, accessible markup at `<slug>/index.html`.
-2. Put page-specific presentation and behavior in root-level `<slug>.css` and `<slug>.js`. Use versioned URLs such as `/<slug>.css?v=YYYYMMDD-1` when changing cacheable assets.
-3. Include canonical, description, Open Graph/Twitter, favicon, and viewport metadata. Use the production origin `https://abhishekdoesstuff.com`.
+1. Create semantic, accessible markup at `src/pages/<slug>/index.astro` and compose the shared layout instead of copying site chrome.
+2. Import page-specific presentation from `src/styles/` with `?url` and pass the URL through `SiteLayout`'s `styles` prop so it follows shared styles. Put browser JavaScript in `public/` only when it must remain a plain script at a stable URL.
+3. Supply the shared layout's title, description, canonical path, and any page-specific metadata. Use the production origin `https://abhishekdoesstuff.com`.
 4. Support narrow screens, keyboard use, reduced motion, and useful loading, empty, and error states. Prefer progressive enhancement and native controls/dialogs.
 5. Add the page to relevant navigation and footer surfaces without making the homepage heavy.
 
-## Wire every public file
+## Wire public files and routes
 
-This repository is deny-by-default. A file existing in Git does not make it public.
+This repository is deny-by-default. Astro writes deployable files to `dist/`, then `scripts/build-site.mjs` generates `build/manifest.json`. The Node server serves only paths in that manifest.
 
-Update `server.js` `PUBLIC_FILES` for:
+- Put byte-for-byte public assets in `public/`. Its directory structure is its URL structure: `public/assets/example.png` becomes `/assets/example.png`.
+- Create page routes in `src/pages/`. A directory `index.astro` produces the canonical trailing-slash URL.
+- Add aliases and redirects through the existing Astro/post-build conventions so the generated manifest records them.
+- Keep Markdown, source files, private data, and server configuration outside `public/`.
+- Add a MIME mapping in `server.js` only when introducing a file extension the server does not already recognize.
 
-- `/<slug>/` and `/<slug>/index.html` pointing to `<slug>/index.html`.
-- Every page CSS, JavaScript, image, data, font, or download route.
-- The extension MIME type in `TYPES` if it is new.
-
-Add a redirect from `/<slug>` to `/<slug>/` in the main request handler. Use `CACHE.document` for HTML and CSS while iterating, `CACHE.asset` for ordinary assets, and long immutable caching only for content-addressed or intentionally stable media.
-
-Update the Dockerfile separately:
-
-- Add root files to its explicit root `COPY` instruction.
-- Add `COPY <slug> ./<slug>` for the page directory.
-- Ensure referenced `assets/` and `data/` directories are already copied.
-
-Finally, add the canonical URL and current `lastmod` to `sitemap.xml`.
+Do not hand-edit a `PUBLIC_FILES` list or add per-page Docker copies. The build output and generated manifest are the public boundary. Update `public/sitemap.xml` when a canonical URL is added or removed.
 
 ## Add historical media
 
-Check artwork or archive media into `assets/<collection>/` instead of hotlinking it. Keep a machine-readable metadata file under `data/` with creator, work title, date, source page, source institution, and rights/licence fields. Preserve the original source URL even when serving a local copy.
+Check artwork or archive media into `public/assets/<collection>/` instead of hotlinking it. Keep a machine-readable metadata file under `data/` with creator, work title, date, source page, source institution, and rights/licence fields. Preserve the original source URL even when serving a local copy.
 
-If code derives asset routes from the metadata, validate every entry and add those routes to `PUBLIC_FILES` at startup. Never imply that public-domain status is known without recording the source's rights statement.
+If code derives asset routes from the metadata, validate every entry and ensure the corresponding files are present in `public/` at build time. Never imply that public-domain status is known without recording the source's rights statement.
 
 ## Add live data safely
 
@@ -61,11 +53,12 @@ Run the checks relevant to the change:
 
 ```bash
 node --check server.js
-node --check <slug>.js
+npm run check
+npm run build
 npm start
 ```
 
-With the server running, request the exact canonical page, its CSS/JS/assets, and any API route. Confirm the no-slash URL redirects, unknown paths remain 404, `HEAD` behaves correctly, and HTML does not reference a route absent from `PUBLIC_FILES`.
+With the built server running, request the exact canonical page, its CSS/JS/assets, and any API route. Confirm the no-slash URL redirects, unknown paths remain 404, `HEAD` behaves correctly, and HTML does not reference a route absent from `build/manifest.json`.
 
 For a live-data page, test normal data, upstream unavailability, malformed data, timeout behavior, and streaming readiness where applicable. Do not weaken validation merely to make a sample payload pass.
 
