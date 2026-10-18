@@ -1929,6 +1929,25 @@ footer span,
 /* Homepage: an open workshop journal. Scoped to preserve the project pages. */
 .workbench {
   --sheet: #f5f3ea;
+  --deep-moss: #284b3c;
+  --surface: #efeee4;
+  --wash: #e5e9df;
+  --wash-translucent: #e5e9df60;
+  --wash-ink: #375040;
+  --surface-strong: #dce3d5;
+  --soft-rule: #bdc8b9;
+  --strong-rule: #aab6a3;
+  --note: #f0e7dd;
+  --note-ink: #6f6052;
+  --note-rule: #d8c7bb;
+  --quote: #ede9dc;
+  --quote-ink: #5a5144;
+  --quote-rule: #a68757;
+  --raised: #faf9f2;
+  --demo-rule: #bfc2b4;
+  --demo-toolbar: #e9e9dd;
+  --demo-shadow: #d8dace;
+  --warm-ink: #785c2d;
   --ink: #262b25;
   --subtle: #62675c;
   --rule: #d5d5c8;
@@ -2253,8 +2272,8 @@ footer span,
   flex-direction: column;
   justify-content: space-between;
   padding: 26px;
-  background: #e5e9df;
-  color: #375040;
+  background: var(--wash);
+  color: var(--wash-ink);
 }
 .workbench .specimen-top,
 .workbench .specimen-bottom {
@@ -2265,11 +2284,11 @@ footer span,
 }
 .workbench .specimen-top {
   padding-bottom: 15px;
-  border-bottom: 1px solid #bdc8b9;
+  border-bottom: 1px solid var(--soft-rule);
 }
 .workbench .specimen-bottom {
   padding-top: 15px;
-  border-top: 1px solid #bdc8b9;
+  border-top: 1px solid var(--soft-rule);
 }
 .workbench .specimen-bottom span:first-child {
   font:
@@ -2313,7 +2332,7 @@ footer span,
   color: var(--moss);
 }
 .workbench .project-state.alpha {
-  color: #785c2d;
+  color: var(--warm-ink);
 }
 .workbench .project-category {
   margin: 0 0 9px;
@@ -2386,7 +2405,7 @@ footer span,
   margin-top: 17px;
   padding: 21px 30px;
   color: #eeeae0;
-  background: var(--moss);
+  background: var(--deep-moss);
   overflow: hidden;
 }
 .workbench .ledger-top {
@@ -2431,7 +2450,7 @@ footer span,
   height: 20px;
   display: grid;
   place-items: center;
-  color: var(--moss);
+  color: var(--deep-moss);
   background: #c6dba4;
   border-radius: 50%;
   font: 14px var(--sans);
@@ -2453,15 +2472,15 @@ footer span,
   place-items: center;
   height: 295px;
   margin-top: 17px;
-  background: #eae4d9;
+  background: var(--demo-toolbar);
   overflow: hidden;
 }
 .workbench .paper-sheet {
   position: absolute;
   width: 218px;
   height: 244px;
-  border: 1px solid #c6bda9;
-  background: #faf8ef;
+  border: 1px solid var(--demo-rule);
+  background: var(--raised);
 }
 .workbench .back-sheet {
   transform: translate(10px, 4px) rotate(9deg);
@@ -2483,7 +2502,7 @@ footer span,
   display: block;
   width: 100%;
   height: 1px;
-  background: #d5d0be;
+  background: var(--rule);
 }
 .workbench .form-lines i:last-child {
   width: 65%;
@@ -2570,8 +2589,8 @@ footer span,
   gap: 48px;
   padding: 30px;
   margin-top: 45px;
-  border: 1px solid #d8c7bb;
-  background: #f0e7dd;
+  border: 1px solid var(--note-rule);
+  background: var(--note);
 }
 .workbench .failed-chart {
   color: var(--vermilion);
@@ -2605,12 +2624,12 @@ footer span,
   display: block;
   margin-top: 5px;
   font: 8px var(--mono);
-  color: #6f6052;
+  color: var(--note-ink);
 }
 .workbench .failed-chart > p {
   margin: 14px 0 0;
   font: 8px/1.5 var(--mono);
-  color: #6f6052;
+  color: var(--note-ink);
 }
 .workbench .failed-copy {
   display: flex;
@@ -2630,7 +2649,7 @@ footer span,
   line-height: 1.8;
 }
 .workbench .failed-copy .project-action {
-  border-color: #d8c7bb;
+  border-color: var(--note-rule);
 }
 .workbench .project-index {
   margin-top: 25px;
@@ -2687,9 +2706,9 @@ footer span,
   align-items: center;
   margin-top: 90px;
   padding: 40px 50px;
-  background: #e5e9df;
-  border-top: 1px solid #bdc8b9;
-  border-bottom: 1px solid #bdc8b9;
+  background: var(--wash);
+  border-top: 1px solid var(--soft-rule);
+  border-bottom: 1px solid var(--soft-rule);
 }
 .workbench .bird-plate {
   position: relative;
@@ -2736,7 +2755,7 @@ footer span,
 }
 .workbench .listening-copy .project-action {
   margin-top: 26px;
-  border-color: #bdc8b9;
+  border-color: var(--soft-rule);
 }
 .workbench .listening-copy > .plate-credit {
   margin: 15px 0 0;
@@ -2769,7 +2788,7 @@ footer span,
   position: relative;
   width: 100%;
   overflow: hidden;
-  background: #e5e9df;
+  background: var(--wash);
   aspect-ratio: 1.55;
 }
 .workbench .field-note:nth-child(even) .note-photo {
@@ -3687,7 +3706,7 @@ html:has(.workbench) {
   vertical-align: baseline;
 }
 .workbench .project-shortcuts a:hover {
-  background: #e5e9df;
+  background: var(--wash);
   color: var(--moss);
 }
 .workbench .project-shortcuts a::after {
@@ -3976,8 +3995,8 @@ html:has(.workbench) {
   gap: 18px 36px;
   padding: 23px 25px 15px;
   margin-top: 23px;
-  background: #e5e9df;
-  border: 1px solid #bdc8b9;
+  background: var(--wash);
+  border: 1px solid var(--soft-rule);
 }
 .workbench .hero-lab .lab-intro {
   gap: 16px;
@@ -4009,7 +4028,7 @@ html:has(.workbench) {
   color: var(--moss);
 }
 .workbench .hero-lab[data-status="unavailable"] .lab-indicator {
-  background: #91612e;
+  background: var(--warm-ink);
 }
 .workbench .hero-lab .lab-intro h2 {
   margin: 8px 0 6px;
@@ -4034,7 +4053,7 @@ html:has(.workbench) {
   grid-column: 1 / -1;
   margin: 0;
   padding-top: 10px;
-  border-top: 1px solid #bdc8b9;
+  border-top: 1px solid var(--soft-rule);
   text-align: right;
   font-size: 9px;
 }
@@ -4085,14 +4104,14 @@ html:has(.workbench) {
 /* The workshop continues: shared paper system for every inner page. */
 .workbench.subpage {
   --bg: var(--sheet);
-  --bg-deep: #eeece1;
-  --panel: #efeee4;
-  --panel-2: #e5e9df;
-  --panel-3: #dce3d5;
+  --bg-deep: var(--surface);
+  --panel: var(--surface);
+  --panel-2: var(--wash);
+  --panel-3: var(--surface-strong);
   --text: var(--ink);
   --muted: var(--subtle);
   --line: var(--rule);
-  --line-strong: #aab6a3;
+  --line-strong: var(--strong-rule);
   --yellow: var(--moss);
   --orange: var(--vermilion);
   --blue: var(--moss);
@@ -4135,7 +4154,7 @@ html:has(.workbench) {
 }
 .subpage .button:hover {
   transform: none;
-  background: #e5e9df;
+  background: var(--wash);
 }
 .subpage .button.primary:hover {
   background: var(--ink);
@@ -4312,24 +4331,24 @@ html:has(.workbench) {
 .subpage .ai-note {
   margin: 0 0 30px;
   padding: 18px 20px;
-  background: #ede9dc;
+  background: var(--quote);
   border: 0;
-  border-left: 2px solid #a68757;
+  border-left: 2px solid var(--quote-rule);
   border-radius: 0;
 }
 .subpage .article-note p,
 .subpage .ai-note p {
   margin: 0;
   font: 400 13px/1.8 var(--sans);
-  color: #5a5144;
+  color: var(--quote-ink);
 }
 .subpage .ai-note strong {
-  color: #5a5144;
+  color: var(--quote-ink);
   font: 500 9px var(--mono);
   margin-bottom: 7px;
 }
 .subpage .article-note strong {
-  color: #5a5144;
+  color: var(--quote-ink);
 }
 .subpage .article-cta {
   margin: 0 0 30px;
@@ -4357,13 +4376,13 @@ html:has(.workbench) {
   gap: 24px;
   padding: 24px;
   margin-bottom: 30px;
-  background: #f0e7dd;
-  border: 1px solid #d8c7bb;
+  background: var(--note);
+  border: 1px solid var(--note-rule);
 }
 .subpage .article-result-summary span {
   display: block;
   margin-bottom: 10px;
-  color: #6f6052;
+  color: var(--note-ink);
   font: 9px var(--mono);
 }
 .subpage .article-result-summary strong {
@@ -4376,16 +4395,16 @@ html:has(.workbench) {
   grid-column: 1 / -1;
   margin: 0;
   padding-top: 15px;
-  border-top: 1px solid #d8c7bb;
+  border-top: 1px solid var(--note-rule);
   font: 11px/1.7 var(--sans);
-  color: #6f6052;
+  color: var(--note-ink);
 }
 .subpage .result-block {
   margin: 30px 0;
   padding: 20px;
   border: 1px solid var(--rule);
   border-radius: 0;
-  background: #efeee4;
+  background: var(--surface);
 }
 .subpage .result-table caption {
   font: 10px/1.7 var(--mono);
@@ -4418,15 +4437,15 @@ html:has(.workbench) {
 .subpage .prose code {
   padding: 0.15em 0.35em;
   color: var(--moss);
-  background: #e5e9df;
+  background: var(--wash);
   border-radius: 0;
   font: 0.85em var(--mono);
 }
 .subpage .prose pre {
   max-width: 100%;
   padding: 22px;
-  background: #e5e9df;
-  border: 1px solid #bdc8b9;
+  background: var(--wash);
+  border: 1px solid var(--soft-rule);
   border-radius: 0;
   overflow-x: auto;
 }
@@ -4452,7 +4471,7 @@ html:has(.workbench) {
 }
 .subpage .prose th {
   color: var(--moss);
-  background: #e5e9df;
+  background: var(--wash);
 }
 .subpage .prose hr {
   margin: 40px 0;
@@ -4535,7 +4554,7 @@ html:has(.workbench) {
   color: var(--vermilion);
 }
 .subpage .musing-list a:hover {
-  background: #e5e9df60;
+  background: var(--wash-translucent);
 }
 .subpage .musing-index-intro {
   margin-bottom: 30px;
@@ -4738,7 +4757,7 @@ html:has(.workbench) {
     border-color 150ms ease;
 }
 .subpage.debabufy-page .button:hover {
-  background: #e8e9df;
+  background: var(--surface);
   border-color: var(--moss);
   transform: none;
 }
@@ -4776,14 +4795,14 @@ html:has(.workbench) {
   position: absolute;
   width: 76%;
   padding: 25px;
-  background: #faf9f2;
-  border: 1px solid #bfc2b4;
+  background: var(--raised);
+  border: 1px solid var(--demo-rule);
 }
 .subpage.debabufy-page .paperwork-previous {
   top: 65px;
   left: 0;
   height: 304px;
-  background: #e9e9dd;
+  background: var(--demo-toolbar);
   transform: rotate(-9deg);
 }
 .subpage.debabufy-page .paperwork-sheet-label {
@@ -4791,7 +4810,7 @@ html:has(.workbench) {
   margin-bottom: 25px;
   padding-bottom: 13px;
   color: var(--subtle);
-  border-bottom: 1px solid #bfc2b4;
+  border-bottom: 1px solid var(--demo-rule);
   font: 9px/1.5 var(--mono);
   text-transform: uppercase;
   letter-spacing: 0.04em;
@@ -4800,7 +4819,7 @@ html:has(.workbench) {
   width: 100%;
   height: 1px;
   margin-top: 27px;
-  background: #bfc2b4;
+  background: var(--demo-rule);
 }
 .subpage.debabufy-page .paperwork-lines.short {
   width: 65%;
@@ -4818,7 +4837,7 @@ html:has(.workbench) {
   top: 97px;
   right: 0;
   height: 322px;
-  box-shadow: 5px 5px 0 #d8dace;
+  box-shadow: 5px 5px 0 var(--demo-shadow);
   transform: rotate(4deg);
 }
 .subpage.debabufy-page .paperwork-current .paperwork-sheet-label {
@@ -5007,10 +5026,10 @@ html:has(.workbench) {
   text-underline-offset: 5px;
 }
 .subpage.debabufy-page .workflow-terminal {
-  background: #eeeee3;
-  border: 1px solid #bfc2b4;
+  background: var(--surface);
+  border: 1px solid var(--demo-rule);
   border-radius: 0;
-  box-shadow: 8px 8px 0 #e4e5d9;
+  box-shadow: 8px 8px 0 var(--demo-shadow);
 }
 .subpage.debabufy-page .terminal-bar {
   justify-content: space-between;
@@ -5018,7 +5037,7 @@ html:has(.workbench) {
   padding: 17px 22px;
   color: var(--ink);
   background: transparent;
-  border-color: #bfc2b4;
+  border-color: var(--demo-rule);
 }
 .subpage.debabufy-page .terminal-bar b {
   margin: 0;
@@ -5044,7 +5063,7 @@ html:has(.workbench) {
 }
 .subpage.debabufy-page .workflow-terminal .terminal-hold {
   color: var(--moss);
-  background: #dfe5d7;
+  background: var(--surface-strong);
 }
 .subpage.debabufy-page .workflow-terminal .terminal-hold i {
   color: var(--moss);
@@ -5260,7 +5279,7 @@ html:has(.workbench) {
   .subpage.debabufy-page .workflow-terminal {
     width: 100%;
     max-width: none;
-    box-shadow: 5px 5px 0 #e4e5d9;
+    box-shadow: 5px 5px 0 var(--demo-shadow);
   }
   .subpage.debabufy-page .trust-grid {
     gap: 0 30px;
@@ -5448,13 +5467,100 @@ html:has(.workbench) {
   color: var(--subtle);
   font: 14px/1.9 var(--sans);
 }
+
+/* The same workbench, after hours. Art plates retain their original paper. */
+:root[data-theme="dark"] .workbench {
+  --sheet: #191e1a;
+  --ink: #e5e3d9;
+  --subtle: #b0b6a8;
+  --rule: #3c463d;
+  --moss: #aec9a7;
+  --vermilion: #ec9a7c;
+  --surface: #232b24;
+  --wash: #29352b;
+  --wash-translucent: #29352b99;
+  --wash-ink: #c0d3b9;
+  --surface-strong: #354438;
+  --soft-rule: #425744;
+  --strong-rule: #6c7d68;
+  --note: #332b25;
+  --note-ink: #d1bda6;
+  --note-rule: #65513e;
+  --quote: #2b2b24;
+  --quote-ink: #cfc5ae;
+  --quote-rule: #a18b63;
+  --raised: #283329;
+  --demo-rule: #54624e;
+  --demo-toolbar: #232b24;
+  --demo-shadow: #101611;
+  --warm-ink: #daba86;
+  color-scheme: dark;
+}
+:root[data-theme="dark"] .brand-wordmark {
+  filter: invert(1) hue-rotate(180deg) saturate(.6) brightness(1.1);
+}
+:root[data-theme="dark"] .maker-portrait img {
+  padding: 10px;
+  background: #eae7dd;
+  border: 1px solid #d3d0c1;
+}
+:root[data-theme="dark"] .workbench .workshop-button {
+  color: var(--sheet);
+}
+:root[data-theme="dark"] .workbench .red-tape {
+  color: var(--sheet);
+}
+.workbench .header-tools {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+.workbench .theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  color: var(--ink);
+  background: transparent;
+  border: 1px solid var(--rule);
+  border-radius: 0;
+  cursor: pointer;
+}
+.workbench .theme-toggle:hover {
+  background: var(--wash);
+  border-color: var(--moss);
+}
+.workbench .theme-toggle[hidden] {
+  display: none;
+}
+.workbench .theme-toggle svg {
+  display: block;
+  width: 19px;
+  height: 19px;
+}
+.workbench .theme-toggle .theme-sun,
+:root[data-theme="dark"] .theme-toggle .theme-moon {
+  display: none;
+}
+:root[data-theme="dark"] .theme-toggle .theme-sun {
+  display: block;
+}
 @media (max-width: 760px) {
   .workbench .brand {
     min-height: 52px;
   }
   .workbench .brand-wordmark {
-    width: 140px;
-    height: 58px;
+    width: 128px;
+    height: 54px;
+  }
+  .workbench .header-tools {
+    gap: 8px;
+  }
+  .workbench .theme-toggle {
+    width: 40px;
   }
   .workbench .maker-note {
     grid-template-columns: 1fr;

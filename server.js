@@ -29,6 +29,7 @@ const PUBLIC_FILES = new Map([
   ["/index.html", { file: "index.html", cache: CACHE.document }],
   ["/styles.css", { file: "styles.css", cache: CACHE.document }],
   ["/status.js", { file: "status.js", cache: CACHE.asset }],
+  ["/assets/theme.js", { file: "assets/theme.js", cache: CACHE.asset }],
   ["/birds/", { file: path.join("birds", "index.html"), cache: CACHE.document }],
   ["/birds/index.html", { file: path.join("birds", "index.html"), cache: CACHE.document }],
   ["/birds.css", { file: "birds.css", cache: CACHE.document }],

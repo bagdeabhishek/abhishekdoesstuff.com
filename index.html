@@ -2,6 +2,8 @@
 <html lang="en-IN">
   <head>
     <meta charset="utf-8" />
+    <meta name="color-scheme" content="light dark" />
+    <script src="/assets/theme.js?v=20261018-7"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Abhishek Does Stuff — GenAI, CAD &amp; Homelab Builds</title>
     <meta
@@ -188,7 +190,7 @@
       href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;600;650;700;750&family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/styles.css?v=20261018-6" />
+    <link rel="stylesheet" href="/styles.css?v=20261018-7" />
   </head>
   <body class="workbench">
     <a class="skip-link" href="#main-content">Skip to content</a>
@@ -210,6 +212,23 @@
         <a href="/birds/">Birds</a>
         <a href="#lab" data-section-link="lab">Lab</a>
       </nav>
+      <div class="header-tools">
+        <button
+          class="theme-toggle"
+          type="button"
+          data-theme-toggle
+          aria-label="Dark mode"
+          aria-pressed="false"
+          title="Switch to dark theme"
+          hidden
+        >
+          <svg class="theme-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M20.6 13.2A8.8 8.8 0 0 1 10.8 3.4a8.8 8.8 0 1 0 9.8 9.8Z" />
+          </svg>
+          <svg class="theme-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <circle cx="12" cy="12" r="4" /><path d="M12 1v3m0 16v3M1 12h3m16 0h3M4.2 4.2l2.1 2.1m11.4 11.4 2.1 2.1M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1" />
+          </svg>
+        </button>
       <details class="site-directory" data-nav-menu>
         <summary>
           Explore <span class="menu-cross" aria-hidden="true"></span>
@@ -253,6 +272,7 @@
           </div>
         </nav>
       </details>
+      </div>
     </header>
     <main id="main-content">
       <section class="workshop-hero" id="top" aria-labelledby="hero-title">

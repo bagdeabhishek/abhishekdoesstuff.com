@@ -85,7 +85,9 @@ function shell({ title, description, canonicalPath, body, type = "Article", date
   const note = `<aside class="ai-note"><strong>Research note</strong><p>AI-assisted research note. Verify important claims with primary sources.${medicalNote}</p></aside>`;
   const reading = isIndex ? `${note}<div class="prose">${renderedBody}</div>` : `<div class="reading-layout${contents ? "" : " reading-single"}"><article class="reading-copy">${note}<div class="prose">${renderedBody}</div></article>${contents}</div>`;
   return `<!doctype html>
-<html lang="en-IN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#f5f3ea">
+<html lang="en-IN"><head><meta charset="utf-8">
+    <meta name="color-scheme" content="light dark" />
+    <script src="/assets/theme.js?v=20261018-7"></script><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#f5f3ea">
 <title>${escapeHtml(title)} — Abhishek Does Stuff</title>
 <meta name="description" content="${escapeHtml(description)}"><meta name="author" content="Abhishek Bagade"><meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="${canonical}"><link rel="icon" href="/favicon.ico?v=20261018-6" sizes="any">
@@ -96,7 +98,7 @@ function shell({ title, description, canonicalPath, body, type = "Article", date
       rel="stylesheet"
     />
 
-<link rel="stylesheet" href="/styles.css?v=20261018-6">
+<link rel="stylesheet" href="/styles.css?v=20261018-7">
 <meta property="og:type" content="article"><meta property="og:site_name" content="Abhishek Does Stuff"><meta property="og:title" content="${escapeHtml(title)}"><meta property="og:description" content="${escapeHtml(description)}"><meta property="og:url" content="${canonical}"><meta property="og:image" content="${SITE}/og.png?v=20261018-6">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${escapeHtml(title)}"><meta name="twitter:description" content="${escapeHtml(description)}"><meta name="twitter:image" content="${SITE}/og.png?v=20261018-6">
 <script type="application/ld+json">${JSON.stringify(schema).replaceAll("<", "\\u003c")}</script></head>
@@ -119,6 +121,23 @@ function shell({ title, description, canonicalPath, body, type = "Article", date
         <a href="/birds/">Birds</a>
         <a href="/#lab">Lab</a>
       </nav>
+      <div class="header-tools">
+        <button
+          class="theme-toggle"
+          type="button"
+          data-theme-toggle
+          aria-label="Dark mode"
+          aria-pressed="false"
+          title="Switch to dark theme"
+          hidden
+        >
+          <svg class="theme-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M20.6 13.2A8.8 8.8 0 0 1 10.8 3.4a8.8 8.8 0 1 0 9.8 9.8Z" />
+          </svg>
+          <svg class="theme-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <circle cx="12" cy="12" r="4" /><path d="M12 1v3m0 16v3M1 12h3m16 0h3M4.2 4.2l2.1 2.1m11.4 11.4 2.1 2.1M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1" />
+          </svg>
+        </button>
       <details class="site-directory" data-nav-menu>
         <summary>
           Explore <span class="menu-cross" aria-hidden="true"></span>
@@ -162,6 +181,7 @@ function shell({ title, description, canonicalPath, body, type = "Article", date
           </div>
         </nav>
       </details>
+      </div>
     </header>
 
 <main id="main-content" class="article-shell musing-shell"><p class="page-breadcrumb"><a href="/">The workbench</a><span>/</span>${isIndex ? "<span>Musings</span>" : "<a href=\"/musings/\">All Musings</a>"}</p><header class="article-header"><p class="section-kicker">${isIndex ? "Research / Open questions" : "From the research notebook"}</p><h1>${escapeHtml(title)}</h1><p class="article-deck">${escapeHtml(displayExcerpt(description))}</p></header>${reading}</main>

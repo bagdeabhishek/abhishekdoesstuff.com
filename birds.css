@@ -1,11 +1,10 @@
 /* A naturalist's paper instrument; live data and orbit geometry remain in birds.js. */
 .birds-page {
-  --instrument: #f5f3ea;
-  --instrument-soft: #eeece2;
-  --instrument-line: #ccd0c2;
-  --instrument-bright: #929f89;
-  --copper: #284b3c;
-  --vermilion: #ad3c27;
+  --instrument: var(--sheet);
+  --instrument-soft: var(--surface);
+  --instrument-line: var(--rule);
+  --instrument-bright: var(--strong-rule);
+  --copper: var(--moss);
   --folio: #faf5e8;
   --folio-deep: #e8e1cd;
   --folio-ink: #262b25;
@@ -96,7 +95,7 @@
   border-top: 1px solid var(--instrument-line);
   border-bottom: 1px solid var(--instrument-line);
   border-inline: 1px solid var(--instrument-line);
-  background: #eeeee3;
+  background: var(--surface);
 }
 
 .birds-page .readout-live,
@@ -130,11 +129,11 @@
   flex: none;
   background: currentColor;
   border-radius: 50%;
-  box-shadow: 0 0 0 5px rgba(40, 75, 60, 0.08);
+  box-shadow: 0 0 0 5px color-mix(in srgb, var(--moss) 8%, transparent);
 }
 
 .birds-page .stream-indicator.is-waiting {
-  color: #775d27;
+  color: var(--warm-ink);
 }
 
 .birds-page .stream-indicator.is-offline {
@@ -204,9 +203,9 @@
   margin: 28px 0;
   padding: 16px 18px;
   color: var(--vermilion);
-  border: 1px solid rgba(173, 60, 39, 0.36);
+  border: 1px solid color-mix(in srgb, var(--vermilion) 36%, transparent);
   border-left: 3px solid var(--vermilion);
-  background: #f2e8dc;
+  background: var(--note);
 }
 
 .birds-page .bird-state.is-error .state-spinner {
@@ -230,7 +229,7 @@
   aspect-ratio: 1;
   margin: 0 auto;
   background:
-    repeating-conic-gradient(from -0.5deg at center, rgba(40, 75, 60, 0.045) 0 1deg, transparent 1deg 15deg);
+    repeating-conic-gradient(from -0.5deg at center, color-mix(in srgb, var(--moss) 4.5%, transparent) 0 1deg, transparent 1deg 15deg);
   border-radius: 50%;
 }
 
@@ -248,7 +247,7 @@
 
 .birds-page .orrery-shell::before {
   inset: 2.5%;
-  border: 1px solid rgba(40, 75, 60, 0.08);
+  border: 1px solid color-mix(in srgb, var(--moss) 8%, transparent);
   border-radius: 50%;
 }
 
@@ -257,7 +256,7 @@
   left: 2.5%;
   right: 2.5%;
   height: 1px;
-  background: rgba(40, 75, 60, 0.07);
+  background: color-mix(in srgb, var(--moss) 7%, transparent);
 }
 
 .birds-page .orrery-rings,
@@ -298,7 +297,7 @@
 }
 
 .birds-page .orbit-core {
-  stroke: rgba(40, 75, 60, 0.46);
+  stroke: color-mix(in srgb, var(--moss) 46%, transparent);
   stroke-width: 1.5;
 }
 
@@ -325,7 +324,7 @@
   z-index: 2;
   padding: 5px 8px;
   color: var(--subtle, #62675c);
-  background: rgba(245, 243, 234, 0.97);
+  background: color-mix(in srgb, var(--sheet) 97%, transparent);
   font: 8px var(--mono);
   letter-spacing: 0.09em;
   text-transform: uppercase;
@@ -349,8 +348,8 @@
   flex-direction: column;
   padding: 2.2%;
   color: var(--ink, #262b25);
-  background: #e3e8dc;
-  border: 1px solid rgba(40, 75, 60, 0.4);
+  background: var(--wash);
+  border: 1px solid color-mix(in srgb, var(--moss) 40%, transparent);
   border-radius: 50%;
   box-shadow: 0 0 0 7px var(--sheet, #f5f3ea);
   text-align: center;
@@ -459,7 +458,7 @@
   overflow: hidden;
   background: var(--folio);
   border: 1px solid rgba(41, 39, 31, 0.35);
-  box-shadow: 3px 4px 0 rgba(40, 75, 60, 0.07);
+  box-shadow: 3px 4px 0 color-mix(in srgb, var(--moss) 7%, transparent);
 }
 
 .birds-page .bird-plate::after {
@@ -523,8 +522,8 @@
 }
 
 @keyframes plate-register {
-  0%, 18% { box-shadow: 0 0 0 5px rgba(173, 60, 39, 0.28), 0 10px 28px rgba(40, 75, 60, 0.12); }
-  100% { box-shadow: 0 10px 28px rgba(40, 75, 60, 0.12), 0 0 0 1px rgba(238, 229, 210, 0.12); }
+  0%, 18% { box-shadow: 0 0 0 5px color-mix(in srgb, var(--vermilion) 28%, transparent), 0 10px 28px color-mix(in srgb, var(--moss) 12%, transparent); }
+  100% { box-shadow: 0 10px 28px color-mix(in srgb, var(--moss) 12%, transparent), 0 0 0 1px rgba(238, 229, 210, 0.12); }
 }
 
 .birds-page .bird-card-copy {
@@ -537,8 +536,8 @@
   gap: 8px;
   margin-top: 6px;
   padding-top: 6px;
-  border-top: 1px solid rgba(40, 75, 60, 0.32);
-  background: rgba(245, 243, 234, 0.96);
+  border-top: 1px solid color-mix(in srgb, var(--moss) 32%, transparent);
+  background: color-mix(in srgb, var(--sheet) 96%, transparent);
 }
 
 .birds-page .bird-card-copy strong {
@@ -587,7 +586,7 @@
   width: 210%;
   left: -55%;
   padding: 7px 8px;
-  background: rgba(245, 243, 234, 0.97);
+  background: color-mix(in srgb, var(--sheet) 97%, transparent);
   border: 1px solid var(--instrument-line);
 }
 
@@ -754,7 +753,7 @@
   background: var(--sheet, #f5f3ea);
   border: 1px solid var(--instrument-bright);
   border-radius: 0;
-  box-shadow: 12px 16px 0 rgba(40, 75, 60, 0.12);
+  box-shadow: 12px 16px 0 color-mix(in srgb, var(--moss) 12%, transparent);
 }
 
 .birds-page .bird-dialog::backdrop {
@@ -772,7 +771,7 @@
   display: grid;
   place-items: center;
   color: var(--ink, #262b25);
-  background: rgba(245, 243, 234, 0.97);
+  background: color-mix(in srgb, var(--sheet) 97%, transparent);
   border: 1px solid var(--instrument-bright);
   border-radius: 50%;
   font: 24px/1 var(--serif);
@@ -1034,7 +1033,7 @@
     left: 0;
     width: 100%;
     opacity: 1;
-    background: rgba(245, 243, 234, 0.97);
+    background: color-mix(in srgb, var(--sheet) 97%, transparent);
     border: 0;
     border-top: 1px solid var(--instrument-line);
   }
