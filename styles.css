@@ -5402,32 +5402,23 @@ html:has(.workbench) {
 
 .subpage .prose .notebook-meta { color: var(--subtle); font: 10px/1.8 var(--mono); padding-bottom: 20px; margin-bottom: 30px; border-bottom: 1px solid var(--rule); overflow-wrap: anywhere; }
 
-/* A personal portrait stamp, shared by the homepage and every subpage. */
-.workbench .brand-badge {
-  width: 44px;
-  height: 52px;
-  padding: 0;
-  background: transparent;
-  border: 0;
-  border-radius: 0;
-  box-shadow: none;
-  font-size: 0;
-  letter-spacing: normal;
+/* A custom wordmark signs the homepage and every subpage. */
+.workbench .brand {
+  min-height: 64px;
+  flex-shrink: 0;
 }
-.workbench .brand-badge img {
+.workbench .brand-wordmark {
   display: block;
-  width: 44px;
-  height: 52px;
+  width: 176px;
+  height: 73px;
   object-fit: contain;
 }
-.workbench .brand-copy strong::after {
-  content: ".";
-  color: var(--vermilion);
-}
 @media (max-width: 760px) {
-  .workbench .brand-badge,
-  .workbench .brand-badge img {
-    width: 36px;
-    height: 44px;
+  .workbench .brand {
+    min-height: 52px;
+  }
+  .workbench .brand-wordmark {
+    width: 140px;
+    height: 58px;
   }
 }

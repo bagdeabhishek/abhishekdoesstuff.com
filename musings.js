@@ -88,7 +88,7 @@ function shell({ title, description, canonicalPath, body, type = "Article", date
 <html lang="en-IN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#f5f3ea">
 <title>${escapeHtml(title)} — Abhishek Does Stuff</title>
 <meta name="description" content="${escapeHtml(description)}"><meta name="author" content="Abhishek Bagade"><meta name="robots" content="index, follow, max-image-preview:large">
-<link rel="canonical" href="${canonical}"><link rel="icon" href="/favicon.ico?v=20261018-4" sizes="any">
+<link rel="canonical" href="${canonical}"><link rel="icon" href="/favicon.ico?v=20261018-5" sizes="any">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -96,24 +96,21 @@ function shell({ title, description, canonicalPath, body, type = "Article", date
       rel="stylesheet"
     />
 
-<link rel="stylesheet" href="/styles.css?v=20261018-4">
-<meta property="og:type" content="article"><meta property="og:site_name" content="Abhishek Does Stuff"><meta property="og:title" content="${escapeHtml(title)}"><meta property="og:description" content="${escapeHtml(description)}"><meta property="og:url" content="${canonical}"><meta property="og:image" content="${SITE}/og.png?v=20261018-4">
-<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${escapeHtml(title)}"><meta name="twitter:description" content="${escapeHtml(description)}"><meta name="twitter:image" content="${SITE}/og.png?v=20261018-4">
+<link rel="stylesheet" href="/styles.css?v=20261018-5">
+<meta property="og:type" content="article"><meta property="og:site_name" content="Abhishek Does Stuff"><meta property="og:title" content="${escapeHtml(title)}"><meta property="og:description" content="${escapeHtml(description)}"><meta property="og:url" content="${canonical}"><meta property="og:image" content="${SITE}/og.png?v=20261018-5">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${escapeHtml(title)}"><meta name="twitter:description" content="${escapeHtml(description)}"><meta name="twitter:image" content="${SITE}/og.png?v=20261018-5">
 <script type="application/ld+json">${JSON.stringify(schema).replaceAll("<", "\\u003c")}</script></head>
 <body class="workbench subpage ${isIndex ? "musing-index" : "musing-article"}" id="page-top"><a class="skip-link" href="#main-content">Skip to content</a>
     <header class="site-header">
       <a class="brand" href="/" aria-label="Abhishek Does Stuff home"
-        ><span class="brand-badge" aria-hidden="true"
-          ><img
-            src="/logo-512.webp?v=20261018-4"
-            alt=""
-            width="48"
-            height="48"
-            decoding="async" /></span
-        ><span class="brand-copy"
-          ><strong>abhishek does stuff</strong
-          ><small>An independent workbench</small></span
-        ></a
+        ><img
+          class="brand-wordmark"
+          src="/logo-512.webp?v=20261018-5"
+          alt=""
+          width="176"
+          height="73"
+          decoding="async"
+        /></a
       >
       <nav class="primary-links" aria-label="Primary navigation">
         <a href="/#builds">Builds <span>06</span></a>
